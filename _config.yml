@@ -1,2 +1,3 @@
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 title: "阳仔的博客"
+theme: minima
