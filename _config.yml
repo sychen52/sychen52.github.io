@@ -1,3 +1,5 @@
+title: "博客"
+author: "杨载"
+
 baseurl: "/blog" # the subpath of your site, e.g. /blog
-title: "阳仔的博客"
 theme: minima
