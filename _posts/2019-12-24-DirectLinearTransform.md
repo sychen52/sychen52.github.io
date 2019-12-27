@@ -49,7 +49,7 @@ Now the problem becomes:
 
 Given $$\boldsymbol{M}$$, find $$\boldsymbol{\hat{p}} = argmax_\boldsymbol{p} \boldsymbol{p^TM^TMp}$$, such that $$\vert \boldsymbol{p}\vert = 1$$.
 
-The solution to this is do a SVD of $$\boldsymbol{M}$$, and set $$\boldsymbol{p} = \boldsymbol{v_{12}}$$. $$\boldsymbol{v_{12}}$$ is the eigenvector corresponds to the singular value $$s_{12}$$ who has the smallest absolute value. Try proof this yourself. Hint: decompose $$\boldsymbol{p}$$ into the space defined by $$\boldsymbol{v_i}$$.
+The solution to this is do a SVD of $$\boldsymbol{M}$$, and set $$\boldsymbol{p} = \boldsymbol{v_{12}}$$. $$\boldsymbol{v_{12}}$$ is the eigenvector corresponds to the smallest singular value $$s_{12}$$ (all singular values are non-negtive). Try proof this yourself. Hint: decompose $$\boldsymbol{p}$$ into the space defined by $$\boldsymbol{v_i}$$.
 
 There are two corner cases that there is no solution: 1. All world coords are on the same plane. 2. all world coords and the projection center are locate on a twisted cubic curve.
 
