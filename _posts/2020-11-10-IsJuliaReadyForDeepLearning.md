@@ -19,4 +19,6 @@ Julia has a large scientific computing community. For deep learning, there is al
 # Solve Two Language Problem
 I think this is a pretty unique point about Julia. People are proud of using Julia from high level all the way to low level problem. [The fact that Julia can be used to do CUDA programming just blew my mind](https://www.youtube.com/watch?v=525t9-nsn5Y). 
 
+To summary up, IMHO, this is a very good time for early adopters and people who want to make contributions. However, if you just want to get things done, or you want the current best (fast and full functional) solution, Julia is not ready yet.
+
 {%- include utterance_comments.html -%}
