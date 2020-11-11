@@ -1,5 +1,5 @@
-title: "博客"
-author: "杨载"
+title: "Yangzai's Blog"
+author: "Yangzai"
 
-baseurl: "/blog" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /
 theme: minima
