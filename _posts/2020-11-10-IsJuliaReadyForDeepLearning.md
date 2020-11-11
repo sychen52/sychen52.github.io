@@ -2,6 +2,7 @@
 layout: post
 title:  "Is Julia Ready for Deep Learning"
 date:   2020-11-10 17:28:18 -0800
+tags: [Julialang, Julia, deep learning, DL]
 ---
 
 I heard about Swift and Julia for deep learning during [fast.ai's course](https://www.youtube.com/watch?v=3TqN_M1L4ts). Then I spent quite some time to try figuring out whether any of these languages is a better choice for deep learning than Python. However, soon I realized that Chris Lattner left Google and Swift for Tensorflow project is slowing down and even [Jeremy Howard is less passionate about it](https://twimlai.com/whats-next-for-fast-ai-w-jeremy-howard/). Then the only choice left for now is Julia AFAIK. The Question is whether Julia is ready for deep learning.
