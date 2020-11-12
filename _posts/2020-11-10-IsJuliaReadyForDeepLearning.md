@@ -19,11 +19,11 @@ As a rule of thumb, static typing language can be AOT compiled while dynamic lan
 # Community
 Julia has a large scientific computing community. For deep learning, there is also a community working on the [machine learning ecosystem](https://github.com/FluxML/ML-Coordination-Tracker). 
 
-# Deep Learning Library and Auto Differentiation (AD)
-I guess a lot people care about this the most. The reason I put it at the very end is because it is not that mature yet. The most promising deep learning library is called [Flux.jl](https://github.com/FluxML/Flux.jl) and the AD it uses is called [Zygote.jl](https://github.com/FluxML/Zygote.jl). They are still undergoing some changes. As far as I know, there may be a new AD coming out to replace Zygote. Unlike Pytorch, where AD only works on Pytorch's Tensor class, Zygote is a source to source AD that does not need to introduce another Tensor class, it just works on the existing data structure. This can be a huge advantage for developers. In Pytorch ecosystem, in order to be differentiable, developer need to re-write their libraries using Pytorch's Tensor. For example, [Kornia](https://github.com/kornia/kornia) is a re-write of OpenCV using Pytorch. This will not happen to Julia package developer since the AD will just work.
-
 # Solve Two Language Problem
 I think this is a pretty unique point about Julia. People are proud of using Julia from high level all the way to low level problem. The fact that Julia can be used to do [CUDA programming](https://www.youtube.com/watch?v=525t9-nsn5Y) just blew my mind.
+
+# Deep Learning Library and Auto Differentiation (AD)
+I guess a lot people care about this the most. The reason I put it at the very end is because it is not that mature yet. The most promising deep learning library is called [Flux.jl](https://github.com/FluxML/Flux.jl) and the AD it uses is called [Zygote.jl](https://github.com/FluxML/Zygote.jl). They are still undergoing some changes. As far as I know, there may be a new AD coming out to replace Zygote. Unlike Pytorch, where AD only works on Pytorch's Tensor class, Zygote is a source to source AD that does not need to introduce another Tensor class, it just works on the existing data structure. This can be a huge advantage for developers. In Pytorch ecosystem, in order to be differentiable, developer need to re-write their libraries using Pytorch's Tensor. For example, [Kornia](https://github.com/kornia/kornia) is a re-write of OpenCV using Pytorch. This will not happen to Julia package developer since the AD will just work.
 
 To summary up, IMHO, this is a very good time for early adopters and people who want to make contributions. However, if you just want to get things done, or you want the current best (fast and full functional) solution, Julia is not ready yet.
 
