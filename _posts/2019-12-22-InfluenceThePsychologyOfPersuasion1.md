@@ -2,6 +2,8 @@
 layout: post
 title:  "Influence: The Psychology Of Persuasion 笔记一"
 date:   2019-12-22 07:28:18 -0800
+categories:
+- others
 ---
 
 书其实讲的是人心理上的一些漏洞，举了很多例子，说明这些漏洞如何被商家，销售人员等人利用。然后再给出一些克服漏洞的方法。说几个我记得的：

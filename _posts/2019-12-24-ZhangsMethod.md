@@ -2,6 +2,7 @@
 layout: post
 title:  "Camera Calibration: Zhang's Method"
 date:   2019-12-24 17:28:18 -0800
+categories: []
 ---
 
 {%- include mathjax.html -%}

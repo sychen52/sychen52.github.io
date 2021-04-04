@@ -2,6 +2,8 @@
 layout: post
 title:  "Bringing up Bebe 笔记"
 date:   2019-12-22 06:28:18 -0800
+categories:
+- others
 ---
 
 书讲的是一个美国妈妈在法国生娃带娃，过程中发现的美国法国的对待娃问题上的不同态度。书里说道的美国父母overparenting, hyperparenting, helicopter-parenting感觉好像实在说中国父母。说几个我记下来的点：
