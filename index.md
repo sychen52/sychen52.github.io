@@ -7,15 +7,11 @@ layout: default
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
 
-  {{ content }}
-
-
   {% if site.paginate %}
     {% assign posts = paginator.posts %}
   {% else %}
     {% assign posts = site.posts %}
   {% endif %}
-
 
   {%- if posts.size > 0 -%}
     {%- if page.list_title -%}
@@ -24,7 +20,7 @@ layout: default
     <ul class="post-list">
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
       {%- for post in posts -%}
-        {%- if (post.categories contains "archive") == false -%}
+        {%- unless post.categories contains "archive" -%}
         <li>
             <span class="post-meta">{{ post.date | date: date_format }}</span>
             <h3>
@@ -36,7 +32,7 @@ layout: default
             {{ post.excerpt }}
             {%- endif -%}
         </li>
-        {%- endif -%}
+        {%- endunless -%}
       {%- endfor -%}
     </ul>
 
