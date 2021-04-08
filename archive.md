@@ -4,10 +4,6 @@ title: Archive
 ---
 
 <div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
-
   {% if site.paginate %}
     {% assign posts = paginator.posts %}
   {% else %}
