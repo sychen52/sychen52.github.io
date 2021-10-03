@@ -3,7 +3,7 @@ layout: post
 title:  "Why we sleep 读书笔记"
 date:   2021-10-01 17:28:18 -0800
 tags: [Why we sleep, book]
-categories: []
+categories: [archive]
 ---
 
 - 为什么：免疫系统（抗癌）；脑部健康（防老年痴呆）；人有脂肪可以储存热量，但是睡眠是不能储存的，补也是补不回来的；身体发育；心理健康等等。具体可以看作者的演讲。
