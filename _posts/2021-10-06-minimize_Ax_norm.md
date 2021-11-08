@@ -26,7 +26,7 @@ For real matrix, all singular values are non-negative.
 - First, we assume m > n and n = r, otherwise, the result would be 0.
 - decompose x into v-space, $$x=\sum_{i=1}^n x=x_iv_i$$.
 - $$Ax=\sum_{i=1}^n \lambda_iu_iv_i^T\sum_{j=1}^n x_jv_j=\sum_{i=1}^n \lambda_ix_iu_i$$.
-- $$|Ax|=\sqrt{\sum_{i=1}^r \lambda_i^2x_i^2}\text{ where }\sum_{i=1}^n x_i^2 = 1$$. This is true because ui and vi are orthogonal.
-- Now you can see $$|Ax|=\lambda_n,\text{ if }x_i=\left\{\begin{matrix}0,\text{ if }i\neq n\\ 1,\text{ if }i=n\end{matrix}\right.$$. Here I assume singular values are sorted from large to small.
+- $$\|Ax\|=\sqrt{\sum_{i=1}^r \lambda_i^2x_i^2}\text{ where }\sum_{i=1}^n x_i^2 = 1$$. This is true because ui and vi are orthogonal.
+- Now you can see $$\|Ax\|=\lambda_n,\text{ if }x_i=\left\{\begin{matrix}0,\text{ if }i\neq n\\ 1,\text{ if }i=n\end{matrix}\right.$$. Here I assume singular values are sorted from large to small.
 
 
