@@ -18,7 +18,7 @@ One way to understand SVD is as follows:
 
 Another way is:
 
-$$A=\sum_{i=1}^r\lambda_iu_iv_i^T$$, where $$\lambda_i$$ is the singular value; $$u_i, v_i$$ are the column vectors of $$U, V$$. These column vector are orthogonal to each other, meaning $$u_i^Tu_j=\left\{\begin{matrix}0,\text{ if }i\neq j \\1,\text{ if }i=j \end{matrix}\right.$$ and $$v_i^Tv_j=\left\{\begin{matrix}0,\text{ if }i\neq j \\1,\text{ if }i=j \end{matrix}\right.$$
+$A=\sum_{i=1}^r\lambda_iu_iv_i^T$, where $$\lambda_i$$ is the singular value; $$u_i, v_i$$ are the column vectors of $$U, V$$. These column vector are orthogonal to each other, meaning $$u_i^Tu_j=\left\{\begin{matrix}0,\text{ if }i\neq j \\1,\text{ if }i=j \end{matrix}\right.$$ and $$v_i^Tv_j=\left\{\begin{matrix}0,\text{ if }i\neq j \\1,\text{ if }i=j \end{matrix}\right.$$
 
 For real matrix, all singular values are non-negative.
 
