@@ -1,18 +1,20 @@
 #+TITLE: Yangzai's Blog
 
+#+BEGIN_COMMENT
 [[./2019-12-22-BringingUpBebe.org][Bringing Up Bebe]]
 
 [[./2019-12-22-InfluenceThePsychologyOfPersuasion1.org][Influence The Psychology Of Persuasion1]]
+
+[[./2021-10-02-WhyWeSleep.org][Why We Sleep]]
+#+END_COMMENT
 
 [[./2019-12-24-DirectLinearTransform.org][Direct Linear Transform]]
 
 [[./2019-12-24-ZhangsMethod.org][Zhang's Method]]
 
-[[./2020-11-10-IsJuliaReadyForDeepLearning.org][Is Julia Ready For DeepLearning]]
+[[./2020-11-10-IsJuliaReadyForDeepLearning.org][Is Julia Ready For Deep Learning]]
 
 [[./2020-11-15-C++.org][C++]]
-
-[[./2021-10-02-WhyWeSleep.org][Why We Sleep]]
 
 [[./2021-10-06-minimize_Ax_norm.org][Minimize \( \|Ax\| s.t. \|x\| = 1 \)]]
 
