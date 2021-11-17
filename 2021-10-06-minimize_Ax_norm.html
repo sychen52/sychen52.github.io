@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Minimize \( \|Ax\| s.t. \|x\| = 1 \)</title>
+<meta name="generator" content="Org mode" />
+<meta name="keywords" content="optimization" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Minimize \( \|Ax\| s.t. \|x\| = 1 \)</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org1252668">Solution</a>
+<ul>
+<li><a href="#org9b34bbd">SVD</a></li>
+</ul>
+</li>
+<li><a href="#org1f116ac">Proof</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1252668" class="outline-2">
+<h2 id="org1252668">Solution</h2>
+<div class="outline-text-2" id="text-org1252668">
+<ul class="org-ul">
+<li>Do a svd on A</li>
+<li>x = the v vector corresponding to the smallest singular value.</li>
+</ul>
+</div>
+
+<div id="outline-container-org9b34bbd" class="outline-3">
+<h3 id="org9b34bbd">SVD</h3>
+<div class="outline-text-3" id="text-org9b34bbd">
+<p>
+One way to understand SVD is as follows:
+</p>
+
+
+<div class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Singular_value_decomposition_visualisation.svg/800px-Singular_value_decomposition_visualisation.svg.png" alt="800px-Singular_value_decomposition_visualisation.svg.png" />
+</p>
+</div>
+
+<p>
+Another way is:
+</p>
+
+<p>
+\( A=\sum_{i=1}^r\lambda_iu_iv_i^T \), where \( \lambda_i \) is the singular value; \( u_i, v_i \) are the column vectors of \( U, V \). These column vectors are orthogonal to each other, meaning \( u_i^Tu_j=\left\{\begin{matrix}0,\text{ if }i\neq j \\1,\text{ if }i=j \end{matrix}\right. \) and \( v_i^Tv_j=\left\{\begin{matrix}0,\text{ if }i\neq j \\1,\text{ if }i=j \end{matrix}\right. \)
+</p>
+
+<p>
+For real matrix, all singular values are non-negative.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1f116ac" class="outline-2">
+<h2 id="org1f116ac">Proof</h2>
+<div class="outline-text-2" id="text-org1f116ac">
+<ul class="org-ul">
+<li>First, we assume m &gt; n and n = r, otherwise, the result would be 0.</li>
+<li>Decompose x into v-space, \( x=\sum_{i=1}^n x=x_iv_i \).</li>
+<li>\( Ax=\sum_{i=1}^n \lambda_iu_iv_i^T\sum_{j=1}^n x_jv_j=\sum_{i=1}^n \lambda_ix_iu_i \).</li>
+<li>\( \|Ax\|=\sqrt{\sum_{i=1}^r \lambda_i^2x_i^2}\text{ where }\sum_{i=1}^n x_i^2 = 1 \). This is true because ui and vi are orthogonal.</li>
+<li>Now you can see \( \|Ax\|=\lambda_n,\text{ if }x_i=\left\{\begin{matrix}0,\text{ if }i\neq n\\ 1,\text{ if }i=n\end{matrix}\right. \). Here I assume singular values are sorted from large to small.</li>
+</ul>
+
+<script src="https://utteranc.es/client.js"
+        repo="sychen52/sychen52.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2021-10-06 07:28:18 -0800</p>
+<p class="validation"></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<p>
+&#x2014;
+layout: post
+title:  "Camera Calibration: Zhang's Method"
+date:   2019-12-24 17:28:18 -0800
+categories: []
+&#x2014;
+</p>
+
+<p>
+{%- include mathjax.html -%}
+</p>
+
+<p>
+Credits go to the following video. The rest is my note.
+&lt;iframe width="560" height="315" src="<a href="https://www.youtube.com/embed/Ou9Uj75DJX0">https://www.youtube.com/embed/Ou9Uj75DJX0</a>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+</p>
+
+<p>
+DLT has no solution when all the world coords are on the same plane, while Zhang's method is for this case.
+</p>
+
+<p>
+Given \[M = 4\] or more pairs of world coord \[\boldsymbol{X_i}\] and image coord \[\boldsymbol{x_i}\], all on plane \[Z = 0\], and from \[N = 3\] or more viewing positions, figure out intrinsic parameter \[\boldsymbol{K}\], Rotation matrix \[\boldsymbol{R}\], and projection center \[\boldsymbol{X_0}\].
+</p>
+
+<p>
+\[
+\left[ \begin{array} {c} x \\ y \\ 1 \end{array} \right] =
+\boldsymbol{H}
+\left[ \begin{array} {c} X \\ Y \\ 1 \end{array} \right] =
+\boldsymbol{K}
+\left[ \begin{array} {ccc} \boldsymbol{r_1},  \boldsymbol{r_2},  \boldsymbol{t} \end{array} \right]
+\left[ \begin{array} {c} X \\ Y \\ 1 \end{array} \right]
+\]
+</p>
+
+<p>
+where \[\boldsymbol{r_3}=\boldsymbol{r_1} \times \boldsymbol{r_2}\] and \[\boldsymbol{t}=-\boldsymbol{RX_0}\].
+</p>
+
+<p>
+\[\boldsymbol{H}\] is a \[3 \times 3\] heterogeneous homography matrix with 8 dof. Follow SVD approach in DLT, all elements in \[\boldsymbol{H}\] can be figured out from 4 or more pairs of points.
+</p>
+
+<p>
+However, after that, we cannot use the QR decomposition trick because \[\left[ \begin{array} {ccc} \boldsymbol{r_1},  \boldsymbol{r_2},  \boldsymbol{t} \end{array} \right]\] is not an orthogonal matrix. And this is why we need 3 or more viewing positions to figure out \[\boldsymbol{K}\].
+</p>
+
+<p>
+\[
+\boldsymbol{r_i} = \boldsymbol{K}^{-1}\boldsymbol{h_i} \\
+\boldsymbol{r_1}^T\boldsymbol{r_2} = 0 \\
+\vert\vert\boldsymbol{r_1}\vert\vert-\vert\vert\boldsymbol{r_2}\vert\vert = 0
+\]
+</p>
+
+<p>
+If we plug the first equation into the next two, we have only 6 unknowns on the upper diagonal of matrix \[\boldsymbol{B=K^{-T}K^{-1}}\]. After this, we can do a Cholesky decomposition to get \[\boldsymbol{K}\]. For each viewing position, we get 6 unknowns in linear 2 linear equations. This is why we need to stack 3 of these and use SVD to solve the unknowns.
+</p>
+
+<p>
+{%- include utterance<sub>comments.html</sub> -%}
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="validation"></p>
+</div>
+</body>
+</html>
