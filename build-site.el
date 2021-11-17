@@ -24,17 +24,6 @@
       org-html-head-include-default-style nil ;; Use our own styles
       org-html-head "<link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />")
 
-(setq org-html-postamble-format '(("en"
-                                   "<p><script src='https://utteranc.es/client.js'
-          repo='sychen52/sychen52.github.io'
-          issue-term='title'
-          label='Comment'
-          theme='github-light'
-          crossorigin='anonymous'
-          async>
-</script></p>
-")))
-
 (setq org-publish-project-alist
       (list
        (list "org-site:main"
