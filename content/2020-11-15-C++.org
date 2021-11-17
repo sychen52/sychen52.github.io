@@ -1,0 +1,170 @@
+---
+layout: post
+title:  "Some notes for C++"
+date:   2020-11-15 17:28:18 -0800
+categories: []
+---
+These are some notes I wrote as I watched [Cherno's C++ playlist](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).
+
+# Compile and link
+* When compile a cpp file, all it cares is how the stuff (functions/class) you use in it is declared. As long as you tell it the declaration (e.g. function signature), it will compile. Even if it is never defined. 
+* The linking stage is actually linking all these compile stuff together. Therefore, if something is not defined, it will have a link error.
+
+# Header and include
+* `#include` is just copying all the stuff in the header to the current file. This also explains why you can do forward declaration.
+* Headers has the declarations for you to compile the current file (translation unit).
+* `#include <system_header>`
+* `#include "you_own_header"`
+* All the C system header ends with .h, e.g., `<stdlib.h>`
+* All the C++ system header has no file extension, e.g., `<iostrem>`
+
+# Default stuff in a class
+* There are a default constructor, default destructor, default copy constructor/assignment operator, and default move constructor/assignment operator.
+* default constructor/destructor is as if you have an empty body of the constructor/destructor. The default constructor will not initialize the primitive type member variable in your class.
+* default copy/move ctor do something with `std::memcopy` and `std::memmove`. Therefore, if you have pointers in your class, the default copy constructor will be a shallow copy.
+
+# When is = operator=, and when is it ctor.
+```
+A a;
+A b = a; // Constructor
+b = a; // operator=
+```
+The reasoning is pretty simple. The later one is equivalent to
+```
+b.operator=(a);
+```
+While in the former one, b has not been constructed yet, so it must be a constructor.
+
+# Static: lifetime and access
+* The static keyword inside a local scope, e.g. in a class, function means
+    - The lifetime of this variable is the same as the entire program.
+    - There is only one copy of this variable function.
+    - but only code inside the scope can access it (unless you pass it out).
+    - static functions is the same as static variables, but they feels a little bit different
+        - forever lifetime: it can be called without an instance.
+        - Only one copy: the static member function does not have a `this` inside it.
+        - local access: you need to call it through the class.
+* The static keyword outside a scope just means it is only accessible / linked within this file/translation unit.
+
+# Virtual function and pure virtual function (interface)
+* All method functions can be overwritten in the derived class. However, virtual functions will ask the compiler to create a virtual table in the runtime. And when you do polymorphism, it knows the correct function to call. Otherwise it will call the base class method if it is a base class pointer.
+* And additional thing pure virtual functions has is that it forces the derived class to define it.
+
+# Mutable
+Mark a class variable mutable will allow const methods to change it.
+
+# String literal
+* They are on a read-only memory, so you cannot modify it.
+* In order to modify it, you actually ask the compiler to copy it to a modifiable piece of memory.
+```
+char * a = "hello"; // convert a const char * const to char *
+a[2] = 'c'; // Wrong. it is read only.
+char b[] = "hello"; // copied from a read only memory to stack.
+b[2] = 'c'; // It is okay.
+```
+
+# Const
+```
+const int *a; // the integer cannot be modified.
+int const * b; // same as above.
+int * const c; // the pointer cannot be modified to point to other stuff. BTW, int& is sort of like this. Once it is initialized, it cannot be used to reference a different thing.
+```
+
+# Stack vs. heap instantiation
+* Stack is about 2Mb
+* Two reasons to do heap instantiation:
+    - pass it out of the scope
+    - too big for stack
+* Why is it called stack and heap memory:
+    - When using stack memory, the variables are created and deleted based on scope. It works exactly like a stack data structure. When you create variables in scope, you allocate memory one after another just like you push things into a stack. When you go out of the scope, the memory allocated in the code is released one after another just like you pop things out of a stack.
+    - Stack is a small piece of memory reserved for your program. Heap is a large piece of memory shared by all other programs. Therefore, Heap may not be all available for you to use. And the way to manage which part is available and how much is available is just like a heap data structure.
+
+# Implicit conversion
+It only does it once. For example,
+```
+class A
+{
+    A (std::string a) {}
+};
+void print(const A& a)
+{
+};
+print("hello"); // This will not compile. "hello" is const char* const. It can be converted to std::string. However, you need to further converted to A, while is the second implicit conversion.
+print(std::string("hello")); // Good. 
+```
+
+# std::move
+* It is as simple as converting lvalue to rvalue. The real move (include cleaning up the source properly) happens in the move ctor or move assignment. std::move is just to make sure you can match to the function that actually do the move.
+* In other words, std::move mark a value as temporary (can be stolen from). The move ctor or assignment actually steals it.
+
+# Don't return an rvalue ref, just return a value
+```
+class B
+{
+    A a;
+    public:
+    A give() {
+        return std::move(a); // what happens here is that, a is moved to a temporary var and this temporary var is returned. 
+    }
+}
+int main() {
+    B b;
+    A a = b.give(); // with copy elision, this line does not trigger either copy or move constructor.
+}
+```
+```
+class B
+{
+    A a;
+    public:
+    A&& give() {
+        return std::move(a); // what happens here is that, a is convert to a rvalue.
+    }
+}
+int main() {
+    B b;
+    A a = b.give(); // move constructor is called here.
+}
+```
+Therefore, with copy elision, return an `A&&` does not save you anything. However, if you return a `A&&`, potentially it can be misused. If the receiver uses an `A&&` to receive it. This will not trigger any real move, either. If at this moment the original copy is destroyed, then the receiver end has a dangling pointer.
+```
+A&& a = b.give(); // nothing happens here as well.
+```
+
+# std::forward
+It is converting something to T&&. This is only used in a template function used for relay purposes.
+
+# std::unique_ptr, std::shared_ptr, and std::weak_ptr
+* `std::unique_ptr` has almost no overhead.
+* `std::make_unique` is preferred because it handles exception
+* `std::shared_ptr` is implemented as reference count.
+* `std::make_shared` is preferred because it initialize control block and the object together.
+
+# Function pointer
+* C style function pointer
+    - `ReturnType(*function_pointer)(ArgumentType)` this is the declaration of a function pointer. `type variable` this is the declaration of a variable
+    - `typedef ReturnType(*FunctionPointerType)(ArgumentType)` this is how to typedef a function pointer type. `typedef Type NewTypeName` is this a normal typedef.
+* lambda function's type is undefined in the standard, so it is up to the compiler's implementation. That is why you cannot pass it to a C style function pointer. You can either use a template to hold it, or convert it to `std::function`.
+
+# Union and type punning
+* type punning is to interpret a piece of memory as a different type. For example
+```
+struct A
+{
+    int x, y;
+};
+A a;
+int* b = (int*)&a;
+b[0]; // a.x;
+b[1]; // a.y;
+```
+* Union is a nicer way to achieve this.
+
+# std::variant
+* a safer way to do Union
+* but instead of occupying memory that is the max of all the variants like union, it occupies memory that is the sum of all its variants.
+
+# Singleton
+* a static member function defines and then returns a static variable looks better than declaring a static variable and then defining this variable.
+
+{%- include utterance_comments.html -%}
