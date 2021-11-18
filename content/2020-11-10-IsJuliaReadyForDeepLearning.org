@@ -7,8 +7,7 @@ I heard about Swift and Julia for deep learning during
 I spent quite some time to try figuring out whether any of these
 languages is a better choice for deep learning than Python. However,
 soon I realized that Chris Lattner left Google and Swift for Tensorflow
-project is slowing down and even
-[[https://twimlai.com/whats-next-for-fast-ai-w-jeremy-howard/][Jeremy
+project is slowing down and even [[https://twimlai.com/whats-next-for-fast-ai-w-jeremy-howard/][Jeremy
 Howard is less passionate about it]]. Then the only choice left for now
 is Julia AFAIK. The Question is whether Julia is ready for deep
 learning.
@@ -46,14 +45,16 @@ the next point I would like to mention
   :PROPERTIES:
   :CUSTOM_ID: ahead-of-time-aot-compilation-vs.-just-in-time-jit-compilation-vs.-interpreter
   :END:
-As a rule of thumb, static typing language can be AOT compiled while
-dynamic language usually runs on an interpreter, and sometimes with a
+Usually, static typing languages are AOT compiled while
+dynamic language runs on an interpreter, and sometimes with a
 JIT compiler. Because you need to know the type to deeply optimize the
 code, static typing languages can directly be optimized AOT, while
-dynamic typing languages cannot only to optimized at runtime when the
-type is known with a JIT. Julia is none of this. It is
+dynamic typing languages can only to optimized at runtime when the
+type is known with a JIT. Julia is somewhere in between. It is
 [[https://www.youtube.com/watch?v=XWIZ_dCO6X8][just ahead of time
-(JAOT)]] compiled. The pro is that you have a deeply optimized dynamic
+(JAOT)]] compiled. Julia does type inference as early as it can. But for a
+dynamic type language, inevitably, the type cannot be inferred before runtime.
+The pro is that you have a deeply optimized dynamic
 typing language. The con is this JAOT takes a long time, and this is the
 well known time to first plot issue. This issue is not a big deal if you
 use Julia for deep learning. However, dynamic typing is something built
