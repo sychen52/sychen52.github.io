@@ -241,7 +241,7 @@ then the receiver end has a dangling pointer.
 It is converting something to T&&. This is only used in a template
 function used for relay purposes.
 
-* std::unique_ptr, std::shared_ptr, and std::weak_ptr
+* =std::unique_ptr=, =std::shared_ptr=, and =std::weak_ptr=
   :PROPERTIES:
   :CUSTOM_ID: stdunique_ptr-stdshared_ptr-and-stdweak_ptr
   :END:
