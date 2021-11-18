@@ -2,7 +2,7 @@
 #+DATE:   <2021-11-07>
 #+KEYWORDS: "code as data", "LISP", "Julia", "Python"
 
-I heard about this "code as data" in LISP is so cool recently, and I was wondering how come I never realize it when I learned it, so I want back and took the [Programming Languages B](https://www.coursera.org/learn/programming-languages-part-b) course again. It is taught in Racket (a dialect of LISP). And Dan only briefly mentioned this "code as data" idea in an optional lecture.
+I heard about this "code as data" in LISP is so cool recently, and I was wondering how come I never realize it when I learned it, so I want back and took the [[https://www.coursera.org/learn/programming-languages-part-b][Programming Languages B]] course again. It is taught in Racket (a dialect of LISP). And Dan only briefly mentioned this "code as data" idea in an optional lecture.
 
 The idea is that LISP can take a program at runtime, modify it, (and then evaluate/run it). Actually, this is not something unique to LISP. A lot of "LISP inspired languages", such as Python, can take a string at runtime, modify the string, and then evaluate it. (Python also have ast.parse to parse the string into AST to make it easier to modify.) The reason it is especially cool in LISP is that: Data is represented as a list, and a program is also represented as a list (you need a quote if you really want to interpret it as data before evaluation).
 
