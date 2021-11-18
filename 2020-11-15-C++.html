@@ -15,39 +15,39 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org62f1203">When compile a cpp file, all it cares is how the stuff (functions/class) you use in it is declared. As long as you tell it the declaration (e.g. function signature), it will compile. Even if it is never defined.</a></li>
-<li><a href="#orgc0e956b">The linking stage is actually linking all these compile stuff together. Therefore, if something is not defined, it will have a link error.</a></li>
-<li><a href="#org8df182c">`#include` is just copying all the stuff in the header to the current file. This also explains why you can do forward declaration.</a></li>
-<li><a href="#org2c421be">Headers has the declarations for you to compile the current file (translation unit).</a></li>
-<li><a href="#org6624d9f">`#include &lt;system<sub>header</sub>&gt;`</a></li>
-<li><a href="#org7024317">`#include "you<sub>own</sub><sub>header</sub>"`</a></li>
-<li><a href="#org365d5dc">All the C system header ends with .h, e.g., `&lt;stdlib.h&gt;`</a></li>
-<li><a href="#org7190237">All the C++ system header has no file extension, e.g., `&lt;iostrem&gt;`</a></li>
-<li><a href="#org7a49769">There are a default constructor, default destructor, default copy constructor/assignment operator, and default move constructor/assignment operator.</a></li>
-<li><a href="#org7cfefa4">default constructor/destructor is as if you have an empty body of the constructor/destructor. The default constructor will not initialize the primitive type member variable in your class.</a></li>
-<li><a href="#org6a230b6">default copy/move ctor do something with `std::memcopy` and `std::memmove`. Therefore, if you have pointers in your class, the default copy constructor will be a shallow copy.</a></li>
-<li><a href="#orgfab693e">The static keyword inside a local scope, e.g. in a class, function means</a></li>
-<li><a href="#org8b7a7d1">The static keyword outside a scope just means it is only accessible / linked within this file/translation unit.</a></li>
-<li><a href="#org3c1aa3c">All method functions can be overwritten in the derived class. However, virtual functions will ask the compiler to create a virtual table in the runtime. And when you do polymorphism, it knows the correct function to call. Otherwise it will call the base class method if it is a base class pointer.</a></li>
-<li><a href="#orgab96f83">And additional thing pure virtual functions has is that it forces the derived class to define it.</a></li>
-<li><a href="#orgeb9738b">They are on a read-only memory, so you cannot modify it.</a></li>
-<li><a href="#org48640b3">In order to modify it, you actually ask the compiler to copy it to a modifiable piece of memory.</a></li>
-<li><a href="#org8566688">Stack is about 2Mb</a></li>
-<li><a href="#orgddc70a0">Two reasons to do heap instantiation:</a></li>
-<li><a href="#org52bc8e0">Why is it called stack and heap memory:</a></li>
-<li><a href="#orgbdd8142">It is as simple as converting lvalue to rvalue. The real move (include cleaning up the source properly) happens in the move ctor or move assignment. std::move is just to make sure you can match to the function that actually do the move.</a></li>
-<li><a href="#org7dbfb91">In other words, std::move mark a value as temporary (can be stolen from). The move ctor or assignment actually steals it.</a></li>
-<li><a href="#orgf4f266f">`std::unique<sub>ptr</sub>` has almost no overhead.</a></li>
-<li><a href="#orge9f0d48">`std::make<sub>unique</sub>` is preferred because it handles exception</a></li>
-<li><a href="#org664a25b">`std::shared<sub>ptr</sub>` is implemented as reference count.</a></li>
-<li><a href="#org3fef591">`std::make<sub>shared</sub>` is preferred because it initialize control block and the object together.</a></li>
-<li><a href="#orgd83223c">C style function pointer</a></li>
-<li><a href="#org59e4da4">lambda function's type is undefined in the standard, so it is up to the compiler's implementation. That is why you cannot pass it to a C style function pointer. You can either use a template to hold it, or convert it to `std::function`.</a></li>
-<li><a href="#orgb141158">type punning is to interpret a piece of memory as a different type. For example</a></li>
-<li><a href="#org9db7b04">Union is a nicer way to achieve this.</a></li>
-<li><a href="#org1f2f522">a safer way to do Union</a></li>
-<li><a href="#org6014a44">but instead of occupying memory that is the max of all the variants like union, it occupies memory that is the sum of all its variants.</a></li>
-<li><a href="#org10c61a5">a static member function defines and then returns a static variable looks better than declaring a static variable and then defining this variable.</a></li>
+<li><a href="#org1b50d89">When compile a cpp file, all it cares is how the stuff (functions/class) you use in it is declared. As long as you tell it the declaration (e.g. function signature), it will compile. Even if it is never defined.</a></li>
+<li><a href="#orga9ee8ab">The linking stage is actually linking all these compile stuff together. Therefore, if something is not defined, it will have a link error.</a></li>
+<li><a href="#orgbc7cf37">`#include` is just copying all the stuff in the header to the current file. This also explains why you can do forward declaration.</a></li>
+<li><a href="#org0e5c2a8">Headers has the declarations for you to compile the current file (translation unit).</a></li>
+<li><a href="#org98ac7f8">`#include &lt;system<sub>header</sub>&gt;`</a></li>
+<li><a href="#org904b7be">`#include "you<sub>own</sub><sub>header</sub>"`</a></li>
+<li><a href="#org3195279">All the C system header ends with .h, e.g., `&lt;stdlib.h&gt;`</a></li>
+<li><a href="#org0a1135b">All the C++ system header has no file extension, e.g., `&lt;iostrem&gt;`</a></li>
+<li><a href="#orgb7d3261">There are a default constructor, default destructor, default copy constructor/assignment operator, and default move constructor/assignment operator.</a></li>
+<li><a href="#org8f86d67">default constructor/destructor is as if you have an empty body of the constructor/destructor. The default constructor will not initialize the primitive type member variable in your class.</a></li>
+<li><a href="#org51f1250">default copy/move ctor do something with `std::memcopy` and `std::memmove`. Therefore, if you have pointers in your class, the default copy constructor will be a shallow copy.</a></li>
+<li><a href="#org7fd162e">The static keyword inside a local scope, e.g. in a class, function means</a></li>
+<li><a href="#org3fc7ce3">The static keyword outside a scope just means it is only accessible / linked within this file/translation unit.</a></li>
+<li><a href="#orgdb894bb">All method functions can be overwritten in the derived class. However, virtual functions will ask the compiler to create a virtual table in the runtime. And when you do polymorphism, it knows the correct function to call. Otherwise it will call the base class method if it is a base class pointer.</a></li>
+<li><a href="#orga80c613">And additional thing pure virtual functions has is that it forces the derived class to define it.</a></li>
+<li><a href="#orgc197a11">They are on a read-only memory, so you cannot modify it.</a></li>
+<li><a href="#orgb10c060">In order to modify it, you actually ask the compiler to copy it to a modifiable piece of memory.</a></li>
+<li><a href="#orgdf78e01">Stack is about 2Mb</a></li>
+<li><a href="#org6b6f441">Two reasons to do heap instantiation:</a></li>
+<li><a href="#org0e47bf9">Why is it called stack and heap memory:</a></li>
+<li><a href="#orgf52a455">It is as simple as converting lvalue to rvalue. The real move (include cleaning up the source properly) happens in the move ctor or move assignment. std::move is just to make sure you can match to the function that actually do the move.</a></li>
+<li><a href="#org02ea28a">In other words, std::move mark a value as temporary (can be stolen from). The move ctor or assignment actually steals it.</a></li>
+<li><a href="#org0d1ae81">`std::unique<sub>ptr</sub>` has almost no overhead.</a></li>
+<li><a href="#org2fa2cf2">`std::make<sub>unique</sub>` is preferred because it handles exception</a></li>
+<li><a href="#org79257a2">`std::shared<sub>ptr</sub>` is implemented as reference count.</a></li>
+<li><a href="#orgf2233ca">`std::make<sub>shared</sub>` is preferred because it initialize control block and the object together.</a></li>
+<li><a href="#org423a8ab">C style function pointer</a></li>
+<li><a href="#org9c698b4">lambda function's type is undefined in the standard, so it is up to the compiler's implementation. That is why you cannot pass it to a C style function pointer. You can either use a template to hold it, or convert it to `std::function`.</a></li>
+<li><a href="#org4e84664">type punning is to interpret a piece of memory as a different type. For example</a></li>
+<li><a href="#org93ff7ec">Union is a nicer way to achieve this.</a></li>
+<li><a href="#org2032597">a safer way to do Union</a></li>
+<li><a href="#org1acc705">but instead of occupying memory that is the max of all the variants like union, it occupies memory that is the sum of all its variants.</a></li>
+<li><a href="#orgb8d2aea">a static member function defines and then returns a static variable looks better than declaring a static variable and then defining this variable.</a></li>
 </ul>
 </div>
 </div>
@@ -60,43 +60,43 @@ categories: []
 &#x2014;
 These are some notes I wrote as I watched [Cherno's C++ playlist](<a href="https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb">https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb</a>).
 </p>
-<div id="outline-container-org62f1203" class="outline-2">
-<h2 id="org62f1203">When compile a cpp file, all it cares is how the stuff (functions/class) you use in it is declared. As long as you tell it the declaration (e.g. function signature), it will compile. Even if it is never defined.</h2>
+<div id="outline-container-org1b50d89" class="outline-2">
+<h2 id="org1b50d89">When compile a cpp file, all it cares is how the stuff (functions/class) you use in it is declared. As long as you tell it the declaration (e.g. function signature), it will compile. Even if it is never defined.</h2>
 </div>
-<div id="outline-container-orgc0e956b" class="outline-2">
-<h2 id="orgc0e956b">The linking stage is actually linking all these compile stuff together. Therefore, if something is not defined, it will have a link error.</h2>
-<div class="outline-text-2" id="text-orgc0e956b">
-</div>
-</div>
-<div id="outline-container-org8df182c" class="outline-2">
-<h2 id="org8df182c">`#include` is just copying all the stuff in the header to the current file. This also explains why you can do forward declaration.</h2>
-</div>
-<div id="outline-container-org2c421be" class="outline-2">
-<h2 id="org2c421be">Headers has the declarations for you to compile the current file (translation unit).</h2>
-</div>
-<div id="outline-container-org6624d9f" class="outline-2">
-<h2 id="org6624d9f">`#include &lt;system<sub>header</sub>&gt;`</h2>
-</div>
-<div id="outline-container-org7024317" class="outline-2">
-<h2 id="org7024317">`#include "you<sub>own</sub><sub>header</sub>"`</h2>
-</div>
-<div id="outline-container-org365d5dc" class="outline-2">
-<h2 id="org365d5dc">All the C system header ends with .h, e.g., `&lt;stdlib.h&gt;`</h2>
-</div>
-<div id="outline-container-org7190237" class="outline-2">
-<h2 id="org7190237">All the C++ system header has no file extension, e.g., `&lt;iostrem&gt;`</h2>
-<div class="outline-text-2" id="text-org7190237">
+<div id="outline-container-orga9ee8ab" class="outline-2">
+<h2 id="orga9ee8ab">The linking stage is actually linking all these compile stuff together. Therefore, if something is not defined, it will have a link error.</h2>
+<div class="outline-text-2" id="text-orga9ee8ab">
 </div>
 </div>
-<div id="outline-container-org7a49769" class="outline-2">
-<h2 id="org7a49769">There are a default constructor, default destructor, default copy constructor/assignment operator, and default move constructor/assignment operator.</h2>
+<div id="outline-container-orgbc7cf37" class="outline-2">
+<h2 id="orgbc7cf37">`#include` is just copying all the stuff in the header to the current file. This also explains why you can do forward declaration.</h2>
 </div>
-<div id="outline-container-org7cfefa4" class="outline-2">
-<h2 id="org7cfefa4">default constructor/destructor is as if you have an empty body of the constructor/destructor. The default constructor will not initialize the primitive type member variable in your class.</h2>
+<div id="outline-container-org0e5c2a8" class="outline-2">
+<h2 id="org0e5c2a8">Headers has the declarations for you to compile the current file (translation unit).</h2>
 </div>
-<div id="outline-container-org6a230b6" class="outline-2">
-<h2 id="org6a230b6">default copy/move ctor do something with `std::memcopy` and `std::memmove`. Therefore, if you have pointers in your class, the default copy constructor will be a shallow copy.</h2>
-<div class="outline-text-2" id="text-org6a230b6">
+<div id="outline-container-org98ac7f8" class="outline-2">
+<h2 id="org98ac7f8">`#include &lt;system<sub>header</sub>&gt;`</h2>
+</div>
+<div id="outline-container-org904b7be" class="outline-2">
+<h2 id="org904b7be">`#include "you<sub>own</sub><sub>header</sub>"`</h2>
+</div>
+<div id="outline-container-org3195279" class="outline-2">
+<h2 id="org3195279">All the C system header ends with .h, e.g., `&lt;stdlib.h&gt;`</h2>
+</div>
+<div id="outline-container-org0a1135b" class="outline-2">
+<h2 id="org0a1135b">All the C++ system header has no file extension, e.g., `&lt;iostrem&gt;`</h2>
+<div class="outline-text-2" id="text-org0a1135b">
+</div>
+</div>
+<div id="outline-container-orgb7d3261" class="outline-2">
+<h2 id="orgb7d3261">There are a default constructor, default destructor, default copy constructor/assignment operator, and default move constructor/assignment operator.</h2>
+</div>
+<div id="outline-container-org8f86d67" class="outline-2">
+<h2 id="org8f86d67">default constructor/destructor is as if you have an empty body of the constructor/destructor. The default constructor will not initialize the primitive type member variable in your class.</h2>
+</div>
+<div id="outline-container-org51f1250" class="outline-2">
+<h2 id="org51f1250">default copy/move ctor do something with `std::memcopy` and `std::memmove`. Therefore, if you have pointers in your class, the default copy constructor will be a shallow copy.</h2>
+<div class="outline-text-2" id="text-org51f1250">
 <p>
 ```
 A a;
@@ -111,9 +111,9 @@ While in the former one, b has not been constructed yet, so it must be a constru
 </p>
 </div>
 </div>
-<div id="outline-container-orgfab693e" class="outline-2">
-<h2 id="orgfab693e">The static keyword inside a local scope, e.g. in a class, function means</h2>
-<div class="outline-text-2" id="text-orgfab693e">
+<div id="outline-container-org7fd162e" class="outline-2">
+<h2 id="org7fd162e">The static keyword inside a local scope, e.g. in a class, function means</h2>
+<div class="outline-text-2" id="text-org7fd162e">
 <ul class="org-ul">
 <li>The lifetime of this variable is the same as the entire program.</li>
 <li>There is only one copy of this variable function.</li>
@@ -127,28 +127,28 @@ While in the former one, b has not been constructed yet, so it must be a constru
 </ul>
 </div>
 </div>
-<div id="outline-container-org8b7a7d1" class="outline-2">
-<h2 id="org8b7a7d1">The static keyword outside a scope just means it is only accessible / linked within this file/translation unit.</h2>
-<div class="outline-text-2" id="text-org8b7a7d1">
+<div id="outline-container-org3fc7ce3" class="outline-2">
+<h2 id="org3fc7ce3">The static keyword outside a scope just means it is only accessible / linked within this file/translation unit.</h2>
+<div class="outline-text-2" id="text-org3fc7ce3">
 </div>
 </div>
-<div id="outline-container-org3c1aa3c" class="outline-2">
-<h2 id="org3c1aa3c">All method functions can be overwritten in the derived class. However, virtual functions will ask the compiler to create a virtual table in the runtime. And when you do polymorphism, it knows the correct function to call. Otherwise it will call the base class method if it is a base class pointer.</h2>
+<div id="outline-container-orgdb894bb" class="outline-2">
+<h2 id="orgdb894bb">All method functions can be overwritten in the derived class. However, virtual functions will ask the compiler to create a virtual table in the runtime. And when you do polymorphism, it knows the correct function to call. Otherwise it will call the base class method if it is a base class pointer.</h2>
 </div>
-<div id="outline-container-orgab96f83" class="outline-2">
-<h2 id="orgab96f83">And additional thing pure virtual functions has is that it forces the derived class to define it.</h2>
-<div class="outline-text-2" id="text-orgab96f83">
+<div id="outline-container-orga80c613" class="outline-2">
+<h2 id="orga80c613">And additional thing pure virtual functions has is that it forces the derived class to define it.</h2>
+<div class="outline-text-2" id="text-orga80c613">
 <p>
 Mark a class variable mutable will allow const methods to change it.
 </p>
 </div>
 </div>
-<div id="outline-container-orgeb9738b" class="outline-2">
-<h2 id="orgeb9738b">They are on a read-only memory, so you cannot modify it.</h2>
+<div id="outline-container-orgc197a11" class="outline-2">
+<h2 id="orgc197a11">They are on a read-only memory, so you cannot modify it.</h2>
 </div>
-<div id="outline-container-org48640b3" class="outline-2">
-<h2 id="org48640b3">In order to modify it, you actually ask the compiler to copy it to a modifiable piece of memory.</h2>
-<div class="outline-text-2" id="text-org48640b3">
+<div id="outline-container-orgb10c060" class="outline-2">
+<h2 id="orgb10c060">In order to modify it, you actually ask the compiler to copy it to a modifiable piece of memory.</h2>
+<div class="outline-text-2" id="text-orgb10c060">
 <p>
 ```
 char * a = "hello"; <i>/ convert a const char * const to char *
@@ -167,21 +167,21 @@ int * const c; // the pointer cannot be modified to point to other stuff. BTW, i
 </p>
 </div>
 </div>
-<div id="outline-container-org8566688" class="outline-2">
-<h2 id="org8566688">Stack is about 2Mb</h2>
+<div id="outline-container-orgdf78e01" class="outline-2">
+<h2 id="orgdf78e01">Stack is about 2Mb</h2>
 </div>
-<div id="outline-container-orgddc70a0" class="outline-2">
-<h2 id="orgddc70a0">Two reasons to do heap instantiation:</h2>
-<div class="outline-text-2" id="text-orgddc70a0">
+<div id="outline-container-org6b6f441" class="outline-2">
+<h2 id="org6b6f441">Two reasons to do heap instantiation:</h2>
+<div class="outline-text-2" id="text-org6b6f441">
 <ul class="org-ul">
 <li>pass it out of the scope</li>
 <li>too big for stack</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org52bc8e0" class="outline-2">
-<h2 id="org52bc8e0">Why is it called stack and heap memory:</h2>
-<div class="outline-text-2" id="text-org52bc8e0">
+<div id="outline-container-org0e47bf9" class="outline-2">
+<h2 id="org0e47bf9">Why is it called stack and heap memory:</h2>
+<div class="outline-text-2" id="text-org0e47bf9">
 <ul class="org-ul">
 <li>When using stack memory, the variables are created and deleted based on scope. It works exactly like a stack data structure. When you create variables in scope, you allocate memory one after another just like you push things into a stack. When you go out of the scope, the memory allocated in the code is released one after another just like you pop things out of a stack.</li>
 <li>Stack is a small piece of memory reserved for your program. Heap is a large piece of memory shared by all other programs. Therefore, Heap may not be all available for you to use. And the way to manage which part is available and how much is available is just like a heap data structure.</li>
@@ -203,12 +203,12 @@ print(std::string("hello")); /</i> Good.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbdd8142" class="outline-2">
-<h2 id="orgbdd8142">It is as simple as converting lvalue to rvalue. The real move (include cleaning up the source properly) happens in the move ctor or move assignment. std::move is just to make sure you can match to the function that actually do the move.</h2>
+<div id="outline-container-orgf52a455" class="outline-2">
+<h2 id="orgf52a455">It is as simple as converting lvalue to rvalue. The real move (include cleaning up the source properly) happens in the move ctor or move assignment. std::move is just to make sure you can match to the function that actually do the move.</h2>
 </div>
-<div id="outline-container-org7dbfb91" class="outline-2">
-<h2 id="org7dbfb91">In other words, std::move mark a value as temporary (can be stolen from). The move ctor or assignment actually steals it.</h2>
-<div class="outline-text-2" id="text-org7dbfb91">
+<div id="outline-container-org02ea28a" class="outline-2">
+<h2 id="org02ea28a">In other words, std::move mark a value as temporary (can be stolen from). The move ctor or assignment actually steals it.</h2>
+<div class="outline-text-2" id="text-org02ea28a">
 <p>
 ```
 class B
@@ -249,37 +249,37 @@ It is converting something to T&amp;&amp;. This is only used in a template funct
 </p>
 </div>
 </div>
-<div id="outline-container-orgf4f266f" class="outline-2">
-<h2 id="orgf4f266f">`std::unique<sub>ptr</sub>` has almost no overhead.</h2>
+<div id="outline-container-org0d1ae81" class="outline-2">
+<h2 id="org0d1ae81">`std::unique<sub>ptr</sub>` has almost no overhead.</h2>
 </div>
-<div id="outline-container-orge9f0d48" class="outline-2">
-<h2 id="orge9f0d48">`std::make<sub>unique</sub>` is preferred because it handles exception</h2>
+<div id="outline-container-org2fa2cf2" class="outline-2">
+<h2 id="org2fa2cf2">`std::make<sub>unique</sub>` is preferred because it handles exception</h2>
 </div>
-<div id="outline-container-org664a25b" class="outline-2">
-<h2 id="org664a25b">`std::shared<sub>ptr</sub>` is implemented as reference count.</h2>
+<div id="outline-container-org79257a2" class="outline-2">
+<h2 id="org79257a2">`std::shared<sub>ptr</sub>` is implemented as reference count.</h2>
 </div>
-<div id="outline-container-org3fef591" class="outline-2">
-<h2 id="org3fef591">`std::make<sub>shared</sub>` is preferred because it initialize control block and the object together.</h2>
-<div class="outline-text-2" id="text-org3fef591">
+<div id="outline-container-orgf2233ca" class="outline-2">
+<h2 id="orgf2233ca">`std::make<sub>shared</sub>` is preferred because it initialize control block and the object together.</h2>
+<div class="outline-text-2" id="text-orgf2233ca">
 </div>
 </div>
-<div id="outline-container-orgd83223c" class="outline-2">
-<h2 id="orgd83223c">C style function pointer</h2>
-<div class="outline-text-2" id="text-orgd83223c">
+<div id="outline-container-org423a8ab" class="outline-2">
+<h2 id="org423a8ab">C style function pointer</h2>
+<div class="outline-text-2" id="text-org423a8ab">
 <ul class="org-ul">
 <li>`ReturnType(*function<sub>pointer</sub>)(ArgumentType)` this is the declaration of a function pointer. `type variable` this is the declaration of a variable</li>
 <li>`typedef ReturnType(*FunctionPointerType)(ArgumentType)` this is how to typedef a function pointer type. `typedef Type NewTypeName` is this a normal typedef.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org59e4da4" class="outline-2">
-<h2 id="org59e4da4">lambda function's type is undefined in the standard, so it is up to the compiler's implementation. That is why you cannot pass it to a C style function pointer. You can either use a template to hold it, or convert it to `std::function`.</h2>
-<div class="outline-text-2" id="text-org59e4da4">
+<div id="outline-container-org9c698b4" class="outline-2">
+<h2 id="org9c698b4">lambda function's type is undefined in the standard, so it is up to the compiler's implementation. That is why you cannot pass it to a C style function pointer. You can either use a template to hold it, or convert it to `std::function`.</h2>
+<div class="outline-text-2" id="text-org9c698b4">
 </div>
 </div>
-<div id="outline-container-orgb141158" class="outline-2">
-<h2 id="orgb141158">type punning is to interpret a piece of memory as a different type. For example</h2>
-<div class="outline-text-2" id="text-orgb141158">
+<div id="outline-container-org4e84664" class="outline-2">
+<h2 id="org4e84664">type punning is to interpret a piece of memory as a different type. For example</h2>
+<div class="outline-text-2" id="text-org4e84664">
 <p>
 ```
 struct A
@@ -294,22 +294,22 @@ b[1]; /</i> a.y;
 </p>
 </div>
 </div>
-<div id="outline-container-org9db7b04" class="outline-2">
-<h2 id="org9db7b04">Union is a nicer way to achieve this.</h2>
-<div class="outline-text-2" id="text-org9db7b04">
+<div id="outline-container-org93ff7ec" class="outline-2">
+<h2 id="org93ff7ec">Union is a nicer way to achieve this.</h2>
+<div class="outline-text-2" id="text-org93ff7ec">
 </div>
 </div>
-<div id="outline-container-org1f2f522" class="outline-2">
-<h2 id="org1f2f522">a safer way to do Union</h2>
+<div id="outline-container-org2032597" class="outline-2">
+<h2 id="org2032597">a safer way to do Union</h2>
 </div>
-<div id="outline-container-org6014a44" class="outline-2">
-<h2 id="org6014a44">but instead of occupying memory that is the max of all the variants like union, it occupies memory that is the sum of all its variants.</h2>
-<div class="outline-text-2" id="text-org6014a44">
+<div id="outline-container-org1acc705" class="outline-2">
+<h2 id="org1acc705">but instead of occupying memory that is the max of all the variants like union, it occupies memory that is the sum of all its variants.</h2>
+<div class="outline-text-2" id="text-org1acc705">
 </div>
 </div>
-<div id="outline-container-org10c61a5" class="outline-2">
-<h2 id="org10c61a5">a static member function defines and then returns a static variable looks better than declaring a static variable and then defining this variable.</h2>
-<div class="outline-text-2" id="text-org10c61a5">
+<div id="outline-container-orgb8d2aea" class="outline-2">
+<h2 id="orgb8d2aea">a static member function defines and then returns a static variable looks better than declaring a static variable and then defining this variable.</h2>
+<div class="outline-text-2" id="text-orgb8d2aea">
 <p>
 {%- include utterance<sub>comments.html</sub> -%}
 </p>
