@@ -24,12 +24,4 @@ For real matrix, all singular values are non-negative.
 - \( \|Ax\|=\sqrt{\sum_{i=1}^r \lambda_i^2x_i^2}\text{ where }\sum_{i=1}^n x_i^2 = 1 \). This is true because ui and vi are orthogonal.
 - Now you can see \( \|Ax\|=\lambda_n,\text{ if }x_i=\left\{\begin{matrix}0,\text{ if }i\neq n\\ 1,\text{ if }i=n\end{matrix}\right. \). Here I assume singular values are sorted from large to small.
 
-#+BEGIN_EXPORT html
-<script src="https://utteranc.es/client.js"
-        repo="sychen52/sychen52.github.io"
-        issue-term="pathname"
-        theme="github-dark"
-        crossorigin="anonymous"
-        async>
-</script>
-#+END_EXPORT
+#+INCLUDE: ../utterance.org
