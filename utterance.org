@@ -1,0 +1,9 @@
+#+BEGIN_EXPORT html
+<script src="https://utteranc.es/client.js"
+        repo="sychen52/sychen52.github.io"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+#+END_EXPORT
