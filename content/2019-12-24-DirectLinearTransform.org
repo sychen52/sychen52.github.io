@@ -1,5 +1,5 @@
 #+TITLE:  Camera Calibration: Direct Linear Transform
-#+DATE:   2019-12-24 07:28:18 -0800
+#+DATE:   <2019-12-24>
 #+KEYWORDS: Camera Calibration, Direct Linear Transform
 
 
@@ -67,12 +67,4 @@ Therefore, \( \boldsymbol{\hat{X_0}} = - \boldsymbol{\hat{H}}^{-1} \boldsymbol{\
 
 Some final touchups: times \( \boldsymbol{\hat{K}} \) with \( 1/\hat{K_{33}} \) to make \( \hat{K_{33}} = 1 \). \( \hat{K_{11}} \) and \( \hat{K_{22}} \) need to be positive, so throw the sign to rotation matrix \( \boldsymbol{\hat{R}} \).
 
-#+BEGIN_EXPORT html
-<script src="https://utteranc.es/client.js"
-        repo="sychen52/sychen52.github.io"
-        issue-term="pathname"
-        theme="github-dark"
-        crossorigin="anonymous"
-        async>
-</script>
-#+END_EXPORT
+#+INCLUDE: ../utterance.org
