@@ -5,63 +5,104 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Dynamic dispatch for OOP</title>
 <meta name="generator" content="Org mode" />
+<meta name="keywords" content="object oriented programming, dynamic dispath, functional programming, racket" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 </head>
 <body>
 <div id="content">
+<h1 class="title">Dynamic dispatch for OOP</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#class">Class</a></li>
+<li><a href="#constructor">Constructor</a></li>
+<li><a href="#inheritance">Inheritance</a></li>
+<li><a href="#call-a-method-of-an-object">Call a method of an object</a></li>
+</ul>
+</div>
+</div>
 <p>
-&#x2014;
-layout: post
-title:  "Dynamic dispatch for OOP"
-date:   2021-11-03 17:28:18 -0800
-tags: [object oriented programming, dynamic dispath, functional programming, racket]
-categories: []
-&#x2014;
+This is a note for <a href="https://www.coursera.org/lecture/programming-languages-part-c/optional-dynamic-dispatch-manually-in-racket-FiXQW">this lecture</a>.
 </p>
 
 <p>
-This is a note for [this lecture](<a href="https://www.coursera.org/lecture/programming-languages-part-c/optional-dynamic-dispatch-manually-in-racket-FiXQW">https://www.coursera.org/lecture/programming-languages-part-c/optional-dynamic-dispatch-manually-in-racket-FiXQW</a>).
+Dynamic dispatch is a unique feature of OOP. The main difference between
+a dynamic dispatched method vs. a closure is that: the <code>self</code> in it
+refers to the current object.
 </p>
 
 <p>
-Dynamic dispatch is a unique feature of WHOOP. The main difference between a dynamic dispatched method vs. a closure is that: the `self` in it refers to the current object.
+It sounds simple, but when you use dynamic dispatch in OOP, it feels
+like (especially when <code>self</code> is implicit.), although you do not override
+this method itself, its behavior may change because you override other
+methods that this method calls. In contrast, when you define a closure,
+its environment is "frozen" at that moment, the free variables, the
+other methods.
 </p>
 
 <p>
-It sounds simple, but when you use dynamic dispatch in OOP, it feels like (especially when `self` is implicit.), although you do not override this method itself, its behavior may change because you override other methods that this method calls. In contrast, when you define a closure, its environment is "frozen" at that moment, the free variables, the other methods.
-</p>
-
-<p>
-In this lecture, Dan implemented dynamic dispatch in Racket. And all it needs is to give all methods an additional argument called `self`. Since `self` is an argument, it is not frozen. It is passed in when called. This is exactly "dynamic dispatch".
+In this lecture, Dan implemented dynamic dispatch in Racket. And all it
+needs is to give all methods an additional argument called <code>self</code>. Since
+<code>self</code> is an argument, it is not frozen. It is passed in when called.
+This is exactly "dynamic dispatch".
 </p>
 
 <p>
 Details of the racket implementation:
 </p>
 
+<div id="outline-container-org3413ece" class="outline-2">
+<h2 id="class"><a id="org3413ece"></a>Class</h2>
+<div class="outline-text-2" id="text-class">
 <p>
-## Class
-a struct with a list of variables and a list of functions/methods. Note that every function has an extra argument `self`.
-</p>
-
-<p>
-## Constructor
-a function that returns an instance of a struct.
-</p>
-
-<p>
-## Inheritance
-It is done through constructor. It constructs a "base class" struct first, and then add new variables and methods to it.
-</p>
-
-<p>
-## Call a method of an object
-look up the function in the object's list first, and then call it with the `self` argument being the object itself.
+a struct with a list of variables and a list of functions/methods. Note
+that every function has an extra argument <code>self</code>.
 </p>
 </div>
+</div>
+
+<div id="outline-container-org5a50a81" class="outline-2">
+<h2 id="constructor"><a id="org5a50a81"></a>Constructor</h2>
+<div class="outline-text-2" id="text-constructor">
+<p>
+a function that returns an instance of a struct.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org78c0b24" class="outline-2">
+<h2 id="inheritance"><a id="org78c0b24"></a>Inheritance</h2>
+<div class="outline-text-2" id="text-inheritance">
+<p>
+It is done through constructor. It constructs a "base class" struct
+first, and then add new variables and methods to it.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1ba8116" class="outline-2">
+<h2 id="call-a-method-of-an-object"><a id="org1ba8116"></a>Call a method of an object</h2>
+<div class="outline-text-2" id="text-call-a-method-of-an-object">
+<p>
+look up the function in the object's list first, and then call it with
+the <code>self</code> argument being the object itself.
+</p>
+
+<script src="https://utteranc.es/client.js"
+        repo="sychen52/sychen52.github.io"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+</div>
+</div>
 <div id="postamble" class="status">
+<p class="date">Date: 2021-11-03 Wed 00:00</p>
 <p class="validation"></p>
 </div>
 </body>
