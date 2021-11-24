@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc166e38">Cohesion and coupling</a></li>
+<li><a href="#org392bd8e">SOLID:</a></li>
+<li><a href="#orgd9bd593">Design patterns</a></li>
+<li><a href="#org20292b9">Dependency Injection vs dependency inversion:</a></li>
+<li><a href="#org4dfcc88">Code smells:</a></li>
+<li><a href="#org83c1698">Python:</a></li>
+</ul>
+</div>
+</div>
+<p>
+These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCodes">Youtube channel.</a>
+</p>
+
+<div id="outline-container-orgc166e38" class="outline-2">
+<h2 id="orgc166e38">Cohesion and coupling</h2>
+<div class="outline-text-2" id="text-orgc166e38">
+<ol class="org-ol">
+<li>Separate code that changes from that does not change.</li>
+<li>Program to interfaces (abstract class) instead of implementations.</li>
+<li>Prefer composition over inheritance.
+<ol class="org-ol">
+<li>Think about the bridge pattern</li>
+</ol></li>
+<li>Delegation
+<ol class="org-ol">
+<li>Call a class member (refer to item 3) to do things</li>
+</ol></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org392bd8e" class="outline-2">
+<h2 id="org392bd8e">SOLID:</h2>
+<div class="outline-text-2" id="text-org392bd8e">
+<ol class="org-ol">
+<li>Single responsibility
+<ol class="org-ol">
+<li>High cohesion</li>
+<li>Break a long class into small classes. But this will introduce coupling.</li>
+</ol></li>
+<li>Open/close
+<ol class="org-ol">
+<li>Open for extension / close for modification
+<ol class="org-ol">
+<li>Instead of modifying the original class to add some additional type support, use the abstract class and a new inheritance is preferred.</li>
+</ol></li>
+</ol></li>
+<li>Liskov substitution
+<ol class="org-ol">
+<li>When you have an abstract class and an abstract method, and you find the inherited methods want to have a different parameter from the abstract method. Pass the parameters in from the constructor, not the method itself.</li>
+</ol></li>
+<li>Interface segregation
+<ol class="org-ol">
+<li>Say you want two sets of interfaces, some subclasses only have one, while others have both. Instead put them all in one abstract class, you can 
+<ol class="org-ol">
+<li>Put one set into one abstract class, inherit it and add the second set</li>
+<li>Create two abstract classes for two sets of interfaces separately, and combine them by composition in the subclass.</li>
+</ol></li>
+</ol></li>
+<li>Dependency inversion
+<ol class="org-ol">
+<li>Instead of depending/coupling on a concrete class, you create an abstract class and depend on it, and make your original concrete class inherit from the abstract class.</li>
+<li>This will make adding new inheritance to the abstract class easier.</li>
+</ol></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgd9bd593" class="outline-2">
+<h2 id="orgd9bd593">Design patterns</h2>
+<div class="outline-text-2" id="text-orgd9bd593">
+<ol class="org-ol">
+<li>Creational
+<ol class="org-ol">
+<li>Singleton: only one instance; global access
+<ol class="org-ol">
+<li>For python, defining it as a module is the best way to do it.</li>
+</ol></li>
+<li>Factory: 
+<ol class="org-ol">
+<li>When
+<ol class="org-ol">
+<li>You want to create a group of objects together 
+<ol class="org-ol">
+<li>if there is just one object you want to create, just construct it.</li>
+</ol></li>
+<li>There are only a few valid combinations of objects
+<ol class="org-ol">
+<li>If any combination is allowed, you’d better use bridge pattern</li>
+</ol></li>
+</ol></li>
+<li>Factory is not the owner of the created objects</li>
+<li>Abstract factory and then derive it for every valide combination</li>
+</ol></li>
+</ol></li>
+<li>Behavioral
+<ol class="org-ol">
+<li>Strategy: A function/algorithm can be done in different ways. 
+<ol class="org-ol">
+<li>put the different strategies into classes/functions, and pass it in instead of passing a string/enum around and do different stuff based on it.</li>
+<li>If different strategies have different parameter variables. Make each strategy a class, and pass parameters to the constructor (Liskov substitution).</li>
+</ol></li>
+<li>Template: Base class defines the skeleton of the algorithm. Derived class can override some of the steps in the algorithm.
+<ol class="org-ol">
+<li>It is very similar to the strategy pattern if you implement different strategies with classes. There are two small differences:
+<ol class="org-ol">
+<li>Template has multiple steps, strategy usually has just one step. That is why you can use functions for the strategy pattern. </li>
+<li>For the strategy pattern, the strategy is passed to a function to call. In the template pattern, you implement the skeleton function in the base class and inherit it to all strategies.</li>
+</ol></li>
+</ol></li>
+<li>Observer / Publisher-Subscriber / Callback / Event system: one-to-many dependency at runtime, one object changes its state; notifies many dependents. One trigger causes many listeners to do some stuff. 
+<ol class="org-ol">
+<li>Note that when I say one, it does not mean there is really just one publisher/event. There could be a few different publisher/events, and they all have the same subscribers/listeners. </li>
+<li>Instead of writing code that directly manipulates the subscribers/listeners at the publisher/event end, you write the code at the subscribers/listeners’ end and hand the function/callback over (subscribe) to the publisher/event to call.</li>
+</ol></li>
+</ol></li>
+<li>Structural
+<ol class="org-ol">
+<li>Adaptor / Wrapper: convert one interface into another interface
+<ol class="org-ol">
+<li>Composition instead of inheritance</li>
+<li>Delegate so that it works under the new interface.</li>
+</ol></li>
+<li>Bridge: decouple two things by using composition.
+<ol class="org-ol">
+<li>Shape and color class, Shape contains a color.</li>
+<li>Difference with Strategy:
+<ol class="org-ol">
+<li>Strategy is passed into a function</li>
+<li>Bridge is passed into a class as a composition. This is why strategy is a behavior and bridge is a structural</li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org20292b9" class="outline-2">
+<h2 id="org20292b9">Dependency Injection vs dependency inversion:</h2>
+<div class="outline-text-2" id="text-org20292b9">
+<ol class="org-ol">
+<li>Dependency of two classes (strong to weak)
+<ol class="org-ol">
+<li>Inheritance</li>
+<li>Composition: has as member variable</li>
+<li>Passed in as parameter:</li>
+</ol></li>
+<li>Dependency injection is a design pattern
+<ol class="org-ol">
+<li>Create outside and pass it in(to the constructor or the method).</li>
+<li>Separate creating and using</li>
+</ol></li>
+<li>Dependency inversion is a design principle in SOLID:
+<ol class="org-ol">
+<li>In addition to passing in, it also needs an abstract class to reduce the dependency</li>
+<li>This will make adding inheritance easier.</li>
+</ol></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org4dfcc88" class="outline-2">
+<h2 id="org4dfcc88">Code smells:</h2>
+<div class="outline-text-2" id="text-org4dfcc88">
+<ol class="org-ol">
+<li>Use string to represent a type -&gt; enum</li>
+<li>Duplicate code -&gt; extract out as a function or class</li>
+<li>Not using built-in functions (e.g. list comprehension)</li>
+<li>Vague variable / function name (e.g. no unit)</li>
+<li>Isinstance -&gt; inheritance</li>
+<li>Boolean flag to do two different things -&gt; break into two functions</li>
+<li>Catch and ignore all exception</li>
+<li>Not using custom exceptions -&gt; custom exceptions can carry custom fields to provide more info.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org83c1698" class="outline-2">
+<h2 id="org83c1698">Python:</h2>
+<div class="outline-text-2" id="text-org83c1698">
+<p>
+_<sub>str</sub>_<sub>()</sub>: for human to read
+_<sub>repr</sub>_<sub>()</sub>: for developer to recreate the object
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="validation"></p>
+</div>
+</body>
+</html>
