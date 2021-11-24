@@ -5,22 +5,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Design principles and Design Patterns</title>
 <meta name="generator" content="Org mode" />
+<meta name="keywords" content="Design principles, Design Patterns, Python" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 </head>
 <body>
 <div id="content">
+<h1 class="title">Design principles and Design Patterns</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge2d0671">Cohesion and coupling</a></li>
-<li><a href="#org89534f5">SOLID:</a></li>
-<li><a href="#org6b8d09a">Design patterns</a></li>
-<li><a href="#org5e545d1">Dependency Injection vs dependency inversion:</a></li>
-<li><a href="#org3409564">Code smells:</a></li>
-<li><a href="#orgad5be3a">Python:</a></li>
+<li><a href="#orgb892d4e">Cohesion and coupling</a></li>
+<li><a href="#orgd11bca9">SOLID:</a></li>
+<li><a href="#orgc07edb8">Design patterns</a></li>
+<li><a href="#org55ac07f">Dependency Injection vs dependency inversion:</a></li>
+<li><a href="#orgf66734d">Code smells:</a></li>
+<li><a href="#org07d93fd">Python:</a></li>
 </ul>
 </div>
 </div>
@@ -28,9 +30,9 @@
 These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCodes">Youtube channel.</a>
 </p>
 
-<div id="outline-container-orge2d0671" class="outline-2">
-<h2 id="orge2d0671">Cohesion and coupling</h2>
-<div class="outline-text-2" id="text-orge2d0671">
+<div id="outline-container-orgb892d4e" class="outline-2">
+<h2 id="orgb892d4e">Cohesion and coupling</h2>
+<div class="outline-text-2" id="text-orgb892d4e">
 <ul class="org-ul">
 <li>Separate code that changes from that does not change.</li>
 <li>Program to interfaces (abstract class) instead of implementations.</li>
@@ -46,9 +48,9 @@ These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCode
 </div>
 </div>
 
-<div id="outline-container-org89534f5" class="outline-2">
-<h2 id="org89534f5">SOLID:</h2>
-<div class="outline-text-2" id="text-org89534f5">
+<div id="outline-container-orgd11bca9" class="outline-2">
+<h2 id="orgd11bca9">SOLID:</h2>
+<div class="outline-text-2" id="text-orgd11bca9">
 <ul class="org-ul">
 <li>Single responsibility
 <ul class="org-ul">
@@ -83,9 +85,9 @@ These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCode
 </div>
 </div>
 
-<div id="outline-container-org6b8d09a" class="outline-2">
-<h2 id="org6b8d09a">Design patterns</h2>
-<div class="outline-text-2" id="text-org6b8d09a">
+<div id="outline-container-orgc07edb8" class="outline-2">
+<h2 id="orgc07edb8">Design patterns</h2>
+<div class="outline-text-2" id="text-orgc07edb8">
 <ul class="org-ul">
 <li>Creational
 <ul class="org-ul">
@@ -152,9 +154,9 @@ These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCode
 </div>
 </div>
 
-<div id="outline-container-org5e545d1" class="outline-2">
-<h2 id="org5e545d1">Dependency Injection vs dependency inversion:</h2>
-<div class="outline-text-2" id="text-org5e545d1">
+<div id="outline-container-org55ac07f" class="outline-2">
+<h2 id="org55ac07f">Dependency Injection vs dependency inversion:</h2>
+<div class="outline-text-2" id="text-org55ac07f">
 <ul class="org-ul">
 <li>Dependency of two classes (strong to weak)
 <ul class="org-ul">
@@ -176,9 +178,9 @@ These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCode
 </div>
 </div>
 
-<div id="outline-container-org3409564" class="outline-2">
-<h2 id="org3409564">Code smells:</h2>
-<div class="outline-text-2" id="text-org3409564">
+<div id="outline-container-orgf66734d" class="outline-2">
+<h2 id="orgf66734d">Code smells:</h2>
+<div class="outline-text-2" id="text-orgf66734d">
 <ul class="org-ul">
 <li>Use string to represent a type -&gt; enum</li>
 <li>Duplicate code -&gt; extract out as a function or class</li>
@@ -192,17 +194,18 @@ These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCode
 </div>
 </div>
 
-<div id="outline-container-orgad5be3a" class="outline-2">
-<h2 id="orgad5be3a">Python:</h2>
-<div class="outline-text-2" id="text-orgad5be3a">
+<div id="outline-container-org07d93fd" class="outline-2">
+<h2 id="org07d93fd">Python:</h2>
+<div class="outline-text-2" id="text-org07d93fd">
 <ul class="org-ul">
-<li>_<sub>str</sub>_<sub>()</sub>: for human to read</li>
-<li>_<sub>repr</sub>_<sub>()</sub>: for developer to recreate the object</li>
+<li><code>__str__()</code>: for human to read</li>
+<li><code>__repr__()</code>: for developer to recreate the object</li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
+<p class="date">Date: 2021-11-24 Wed 00:00</p>
 <p class="validation"></p>
 </div>
 </body>
