@@ -310,4 +310,86 @@ function used for relay purposes.
   looks better than declaring a static variable and then defining this
   variable.
 
+* [[https://www.youtube.com/watch?v=mXxNvaEdNHI][C++14]] feels like a patch for C++11
+- =auto= as a function return type;
+- Template lambda function using auto keyword
+- Generalized capture expression in lambda
+  #+BEGIN_SRC c++
+  [value = v] () {}
+  #+END_SRC
+- =make_unique=
+  Now, technically, you no longer to use explicit =new= and =delete=.
+- More flexible =constexpr=
+
+* [[https://www.youtube.com/watch?v=QpFjOlzg1r4][C++17]]
+- Guaranteed Copy/ Move Elision
+  #+BEGIN_SRC c++
+    auto factory(){
+      return std::make_unique<int>();
+      }
+    main() {
+      auto widget = factory(); // move will not be invoked here.
+      }
+  #+END_SRC
+- more =const_expr= in std
+- =constexpr= in lambda
+- =std::string_view=
+- Class template argument deduction
+  #+BEGIN_SRC c++
+    std::array data{1,2,3,4}; // data will be std::array<int,4>
+  #+END_SRC
+- fold expressions in variadic template
+- structured bindings
+  #+BEGIN_SRC c++
+    std::pair<int, double> v{1,3.};
+    auto [first, second] = v;
+  #+END_SRC
+- if-init
+  #+BEGIN_SRC c++
+    if (auto f = function(); f > 5){
+      // do something
+      }
+  #+END_SRC
+
+* [[https://www.youtube.com/watch?v=D81yl6_kHEM][C++20]]
+
+** Coroutine
+- =co_yield= similar to python's =yield=
+  *It will be more complete in c++23. Don't do it yourself, use a library for now*.
+  The idea is that the function contains the status, and it returns different value based on the status.
+  Before =co_yield=, you can do it in three ways:
+  - Create a class that holds the state
+  - Put the state as a global variable and use it in the function. BAD STYLE!
+  - Put the state in the capture of lambda. The real implementation is similar to this. It is like an object without a class definition.
+- =co_wait= wait for another thread to =co_yield=
+  Before =co_wait=, you can do it through callback:
+  - When wait, register a callback to the other thread
+  - When the other thread yield, call the callback
+  - This is much harder to read.
+
+** Concept
+- For template, explicitly write out the constraint of the template type.
+  Before C++20, template type can be anything, compile will output a "wired" error when you use the template function with a not supported type.
+  The way to constraint the template type is through =enable_if=, but it is pretty hard to write.
+
+  Another alternative is to use interface class and polymorphism, but this is more for unpredictable runtime types.
+  It is over kill and has extra price to pay if your type is known at compile-time.
+- Can be combined.
+
+** Range
+- Build on top of concept
+- Lazy evaluation
+
+** Module
+- *.cppm
+- export
+- import
+
+  
+  
+
+  
+  
+    
+
 #+INCLUDE: ../utterance.org
