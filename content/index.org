@@ -20,4 +20,6 @@
 
 [[./2021-11-03-dynamic_dispath.org][Dynamic dispath]]
 
-[[./2021-11-07-code-as-data-in-lisp.org][Code as data in lisp]]
+[[./2021-11-07-code-as-data-in-lisp.org][Code as Data in Lisp]]
+
+[[./design_principle_design_pattern.org][Design principles and Design Patterns]]
