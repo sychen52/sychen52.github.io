@@ -1,0 +1,86 @@
+These are my notes while watch this [[https://www.youtube.com/c/ArjanCodes][Youtube channel.]]
+
+* Cohesion and coupling
+    1. Separate code that changes from that does not change.
+    2. Program to interfaces (abstract class) instead of implementations.
+    3. Prefer composition over inheritance.
+        1. Think about the bridge pattern
+    4. Delegation
+        1. Call a class member (refer to item 3) to do things
+
+* SOLID:
+    1. Single responsibility
+        1. High cohesion
+        2. Break a long class into small classes. But this will introduce coupling.
+    2. Open/close
+        1. Open for extension / close for modification
+            1. Instead of modifying the original class to add some additional type support, use the abstract class and a new inheritance is preferred.
+    3. Liskov substitution
+        1. When you have an abstract class and an abstract method, and you find the inherited methods want to have a different parameter from the abstract method. Pass the parameters in from the constructor, not the method itself.
+    4. Interface segregation
+        1. Say you want two sets of interfaces, some subclasses only have one, while others have both. Instead put them all in one abstract class, you can 
+            1. Put one set into one abstract class, inherit it and add the second set
+            2. Create two abstract classes for two sets of interfaces separately, and combine them by composition in the subclass.
+    5. Dependency inversion
+        1. Instead of depending/coupling on a concrete class, you create an abstract class and depend on it, and make your original concrete class inherit from the abstract class.
+        2. This will make adding new inheritance to the abstract class easier.
+
+* Design patterns
+    1. Creational
+        1. Singleton: only one instance; global access
+            1. For python, defining it as a module is the best way to do it.
+        2. Factory: 
+            1. When
+                1. You want to create a group of objects together 
+                    1. if there is just one object you want to create, just construct it.
+                2. There are only a few valid combinations of objects
+                    1. If any combination is allowed, you’d better use bridge pattern
+            2. Factory is not the owner of the created objects
+            3. Abstract factory and then derive it for every valide combination
+    2. Behavioral
+        1. Strategy: A function/algorithm can be done in different ways. 
+            1. put the different strategies into classes/functions, and pass it in instead of passing a string/enum around and do different stuff based on it.
+            2. If different strategies have different parameter variables. Make each strategy a class, and pass parameters to the constructor (Liskov substitution).
+        2. Template: Base class defines the skeleton of the algorithm. Derived class can override some of the steps in the algorithm.
+            1. It is very similar to the strategy pattern if you implement different strategies with classes. There are two small differences:
+                1. Template has multiple steps, strategy usually has just one step. That is why you can use functions for the strategy pattern. 
+                2. For the strategy pattern, the strategy is passed to a function to call. In the template pattern, you implement the skeleton function in the base class and inherit it to all strategies.
+        3. Observer / Publisher-Subscriber / Callback / Event system: one-to-many dependency at runtime, one object changes its state; notifies many dependents. One trigger causes many listeners to do some stuff. 
+            1. Note that when I say one, it does not mean there is really just one publisher/event. There could be a few different publisher/events, and they all have the same subscribers/listeners. 
+            2. Instead of writing code that directly manipulates the subscribers/listeners at the publisher/event end, you write the code at the subscribers/listeners’ end and hand the function/callback over (subscribe) to the publisher/event to call.
+    3. Structural
+        1. Adaptor / Wrapper: convert one interface into another interface
+            1. Composition instead of inheritance
+            2. Delegate so that it works under the new interface.
+        2. Bridge: decouple two things by using composition.
+            1. Shape and color class, Shape contains a color.
+            2. Difference with Strategy:
+                1. Strategy is passed into a function
+                2. Bridge is passed into a class as a composition. This is why strategy is a behavior and bridge is a structural
+
+* Dependency Injection vs dependency inversion:
+    1. Dependency of two classes (strong to weak)
+        1. Inheritance
+        2. Composition: has as member variable
+        3. Passed in as parameter:
+    2. Dependency injection is a design pattern
+        1. Create outside and pass it in(to the constructor or the method).
+        2. Separate creating and using
+    3. Dependency inversion is a design principle in SOLID:
+        1. In addition to passing in, it also needs an abstract class to reduce the dependency
+        2. This will make adding inheritance easier.
+
+* Code smells:
+    1. Use string to represent a type -> enum
+    2. Duplicate code -> extract out as a function or class
+    3. Not using built-in functions (e.g. list comprehension)
+    4. Vague variable / function name (e.g. no unit)
+    5. Isinstance -> inheritance
+    6. Boolean flag to do two different things -> break into two functions
+    7. Catch and ignore all exception
+    8. Not using custom exceptions -> custom exceptions can carry custom fields to provide more info.
+
+* Python:
+__str__(): for human to read
+__repr__(): for developer to recreate the object
+
