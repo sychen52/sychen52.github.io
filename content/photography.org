@@ -25,6 +25,12 @@ These are my notes while watch this [[https://www.youtube.com/watch?v=LxO-6rlihS
 ** Take vertical photos
 ** Break these rules
 
+* Exposure
+** Most time auto is good.
+** Adjust manually when in snow, bright windows. No need to play with different metering mode.
+** Use histogram to check exposure. Sometimes the small screen is hard to see.
+** Spot meter is for studio when they have a gray card.
+
 * Modes
 ** Rule of thumb
 *** If you want to explicitly control the shutter speed, then S mode.
@@ -54,10 +60,10 @@ These are my notes while watch this [[https://www.youtube.com/watch?v=LxO-6rlihS
    - You have to adjust the combo every time. It is better than auto mode, but not as good as S or A mode where you have direct control.
 
 * Lighting
-** Close to (1 hour within) sunrise or sunset is good.
+** Close to (1 hour before and after) sunrise or sunset is good.
 ** Lighting in cloudy day is good. (Although the sky does not look good.)
 ** Find/create a shade in harsh sunlight.
-** Use flashlight in harsh sunlight to get rid of the shadow.
+** Fill-Flash: use flashlight in harsh sunlight to get rid of the shadow.
 ** Direct flashlight at night is too fake. Use some indirect light.
 
 * Focus
