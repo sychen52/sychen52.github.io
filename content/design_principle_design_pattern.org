@@ -88,3 +88,4 @@ These are my notes while watch this [[https://www.youtube.com/c/ArjanCodes][Yout
 - =__str__()=: for human to read
 - =__repr__()=: for developer to recreate the object
 
+#+INCLUDE: ../utterance.org

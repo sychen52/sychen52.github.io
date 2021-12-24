@@ -1,0 +1,66 @@
+#+TITLE: Photography
+#+DATE:  <2021-12-24 Wed>
+#+KEYWORDS: Photography
+
+These are my notes while watch this [[https://www.youtube.com/watch?v=LxO-6rlihSg&list=PLT1Q-TlUqiDYIRVZqnSrl5PQOu2W282EC&index=8&t=128s][Youtube video]].
+
+* Composition
+** Horizontal horizons
+** Rule of thirds: Give subjects room to MOVE into or SEE into (nose room).
+   - almost always better than just put the subject in the middle
+   - An exception is lake, where the symmetry is key.
+** Framing
+   - Have some stuff close but not in focus to show the depth.
+   - Otherwise, the scene far away looks flat.
+** Check your backgrounds!
+   - Change your view point to find a better background to make subject standout (contrast in terms of color).
+   - The ant with a green leaf as background to standout.
+** Fill the Frame
+   - No need to fit everything in.
+** Leading lines
+   - even better if the line start at the corner of the image
+** Anything but eye-level
+   - at least as low as you subject.
+** Look for details
+** Take vertical photos
+** Break these rules
+
+* Modes
+** Rule of thumb
+*** If you want to explicitly control the shutter speed, then S mode.
+   - Use when the subject is moving (faster shutter speed),
+   - Or then you want a slower than normal shutter speed, e.g. water fall, motion blur.
+
+*** When the ideal shutter speed (e.g. 1/100) is fast enough, then A mode.
+   - Stationary scene or portrait.
+
+** Aperture mode + auto ISO: 
+   - Compute the slowest shutter speed based on focal length to be hand-shake-proof.
+   - Ideal state: the hand-shake-proof shutter speed (e.g. 1/100s), the lowest ISO (e.g. 160).
+   - If environment is darker, keep ideal shutter speed, use higher ISO.
+     If highest ISO riches, even slower shutter speed.
+   - If environment is brighter, keep the lowest ISO, faster shutter speed.
+
+** Shutter speed mode + auto ISO: 
+   - Largest f and smallest ISO is the darkest it can get.
+   - It will first reduce f, then increase ISO.
+   - The logic of this mode is simpler than Aperture mode because you control the shutter speed and there is no hand-shake-proof ideal shutter speed.
+
+** Manual mode: often used in studio
+   - When the environment does not change, so you do not want the camera to auto choose A, S, ISO every time.
+   - Also, when you have some way to measure you are having good exposure.
+
+** Program mode: different combo between A and S.
+   - You have to adjust the combo every time. It is better than auto mode, but not as good as S or A mode where you have direct control.
+
+* Lighting
+** Close to (1 hour within) sunrise or sunset is good.
+** Lighting in cloudy day is good. (Although the sky does not look good.)
+** Find/create a shade in harsh sunlight.
+** Use flashlight in harsh sunlight to get rid of the shadow.
+** Direct flashlight at night is too fake. Use some indirect light.
+
+* Focus
+When you set a focus point/distance, if the depth that is in focus is d, the focus point is at 1/3 of d. This is why you focus on eyes.
+
+#+INCLUDE: ../utterance.org
