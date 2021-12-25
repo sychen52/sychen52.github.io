@@ -18,8 +18,10 @@
 
 [[./2021-10-06-minimize_Ax_norm.org][Minimize \( \|Ax\| s.t. \|x\| = 1 \)]]
 
-[[./2021-11-03-dynamic_dispath.org][Dynamic dispath]]
+[[./2021-11-03-dynamic_dispacth.org][Dynamic dispatch]]
 
 [[./2021-11-07-code-as-data-in-lisp.org][Code as Data in Lisp]]
 
 [[./design_principle_design_pattern.org][Design principles and Design Patterns]]
+
+[[./photography.org][Photography]]

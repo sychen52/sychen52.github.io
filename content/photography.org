@@ -41,14 +41,12 @@ These are my notes while watch this [[https://www.youtube.com/watch?v=LxO-6rlihS
    - Stationary scene or portrait.
 
 ** Aperture mode + auto ISO: 
-   - Default shutter speed: Compute the slowest shutter speed based on focal length to be hand-shake-proof.
-   - Default state: the default shutter speed (e.g. 1/100s), the lowest ISO (e.g. 160).
-   - If environment is darker, keep default shutter speed, use higher ISO.
-     If highest ISO riches, even slower shutter speed.
-   - If environment is brighter, keep the lowest ISO, faster shutter speed.
+   - Default shutter speed: Compute the slowest shutter speed based on focal length to be hand-shake-proof (e.g. 1/100s).
+   - The fastest shutter speed + the smallest ISO (e.g. 160) is the darkest it can get
+   - It will first slow down shutter speed until it is the default shutter speed, then increase the ISO until the maximum, and then future slow down shutter speed to unsafe value.
 
 ** Shutter speed mode + auto ISO: 
-   - Largest f and smallest ISO is the darkest it can get.
+   - The largest f + the smallest ISO is the darkest it can get.
    - It will first reduce f, then increase ISO.
    - The logic of this mode is simpler than Aperture mode because you control the shutter speed and there is no default shutter speed.
 
