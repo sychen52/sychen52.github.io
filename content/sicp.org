@@ -1,0 +1,24 @@
+* Assignment, state, and side effects
+** Bound variables (in current scope)
+   The ones in formal parameter list (passed in as arguments).
+** Free variables (from the outside of current scope)
+   Captured from outside.
+   Even other functions you call inside a function are free variables.
+** Procedure
+   - I have an implementation in [[https://github.com/sychen52/mal/tree/master/impls/c%2B%2B][mal]].
+   - Environment is a pointer to a chain of frames.
+   - Eval a lambda will return a procedure. The parent environment frame is stored.
+   - Apply a procedure will create a new frame and eval the body of lambda in it.
+** Function
+   A procedure is a function, if same input, same output, no internal state change.
+** Side effects
+   A procedure gives different output even when same input is given, because its internal state changes.
+** Object
+   - From my OOP perspective, an object is like an instance of a class.
+   - In dynamic language, an object is much more flexible, because you can monkey patch it to add new method or variable to it.
+   - A boarder definition of an object: something with (mutable) states (member variable in OOP) and some actions (member function in OOP) can be applied to it.
+   - In this boarder definition, a procedure is an object.
+   - This is why I feel lambda function in C++ is like a one time class (captures are its member variables passed in from output; the lambda body is the only member function. And this class only instantiates one object and that is this "lambda object").
+** Assignment / Mutation
+   - Because of it, we need to have environment (frames) that holds the values, so that you know where to look up and change. Otherwise, we can just use the substitution model. (The substitution model is like the way I implement built-in function in mal, because they don't have a state. While the way I implement fn* (lambda) is the same as this environment frames)
+   - Because of it, we now have identity (of an object) and sharing.
