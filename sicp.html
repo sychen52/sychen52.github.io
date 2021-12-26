@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgca60f0f">Assignment, state, and side effects</a>
+<ul>
+<li><a href="#org68bc378">Bound variables (in current scope)</a></li>
+<li><a href="#org49e8139">Free variables (from the outside of current scope)</a></li>
+<li><a href="#orgc35687e">Procedure</a></li>
+<li><a href="#org73f5a86">Function</a></li>
+<li><a href="#org0b00be6">Side effects</a></li>
+<li><a href="#org1e6ee4a">Object</a></li>
+<li><a href="#orgd41bfca">Assignment / Mutation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgca60f0f" class="outline-2">
+<h2 id="orgca60f0f">Assignment, state, and side effects</h2>
+<div class="outline-text-2" id="text-orgca60f0f">
+</div>
+<div id="outline-container-org68bc378" class="outline-3">
+<h3 id="org68bc378">Bound variables (in current scope)</h3>
+<div class="outline-text-3" id="text-org68bc378">
+<p>
+The ones in formal parameter list (passed in as arguments).
+</p>
+</div>
+</div>
+<div id="outline-container-org49e8139" class="outline-3">
+<h3 id="org49e8139">Free variables (from the outside of current scope)</h3>
+<div class="outline-text-3" id="text-org49e8139">
+<p>
+Captured from outside.
+Even other functions you call inside a function are free variables.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc35687e" class="outline-3">
+<h3 id="orgc35687e">Procedure</h3>
+<div class="outline-text-3" id="text-orgc35687e">
+<ul class="org-ul">
+<li>I have an implementation in <a href="https://github.com/sychen52/mal/tree/master/impls/c++">mal</a>.</li>
+<li>Environment is a pointer to a chain of frames.</li>
+<li>Eval a lambda will return a procedure. The parent environment frame is stored.</li>
+<li>Apply a procedure will create a new frame and eval the body of lambda in it.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org73f5a86" class="outline-3">
+<h3 id="org73f5a86">Function</h3>
+<div class="outline-text-3" id="text-org73f5a86">
+<p>
+A procedure is a function, if same input, same output, no internal state change.
+</p>
+</div>
+</div>
+<div id="outline-container-org0b00be6" class="outline-3">
+<h3 id="org0b00be6">Side effects</h3>
+<div class="outline-text-3" id="text-org0b00be6">
+<p>
+A procedure gives different output even when same input is given, because its internal state changes.
+</p>
+</div>
+</div>
+<div id="outline-container-org1e6ee4a" class="outline-3">
+<h3 id="org1e6ee4a">Object</h3>
+<div class="outline-text-3" id="text-org1e6ee4a">
+<ul class="org-ul">
+<li>From my OOP perspective, an object is like an instance of a class.</li>
+<li>In dynamic language, an object is much more flexible, because you can monkey patch it to add new method or variable to it.</li>
+<li>A boarder definition of an object: something with (mutable) states (member variable in OOP) and some actions (member function in OOP) can be applied to it.</li>
+<li>In this boarder definition, a procedure is an object.</li>
+<li>This is why I feel lambda function in C++ is like a one time class (captures are its member variables passed in from output; the lambda body is the only member function. And this class only instantiates one object and that is this "lambda object").</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd41bfca" class="outline-3">
+<h3 id="orgd41bfca">Assignment / Mutation</h3>
+<div class="outline-text-3" id="text-orgd41bfca">
+<ul class="org-ul">
+<li>Because of it, we need to have environment (frames) that holds the values, so that you know where to look up and change. Otherwise, we can just use the substitution model. (The substitution model is like the way I implement built-in function in mal, because they don't have a state. While the way I implement fn* (lambda) is the same as this environment frames)</li>
+<li>Because of it, we now have identity (of an object) and sharing.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="validation"></p>
+</div>
+</body>
+</html>
