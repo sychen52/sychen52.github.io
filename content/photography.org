@@ -34,8 +34,8 @@ These are my notes while watch this [[https://www.youtube.com/watch?v=LxO-6rlihS
 * Modes
 ** Rule of thumb
 *** If you want to explicitly control the shutter speed, then S mode.
-   - Use when the subject is moving (faster shutter speed),
-   - Or then you want a slower than normal shutter speed, e.g. water fall, motion blur.
+   - Use when you want to freeze a moving subject (faster shutter speed),
+   - Or when you want a slower than normal shutter speed, e.g. water fall, motion blur.
 
 *** When the ideal shutter speed (e.g. 1/100) is fast enough, then A mode.
    - Stationary scene or portrait.

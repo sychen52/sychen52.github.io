@@ -25,3 +25,5 @@
 [[./design_principle_design_pattern.org][Design principles and Design Patterns]]
 
 [[./photography.org][Photography]]
+
+[[./sicp.org][Structure and Interpretation of Computer Programs]]
