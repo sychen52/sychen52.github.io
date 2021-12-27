@@ -7,7 +7,7 @@ These are my notes while watch this [[https://www.youtube.com/watch?v=LxO-6rlihS
 * Composition
 ** Horizontal horizons
 ** Rule of thirds: Give subjects room to MOVE into or SEE into (nose room).
-   - almost always better than just put the subject in the middle
+   - Almost always better than just put the subject in the middle
    - An exception is lake, where the symmetry is key.
 ** Framing
    - Have some stuff close but not in focus to show the depth.
@@ -26,10 +26,10 @@ These are my notes while watch this [[https://www.youtube.com/watch?v=LxO-6rlihS
 ** Break these rules
 
 * Exposure
-** Most time auto is good.
-** Adjust manually when in snow, bright windows. No need to play with different metering mode.
-** Use histogram to check exposure. Sometimes the small screen is hard to see.
-** Spot meter is for studio when they have a gray card.
+  - Most time auto is good.
+  - Adjust manually when in snow, bright windows. No need to play with different metering mode.
+  - Use histogram to check exposure. Sometimes the small screen is hard to see.
+  - Spot meter is for studio when they have a gray card.
 
 * Modes
 ** Rule of thumb
@@ -58,11 +58,11 @@ These are my notes while watch this [[https://www.youtube.com/watch?v=LxO-6rlihS
    - You have to adjust the combo every time. It is better than auto mode, but not as good as S or A mode where you have direct control.
 
 * Lighting
-** Close to (1 hour before and after) sunrise or sunset is good.
-** Lighting in cloudy day is good. (Although the sky does not look good.)
-** Find/create a shade in harsh sunlight.
-** Fill-Flash: use flashlight in harsh sunlight to get rid of the shadow.
-** Direct flashlight at night is too fake. Use some indirect light.
+  - Close to (1 hour before and after) sunrise or sunset is good.
+  - Lighting in cloudy day is good. (Although the sky does not look good.)
+  - Find/create a shade in harsh sunlight.
+  - Fill-Flash: use flashlight in harsh sunlight to get rid of the shadow.
+  - Direct flashlight at night is too fake. Use some indirect light.
 
 * Focus
 When you set a focus point/distance, if the depth that is in focus is d, the focus point is at 1/3 of d. This is why you focus on eyes.
