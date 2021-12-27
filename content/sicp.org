@@ -22,3 +22,15 @@
 ** Assignment / Mutation
    - Because of it, we need to have environment (frames) that holds the values, so that you know where to look up and change. Otherwise, we can just use the substitution model. (The substitution model is like the way I implement built-in function in mal, because they don't have a state. While the way I implement fn* (lambda) is the same as this environment frames)
    - Because of it, we now have identity (of an object) and sharing.
+
+* Stream
+** similar to list
+   - Stream has cons-stream, head, and tail. The tail returns another stream.
+   - Filter, map, reduce can be built with these three functions.
+** Diff with list
+  - The computation of each item in stream is lazy. e.g. yield in python.
+  - A stream is a pair, with the head being the current value and the tail being a promise to compute the next value.
+  - A promise is a lambda with no arguments. When applied, it gives the value.
+  - You can even add some cache to this promise so that it only needs to be computed once.
+    - In lisp, the way to cache is to use let to create some local variables, then define another lambda function in the let and capture the local state as free variable, inside this lambda, you use this free variable as state.
+
