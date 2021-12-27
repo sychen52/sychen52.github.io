@@ -15,50 +15,50 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgbf5faa2">Assignment, state, and side effects</a>
+<li><a href="#org73c9fee">Assignment, state, and side effects</a>
 <ul>
-<li><a href="#org08922ed">Bound variables (in current scope)</a></li>
-<li><a href="#org3a6d7e7">Free variables (from the outside of current scope)</a></li>
-<li><a href="#orgcc00b2b">Procedure</a></li>
-<li><a href="#org60d1f7c">Function</a></li>
-<li><a href="#orgf701c76">Side effects</a></li>
-<li><a href="#org3c52e97">Object</a></li>
-<li><a href="#org50eb529">Assignment / Mutation</a></li>
+<li><a href="#orge2bc206">Bound variables (in current scope)</a></li>
+<li><a href="#orgba162c0">Free variables (from the outside of current scope)</a></li>
+<li><a href="#org4e3be9f">Procedure</a></li>
+<li><a href="#org7ef343b">Function</a></li>
+<li><a href="#org95ad82e">Side effects</a></li>
+<li><a href="#orgd9c46bf">Object</a></li>
+<li><a href="#org4becf6b">Assignment / Mutation</a></li>
 </ul>
 </li>
-<li><a href="#org0505876">Stream</a>
+<li><a href="#org588c49d">Stream</a>
 <ul>
-<li><a href="#org03d2537">similar to list</a></li>
-<li><a href="#org7bfff67">Diff with list</a></li>
+<li><a href="#orgd8163eb">similar to list</a></li>
+<li><a href="#orge7cdc6b">Diff with list</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbf5faa2" class="outline-2">
-<h2 id="orgbf5faa2">Assignment, state, and side effects</h2>
-<div class="outline-text-2" id="text-orgbf5faa2">
+<div id="outline-container-org73c9fee" class="outline-2">
+<h2 id="org73c9fee">Assignment, state, and side effects</h2>
+<div class="outline-text-2" id="text-org73c9fee">
 </div>
-<div id="outline-container-org08922ed" class="outline-3">
-<h3 id="org08922ed">Bound variables (in current scope)</h3>
-<div class="outline-text-3" id="text-org08922ed">
+<div id="outline-container-orge2bc206" class="outline-3">
+<h3 id="orge2bc206">Bound variables (in current scope)</h3>
+<div class="outline-text-3" id="text-orge2bc206">
 <p>
 The ones in formal parameter list (passed in as arguments).
 </p>
 </div>
 </div>
-<div id="outline-container-org3a6d7e7" class="outline-3">
-<h3 id="org3a6d7e7">Free variables (from the outside of current scope)</h3>
-<div class="outline-text-3" id="text-org3a6d7e7">
+<div id="outline-container-orgba162c0" class="outline-3">
+<h3 id="orgba162c0">Free variables (from the outside of current scope)</h3>
+<div class="outline-text-3" id="text-orgba162c0">
 <p>
 Captured from outside.
 Even other functions you call inside a function are free variables.
 </p>
 </div>
 </div>
-<div id="outline-container-orgcc00b2b" class="outline-3">
-<h3 id="orgcc00b2b">Procedure</h3>
-<div class="outline-text-3" id="text-orgcc00b2b">
+<div id="outline-container-org4e3be9f" class="outline-3">
+<h3 id="org4e3be9f">Procedure</h3>
+<div class="outline-text-3" id="text-org4e3be9f">
 <ul class="org-ul">
 <li>I have an implementation in <a href="https://github.com/sychen52/mal/tree/master/impls/c++">mal</a>.</li>
 <li>Environment is a pointer to a chain of frames.</li>
@@ -67,25 +67,25 @@ Even other functions you call inside a function are free variables.
 </ul>
 </div>
 </div>
-<div id="outline-container-org60d1f7c" class="outline-3">
-<h3 id="org60d1f7c">Function</h3>
-<div class="outline-text-3" id="text-org60d1f7c">
+<div id="outline-container-org7ef343b" class="outline-3">
+<h3 id="org7ef343b">Function</h3>
+<div class="outline-text-3" id="text-org7ef343b">
 <p>
 A procedure is a function, if same input, same output, no internal state change.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf701c76" class="outline-3">
-<h3 id="orgf701c76">Side effects</h3>
-<div class="outline-text-3" id="text-orgf701c76">
+<div id="outline-container-org95ad82e" class="outline-3">
+<h3 id="org95ad82e">Side effects</h3>
+<div class="outline-text-3" id="text-org95ad82e">
 <p>
 A procedure gives different output even when same input is given, because its internal state changes.
 </p>
 </div>
 </div>
-<div id="outline-container-org3c52e97" class="outline-3">
-<h3 id="org3c52e97">Object</h3>
-<div class="outline-text-3" id="text-org3c52e97">
+<div id="outline-container-orgd9c46bf" class="outline-3">
+<h3 id="orgd9c46bf">Object</h3>
+<div class="outline-text-3" id="text-orgd9c46bf">
 <ul class="org-ul">
 <li>From my OOP perspective, an object is like an instance of a class.</li>
 <li>In dynamic language, an object is much more flexible, because you can monkey patch it to add new method or variable to it.</li>
@@ -95,9 +95,9 @@ A procedure gives different output even when same input is given, because its in
 </ul>
 </div>
 </div>
-<div id="outline-container-org50eb529" class="outline-3">
-<h3 id="org50eb529">Assignment / Mutation</h3>
-<div class="outline-text-3" id="text-org50eb529">
+<div id="outline-container-org4becf6b" class="outline-3">
+<h3 id="org4becf6b">Assignment / Mutation</h3>
+<div class="outline-text-3" id="text-org4becf6b">
 <ul class="org-ul">
 <li>Because of it, we need to have environment (frames) that holds the values, so that you know where to look up and change. Otherwise, we can just use the substitution model. (The substitution model is like the way I implement built-in function in mal, because they don't have a state. While the way I implement fn* (lambda) is the same as this environment frames)</li>
 <li>Because of it, we now have identity (of an object) and sharing.</li>
@@ -106,22 +106,22 @@ A procedure gives different output even when same input is given, because its in
 </div>
 </div>
 
-<div id="outline-container-org0505876" class="outline-2">
-<h2 id="org0505876">Stream</h2>
-<div class="outline-text-2" id="text-org0505876">
+<div id="outline-container-org588c49d" class="outline-2">
+<h2 id="org588c49d">Stream</h2>
+<div class="outline-text-2" id="text-org588c49d">
 </div>
-<div id="outline-container-org03d2537" class="outline-3">
-<h3 id="org03d2537">similar to list</h3>
-<div class="outline-text-3" id="text-org03d2537">
+<div id="outline-container-orgd8163eb" class="outline-3">
+<h3 id="orgd8163eb">similar to list</h3>
+<div class="outline-text-3" id="text-orgd8163eb">
 <ul class="org-ul">
 <li>Stream has cons-stream, head, and tail. The tail returns another stream.</li>
 <li>Filter, map, reduce can be built with these three functions.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7bfff67" class="outline-3">
-<h3 id="org7bfff67">Diff with list</h3>
-<div class="outline-text-3" id="text-org7bfff67">
+<div id="outline-container-orge7cdc6b" class="outline-3">
+<h3 id="orge7cdc6b">Diff with list</h3>
+<div class="outline-text-3" id="text-orge7cdc6b">
 <ul class="org-ul">
 <li>The computation of each item in stream is lazy. e.g. yield in python.</li>
 <li>A stream is a pair, with the head being the current value and the tail being a promise to compute the next value.</li>
