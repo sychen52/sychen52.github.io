@@ -15,50 +15,51 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org73c9fee">Assignment, state, and side effects</a>
+<li><a href="#org62c4cfc">Assignment, state, and side effects</a>
 <ul>
-<li><a href="#orge2bc206">Bound variables (in current scope)</a></li>
-<li><a href="#orgba162c0">Free variables (from the outside of current scope)</a></li>
-<li><a href="#org4e3be9f">Procedure</a></li>
-<li><a href="#org7ef343b">Function</a></li>
-<li><a href="#org95ad82e">Side effects</a></li>
-<li><a href="#orgd9c46bf">Object</a></li>
-<li><a href="#org4becf6b">Assignment / Mutation</a></li>
+<li><a href="#org1ba20e9">Bound variables (in current scope)</a></li>
+<li><a href="#org1399375">Free variables (from the outside of current scope)</a></li>
+<li><a href="#org243b7da">Procedure</a></li>
+<li><a href="#org186015b">Function</a></li>
+<li><a href="#org691c247">Side effects</a></li>
+<li><a href="#orgd10048e">Object</a></li>
+<li><a href="#org736bfd2">Assignment / Mutation</a></li>
 </ul>
 </li>
-<li><a href="#org588c49d">Stream</a>
+<li><a href="#orgc37a44b">Stream</a>
 <ul>
-<li><a href="#orgd8163eb">similar to list</a></li>
-<li><a href="#orge7cdc6b">Diff with list</a></li>
+<li><a href="#orgc22ef40">similar to list</a></li>
+<li><a href="#orgd1ebfd0">Diff with list</a></li>
 </ul>
 </li>
+<li><a href="#org0c85e2a">Metacircular Evaluator</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org73c9fee" class="outline-2">
-<h2 id="org73c9fee">Assignment, state, and side effects</h2>
-<div class="outline-text-2" id="text-org73c9fee">
+<div id="outline-container-org62c4cfc" class="outline-2">
+<h2 id="org62c4cfc">Assignment, state, and side effects</h2>
+<div class="outline-text-2" id="text-org62c4cfc">
 </div>
-<div id="outline-container-orge2bc206" class="outline-3">
-<h3 id="orge2bc206">Bound variables (in current scope)</h3>
-<div class="outline-text-3" id="text-orge2bc206">
+<div id="outline-container-org1ba20e9" class="outline-3">
+<h3 id="org1ba20e9">Bound variables (in current scope)</h3>
+<div class="outline-text-3" id="text-org1ba20e9">
 <p>
 The ones in formal parameter list (passed in as arguments).
 </p>
 </div>
 </div>
-<div id="outline-container-orgba162c0" class="outline-3">
-<h3 id="orgba162c0">Free variables (from the outside of current scope)</h3>
-<div class="outline-text-3" id="text-orgba162c0">
+<div id="outline-container-org1399375" class="outline-3">
+<h3 id="org1399375">Free variables (from the outside of current scope)</h3>
+<div class="outline-text-3" id="text-org1399375">
 <p>
 Captured from outside.
 Even other functions you call inside a function are free variables.
 </p>
 </div>
 </div>
-<div id="outline-container-org4e3be9f" class="outline-3">
-<h3 id="org4e3be9f">Procedure</h3>
-<div class="outline-text-3" id="text-org4e3be9f">
+<div id="outline-container-org243b7da" class="outline-3">
+<h3 id="org243b7da">Procedure</h3>
+<div class="outline-text-3" id="text-org243b7da">
 <ul class="org-ul">
 <li>I have an implementation in <a href="https://github.com/sychen52/mal/tree/master/impls/c++">mal</a>.</li>
 <li>Environment is a pointer to a chain of frames.</li>
@@ -67,25 +68,25 @@ Even other functions you call inside a function are free variables.
 </ul>
 </div>
 </div>
-<div id="outline-container-org7ef343b" class="outline-3">
-<h3 id="org7ef343b">Function</h3>
-<div class="outline-text-3" id="text-org7ef343b">
+<div id="outline-container-org186015b" class="outline-3">
+<h3 id="org186015b">Function</h3>
+<div class="outline-text-3" id="text-org186015b">
 <p>
 A procedure is a function, if same input, same output, no internal state change.
 </p>
 </div>
 </div>
-<div id="outline-container-org95ad82e" class="outline-3">
-<h3 id="org95ad82e">Side effects</h3>
-<div class="outline-text-3" id="text-org95ad82e">
+<div id="outline-container-org691c247" class="outline-3">
+<h3 id="org691c247">Side effects</h3>
+<div class="outline-text-3" id="text-org691c247">
 <p>
 A procedure gives different output even when same input is given, because its internal state changes.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd9c46bf" class="outline-3">
-<h3 id="orgd9c46bf">Object</h3>
-<div class="outline-text-3" id="text-orgd9c46bf">
+<div id="outline-container-orgd10048e" class="outline-3">
+<h3 id="orgd10048e">Object</h3>
+<div class="outline-text-3" id="text-orgd10048e">
 <ul class="org-ul">
 <li>From my OOP perspective, an object is like an instance of a class.</li>
 <li>In dynamic language, an object is much more flexible, because you can monkey patch it to add new method or variable to it.</li>
@@ -95,9 +96,9 @@ A procedure gives different output even when same input is given, because its in
 </ul>
 </div>
 </div>
-<div id="outline-container-org4becf6b" class="outline-3">
-<h3 id="org4becf6b">Assignment / Mutation</h3>
-<div class="outline-text-3" id="text-org4becf6b">
+<div id="outline-container-org736bfd2" class="outline-3">
+<h3 id="org736bfd2">Assignment / Mutation</h3>
+<div class="outline-text-3" id="text-org736bfd2">
 <ul class="org-ul">
 <li>Because of it, we need to have environment (frames) that holds the values, so that you know where to look up and change. Otherwise, we can just use the substitution model. (The substitution model is like the way I implement built-in function in mal, because they don't have a state. While the way I implement fn* (lambda) is the same as this environment frames)</li>
 <li>Because of it, we now have identity (of an object) and sharing.</li>
@@ -106,22 +107,22 @@ A procedure gives different output even when same input is given, because its in
 </div>
 </div>
 
-<div id="outline-container-org588c49d" class="outline-2">
-<h2 id="org588c49d">Stream</h2>
-<div class="outline-text-2" id="text-org588c49d">
+<div id="outline-container-orgc37a44b" class="outline-2">
+<h2 id="orgc37a44b">Stream</h2>
+<div class="outline-text-2" id="text-orgc37a44b">
 </div>
-<div id="outline-container-orgd8163eb" class="outline-3">
-<h3 id="orgd8163eb">similar to list</h3>
-<div class="outline-text-3" id="text-orgd8163eb">
+<div id="outline-container-orgc22ef40" class="outline-3">
+<h3 id="orgc22ef40">similar to list</h3>
+<div class="outline-text-3" id="text-orgc22ef40">
 <ul class="org-ul">
 <li>Stream has cons-stream, head, and tail. The tail returns another stream.</li>
 <li>Filter, map, reduce can be built with these three functions.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge7cdc6b" class="outline-3">
-<h3 id="orge7cdc6b">Diff with list</h3>
-<div class="outline-text-3" id="text-orge7cdc6b">
+<div id="outline-container-orgd1ebfd0" class="outline-3">
+<h3 id="orgd1ebfd0">Diff with list</h3>
+<div class="outline-text-3" id="text-orgd1ebfd0">
 <ul class="org-ul">
 <li>The computation of each item in stream is lazy. e.g. yield in python.</li>
 <li>A stream is a pair, with the head being the current value and the tail being a promise to compute the next value.</li>
@@ -132,6 +133,23 @@ A procedure gives different output even when same input is given, because its in
 </ul></li>
 </ul>
 </div>
+</div>
+</div>
+
+<div id="outline-container-org0c85e2a" class="outline-2">
+<h2 id="org0c85e2a">Metacircular Evaluator</h2>
+<div class="outline-text-2" id="text-org0c85e2a">
+<ul class="org-ul">
+<li>(delay f) is: wrap the function f into a lambda function to not evaluate it.</li>
+<li>(force delayedF) is: call the wrapped function by delay</li>
+<li>This way, when you pass a delay around, the receiver end needs to know it is a delayed function, and force it.</li>
+<li>In order to better isolated modules, and better decouple this sender and receiver ends. i.e. no need to know whether it is a delayed function:
+<ul class="org-ul">
+<li>A way is to delay everywhere, i.e. the arguments of a function is not evaluated before apply.</li>
+<li>Another way is for receiver to take care of both delay and non-delayed function based on some flag that is passed in.</li>
+<li>However, for the approach above, you need to do similar things for every function that needs to accept either delay or non-delayed function. A better way is to support it in the language interpreter. I think that is what 7B last 1/3 is about.</li>
+</ul></li>
+</ul>
 </div>
 </div>
 </div>
