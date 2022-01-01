@@ -34,3 +34,11 @@
   - You can even add some cache to this promise so that it only needs to be computed once.
     - In lisp, the way to cache is to use let to create some local variables, then define another lambda function in the let and capture the local state as free variable, inside this lambda, you use this free variable as state.
 
+* Metacircular Evaluator
+  - (delay f) is: wrap the function f into a lambda function to not evaluate it.
+  - (force delayedF) is: call the wrapped function by delay
+  - This way, when you pass a delay around, the receiver end needs to know it is a delayed function, and force it.
+  - In order to better isolated modules, and better decouple this sender and receiver ends. i.e. no need to know whether it is a delayed function:
+    - A way is to delay everywhere, i.e. the arguments of a function is not evaluated before apply.
+    - Another way is for receiver to take care of both delay and non-delayed function based on some flag that is passed in.
+    - However, for the approach above, you need to do similar things for every function that needs to accept either delay or non-delayed function. A better way is to support it in the language interpreter. I think that is what 7B last 1/3 is about.
