@@ -1,59 +1,75 @@
 * Primitives, means of combination, means of abstraction
-  Three things to look for in a language
+Three things to look for in a language
 
 * Closure
-  After combination and abstraction of small pieces, the new thing API looks the same as the small pieces.
+After combination and abstraction of small pieces, the new thing API looks the same as the small pieces.
+
+* Data and procedure
+- You can never directly access a piece of data. There must be some way/function/procedure to interact the data.
+- However, if also you use are procedures to "interact with data", how do you know in what form the data exist/is saved. In the lecture, they show a way to implement pair without an explicit data part (all inside the procedure).
 
 * Pattern matching (match pat data dict)
-  - dict is initialized to be empty
-  - if data and pat can match with the existing dictionary, return the final extended dictionary
-  - else return 'fail
+- dict is initialized to be empty
+- if data and pat can match with the existing dictionary, return the final extended dictionary
+- else return 'fail
 
 * Assignment, state, and side effects
 ** Bound variables (in current scope)
-   The ones in formal parameter list (passed in as arguments).
+The ones in formal parameter list (passed in as arguments).
 ** Free variables (from the outside of current scope)
-   Captured from outside.
-   Even other functions you call inside a function are free variables.
-** Procedure
-   - I have an implementation in [[https://github.com/sychen52/mal/tree/master/impls/c%2B%2B][mal]].
-   - Environment is a pointer to a chain of frames.
-   - Eval a lambda will return a procedure. The parent environment frame is stored.
-   - Apply a procedure will create a new frame and eval the body of lambda in it.
+Captured from outside.
+Even other functions you call inside a function are free variables.
+** Compound Procedure
+- I have an implementation in [[https://github.com/sychen52/mal/tree/master/impls/c%2B%2B][mal]].
+- Environment is a pointer to a chain of frames.
+- Eval a lambda will return a procedure. The parent environment frame is stored.
+- Apply a procedure will create a new frame and eval the body of lambda in it.
 ** Function
-   A procedure is a function, if same input, same output, no internal state change.
+- A procedure is a function, if same input, same output, no internal state change.
+- The built-in ones are also called primitive procedures.
 ** Side effects
-   A procedure gives different output even when same input is given, because its internal state changes.
+A procedure gives different output even when same input is given, because its internal state changes.
 ** Object
-   - From my OOP perspective, an object is like an instance of a class.
-   - In dynamic language, an object is much more flexible, because you can monkey patch it to add new method or variable to it.
-   - A boarder definition of an object: something with (mutable) states (member variable in OOP) and some actions (member function in OOP) can be applied to it.
-   - In this boarder definition, a procedure is an object.
-   - This is why I feel lambda function in C++ is like a one time class (captures are its member variables passed in from output; the lambda body is the only member function. And this class only instantiates one object and that is this "lambda object").
+- From my OOP perspective, an object is like an instance of a class.
+- In dynamic language, an object is much more flexible, because you can monkey patch it to add new method or variable to it.
+- A boarder definition of an object: something with (mutable) states (member variable in OOP) and some actions (member function in OOP) can be applied to it.
+- In this boarder definition, a procedure is an object.
+- This is why I feel lambda function in C++ is like a one time class (captures are its member variables passed in from output; the lambda body is the only member function. And this class only instantiates one object and that is this "lambda object").
 ** Assignment / Mutation
-   - Because of it, we need to have environment (frames) that holds the values, so that you know where to look up and change. Otherwise, we can just use the substitution model. (The substitution model is like the way I implement built-in function in mal, because they don't have a state. While the way I implement fn* (lambda) is the same as this environment frames)
-   - Because of it, we now have identity (of an object) and sharing.
+- Because of it, we need to have environment (frames) that holds the values, so that you know where to look up and change. Otherwise, we can just use the substitution model. (The substitution model is like the way I implement built-in function in mal, because they don't have a state. While the way I implement fn* (lambda) is the same as this environment frames)
+- Because of it, we now have identity (of an object) and sharing.
 
 * Stream
 ** similar to list
-   - Stream has cons-stream, head, and tail. The tail returns another stream.
-   - Filter, map, reduce can be built with these three functions.
+- Stream has cons-stream, head, and tail. The tail returns another stream.
+- Filter, map, reduce can be built with these three functions.
 ** Diff with list
-  - The computation of each item in stream is lazy. e.g. yield in python.
-  - A stream is a pair, with the head being the current value and the tail being a promise to compute the next value.
-  - A promise is a lambda with no arguments. When applied, it gives the value.
-  - You can even add some cache to this promise so that it only needs to be computed once.
-    - In lisp, the way to cache is to use let to create some local variables, then define another lambda function in the let and capture the local state as free variable, inside this lambda, you use this free variable as state.
+- The computation of each item in stream is lazy. e.g. yield in python.
+- A stream is a pair, with the head being the current value and the tail being a promise to compute the next value.
+- A promise is a lambda with no arguments. When applied, it gives the value.
+- You can even add some cache to this promise so that it only needs to be computed once.
+  - In lisp, the way to cache is to use let to create some local variables, then define another lambda function in the let and capture the local state as free variable, inside this lambda, you use this free variable as state.
 
 * Meta-circular Evaluator
-  - (delay f) is: wrap the function f into a lambda function to not evaluate it.
-  - (force delayedF) is: call the wrapped function by delay
-  - This way, when you pass a delay around, the receiver end needs to know it is a delayed function, and force it.
-  - In order to better isolated modules, and better decouple this sender and receiver ends. i.e. no need to know whether it is a delayed function:
-    - A way is to delay everywhere, i.e. the arguments of a function is not evaluated before apply.
-    - Another way is for receiver to take care of both delay and non-delayed function based on some flag that is passed in.
-    - However, for the approach above, you need to do similar things for every function that needs to accept either delay or non-delayed function. A better way is to support it in the language interpreter. I think that is what 7B last 1/3 is about.
+- (delay f) is: wrap the function f into a lambda function to not evaluate it.
+- (force delayedF) is: call the wrapped function by delay
+- This way, when you pass a delay around, the receiver end needs to know it is a delayed function, and force it.
+- In order to better isolated modules, and better decouple this sender and receiver ends. i.e. no need to know whether it is a delayed function:
+  - A way is to delay everywhere, i.e. the arguments of a function is not evaluated before apply.
+  - Another way is for receiver to take care of both delay and non-delayed function based on some flag that is passed in.
+  - However, for the approach above, you need to do similar things for every function that needs to accept either delay or non-delayed function. A better way is to support it in the language interpreter. I think that is what 7B last 1/3 is about.
 
 * Logic programming
-  - It mostly works as a pattern matcher
-  - It is still an open research topic to make it similar to human logic. For example, the NOT in logic programming assumes close world, i.e. cannot deduce in the database means false. Sometimes this is not what human intended to do. (what I don't know could still be true.)
+- It mostly works as a pattern matcher
+- It is still an open research topic to make it similar to human logic. For example, the NOT in logic programming assumes close world, i.e. cannot deduce in the database means false. Sometimes this is not what human intended to do. (what I don't know could still be true.)
+
+* Register Machines
+- This feels like translating Lisp into Assembly, without advanced language features like function, recursion, etc. It only has basic instructions like goto, assign, save to stack, restore from stack, etc.
+- This is not really compile lisp into Assembly, because it does not handle stuff like types...
+
+* Compile vs Interpret
+- Interpreter needs to prepare for the worst possible case.
+- Compiler knows what is coming and can optimize stuff away.
+  - For example, unnecessary register save and restore.
+  - In order to optimize out the unnecessary register save and restore, the compiler needs to keep track of what registers are modified and needed by each primitive operation. Then, when you combine a few primitive operations, the registers modified and needed also need to be aggregated.
+  
