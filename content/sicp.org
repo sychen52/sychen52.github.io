@@ -73,3 +73,6 @@ A procedure gives different output even when same input is given, because its in
   - For example, unnecessary register save and restore.
   - In order to optimize out the unnecessary register save and restore, the compiler needs to keep track of what registers are modified and needed by each primitive operation. Then, when you combine a few primitive operations, the registers modified and needed also need to be aggregated.
   
+* Garbage collection
+** mark and sweep
+** move
