@@ -14,6 +14,7 @@ After combination and abstraction of small pieces, the new thing API looks the s
 - else return 'fail
 
 * Assignment, state, and side effects
+
 ** Bound variables (in current scope)
 The ones in formal parameter list (passed in as arguments).
 ** Free variables (from the outside of current scope)
@@ -44,7 +45,7 @@ A procedure gives different output even when same input is given, because its in
 - Stream has cons-stream, head, and tail. The tail returns another stream.
 - Filter, map, reduce can be built with these three functions.
 ** Diff with list
-- The computation of each item in stream is lazy. e.g. yield in python.
+- The computation of each item in-stream is lazy. e.g. yield in python.
 - A stream is a pair, with the head being the current value and the tail being a promise to compute the next value.
 - A promise is a lambda with no arguments. When applied, it gives the value.
 - You can even add some cache to this promise so that it only needs to be computed once.
