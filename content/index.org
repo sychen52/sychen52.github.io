@@ -29,3 +29,5 @@
 [[./photography.org][Photography]]
 
 [[./sicp.org][Structure and Interpretation of Computer Programs]]
+
+[[./ft_to_dft_for_mri.jpg][Fourier Transform and Discrete Fourier Transform for MRI]]
