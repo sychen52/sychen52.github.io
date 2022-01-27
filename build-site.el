@@ -25,16 +25,22 @@
       org-html-head "<link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />")
 
 (setq org-publish-project-alist
-      (list
-       (list "org-site:main"
-             :recursive t
-             :base-directory "./content"
-             :publishing-function 'org-html-publish-to-html
-             :publishing-directory "./public"
-             :with-author nil           ;; Don't include author name
-             :with-creator nil          ;; Include Emacs and Org versions in footer
-             :section-numbers nil       ;; Don't include section numbers
-             :time-stamp-file nil)))    ;; Don't include time stamp in file
+      '(("org" :components ("org-site:main" "org-static"))
+        ("org-static"
+         :base-directory "./content"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "./public"
+         :recursive t
+         :publishing-function org-publish-attachment)
+        ("org-site:main"
+         :recursive t
+         :base-directory "./content"
+         :publishing-function org-html-publish-to-html
+         :publishing-directory "./public"
+         :with-author nil           ;; Don't include author name
+         :with-creator nil          ;; Include Emacs and Org versions in footer
+         :section-numbers nil       ;; Don't include section numbers
+         :time-stamp-file nil)))    ;; Don't include time stamp in file
 
 (org-publish-all t)
 
