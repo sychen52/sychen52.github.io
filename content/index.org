@@ -8,6 +8,8 @@
 [[./2021-10-02-WhyWeSleep.org][Why We Sleep]]
 
 [[./headspace.org][Headspace]]
+
+[[./ft_to_dft_for_mri.jpg][Fourier Transform and Discrete Fourier Transform for MRI]]
 #+END_COMMENT
 
 [[./2019-12-24-DirectLinearTransform.org][Direct Linear Transform]]
@@ -29,5 +31,3 @@
 [[./photography.org][Photography]]
 
 [[./sicp.org][Structure and Interpretation of Computer Programs]]
-
-[[./ft_to_dft_for_mri.jpg][Fourier Transform and Discrete Fourier Transform for MRI]]
