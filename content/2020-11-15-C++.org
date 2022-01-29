@@ -252,6 +252,13 @@ function used for relay purposes.
 - =std::make_shared= is preferred because it initialize control block
   and the object together.
 
+* Ownership: pointer, reference, smart pointers
+What does it mean when passing pointer, reference, smart pointers to a function (ctor).
+- =A&= is almost the same as =A * const=, except that reference guarantees its existence, while pointer can be =nullptr=.
+- In modern C++ and user side of the code, passing raw pointer and reference means borrow. No need to destroy.
+  - There are exceptions in old-style code base, such as ceres-solver, if I remember correctly.
+- Pass a =unque_ptr= is transfering ownership, while =shared_ptr= is shared ownership.
+
 * Function pointer
   :PROPERTIES:
   :CUSTOM_ID: function-pointer
@@ -384,5 +391,47 @@ function used for relay purposes.
 - *.cppm
 - export
 - import
+
+* [[https://www.youtube.com/watch?v=O65lEiYkkbc][Design Class]]
+** Don't make data member const or references
+- Otherwise, the copy assignment and move ctor/assignment will be gone. but copy ctor is okay.
+- use a raw pointer instead of a reference. Function interface can still be a reference. It is just stored as a pointer.
+
+** Value initializer
+- =Widget w{};= will also initialize =int= or =int*=.
+- best practice is to put the initial value in the class when you declare the variable. The reason to not put in ctor, is to reduce duplication if you have two ctors that both need to initialize.
+
+* [[https://www.youtube.com/watch?v=7Qgd9B1KuMQ][RAII: Resource Acquisition is Initialization: it means to cleanup in the destructor.]]
+** This applies to raw heap pointers, file handles, mutex, etc.
+** The Rule of Three: all three need to be user defined if RAII.
+*** destructor
+*** copy ctor
+The default will lead to double deletion
+*** copy assignment: use copy-and-swap to implement it.
+- copy: call copy ctor and generate a new object
+- swap: swap LHS and the new object and use the new objects' destructor to free the LHS.
+** Destroctor is called even after throw
+** The Rule of Three: if not RAII (don't store data or contains only well written Rule of Three classes)
+Let compiler generate them.
+** The Rule of Five:
+*** all three rules plus
+*** move ctor
+Destroy RHS
+*** move assignment
+- move: call move ctor: RHS is destroyed.
+- swap: same as before, use the destructor of the new object to free LHS.
+** The Rule of Four and a half:
+*** All three ctors
+*** merge copy and move assignment into a value assignment
+since the first thing of these two are creating a copy (through copy or move ctor) anyway
+*** The half is the swap function.
+Otherwise, the default swap will call move and copy.
+** Good examples
+*** unique_ptr: ctor, move ctor and move assignment 
+*** shared_ptr: all five
+*** unique_lock
+*** ifstream
+*** lock_guard: just ctor and destructor
+
 
 #+INCLUDE: ../utterance.org
