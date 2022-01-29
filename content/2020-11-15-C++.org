@@ -3,8 +3,7 @@
 #+KEYWORDS: c++
 
 These are some notes I wrote as I watched
-[[https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb][Cherno's
-C++ playlist]].
+[[https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb][Cherno's C++ playlist]] and some other videos and resources.
 
 * Compile and link
   :PROPERTIES:
