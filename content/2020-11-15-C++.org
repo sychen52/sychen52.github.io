@@ -426,11 +426,11 @@ since the first thing of these two are creating a copy (through copy or move cto
 *** The half is the swap function.
 Otherwise, the default swap will call move and copy.
 ** Good examples
-*** unique_ptr: ctor, move ctor and move assignment 
-*** shared_ptr: all five
-*** unique_lock
-*** ifstream
-*** lock_guard: just ctor and destructor
+*** =unique_ptr=: ctor, move ctor and move assignment 
+*** =shared_ptr=: all five
+*** =unique_lock=
+*** =ifstream=
+*** =lock_guard=: just ctor and destructor
 
 
 #+INCLUDE: ../utterance.org
