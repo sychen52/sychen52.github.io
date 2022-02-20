@@ -31,3 +31,6 @@
 [[./photography.org][Photography]]
 
 [[./sicp.org][Structure and Interpretation of Computer Programs]]
+
+[[./rust.org][Rust]]
+
