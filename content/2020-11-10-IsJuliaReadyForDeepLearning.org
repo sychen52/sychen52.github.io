@@ -35,11 +35,7 @@ I guess most people come to Julia for speed. However, to get the optimal
 speed, it is not that straight forward. One problem is to
 [[https://www.youtube.com/watch?v=o8qTJGcPWkE][avoid allocation]].
 Another problem is type inference. Julia is a dynamic typing language;
-however, to get the best speed, you are encouraged to have type
-annotation and type stability. The purpose of this is to make it easy
-for people who do not care about the speed that much. However, I think
-static typing can make things much more straightforward. This leads to
-the next point I would like to mention
+however, to get the best speed, you are encouraged to have type stability. Note that type annotation does not help if the compiler can figure out a stable type. In that case, annotating it to a narrower type only makes your function less reusable. IMO, dynamic typing is sometimes contradicting with this type stable idea. Therefore, Julia is in this awkward position that support dynamic typing, but when it causes type instability, it is not encouraged. I think static typing can make things much more straightforward. This leads to the next point I would like to mention.
 
 * Ahead of Time (AOT) Compilation vs. Just In Time (JIT) Compilation vs. Interpreter
   :PROPERTIES:
@@ -61,9 +57,7 @@ use Julia for deep learning. However, dynamic typing is something built
 in the design of the language, while you enjoy the ease of use, you also
 have to bear with the awkwardness it brings: 1) long JAOT compilation
 time; 2) hard to build into libraries and executables. Luckily, both of
-these two are somewhat solved by
-[[https://github.com/JuliaLang/PackageCompiler.jl][PackageCompiler.jl]],
-but awkwardly IMO.
+these two are being actively worked on ([[https://github.com/JuliaLang/PackageCompiler.jl][PackageCompiler.jl]], [[https://github.com/tshort/StaticCompiler.jl][StaticCompiler.jl]]) but awkwardly IMO.
 
 * Community
   :PROPERTIES:
