@@ -16,39 +16,43 @@ learning.
   :PROPERTIES:
   :CUSTOM_ID: memory-management
   :END:
-I noticed this issue when Chris Lattner pointed during a
-[[https://twimlai.com/the-great-ml-language-un-debate/][debate]]. In
-short, Julia uses the Garbage Collector. It may cause memory not being
-released in time. This is especially problematic for GPU since its
-memory is much smaller than CPU memory. The good news is there is some
-[[https://juliagpu.gitlab.io/CUDA.jl/usage/memory/][workaround]], but it
-would be better if Julia has some deterministic memory management. There
-is an
-[[https://discourse.julialang.org/t/proposal-for-deterministic-memory-management/39305][ongoing
-discussion about this]].
+** Garbage Collector
+I noticed this issue when Chris Lattner pointed during a [[https://twimlai.com/the-great-ml-language-un-debate/][debate]]. In short, Julia uses the mark-and-sweep Garbage Collector. It may cause memory not being released in time. This is especially problematic for GPU since its memory is much smaller than CPU memory. The good news is there is some [[https://juliagpu.gitlab.io/CUDA.jl/usage/memory/][workaround]], but it would be better if Julia has some deterministic memory management. There is an [[https://discourse.julialang.org/t/proposal-for-deterministic-memory-management/39305][ongoing discussion about this]].
+
+** Heap or Stack
+As a high level language, Julia also does not allow the programmer to explicitly control whether the memory should be allocated on stack or heap. Instead, it is up to the complier to optimize for you.
 
 * Speed
   :PROPERTIES:
   :CUSTOM_ID: speed
   :END:
-I guess most people come to Julia for speed. However, to get the optimal
-speed, it is not that straight forward. One problem is to
-[[https://www.youtube.com/watch?v=o8qTJGcPWkE][avoid allocation]].
-Another problem is type inference. Julia is a dynamic typing language;
-however, to get the best speed, you are encouraged to have type stability. Note that type annotation does not help if the compiler can figure out a stable type. In that case, annotating it to a narrower type only makes your function less reusable. IMO, dynamic typing is sometimes contradicting with this type stable idea. Therefore, Julia is in this awkward position that support dynamic typing, but when it causes type instability, it is not encouraged. I think static typing can make things much more straightforward. This leads to the next point I would like to mention.
+I guess most people come to Julia for speed. However, to get the optimal speed, it is not that straightforward.
+** Avoid allocation
+One problem is to [[https://www.youtube.com/watch?v=o8qTJGcPWkE][avoid heap allocation]]. As I mentioned in the previous section. Heap or stack allocation cannot be controlled explicitly. Then it is kind like play a guessing game with the compiler to avoid allocation. The good news is, there are some [[https://www.youtube.com/watch?v=o8qTJGcPWkE][rule of thumbs]].
+
+** Type Stable
+Another problem is type inference. Julia is a dynamic typing language; however, to get the best speed, you are encouraged to have type stability.
+My understanding of this is as following:
+You can you Julia just a dynamic type language (such as Python), and have all the easy-of-mind and fast-prototyping. However, when you need it to be as fast as possible, you can use Julia as if it is a static type language, take care of the type stability (kind of like the generic type in a static type language like C++). However, the only con I see is that unlike a static type language that does type check at compile time and yell at you when it fails at type check. You need to call a few macros yourself to check whether it is type stable.
+*** Type Annotation
+Note that type annotation does not help if the compiler can figure out a stable type. In that case, annotating it to a narrower type only makes your function less reusable.
+
+* Multiple Dispatch
+For a dynamic type language, this is very rare to see. For example, Python does not have this feature at all.
+For a static type language (C++ for example), this is very common to see if the type is known at compile time. Julia and C++ can both do heavy optimization. When it is not known at compile time. C++ can do dynamic single dispatch with virtual table. C++ can also do runtime double dispatch with a design pattern. And I don't hear people mention runtime mutiple (>2) dispatch in C++, but I think it is possible by implementing some kind of virtual table yourself. For this runtime/dynamic multiple dispatch case, I think Julia does a lookup at runtimes. So it is kind of similar to the vtable idea, but the implementation of the lookup is different.
+
 
 * Ahead of Time (AOT) Compilation vs. Just In Time (JIT) Compilation vs. Interpreter
   :PROPERTIES:
   :CUSTOM_ID: ahead-of-time-aot-compilation-vs.-just-in-time-jit-compilation-vs.-interpreter
   :END:
-Usually, static typing languages are AOT compiled while
+Usually, static type languages are AOT compiled while
 dynamic language runs on an interpreter, and sometimes with a
 JIT compiler. Because you need to know the type to deeply optimize the
-code, static typing languages can directly be optimized AOT, while
+code, static type languages can directly be optimized AOT, while
 dynamic typing languages can only to optimized at runtime when the
 type is known with a JIT. Julia is somewhere in between. It is
-[[https://www.youtube.com/watch?v=XWIZ_dCO6X8][just ahead of time
-(JAOT)]] compiled. Julia does type inference as early as it can. But for a
+[[https://www.youtube.com/watch?v=XWIZ_dCO6X8][just ahead of time (JAOT)]] compiled. Julia does type inference as early as it can. But for a
 dynamic type language, inevitably, the type cannot be inferred before runtime.
 The pro is that you have a deeply optimized dynamic
 typing language. The con is this JAOT takes a long time, and this is the
@@ -57,7 +61,7 @@ use Julia for deep learning. However, dynamic typing is something built
 in the design of the language, while you enjoy the ease of use, you also
 have to bear with the awkwardness it brings: 1) long JAOT compilation
 time; 2) hard to build into libraries and executables. Luckily, both of
-these two are being actively worked on ([[https://github.com/JuliaLang/PackageCompiler.jl][PackageCompiler.jl]], [[https://github.com/tshort/StaticCompiler.jl][StaticCompiler.jl]]) but awkwardly IMO.
+these two are being actively worked on ([[https://github.com/JuliaLang/PackageCompiler.jl][PackageCompiler.jl]], [[https://github.com/tshort/StaticCompiler.jl][StaticCompiler.jl]]) but very difficult IMO.
 
 * Community
   :PROPERTIES:
