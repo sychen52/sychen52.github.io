@@ -17,7 +17,7 @@ learning.
   :CUSTOM_ID: memory-management
   :END:
 ** Garbage Collector
-I noticed this issue when Chris Lattner pointed during a [[https://twimlai.com/the-great-ml-language-un-debate/][debate]]. In short, Julia uses the mark-and-sweep Garbage Collector. It may cause memory not being released in time. This is especially problematic for GPU since its memory is much smaller than CPU memory. The good news is there is some [[https://juliagpu.gitlab.io/CUDA.jl/usage/memory/][workaround]], but it would be better if Julia has some deterministic memory management. There is an [[https://discourse.julialang.org/t/proposal-for-deterministic-memory-management/39305][ongoing discussion about this]].
+I noticed this issue when Chris Lattner pointed during a [[https://twimlai.com/the-great-ml-language-un-debate/][debate]]. In short, Julia uses the generational mark-and-sweep Garbage Collector. It may cause memory not being released in time. This is especially problematic for GPU since its memory is much smaller than CPU memory. The good news is there is some [[https://juliagpu.gitlab.io/CUDA.jl/usage/memory/][workaround]], but it would be better if Julia has some deterministic memory management. There is an [[https://discourse.julialang.org/t/proposal-for-deterministic-memory-management/39305][ongoing discussion about this]].
 
 ** Heap or Stack
 As a high level language, Julia also does not allow the programmer to explicitly control whether the memory should be allocated on stack or heap. Instead, it is up to the complier to optimize for you.
@@ -26,9 +26,9 @@ As a high level language, Julia also does not allow the programmer to explicitly
   :PROPERTIES:
   :CUSTOM_ID: speed
   :END:
-I guess most people come to Julia for speed. However, to get the optimal speed, it is not that straightforward.
+I guess most people come to Julia for speed. However, when optimizing your code for speed, it is not that straightforward.
 ** Avoid allocation
-One problem is to [[https://www.youtube.com/watch?v=o8qTJGcPWkE][avoid heap allocation]]. As I mentioned in the previous section. Heap or stack allocation cannot be controlled explicitly. Then it is kind like play a guessing game with the compiler to avoid allocation. The good news is, there are some [[https://www.youtube.com/watch?v=o8qTJGcPWkE][rule of thumbs]].
+One problem is to [[https://www.youtube.com/watch?v=o8qTJGcPWkE][avoid heap allocation]]. As I mentioned in the previous section. Heap or stack allocation cannot be controlled explicitly. Then it is kind like play a guessing game with the compiler to avoid allocation. The good news is, there are some [[https://docs.julialang.org/en/v1/manual/performance-tips/][performance tips]].
 
 ** Type Stable
 Another problem is type inference. Julia is a dynamic typing language; however, to get the best speed, you are encouraged to have type stability.
