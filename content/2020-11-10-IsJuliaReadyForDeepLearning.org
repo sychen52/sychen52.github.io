@@ -61,7 +61,7 @@ use Julia for deep learning. However, dynamic typing is something built
 in the design of the language, while you enjoy the ease of use, you also
 have to bear with the awkwardness it brings: 1) long JAOT compilation
 time; 2) hard to build into libraries and executables. Luckily, both of
-these two are being actively worked on ([[https://github.com/JuliaLang/PackageCompiler.jl][PackageCompiler.jl]], [[https://github.com/tshort/StaticCompiler.jl][StaticCompiler.jl]]) but very difficult IMO.
+these two are being actively worked on ([[https://github.com/JuliaLang/PackageCompiler.jl][PackageCompiler.jl]], [[https://github.com/tshort/StaticCompiler.jl][StaticCompiler.jl]]) but fully ready yet.
 
 * Community
   :PROPERTIES:
