@@ -32,60 +32,60 @@
 <li><a href="#dont-return-an-rvalue-ref-just-return-a-value">Don't return an rvalue ref, just return a value</a></li>
 <li><a href="#stdforward">std::forward</a></li>
 <li><a href="#stdunique_ptr-stdshared_ptr-and-stdweak_ptr"><code>std::unique_ptr</code>, <code>std::shared_ptr</code>, and <code>std::weak_ptr</code></a></li>
-<li><a href="#org5447a01">Ownership: pointer, reference, smart pointers</a></li>
+<li><a href="#org0fa3e12">Ownership: pointer, reference, smart pointers</a></li>
 <li><a href="#function-pointer">Function pointer</a></li>
 <li><a href="#union-and-type-punning">Union and type punning</a></li>
 <li><a href="#stdvariant">std::variant</a></li>
 <li><a href="#singleton">Singleton</a></li>
-<li><a href="#org1e283af">C++14 feels like a patch for C++11</a></li>
-<li><a href="#org115f93e">C++17</a></li>
-<li><a href="#orgb2a8a11">C++20</a>
+<li><a href="#org6c66770">C++14 feels like a patch for C++11</a></li>
+<li><a href="#orgb479d13">C++17</a></li>
+<li><a href="#orga41c0c1">C++20</a>
 <ul>
-<li><a href="#org80c8881">Coroutine</a></li>
-<li><a href="#org2179f50">Concept</a></li>
-<li><a href="#org75f462a">Range</a></li>
-<li><a href="#org6264177">Module</a></li>
+<li><a href="#org97e25e6">Coroutine</a></li>
+<li><a href="#org089435c">Concept</a></li>
+<li><a href="#org5c64e65">Range</a></li>
+<li><a href="#org230f392">Module</a></li>
 </ul>
 </li>
-<li><a href="#org3c6c1dc">Design Class</a>
+<li><a href="#orga590ee0">Design Class</a>
 <ul>
-<li><a href="#org7e28ea2">Don't make data member const or references</a></li>
-<li><a href="#orgc08e7b0">Value initializer</a></li>
+<li><a href="#org95afeba">Don't make data member const or references</a></li>
+<li><a href="#orgd029edc">Value initializer</a></li>
 </ul>
 </li>
-<li><a href="#org99305d1">RAII: Resource Acquisition is Initialization: it means to cleanup in the destructor.</a>
+<li><a href="#orgcb4c0ea">RAII: Resource Acquisition is Initialization: it means to cleanup in the destructor.</a>
 <ul>
-<li><a href="#org52d4f57">This applies to raw heap pointers, file handles, mutex, etc.</a></li>
-<li><a href="#org2f6984f">The Rule of Three: all three need to be user defined if RAII.</a>
+<li><a href="#org4525f94">This applies to raw heap pointers, file handles, mutex, etc.</a></li>
+<li><a href="#org15b4643">The Rule of Three: all three need to be user defined if RAII.</a>
 <ul>
-<li><a href="#orgd8b08fe">destructor</a></li>
-<li><a href="#orgc7ceea6">copy ctor</a></li>
-<li><a href="#orga0e75c8">copy assignment: use copy-and-swap to implement it.</a></li>
+<li><a href="#org5d7bdf4">destructor</a></li>
+<li><a href="#org5648b2d">copy ctor</a></li>
+<li><a href="#org9be281a">copy assignment: use copy-and-swap to implement it.</a></li>
 </ul>
 </li>
-<li><a href="#orgaff8416">Destroctor is called even after throw</a></li>
-<li><a href="#orgf8b5d7e">The Rule of Three: if not RAII (don't store data or contains only well written Rule of Three classes)</a></li>
-<li><a href="#org5aeeb9d">The Rule of Five:</a>
+<li><a href="#org57f12c0">Destroctor is called even after throw</a></li>
+<li><a href="#orgf517577">The Rule of Three: if not RAII (don't store data or contains only well written Rule of Three classes)</a></li>
+<li><a href="#org4490e06">The Rule of Five:</a>
 <ul>
-<li><a href="#orgb6f9595">all three rules plus</a></li>
-<li><a href="#orgc67aee0">move ctor</a></li>
-<li><a href="#org0f8b5a4">move assignment</a></li>
+<li><a href="#org2510ce6">all three rules plus</a></li>
+<li><a href="#orgf6ab86d">move ctor</a></li>
+<li><a href="#org87704c4">move assignment</a></li>
 </ul>
 </li>
-<li><a href="#orgbfa81ea">The Rule of Four and a half:</a>
+<li><a href="#orge2c8af6">The Rule of Four and a half:</a>
 <ul>
-<li><a href="#org4a3c645">All three ctors</a></li>
-<li><a href="#org0baab20">merge copy and move assignment into a value assignment</a></li>
-<li><a href="#orgc6784d6">The half is the swap function.</a></li>
+<li><a href="#org8f9c9ec">All three ctors</a></li>
+<li><a href="#orgf814b23">merge copy and move assignment into a value assignment</a></li>
+<li><a href="#orgb3dd668">The half is the swap function.</a></li>
 </ul>
 </li>
-<li><a href="#orgf539857">Good examples</a>
+<li><a href="#org61a485d">Good examples</a>
 <ul>
-<li><a href="#orgb7ff00d"><code>unique_ptr</code>: ctor, move ctor and move assignment</a></li>
-<li><a href="#orga2cdfef"><code>shared_ptr</code>: all five</a></li>
-<li><a href="#org47a5b63"><code>unique_lock</code></a></li>
-<li><a href="#org256d09c"><code>ifstream</code></a></li>
-<li><a href="#org9ebd42a"><code>lock_guard</code>: just ctor and destructor</a></li>
+<li><a href="#org6300dc1"><code>unique_ptr</code>: ctor, move ctor and move assignment</a></li>
+<li><a href="#org605e03d"><code>shared_ptr</code>: all five</a></li>
+<li><a href="#orge8e59a1"><code>unique_lock</code></a></li>
+<li><a href="#org45b669e"><code>ifstream</code></a></li>
+<li><a href="#org23fa5e8"><code>lock_guard</code>: just ctor and destructor</a></li>
 </ul>
 </li>
 </ul>
@@ -98,8 +98,8 @@ These are some notes I wrote as I watched
 <a href="https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb">Cherno's C++ playlist</a> and some other videos and resources.
 </p>
 
-<div id="outline-container-org2852614" class="outline-2">
-<h2 id="compile-and-link"><a id="org2852614"></a>Compile and link</h2>
+<div id="outline-container-orgde74e91" class="outline-2">
+<h2 id="compile-and-link"><a id="orgde74e91"></a>Compile and link</h2>
 <div class="outline-text-2" id="text-compile-and-link">
 <ul class="org-ul">
 <li>When compile a cpp file, all it cares is how the stuff
@@ -113,8 +113,8 @@ error.</li>
 </div>
 </div>
 
-<div id="outline-container-org2a09aca" class="outline-2">
-<h2 id="header-and-include"><a id="org2a09aca"></a>Header and include</h2>
+<div id="outline-container-org687c523" class="outline-2">
+<h2 id="header-and-include"><a id="org687c523"></a>Header and include</h2>
 <div class="outline-text-2" id="text-header-and-include">
 <ul class="org-ul">
 <li><code>#include</code> is just copying all the stuff in the header to the current
@@ -129,8 +129,8 @@ file. This also explains why you can do forward declaration.</li>
 </div>
 </div>
 
-<div id="outline-container-org0eaeaf4" class="outline-2">
-<h2 id="default-stuff-in-a-class"><a id="org0eaeaf4"></a>Default stuff in a class</h2>
+<div id="outline-container-orgd5fa6a0" class="outline-2">
+<h2 id="default-stuff-in-a-class"><a id="orgd5fa6a0"></a>Default stuff in a class</h2>
 <div class="outline-text-2" id="text-default-stuff-in-a-class">
 <ul class="org-ul">
 <li>There are a default constructor, default destructor, default copy
@@ -146,8 +146,8 @@ default copy constructor will be a shallow copy.</li>
 </div>
 </div>
 
-<div id="outline-container-orgca103c8" class="outline-2">
-<h2 id="when-is-operator-and-when-is-it-ctor."><a id="orgca103c8"></a>When is = operator=, and when is it ctor.</h2>
+<div id="outline-container-org5862cd3" class="outline-2">
+<h2 id="when-is-operator-and-when-is-it-ctor."><a id="org5862cd3"></a>When is = operator=, and when is it ctor.</h2>
 <div class="outline-text-2" id="text-when-is-operator-and-when-is-it-ctor.">
 <div class="org-src-container">
 <pre class="src src-c++"><span style="font-weight: bold; text-decoration: underline;">A</span> <span style="font-weight: bold; font-style: italic;">a</span>;
@@ -172,8 +172,8 @@ constructor.
 </div>
 </div>
 
-<div id="outline-container-orgfee9276" class="outline-2">
-<h2 id="static-lifetime-and-access"><a id="orgfee9276"></a>Static: lifetime and access</h2>
+<div id="outline-container-org5450b7a" class="outline-2">
+<h2 id="static-lifetime-and-access"><a id="org5450b7a"></a>Static: lifetime and access</h2>
 <div class="outline-text-2" id="text-static-lifetime-and-access">
 <ul class="org-ul">
 <li>The static keyword inside a local scope, e.g. in a class, function
@@ -201,8 +201,8 @@ linked within this file/translation unit.</li>
 </div>
 </div>
 
-<div id="outline-container-org7d72621" class="outline-2">
-<h2 id="virtual-function-and-pure-virtual-function-interface"><a id="org7d72621"></a>Virtual function and pure virtual function (interface)</h2>
+<div id="outline-container-org0d81bbd" class="outline-2">
+<h2 id="virtual-function-and-pure-virtual-function-interface"><a id="org0d81bbd"></a>Virtual function and pure virtual function (interface)</h2>
 <div class="outline-text-2" id="text-virtual-function-and-pure-virtual-function-interface">
 <ul class="org-ul">
 <li>All method functions can be overwritten in the derived class. However,
@@ -216,8 +216,8 @@ derived class to define it.</li>
 </div>
 </div>
 
-<div id="outline-container-org99c6103" class="outline-2">
-<h2 id="mutable"><a id="org99c6103"></a>Mutable</h2>
+<div id="outline-container-orgd838188" class="outline-2">
+<h2 id="mutable"><a id="orgd838188"></a>Mutable</h2>
 <div class="outline-text-2" id="text-mutable">
 <p>
 Mark a class variable mutable will allow const methods to change it.
@@ -225,8 +225,8 @@ Mark a class variable mutable will allow const methods to change it.
 </div>
 </div>
 
-<div id="outline-container-org56b9975" class="outline-2">
-<h2 id="string-literal"><a id="org56b9975"></a>String literal</h2>
+<div id="outline-container-orgf842306" class="outline-2">
+<h2 id="string-literal"><a id="orgf842306"></a>String literal</h2>
 <div class="outline-text-2" id="text-string-literal">
 <ul class="org-ul">
 <li>They are on a read-only memory, so you cannot modify it.</li>
@@ -244,8 +244,8 @@ b[2] = <span style="font-style: italic;">'c'</span>; <span style="font-weight: b
 </div>
 </div>
 
-<div id="outline-container-org9d642c7" class="outline-2">
-<h2 id="const"><a id="org9d642c7"></a>Const</h2>
+<div id="outline-container-org4d6d852" class="outline-2">
+<h2 id="const"><a id="org4d6d852"></a>Const</h2>
 <div class="outline-text-2" id="text-const">
 <div class="org-src-container">
 <pre class="src src-c++"><span style="font-weight: bold;">const</span> <span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">a</span>; <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">the integer cannot be modified.</span>
@@ -256,8 +256,8 @@ b[2] = <span style="font-style: italic;">'c'</span>; <span style="font-weight: b
 </div>
 </div>
 
-<div id="outline-container-org9acead0" class="outline-2">
-<h2 id="stack-vs.-heap-instantiation"><a id="org9acead0"></a>Stack vs. heap instantiation</h2>
+<div id="outline-container-org104859f" class="outline-2">
+<h2 id="stack-vs.-heap-instantiation"><a id="org104859f"></a>Stack vs. heap instantiation</h2>
 <div class="outline-text-2" id="text-stack-vs.-heap-instantiation">
 <ul class="org-ul">
 <li>Stack is about 2Mb</li>
@@ -287,8 +287,8 @@ heap data structure.</li>
 </div>
 </div>
 
-<div id="outline-container-org6acabba" class="outline-2">
-<h2 id="implicit-conversion"><a id="org6acabba"></a>Implicit conversion</h2>
+<div id="outline-container-org5fc1a38" class="outline-2">
+<h2 id="implicit-conversion"><a id="org5fc1a38"></a>Implicit conversion</h2>
 <div class="outline-text-2" id="text-implicit-conversion">
 <p>
 It only does it once. For example,
@@ -309,8 +309,8 @@ print(<span style="font-weight: bold; text-decoration: underline;">std</span>::s
 </div>
 </div>
 
-<div id="outline-container-org46a9d61" class="outline-2">
-<h2 id="stdmove"><a id="org46a9d61"></a>std::move</h2>
+<div id="outline-container-orged260d9" class="outline-2">
+<h2 id="stdmove"><a id="orged260d9"></a>std::move</h2>
 <div class="outline-text-2" id="text-stdmove">
 <ul class="org-ul">
 <li>It is as simple as converting lvalue to rvalue. The real move (include
@@ -323,8 +323,8 @@ from). The move ctor or assignment actually steals it.</li>
 </div>
 </div>
 
-<div id="outline-container-org4bd1b6b" class="outline-2">
-<h2 id="dont-return-an-rvalue-ref-just-return-a-value"><a id="org4bd1b6b"></a>Don't return an rvalue ref, just return a value</h2>
+<div id="outline-container-orgbdc53e1" class="outline-2">
+<h2 id="dont-return-an-rvalue-ref-just-return-a-value"><a id="orgbdc53e1"></a>Don't return an rvalue ref, just return a value</h2>
 <div class="outline-text-2" id="text-dont-return-an-rvalue-ref-just-return-a-value">
 <div class="org-src-container">
 <pre class="src src-c++"><span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">B</span>
@@ -373,8 +373,8 @@ then the receiver end has a dangling pointer.
 </div>
 </div>
 
-<div id="outline-container-org744fb22" class="outline-2">
-<h2 id="stdforward"><a id="org744fb22"></a>std::forward</h2>
+<div id="outline-container-orgce23c19" class="outline-2">
+<h2 id="stdforward"><a id="orgce23c19"></a>std::forward</h2>
 <div class="outline-text-2" id="text-stdforward">
 <p>
 It is converting something to T&amp;&amp;. This is only used in a template
@@ -383,8 +383,8 @@ function used for relay purposes.
 </div>
 </div>
 
-<div id="outline-container-org2874a14" class="outline-2">
-<h2 id="stdunique_ptr-stdshared_ptr-and-stdweak_ptr"><a id="org2874a14"></a><code>std::unique_ptr</code>, <code>std::shared_ptr</code>, and <code>std::weak_ptr</code></h2>
+<div id="outline-container-org29ce408" class="outline-2">
+<h2 id="stdunique_ptr-stdshared_ptr-and-stdweak_ptr"><a id="org29ce408"></a><code>std::unique_ptr</code>, <code>std::shared_ptr</code>, and <code>std::weak_ptr</code></h2>
 <div class="outline-text-2" id="text-stdunique_ptr-stdshared_ptr-and-stdweak_ptr">
 <ul class="org-ul">
 <li><code>std::unique_ptr</code> has almost no overhead.</li>
@@ -396,9 +396,9 @@ and the object together.</li>
 </div>
 </div>
 
-<div id="outline-container-org5447a01" class="outline-2">
-<h2 id="org5447a01">Ownership: pointer, reference, smart pointers</h2>
-<div class="outline-text-2" id="text-org5447a01">
+<div id="outline-container-org0fa3e12" class="outline-2">
+<h2 id="org0fa3e12">Ownership: pointer, reference, smart pointers</h2>
+<div class="outline-text-2" id="text-org0fa3e12">
 <p>
 What does it mean when passing pointer, reference, smart pointers to a function (ctor).
 </p>
@@ -413,8 +413,8 @@ What does it mean when passing pointer, reference, smart pointers to a function 
 </div>
 </div>
 
-<div id="outline-container-org4961820" class="outline-2">
-<h2 id="function-pointer"><a id="org4961820"></a>Function pointer</h2>
+<div id="outline-container-org81dcc8d" class="outline-2">
+<h2 id="function-pointer"><a id="org81dcc8d"></a>Function pointer</h2>
 <div class="outline-text-2" id="text-function-pointer">
 <ul class="org-ul">
 <li>C style function pointer
@@ -436,8 +436,8 @@ convert it to <code>std::function</code>.</li>
 </div>
 </div>
 
-<div id="outline-container-orgeee5133" class="outline-2">
-<h2 id="union-and-type-punning"><a id="orgeee5133"></a>Union and type punning</h2>
+<div id="outline-container-org931bb60" class="outline-2">
+<h2 id="union-and-type-punning"><a id="org931bb60"></a>Union and type punning</h2>
 <div class="outline-text-2" id="text-union-and-type-punning">
 <ul class="org-ul">
 <li>type punning is to interpret a piece of memory as a different type.
@@ -462,8 +462,8 @@ b[1]; <span style="font-weight: bold; font-style: italic;">// </span><span style
 </div>
 </div>
 
-<div id="outline-container-orgb34d66d" class="outline-2">
-<h2 id="stdvariant"><a id="orgb34d66d"></a>std::variant</h2>
+<div id="outline-container-org2affe35" class="outline-2">
+<h2 id="stdvariant"><a id="org2affe35"></a>std::variant</h2>
 <div class="outline-text-2" id="text-stdvariant">
 <ul class="org-ul">
 <li>a safer way to do Union</li>
@@ -473,8 +473,8 @@ like union, it occupies memory that is the sum of all its variants.</li>
 </div>
 </div>
 
-<div id="outline-container-org1646800" class="outline-2">
-<h2 id="singleton"><a id="org1646800"></a>Singleton</h2>
+<div id="outline-container-org0c792e7" class="outline-2">
+<h2 id="singleton"><a id="org0c792e7"></a>Singleton</h2>
 <div class="outline-text-2" id="text-singleton">
 <ul class="org-ul">
 <li>a static member function defines and then returns a static variable
@@ -484,9 +484,9 @@ variable.</li>
 </div>
 </div>
 
-<div id="outline-container-org1e283af" class="outline-2">
-<h2 id="org1e283af"><a href="https://www.youtube.com/watch?v=mXxNvaEdNHI">C++14</a> feels like a patch for C++11</h2>
-<div class="outline-text-2" id="text-org1e283af">
+<div id="outline-container-org6c66770" class="outline-2">
+<h2 id="org6c66770"><a href="https://www.youtube.com/watch?v=mXxNvaEdNHI">C++14</a> feels like a patch for C++11</h2>
+<div class="outline-text-2" id="text-org6c66770">
 <ul class="org-ul">
 <li><code>auto</code> as a function return type;</li>
 <li>Template lambda function using auto keyword</li>
@@ -504,9 +504,9 @@ Now, technically, you no longer to use explicit <code>new</code> and <code>delet
 </div>
 </div>
 
-<div id="outline-container-org115f93e" class="outline-2">
-<h2 id="org115f93e"><a href="https://www.youtube.com/watch?v=QpFjOlzg1r4">C++17</a></h2>
-<div class="outline-text-2" id="text-org115f93e">
+<div id="outline-container-orgb479d13" class="outline-2">
+<h2 id="orgb479d13"><a href="https://www.youtube.com/watch?v=QpFjOlzg1r4">C++17</a></h2>
+<div class="outline-text-2" id="text-orgb479d13">
 <ul class="org-ul">
 <li><p>
 Guaranteed Copy/ Move Elision
@@ -552,13 +552,13 @@ if-init
 </div>
 </div>
 
-<div id="outline-container-orgb2a8a11" class="outline-2">
-<h2 id="orgb2a8a11"><a href="https://www.youtube.com/watch?v=D81yl6_kHEM">C++20</a></h2>
-<div class="outline-text-2" id="text-orgb2a8a11">
+<div id="outline-container-orga41c0c1" class="outline-2">
+<h2 id="orga41c0c1"><a href="https://www.youtube.com/watch?v=D81yl6_kHEM">C++20</a></h2>
+<div class="outline-text-2" id="text-orga41c0c1">
 </div>
-<div id="outline-container-org80c8881" class="outline-3">
-<h3 id="org80c8881">Coroutine</h3>
-<div class="outline-text-3" id="text-org80c8881">
+<div id="outline-container-org97e25e6" class="outline-3">
+<h3 id="org97e25e6">Coroutine</h3>
+<div class="outline-text-3" id="text-org97e25e6">
 <ul class="org-ul">
 <li><code>co_yield</code> similar to python's <code>yield</code>
 <b>It will be more complete in c++23. Don't do it yourself, use a library for now</b>.
@@ -580,9 +580,9 @@ Before <code>co_wait</code>, you can do it through callback:
 </div>
 </div>
 
-<div id="outline-container-org2179f50" class="outline-3">
-<h3 id="org2179f50">Concept</h3>
-<div class="outline-text-3" id="text-org2179f50">
+<div id="outline-container-org089435c" class="outline-3">
+<h3 id="org089435c">Concept</h3>
+<div class="outline-text-3" id="text-org089435c">
 <ul class="org-ul">
 <li><p>
 For template, explicitly write out the constraint of the template type.
@@ -599,9 +599,9 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-org75f462a" class="outline-3">
-<h3 id="org75f462a">Range</h3>
-<div class="outline-text-3" id="text-org75f462a">
+<div id="outline-container-org5c64e65" class="outline-3">
+<h3 id="org5c64e65">Range</h3>
+<div class="outline-text-3" id="text-org5c64e65">
 <ul class="org-ul">
 <li>Build on top of concept</li>
 <li>Lazy evaluation</li>
@@ -609,9 +609,9 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-org6264177" class="outline-3">
-<h3 id="org6264177">Module</h3>
-<div class="outline-text-3" id="text-org6264177">
+<div id="outline-container-org230f392" class="outline-3">
+<h3 id="org230f392">Module</h3>
+<div class="outline-text-3" id="text-org230f392">
 <ul class="org-ul">
 <li>*.cppm</li>
 <li>export</li>
@@ -621,13 +621,13 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-org3c6c1dc" class="outline-2">
-<h2 id="org3c6c1dc"><a href="https://www.youtube.com/watch?v=O65lEiYkkbc">Design Class</a></h2>
-<div class="outline-text-2" id="text-org3c6c1dc">
+<div id="outline-container-orga590ee0" class="outline-2">
+<h2 id="orga590ee0"><a href="https://www.youtube.com/watch?v=O65lEiYkkbc">Design Class</a></h2>
+<div class="outline-text-2" id="text-orga590ee0">
 </div>
-<div id="outline-container-org7e28ea2" class="outline-3">
-<h3 id="org7e28ea2">Don't make data member const or references</h3>
-<div class="outline-text-3" id="text-org7e28ea2">
+<div id="outline-container-org95afeba" class="outline-3">
+<h3 id="org95afeba">Don't make data member const or references</h3>
+<div class="outline-text-3" id="text-org95afeba">
 <ul class="org-ul">
 <li>Otherwise, the copy assignment and move ctor/assignment will be gone. but copy ctor is okay.</li>
 <li>use a raw pointer instead of a reference. Function interface can still be a reference. It is just stored as a pointer.</li>
@@ -635,9 +635,9 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-orgc08e7b0" class="outline-3">
-<h3 id="orgc08e7b0">Value initializer</h3>
-<div class="outline-text-3" id="text-orgc08e7b0">
+<div id="outline-container-orgd029edc" class="outline-3">
+<h3 id="orgd029edc">Value initializer</h3>
+<div class="outline-text-3" id="text-orgd029edc">
 <ul class="org-ul">
 <li><code>Widget w{};</code> will also initialize <code>int</code> or <code>int*</code>.</li>
 <li>best practice is to put the initial value in the class when you declare the variable. The reason to not put in ctor, is to reduce duplication if you have two ctors that both need to initialize.</li>
@@ -646,31 +646,31 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-org99305d1" class="outline-2">
-<h2 id="org99305d1"><a href="https://www.youtube.com/watch?v=7Qgd9B1KuMQ">RAII: Resource Acquisition is Initialization: it means to cleanup in the destructor.</a></h2>
-<div class="outline-text-2" id="text-org99305d1">
+<div id="outline-container-orgcb4c0ea" class="outline-2">
+<h2 id="orgcb4c0ea"><a href="https://www.youtube.com/watch?v=7Qgd9B1KuMQ">RAII: Resource Acquisition is Initialization: it means to cleanup in the destructor.</a></h2>
+<div class="outline-text-2" id="text-orgcb4c0ea">
 </div>
-<div id="outline-container-org52d4f57" class="outline-3">
-<h3 id="org52d4f57">This applies to raw heap pointers, file handles, mutex, etc.</h3>
+<div id="outline-container-org4525f94" class="outline-3">
+<h3 id="org4525f94">This applies to raw heap pointers, file handles, mutex, etc.</h3>
 </div>
-<div id="outline-container-org2f6984f" class="outline-3">
-<h3 id="org2f6984f">The Rule of Three: all three need to be user defined if RAII.</h3>
-<div class="outline-text-3" id="text-org2f6984f">
+<div id="outline-container-org15b4643" class="outline-3">
+<h3 id="org15b4643">The Rule of Three: all three need to be user defined if RAII.</h3>
+<div class="outline-text-3" id="text-org15b4643">
 </div>
-<div id="outline-container-orgd8b08fe" class="outline-4">
-<h4 id="orgd8b08fe">destructor</h4>
+<div id="outline-container-org5d7bdf4" class="outline-4">
+<h4 id="org5d7bdf4">destructor</h4>
 </div>
-<div id="outline-container-orgc7ceea6" class="outline-4">
-<h4 id="orgc7ceea6">copy ctor</h4>
-<div class="outline-text-4" id="text-orgc7ceea6">
+<div id="outline-container-org5648b2d" class="outline-4">
+<h4 id="org5648b2d">copy ctor</h4>
+<div class="outline-text-4" id="text-org5648b2d">
 <p>
 The default will lead to double deletion
 </p>
 </div>
 </div>
-<div id="outline-container-orga0e75c8" class="outline-4">
-<h4 id="orga0e75c8">copy assignment: use copy-and-swap to implement it.</h4>
-<div class="outline-text-4" id="text-orga0e75c8">
+<div id="outline-container-org9be281a" class="outline-4">
+<h4 id="org9be281a">copy assignment: use copy-and-swap to implement it.</h4>
+<div class="outline-text-4" id="text-org9be281a">
 <ul class="org-ul">
 <li>copy: call copy ctor and generate a new object</li>
 <li>swap: swap LHS and the new object and use the new objects' destructor to free the LHS.</li>
@@ -678,35 +678,35 @@ The default will lead to double deletion
 </div>
 </div>
 </div>
-<div id="outline-container-orgaff8416" class="outline-3">
-<h3 id="orgaff8416">Destroctor is called even after throw</h3>
+<div id="outline-container-org57f12c0" class="outline-3">
+<h3 id="org57f12c0">Destroctor is called even after throw</h3>
 </div>
-<div id="outline-container-orgf8b5d7e" class="outline-3">
-<h3 id="orgf8b5d7e">The Rule of Three: if not RAII (don't store data or contains only well written Rule of Three classes)</h3>
-<div class="outline-text-3" id="text-orgf8b5d7e">
+<div id="outline-container-orgf517577" class="outline-3">
+<h3 id="orgf517577">The Rule of Three: if not RAII (don't store data or contains only well written Rule of Three classes)</h3>
+<div class="outline-text-3" id="text-orgf517577">
 <p>
 Let compiler generate them.
 </p>
 </div>
 </div>
-<div id="outline-container-org5aeeb9d" class="outline-3">
-<h3 id="org5aeeb9d">The Rule of Five:</h3>
-<div class="outline-text-3" id="text-org5aeeb9d">
+<div id="outline-container-org4490e06" class="outline-3">
+<h3 id="org4490e06">The Rule of Five:</h3>
+<div class="outline-text-3" id="text-org4490e06">
 </div>
-<div id="outline-container-orgb6f9595" class="outline-4">
-<h4 id="orgb6f9595">all three rules plus</h4>
+<div id="outline-container-org2510ce6" class="outline-4">
+<h4 id="org2510ce6">all three rules plus</h4>
 </div>
-<div id="outline-container-orgc67aee0" class="outline-4">
-<h4 id="orgc67aee0">move ctor</h4>
-<div class="outline-text-4" id="text-orgc67aee0">
+<div id="outline-container-orgf6ab86d" class="outline-4">
+<h4 id="orgf6ab86d">move ctor</h4>
+<div class="outline-text-4" id="text-orgf6ab86d">
 <p>
 Destroy RHS
 </p>
 </div>
 </div>
-<div id="outline-container-org0f8b5a4" class="outline-4">
-<h4 id="org0f8b5a4">move assignment</h4>
-<div class="outline-text-4" id="text-org0f8b5a4">
+<div id="outline-container-org87704c4" class="outline-4">
+<h4 id="org87704c4">move assignment</h4>
+<div class="outline-text-4" id="text-org87704c4">
 <ul class="org-ul">
 <li>move: call move ctor: RHS is destroyed.</li>
 <li>swap: same as before, use the destructor of the new object to free LHS.</li>
@@ -714,49 +714,49 @@ Destroy RHS
 </div>
 </div>
 </div>
-<div id="outline-container-orgbfa81ea" class="outline-3">
-<h3 id="orgbfa81ea">The Rule of Four and a half:</h3>
-<div class="outline-text-3" id="text-orgbfa81ea">
+<div id="outline-container-orge2c8af6" class="outline-3">
+<h3 id="orge2c8af6">The Rule of Four and a half:</h3>
+<div class="outline-text-3" id="text-orge2c8af6">
 </div>
-<div id="outline-container-org4a3c645" class="outline-4">
-<h4 id="org4a3c645">All three ctors</h4>
+<div id="outline-container-org8f9c9ec" class="outline-4">
+<h4 id="org8f9c9ec">All three ctors</h4>
 </div>
-<div id="outline-container-org0baab20" class="outline-4">
-<h4 id="org0baab20">merge copy and move assignment into a value assignment</h4>
-<div class="outline-text-4" id="text-org0baab20">
+<div id="outline-container-orgf814b23" class="outline-4">
+<h4 id="orgf814b23">merge copy and move assignment into a value assignment</h4>
+<div class="outline-text-4" id="text-orgf814b23">
 <p>
 since the first thing of these two are creating a copy (through copy or move ctor) anyway
 </p>
 </div>
 </div>
-<div id="outline-container-orgc6784d6" class="outline-4">
-<h4 id="orgc6784d6">The half is the swap function.</h4>
-<div class="outline-text-4" id="text-orgc6784d6">
+<div id="outline-container-orgb3dd668" class="outline-4">
+<h4 id="orgb3dd668">The half is the swap function.</h4>
+<div class="outline-text-4" id="text-orgb3dd668">
 <p>
 Otherwise, the default swap will call move and copy.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf539857" class="outline-3">
-<h3 id="orgf539857">Good examples</h3>
-<div class="outline-text-3" id="text-orgf539857">
+<div id="outline-container-org61a485d" class="outline-3">
+<h3 id="org61a485d">Good examples</h3>
+<div class="outline-text-3" id="text-org61a485d">
 </div>
-<div id="outline-container-orgb7ff00d" class="outline-4">
-<h4 id="orgb7ff00d"><code>unique_ptr</code>: ctor, move ctor and move assignment</h4>
+<div id="outline-container-org6300dc1" class="outline-4">
+<h4 id="org6300dc1"><code>unique_ptr</code>: ctor, move ctor and move assignment</h4>
 </div>
-<div id="outline-container-orga2cdfef" class="outline-4">
-<h4 id="orga2cdfef"><code>shared_ptr</code>: all five</h4>
+<div id="outline-container-org605e03d" class="outline-4">
+<h4 id="org605e03d"><code>shared_ptr</code>: all five</h4>
 </div>
-<div id="outline-container-org47a5b63" class="outline-4">
-<h4 id="org47a5b63"><code>unique_lock</code></h4>
+<div id="outline-container-orge8e59a1" class="outline-4">
+<h4 id="orge8e59a1"><code>unique_lock</code></h4>
 </div>
-<div id="outline-container-org256d09c" class="outline-4">
-<h4 id="org256d09c"><code>ifstream</code></h4>
+<div id="outline-container-org45b669e" class="outline-4">
+<h4 id="org45b669e"><code>ifstream</code></h4>
 </div>
-<div id="outline-container-org9ebd42a" class="outline-4">
-<h4 id="org9ebd42a"><code>lock_guard</code>: just ctor and destructor</h4>
-<div class="outline-text-4" id="text-org9ebd42a">
+<div id="outline-container-org23fa5e8" class="outline-4">
+<h4 id="org23fa5e8"><code>lock_guard</code>: just ctor and destructor</h4>
+<div class="outline-text-4" id="text-org23fa5e8">
 <script src="https://utteranc.es/client.js"
         repo="sychen52/sychen52.github.io"
         issue-term="pathname"
