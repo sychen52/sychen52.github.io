@@ -15,14 +15,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org366459a">Defaults</a></li>
-<li><a href="#orga160716">Borrow (Reference)</a></li>
-<li><a href="#org152b487">Ownership</a></li>
-<li><a href="#org5fd7c3e">Move and Copy</a></li>
-<li><a href="#orgd84f0a9">lifetime</a>
+<li><a href="#org49eeabd">Defaults</a></li>
+<li><a href="#orgb3072ff">Borrow (Reference)</a></li>
+<li><a href="#org564c060">Ownership</a></li>
+<li><a href="#orgaa48e96">Move and Copy</a></li>
+<li><a href="#org89a3026">lifetime</a>
 <ul>
-<li><a href="#orgedb5ce3">The compiler determines the lifetime of the returned reference based on these rules.</a></li>
-<li><a href="#org0e506ee">If the compiler cannot determine the output lifetime parameters, you need to annotate it for the compiler.</a></li>
+<li><a href="#org1df5e55">The compiler determines the lifetime of the returned reference based on these rules.</a></li>
+<li><a href="#org04d77e9">If the compiler cannot determine the output lifetime parameters, you need to annotate it for the compiler.</a></li>
 </ul>
 </li>
 </ul>
@@ -32,23 +32,23 @@
 These are notes of watching <a href="https://www.youtube.com/playlist?list=PLai5B987bZ9CoVR-QEIN9foz4QCJ0H2Y8">this playlist</a>.
 </p>
 
-<div id="outline-container-org366459a" class="outline-2">
-<h2 id="org366459a">Defaults</h2>
-<div class="outline-text-2" id="text-org366459a">
+<div id="outline-container-org49eeabd" class="outline-2">
+<h2 id="org49eeabd">Defaults</h2>
+<div class="outline-text-2" id="text-org49eeabd">
 <ul class="org-ul">
 <li>immutable;</li>
 <li>move
 <ul class="org-ul">
 <li>when the resource is on heap, implicit unique<sub>ptr</sub>. (think in a C++ way)</li>
-<li>when it is on stack, see <a href="#org5fd7c3e">Move and Copy</a>.</li>
+<li>when it is on stack, see <a href="#orgaa48e96">Move and Copy</a>.</li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga160716" class="outline-2">
-<h2 id="orga160716">Borrow (Reference)</h2>
-<div class="outline-text-2" id="text-orga160716">
+<div id="outline-container-orgb3072ff" class="outline-2">
+<h2 id="orgb3072ff">Borrow (Reference)</h2>
+<div class="outline-text-2" id="text-orgb3072ff">
 <ul class="org-ul">
 <li>One mutable ref, or any number of immutable ref.</li>
 <li>Compiler checks whether a ref is still valid (the original copy does not go out of scope).</li>
@@ -58,11 +58,11 @@ These are notes of watching <a href="https://www.youtube.com/playlist?list=PLai5
 </div>
 </div>
 
-<div id="outline-container-org152b487" class="outline-2">
-<h2 id="org152b487">Ownership</h2>
-<div class="outline-text-2" id="text-org152b487">
+<div id="outline-container-org564c060" class="outline-2">
+<h2 id="org564c060">Ownership</h2>
+<div class="outline-text-2" id="text-org564c060">
 <p>
-rust's ownership mode is just like c++ unique<sub>ptr</sub>. That is also why it is moved by default.
+rust's ownership mode is just like c++ RAII (or unique<sub>ptr</sub> if on heap). That is also why it is moved by default.
 </p>
 <ul class="org-ul">
 <li>one and only one owner</li>
@@ -71,9 +71,9 @@ rust's ownership mode is just like c++ unique<sub>ptr</sub>. That is also why it
 </div>
 </div>
 
-<div id="outline-container-org5fd7c3e" class="outline-2">
-<h2 id="org5fd7c3e">Move and Copy</h2>
-<div class="outline-text-2" id="text-org5fd7c3e">
+<div id="outline-container-orgaa48e96" class="outline-2">
+<h2 id="orgaa48e96">Move and Copy</h2>
+<div class="outline-text-2" id="text-orgaa48e96">
 <div class="org-src-container">
 <pre class="src src-rust">let b = a;
 func(a);
@@ -81,23 +81,23 @@ func(a);
 </div>
 <ul class="org-ul">
 <li>For variables on the heap, or struct with variables on the heap, they are moved.</li>
-<li>For variables on the stack that have copy trait implemented (e.g. all primitives like i32), they are copied.</li>
+<li>For variables on the stack that have copy trait implemented (e.g. primitives like i32), they are copied.</li>
 <li>For variables on the stack that don't have copy trait implemented, they are "moved". In fact, they are copied, but the <a href="https://stackoverflow.com/questions/36230710/how-does-rust-move-stack-variables-that-are-not-copyable">original stack memory is marked as moved by the compliler</a>.</li>
-<li><a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html?highlight=ownersh#what-is-ownership">Rust won’t let us annotate a type with Copy if the type, or any of its parts, has implemented the Drop trait.</a> This means for variables on the heap, or struct with variables on the heap, they cannot implement copy trait, thus always be moved.</li>
+<li><a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html?#what-is-ownership">Rust won’t let us annotate a type with Copy if the type, or any of its parts, has implemented the Drop trait.</a> This means for variables on the heap, or struct with variables on the heap, they cannot implement copy trait, thus always be moved.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgd84f0a9" class="outline-2">
-<h2 id="orgd84f0a9">lifetime</h2>
-<div class="outline-text-2" id="text-orgd84f0a9">
+<div id="outline-container-org89a3026" class="outline-2">
+<h2 id="org89a3026">lifetime</h2>
+<div class="outline-text-2" id="text-org89a3026">
 <p>
 A function/method may return a reference.
 </p>
 </div>
-<div id="outline-container-orgedb5ce3" class="outline-3">
-<h3 id="orgedb5ce3">The compiler determines the lifetime of the returned reference based on these rules.</h3>
-<div class="outline-text-3" id="text-orgedb5ce3">
+<div id="outline-container-org1df5e55" class="outline-3">
+<h3 id="org1df5e55">The compiler determines the lifetime of the returned reference based on these rules.</h3>
+<div class="outline-text-3" id="text-org1df5e55">
 <ul class="org-ul">
 <li>Each parameter that is a ref gets its own lifetime parameter</li>
 <li>If there is exactly one input lifetime parameter, that is assigned to all output lifetime parameters</li>
@@ -105,8 +105,8 @@ A function/method may return a reference.
 </ul>
 </div>
 </div>
-<div id="outline-container-org0e506ee" class="outline-3">
-<h3 id="org0e506ee">If the compiler cannot determine the output lifetime parameters, you need to annotate it for the compiler.</h3>
+<div id="outline-container-org04d77e9" class="outline-3">
+<h3 id="org04d77e9">If the compiler cannot determine the output lifetime parameters, you need to annotate it for the compiler.</h3>
 </div>
 </div>
 </div>
