@@ -13,7 +13,7 @@ These are notes of watching [[https://www.youtube.com/playlist?list=PLai5B987bZ9
 - no need to wait for the ref to go out of {}, as long as it is no longer used, its lifetime ends.
 
 * Ownership
-rust's ownership mode is just like c++ unique_ptr. That is also why it is moved by default.
+rust's ownership mode is just like c++ RAII (or unique_ptr if on heap). That is also why it is moved by default.
 - one and only one owner
 - when the owner goes out of scope, the resource is deallocated.
 
@@ -23,9 +23,9 @@ rust's ownership mode is just like c++ unique_ptr. That is also why it is moved 
   func(a);
 #+end_src
 - For variables on the heap, or struct with variables on the heap, they are moved.
-- For variables on the stack that have copy trait implemented (e.g. all primitives like i32), they are copied.
+- For variables on the stack that have copy trait implemented (e.g. primitives like i32), they are copied.
 - For variables on the stack that don't have copy trait implemented, they are "moved". In fact, they are copied, but the [[https://stackoverflow.com/questions/36230710/how-does-rust-move-stack-variables-that-are-not-copyable][original stack memory is marked as moved by the compliler]].
-- [[https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html?highlight=ownersh#what-is-ownership][Rust won’t let us annotate a type with Copy if the type, or any of its parts, has implemented the Drop trait.]] This means for variables on the heap, or struct with variables on the heap, they cannot implement copy trait, thus always be moved.
+- [[https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html?#what-is-ownership][Rust won’t let us annotate a type with Copy if the type, or any of its parts, has implemented the Drop trait.]] This means for variables on the heap, or struct with variables on the heap, they cannot implement copy trait, thus always be moved.
 
 * lifetime
 A function/method may return a reference.
