@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
 <meta name="generator" content="Org mode" />
-<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 </head>
 <body>
 <div id="content">
@@ -15,36 +15,36 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org989c5d3"><code>__str__()</code> vs <code>__repr__()</code>:</a></li>
-<li><a href="#orgd20bc5f">Assignment is special</a>
+<li><a href="#org02583a1"><code>__str__()</code> vs <code>__repr__()</code>:</a></li>
+<li><a href="#orgc39e20c">Assignment is special</a>
 <ul>
-<li><a href="#orga23c549">Assignment is pointing the name to a new object</a></li>
-<li><a href="#org301d686">= does not always mean assignment.</a>
+<li><a href="#orgae5a904">Assignment is pointing the name to a new object</a></li>
+<li><a href="#org3fd40a9"><code>=</code> does not always mean assignment.</a>
 <ul>
-<li><a href="#orgbcab496"><code>+=</code></a></li>
-<li><a href="#orgd4e5031">a[:3] = 2</a></li>
+<li><a href="#org7aa119b"><code>+=</code></a></li>
+<li><a href="#orgf9b4034"><code>a[:3] = 2</code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgda3515f">Python function always does passing by reference</a>
+<li><a href="#orgf33e377">Python function always does passing by reference</a>
 <ul>
-<li><a href="#orgc1e1f72">Assignment is pointing the name to a new object</a></li>
-<li><a href="#orgbb6d03f">= does not always mean assignment</a></li>
+<li><a href="#org9e9aad1">Assignment is pointing the name to a new object</a></li>
+<li><a href="#org37f3c6e"><code>=</code> does not always mean assignment</a></li>
 </ul>
 </li>
-<li><a href="#org40ff41e"><code>b=a[1:3]</code></a>
+<li><a href="#org818bf06"><code>b=a[1:3]</code></a>
 <ul>
-<li><a href="#org8de75cb">If a is np.ndarray or pd.DataFrame, b is a view.</a></li>
-<li><a href="#org1a2577e">If a is a list, b is (1 level) shallow copy.</a></li>
+<li><a href="#org84d18e0">If a is np.ndarray or pd.DataFrame, b is a view.</a></li>
+<li><a href="#org6a86c05">If a is a list, b is (1 level) shallow copy.</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org989c5d3" class="outline-2">
-<h2 id="org989c5d3"><code>__str__()</code> vs <code>__repr__()</code>:</h2>
-<div class="outline-text-2" id="text-org989c5d3">
+<div id="outline-container-org02583a1" class="outline-2">
+<h2 id="org02583a1"><code>__str__()</code> vs <code>__repr__()</code>:</h2>
+<div class="outline-text-2" id="text-org02583a1">
 <ul class="org-ul">
 <li><code>__str__()</code>: for human to read</li>
 <li><code>__repr__()</code>: for developer to recreate the object</li>
@@ -52,33 +52,33 @@
 </div>
 </div>
 
-<div id="outline-container-orgd20bc5f" class="outline-2">
-<h2 id="orgd20bc5f">Assignment is special</h2>
-<div class="outline-text-2" id="text-orgd20bc5f">
+<div id="outline-container-orgc39e20c" class="outline-2">
+<h2 id="orgc39e20c">Assignment is special</h2>
+<div class="outline-text-2" id="text-orgc39e20c">
 </div>
-<div id="outline-container-orga23c549" class="outline-3">
-<h3 id="orga23c549">Assignment is pointing the name to a new object</h3>
-<div class="outline-text-3" id="text-orga23c549">
+<div id="outline-container-orgae5a904" class="outline-3">
+<h3 id="orgae5a904">Assignment is pointing the name to a new object</h3>
+<div class="outline-text-3" id="text-orgae5a904">
 <p>
 While most of the operators in python are just syntactic sugar for member function calls, such as <code>+, -, []</code>, etc.
 </p>
 </div>
 </div>
-<div id="outline-container-org301d686" class="outline-3">
-<h3 id="org301d686">= does not always mean assignment.</h3>
-<div class="outline-text-3" id="text-org301d686">
+<div id="outline-container-org3fd40a9" class="outline-3">
+<h3 id="org3fd40a9"><code>=</code> does not always mean assignment.</h3>
+<div class="outline-text-3" id="text-org3fd40a9">
 </div>
-<div id="outline-container-orgbcab496" class="outline-4">
-<h4 id="orgbcab496"><code>+=</code></h4>
-<div class="outline-text-4" id="text-orgbcab496">
+<div id="outline-container-org7aa119b" class="outline-4">
+<h4 id="org7aa119b"><code>+=</code></h4>
+<div class="outline-text-4" id="text-org7aa119b">
 <p>
 In fact, <code>n+=1</code> will always prefer calling <code>n.__iadd__(1)</code>. If it is not defined, then it will call <code>n=n.__add__(1)</code>, which will trigger an assingment.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd4e5031" class="outline-4">
-<h4 id="orgd4e5031">a[:3] = 2</h4>
-<div class="outline-text-4" id="text-orgd4e5031">
+<div id="outline-container-orgf9b4034" class="outline-4">
+<h4 id="orgf9b4034"><code>a[:3] = 2</code></h4>
+<div class="outline-text-4" id="text-orgf9b4034">
 <p>
 this is syntactic sugar for <code>a.__setitem__(slice(None, 3, None), 2)</code>.
 </p>
@@ -87,16 +87,16 @@ this is syntactic sugar for <code>a.__setitem__(slice(None, 3, None), 2)</code>.
 </div>
 </div>
 
-<div id="outline-container-orgda3515f" class="outline-2">
-<h2 id="orgda3515f">Python function always does passing by reference</h2>
-<div class="outline-text-2" id="text-orgda3515f">
+<div id="outline-container-orgf33e377" class="outline-2">
+<h2 id="orgf33e377">Python function always does passing by reference</h2>
+<div class="outline-text-2" id="text-orgf33e377">
 <p>
-However, sometimes it feels like passing by value.
+However, sometimes it feels like passing by value. This illution is caused by something else. For example,
 </p>
 </div>
-<div id="outline-container-orgc1e1f72" class="outline-3">
-<h3 id="orgc1e1f72">Assignment is pointing the name to a new object</h3>
-<div class="outline-text-3" id="text-orgc1e1f72">
+<div id="outline-container-org9e9aad1" class="outline-3">
+<h3 id="org9e9aad1">Assignment is pointing the name to a new object</h3>
+<div class="outline-text-3" id="text-org9e9aad1">
 <div class="org-src-container">
 <pre class="src src-python"><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">add_one</span>(n):
     <span style="font-weight: bold; font-style: italic;">n</span> += 1
@@ -111,9 +111,9 @@ In this case, <code>a</code> is passed into <code>add_one</code> by ref, however
 </p>
 </div>
 </div>
-<div id="outline-container-orgbb6d03f" class="outline-3">
-<h3 id="orgbb6d03f">= does not always mean assignment</h3>
-<div class="outline-text-3" id="text-orgbb6d03f">
+<div id="outline-container-org37f3c6e" class="outline-3">
+<h3 id="org37f3c6e"><code>=</code> does not always mean assignment</h3>
+<div class="outline-text-3" id="text-org37f3c6e">
 <div class="org-src-container">
 <pre class="src src-python"><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">add_one</span>(n):
     <span style="font-weight: bold; font-style: italic;">n</span> += 1
@@ -129,20 +129,28 @@ In this case, <code>n+=1</code> is calling <code>n.__iadd__(1)</code>, and an in
 </div>
 </div>
 
-<div id="outline-container-org40ff41e" class="outline-2">
-<h2 id="org40ff41e"><code>b=a[1:3]</code></h2>
-<div class="outline-text-2" id="text-org40ff41e">
+<div id="outline-container-org818bf06" class="outline-2">
+<h2 id="org818bf06"><code>b=a[1:3]</code></h2>
+<div class="outline-text-2" id="text-org818bf06">
 </div>
-<div id="outline-container-org8de75cb" class="outline-3">
-<h3 id="org8de75cb">If a is np.ndarray or pd.DataFrame, b is a view.</h3>
+<div id="outline-container-org84d18e0" class="outline-3">
+<h3 id="org84d18e0">If a is np.ndarray or pd.DataFrame, b is a view.</h3>
 </div>
-<div id="outline-container-org1a2577e" class="outline-3">
-<h3 id="org1a2577e">If a is a list, b is (1 level) shallow copy.</h3>
-<div class="outline-text-3" id="text-org1a2577e">
+<div id="outline-container-org6a86c05" class="outline-3">
+<h3 id="org6a86c05">If a is a list, b is (1 level) shallow copy.</h3>
+<div class="outline-text-3" id="text-org6a86c05">
 <p>
 It feels like sometimes assignment gives you a reference. Sometimes it gives you a copy. In fact, the trick is done in <code>[1:3]</code>, namely slicing.
-For a np.ndarray and pd.DataFrame, slicing returns a view (like a reference), while for a list, slicing returns a shallow copy.
+For a <code>np.ndarray</code> and <code>pd.DataFrame</code>, slicing returns a view (like a reference), while for a list, slicing returns a shallow copy.
 </p>
+
+<script src="https://utteranc.es/client.js"
+        repo="sychen52/sychen52.github.io"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
 </div>
 </div>
 </div>

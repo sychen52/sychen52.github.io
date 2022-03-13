@@ -8,7 +8,7 @@
 <title>Minimize \( \|Ax\| s.t. \|x\| = 1 \)</title>
 <meta name="generator" content="Org mode" />
 <meta name="keywords" content="optimization" />
-<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -39,28 +39,28 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdc3c92f">Solution</a>
+<li><a href="#org8d2bf56">Solution</a>
 <ul>
-<li><a href="#org74e5a44">SVD</a></li>
+<li><a href="#org154f59b">SVD</a></li>
 </ul>
 </li>
-<li><a href="#orgd0856df">Proof</a></li>
+<li><a href="#org396e61b">Proof</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgdc3c92f" class="outline-2">
-<h2 id="orgdc3c92f">Solution</h2>
-<div class="outline-text-2" id="text-orgdc3c92f">
+<div id="outline-container-org8d2bf56" class="outline-2">
+<h2 id="org8d2bf56">Solution</h2>
+<div class="outline-text-2" id="text-org8d2bf56">
 <ul class="org-ul">
 <li>Do a svd on A</li>
 <li>x = the v vector corresponding to the smallest singular value.</li>
 </ul>
 </div>
 
-<div id="outline-container-org74e5a44" class="outline-3">
-<h3 id="org74e5a44">SVD</h3>
-<div class="outline-text-3" id="text-org74e5a44">
+<div id="outline-container-org154f59b" class="outline-3">
+<h3 id="org154f59b">SVD</h3>
+<div class="outline-text-3" id="text-org154f59b">
 <p>
 One way to understand SVD is as follows:
 </p>
@@ -86,9 +86,9 @@ For real matrix, all singular values are non-negative.
 </div>
 </div>
 
-<div id="outline-container-orgd0856df" class="outline-2">
-<h2 id="orgd0856df">Proof</h2>
-<div class="outline-text-2" id="text-orgd0856df">
+<div id="outline-container-org396e61b" class="outline-2">
+<h2 id="org396e61b">Proof</h2>
+<div class="outline-text-2" id="text-org396e61b">
 <ul class="org-ul">
 <li>First, we assume m &gt; n and n = r, otherwise, the result would be 0.</li>
 <li>Decompose x into v-space, \( x=\sum_{i=1}^n x=x_iv_i \).</li>
