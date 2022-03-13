@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga58add0"><code>__str__()</code> vs <code>__repr__()</code>:</a></li>
+<li><a href="#orge2bfbd5">Python function always does passing by reference</a>
+<ul>
+<li><a href="#org4ba850a">Assignment is pointing the name to a new object</a></li>
+<li><a href="#orgba954d1">= does not always mean assignment</a></li>
+</ul>
+</li>
+<li><a href="#orga35b485"><code>b=a[1:3]</code></a>
+<ul>
+<li><a href="#org3b92a90">If a is np.ndarray or pd.DataFrame, b is a view.</a></li>
+<li><a href="#orgfb79b9e">If a is a list, b is (1 level) shallow copy.</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga58add0" class="outline-2">
+<h2 id="orga58add0"><code>__str__()</code> vs <code>__repr__()</code>:</h2>
+<div class="outline-text-2" id="text-orga58add0">
+<ul class="org-ul">
+<li><code>__str__()</code>: for human to read</li>
+<li><code>__repr__()</code>: for developer to recreate the object</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge2bfbd5" class="outline-2">
+<h2 id="orge2bfbd5">Python function always does passing by reference</h2>
+<div class="outline-text-2" id="text-orge2bfbd5">
+<p>
+However, sometimes it feels like passing by value
+</p>
+</div>
+<div id="outline-container-org4ba850a" class="outline-3">
+<h3 id="org4ba850a">Assignment is pointing the name to a new object</h3>
+<div class="outline-text-3" id="text-org4ba850a">
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">add_one</span>(n):
+    <span style="font-weight: bold; font-style: italic;">n</span> += 1
+<span style="font-weight: bold; font-style: italic;">a</span> = 1
+add_one(a)
+<span style="font-weight: bold;">assert</span> a == 1
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">a is still 1 here.</span>
+</pre>
+</div>
+<p>
+In this case, <code>a</code> is passed into <code>add_one</code> by ref, however, <code>n+=1</code> is <code>n=n+1</code> in this case, and it points <code>n</code> to a different object.
+</p>
+</div>
+</div>
+<div id="outline-container-orgba954d1" class="outline-3">
+<h3 id="orgba954d1">= does not always mean assignment</h3>
+<div class="outline-text-3" id="text-orgba954d1">
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">add_one</span>(n):
+    <span style="font-weight: bold; font-style: italic;">n</span> += 1
+<span style="font-weight: bold; font-style: italic;">a</span> = np.ones((1))
+add_one(a)
+<span style="font-weight: bold;">assert</span> np.<span style="font-weight: bold;">all</span>(a == np.array([2]))
+</pre>
+</div>
+<p>
+In this case, <code>n+=1</code> is calling <code>__iadd__(1)</code>, and an inplace add is performed, it is different from <code>n=n+1</code>. In fact, <code>n+=1</code> will always prefer calling <code>n.__iadd__(1)</code>. If it is not defined, then it will call <code>n=__add__(1)</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga35b485" class="outline-2">
+<h2 id="orga35b485"><code>b=a[1:3]</code></h2>
+<div class="outline-text-2" id="text-orga35b485">
+</div>
+<div id="outline-container-org3b92a90" class="outline-3">
+<h3 id="org3b92a90">If a is np.ndarray or pd.DataFrame, b is a view.</h3>
+</div>
+<div id="outline-container-orgfb79b9e" class="outline-3">
+<h3 id="orgfb79b9e">If a is a list, b is (1 level) shallow copy.</h3>
+<div class="outline-text-3" id="text-orgfb79b9e">
+<p>
+It feels like sometimes assignment gives you a reference. Sometimes it gives you a copy. In fact, the trick is done in <code>[1:3]</code>, namely slicing.
+For a np.ndarray and pd.DataFrame, slicing returns a view (like a reference), while for a list, slicing returns a shallow copy.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="validation"></p>
+</div>
+</body>
+</html>

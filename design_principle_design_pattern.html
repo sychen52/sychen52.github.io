@@ -17,12 +17,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga39047c">Cohesion and coupling</a></li>
-<li><a href="#org8add78a">SOLID:</a></li>
-<li><a href="#org3ba4e2d">Design patterns</a></li>
-<li><a href="#org62b571d">Dependency Injection vs dependency inversion:</a></li>
-<li><a href="#org1eccfdb">Code smells:</a></li>
-<li><a href="#org6a09ef7">Python:</a></li>
+<li><a href="#org70481a7">Cohesion and coupling</a></li>
+<li><a href="#orgd7b9e02">SOLID:</a></li>
+<li><a href="#org05d6a59">Design patterns</a></li>
+<li><a href="#org530582e">Dependency Injection vs dependency inversion:</a></li>
+<li><a href="#orge1aa449">Code smells:</a></li>
 </ul>
 </div>
 </div>
@@ -30,9 +29,9 @@
 These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCodes">Youtube channel.</a>
 </p>
 
-<div id="outline-container-orga39047c" class="outline-2">
-<h2 id="orga39047c">Cohesion and coupling</h2>
-<div class="outline-text-2" id="text-orga39047c">
+<div id="outline-container-org70481a7" class="outline-2">
+<h2 id="org70481a7">Cohesion and coupling</h2>
+<div class="outline-text-2" id="text-org70481a7">
 <ul class="org-ul">
 <li>Separate code that changes from that does not change.</li>
 <li>Program to interfaces (abstract class) instead of implementations.</li>
@@ -48,9 +47,9 @@ These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCode
 </div>
 </div>
 
-<div id="outline-container-org8add78a" class="outline-2">
-<h2 id="org8add78a">SOLID:</h2>
-<div class="outline-text-2" id="text-org8add78a">
+<div id="outline-container-orgd7b9e02" class="outline-2">
+<h2 id="orgd7b9e02">SOLID:</h2>
+<div class="outline-text-2" id="text-orgd7b9e02">
 <ul class="org-ul">
 <li>Single responsibility
 <ul class="org-ul">
@@ -85,9 +84,9 @@ These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCode
 </div>
 </div>
 
-<div id="outline-container-org3ba4e2d" class="outline-2">
-<h2 id="org3ba4e2d">Design patterns</h2>
-<div class="outline-text-2" id="text-org3ba4e2d">
+<div id="outline-container-org05d6a59" class="outline-2">
+<h2 id="org05d6a59">Design patterns</h2>
+<div class="outline-text-2" id="text-org05d6a59">
 <ul class="org-ul">
 <li>Creational
 <ul class="org-ul">
@@ -154,9 +153,9 @@ These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCode
 </div>
 </div>
 
-<div id="outline-container-org62b571d" class="outline-2">
-<h2 id="org62b571d">Dependency Injection vs dependency inversion:</h2>
-<div class="outline-text-2" id="text-org62b571d">
+<div id="outline-container-org530582e" class="outline-2">
+<h2 id="org530582e">Dependency Injection vs dependency inversion:</h2>
+<div class="outline-text-2" id="text-org530582e">
 <ul class="org-ul">
 <li>Dependency of two classes (strong to weak)
 <ul class="org-ul">
@@ -178,9 +177,9 @@ These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCode
 </div>
 </div>
 
-<div id="outline-container-org1eccfdb" class="outline-2">
-<h2 id="org1eccfdb">Code smells:</h2>
-<div class="outline-text-2" id="text-org1eccfdb">
+<div id="outline-container-orge1aa449" class="outline-2">
+<h2 id="orge1aa449">Code smells:</h2>
+<div class="outline-text-2" id="text-orge1aa449">
 <ul class="org-ul">
 <li>Use string to represent a type -&gt; enum</li>
 <li>Duplicate code -&gt; extract out as a function or class</li>
@@ -190,16 +189,6 @@ These are my notes while watch this <a href="https://www.youtube.com/c/ArjanCode
 <li>Boolean flag to do two different things -&gt; break into two functions</li>
 <li>Catch and ignore all exception</li>
 <li>Not using custom exceptions -&gt; custom exceptions can carry custom fields to provide more info.</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org6a09ef7" class="outline-2">
-<h2 id="org6a09ef7">Python:</h2>
-<div class="outline-text-2" id="text-org6a09ef7">
-<ul class="org-ul">
-<li><code>__str__()</code>: for human to read</li>
-<li><code>__repr__()</code>: for developer to recreate the object</li>
 </ul>
 
 <script src="https://utteranc.es/client.js"
