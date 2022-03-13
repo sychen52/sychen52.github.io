@@ -1,0 +1,33 @@
+* =__str__()= vs =__repr__()=:
+- =__str__()=: for human to read
+- =__repr__()=: for developer to recreate the object
+
+* Python function always does passing by reference
+However, sometimes it feels like passing by value
+** Assignment is pointing the name to a new object
+#+begin_src python
+  def add_one(n):
+      n += 1
+  a = 1
+  add_one(a)
+  assert a == 1
+  # a is still 1 here.
+#+end_src
+In this case, =a= is passed into =add_one= by ref, however, =n+=1= is =n=n+1= in this case, and it points =n= to a different object.
+** = does not always mean assignment
+#+begin_src python
+  def add_one(n):
+      n += 1
+  a = np.ones((1))
+  add_one(a)
+  assert np.all(a == np.array([2]))
+#+end_src
+In this case, =n+=1= is calling =__iadd__(1)=, and an inplace add is performed, it is different from =n=n+1=. In fact, =n+=1= will always prefer calling =n.__iadd__(1)=. If it is not defined, then it will call =n=__add__(1)=.
+
+* =b=a[1:3]=
+** If a is np.ndarray or pd.DataFrame, b is a view.
+** If a is a list, b is (1 level) shallow copy.
+It feels like sometimes assignment gives you a reference. Sometimes it gives you a copy. In fact, the trick is done in =[1:3]=, namely slicing.
+For a np.ndarray and pd.DataFrame, slicing returns a view (like a reference), while for a list, slicing returns a shallow copy.
+
+

@@ -84,8 +84,4 @@ These are my notes while watch this [[https://www.youtube.com/c/ArjanCodes][Yout
     - Catch and ignore all exception
     - Not using custom exceptions -> custom exceptions can carry custom fields to provide more info.
 
-* Python:
-- =__str__()=: for human to read
-- =__repr__()=: for developer to recreate the object
-
 #+INCLUDE: ../utterance.org
