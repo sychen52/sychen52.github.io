@@ -34,3 +34,5 @@ A function/method may return a reference.
 - If there is exactly one input lifetime parameter, that is assigned to all output lifetime parameters
 - If there are multiple input lifetime parameters, but one of them is &self, or &mut self. The lifetime of self is assigned to all output parameters
 ** If the compiler cannot determine the output lifetime parameters, you need to annotate it for the compiler.
+
+#+INCLUDE: ../utterance.org
