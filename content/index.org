@@ -20,6 +20,8 @@
 
 [[./2020-11-15-C++.org][C++]]
 
+[[./RAII_Smart_Ptr_in_C++.org][RAII and Smart Pointer in C++]]
+
 [[./2021-10-06-minimize_Ax_norm.org][Minimize \( \|Ax\| s.t. \|x\| = 1 \)]]
 
 [[./2021-11-03-dynamic_dispatch.org][Dynamic dispatch]]

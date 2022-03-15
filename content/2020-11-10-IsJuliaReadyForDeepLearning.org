@@ -1,4 +1,4 @@
-#+title:  Is Julia Ready for Deep Learning
+#+title:  Julia Language and Its Deep Learning Ecosystem
 #+date:   <2020-11-10>
 #+KEYWORDS: Julialang, Julia, deep learning, DL
 
@@ -38,8 +38,11 @@ You can you Julia just a dynamic type language (such as Python), and have all th
 Note that type annotation does not help if the compiler can figure out a stable type. In that case, annotating it to a narrower type only makes your function less reusable.
 
 * Multiple Dispatch
-For a dynamic type language, this is very rare to see. For example, Python does not have this feature at all.
-For a static type language (C++ for example), this is very common to see if the type is known at compile time. Julia and C++ can both do heavy optimization. When it is not known at compile time. C++ can do dynamic single dispatch with virtual table. C++ can also do runtime double dispatch with a design pattern. And I don't hear people mention runtime mutiple (>2) dispatch in C++, but I think it is possible by implementing some kind of virtual table yourself. For this runtime/dynamic multiple dispatch case, I think Julia does a lookup at runtimes. So it is kind of similar to the vtable idea, but the implementation of the lookup is different.
+As a rule of thumb, compile time multiple dispatch is as fast as C/C++, Julia can do all the optimizations like inlining. However, runtime multiple dispatch needs to do a lookup and it is slow. but runtime-multiple dispatch is much more powerful than the single/double dispatch in C++/Python.
+** Compile-time dispatch
+when the type is known at compile time, this feature is typical in a static type language (C++ for example), it is called function overloading. Julia and C++ can both do heavy optimization.
+** Runtime dispatch
+When it is not known at compile time. C++ can do dynamic single dispatch with virtual table. C++ can also do runtime double dispatch with a design pattern. And I don't hear people mention runtime mutiple (>2) dispatch in C++, but I think it is possible by implementing some kind of virtual table yourself. For this runtime/dynamic multiple dispatch case, I think Julia does a lookup at runtimes. So it is kind of similar to the vtable idea, but the implementation of the lookup is different.
 
 
 * Ahead of Time (AOT) Compilation vs. Just In Time (JIT) Compilation vs. Interpreter
