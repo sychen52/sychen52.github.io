@@ -20,34 +20,34 @@
 * [[https://www.youtube.com/watch?v=7Qgd9B1KuMQ][RAII: Resource Acquisition is Initialization: it means to cleanup in the destructor.]]
 ** This applies to raw heap pointers, file handles, mutex, etc.
 ** The Rule of Three: all three need to be user defined if RAII.
-*** destructor
-*** copy ctor
+- destructor
+- copy ctor
 The default will lead to double deletion
-*** copy assignment: use copy-and-swap to implement it.
-- copy: call copy ctor and generate a new object
-- swap: swap LHS and the new object and use the new objects' destructor to free the LHS.
+- copy assignment: use copy-and-swap to implement it.
+  - copy: call copy ctor and generate a new object
+  - swap: swap LHS and the new object and use the new objects' destructor to free the LHS.
 ** Destroctor is called even after throw
 ** The Rule of Three: if not RAII (don't store data or contains only well written Rule of Three classes)
 Let compiler generate them.
 ** The Rule of Five:
-*** all three rules plus
-*** move ctor
+- all three rules plus
+- move ctor
 Destroy RHS
-*** move assignment
-- move: call move ctor: RHS is destroyed.
-- swap: same as before, use the destructor of the new object to free LHS.
+- move assignment
+  - move: call move ctor: RHS is destroyed.
+  - swap: same as before, use the destructor of the new object to free LHS.
 ** The Rule of Four and a half:
-*** All three ctors
-*** merge copy and move assignment into a value assignment
+- All three ctors
+- merge copy and move assignment into a value assignment
 since the first thing of these two are creating a copy (through copy or move ctor) anyway
-*** The half is the swap function.
+- The half is the swap function.
 Otherwise, the default swap will call move and copy.
 ** Good examples
-*** =unique_ptr=: ctor, move ctor and move assignment 
-*** =shared_ptr=: all five
-*** =unique_lock=
-*** =ifstream=
-*** =lock_guard=: just ctor and destructor
+- =unique_ptr=: ctor, move ctor and move assignment 
+- =shared_ptr=: all five
+- =unique_lock=
+- =ifstream=
+- =lock_guard=: just ctor and destructor
 
 
 #+INCLUDE: ../utterance.org

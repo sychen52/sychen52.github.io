@@ -400,3 +400,5 @@ What does it mean when passing pointer, reference, smart pointers to a function 
 - =Widget w{};= will also initialize =int= or =int*=.
 - best practice is to put the initial value in the class when you declare the variable. The reason to not put in ctor, is to reduce duplication if you have two ctors that both need to initialize.
 
+
+#+INCLUDE: ../utterance.org
