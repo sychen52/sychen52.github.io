@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3c7c441">Pass pointers in C++</a>
+<ul>
+<li><a href="#orgba39ba1">Raw pointer or reference</a></li>
+<li><a href="#org49cacc1">unique<sub>ptr</sub></a></li>
+<li><a href="#org92153c3">shared<sub>ptr</sub></a></li>
+<li><a href="#orgf771b08">unique<sub>ptr</sub>&amp; or shared<sub>ptr</sub>&amp;</a></li>
+<li><a href="#orgb8ecc7d">const unique<sub>ptr</sub> or const shared<sub>ptr</sub></a></li>
+<li><a href="#org3f5b07d">const unique<sub>ptr</sub>&amp; or const shared<sub>ptr</sub>&amp;</a></li>
+</ul>
+</li>
+<li><a href="#org69f7236">RAII: Resource Acquisition is Initialization: it means to cleanup in the destructor.</a>
+<ul>
+<li><a href="#org4d51d31">This applies to raw heap pointers, file handles, mutex, etc.</a></li>
+<li><a href="#org73855f0">The Rule of Three: all three need to be user defined if RAII.</a>
+<ul>
+<li><a href="#org9107d01">destructor</a></li>
+<li><a href="#org851630a">copy ctor</a></li>
+<li><a href="#orga544494">copy assignment: use copy-and-swap to implement it.</a></li>
+</ul>
+</li>
+<li><a href="#org952fa55">Destroctor is called even after throw</a></li>
+<li><a href="#org50a8dc8">The Rule of Three: if not RAII (don't store data or contains only well written Rule of Three classes)</a></li>
+<li><a href="#orgdccbb51">The Rule of Five:</a>
+<ul>
+<li><a href="#org39cb0e4">all three rules plus</a></li>
+<li><a href="#org24a2713">move ctor</a></li>
+<li><a href="#org9bbce2e">move assignment</a></li>
+</ul>
+</li>
+<li><a href="#org065ae13">The Rule of Four and a half:</a>
+<ul>
+<li><a href="#orge74f88b">All three ctors</a></li>
+<li><a href="#org841ee4a">merge copy and move assignment into a value assignment</a></li>
+<li><a href="#org1974d48">The half is the swap function.</a></li>
+</ul>
+</li>
+<li><a href="#org324db26">Good examples</a>
+<ul>
+<li><a href="#org854c93c"><code>unique_ptr</code>: ctor, move ctor and move assignment</a></li>
+<li><a href="#org017d288"><code>shared_ptr</code>: all five</a></li>
+<li><a href="#org917eff9"><code>unique_lock</code></a></li>
+<li><a href="#orgea597d6"><code>ifstream</code></a></li>
+<li><a href="#org11b8ce5"><code>lock_guard</code>: just ctor and destructor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3c7c441" class="outline-2">
+<h2 id="org3c7c441"><a href="https://levelup.gitconnected.com/passing-smart-pointers-in-c-479775632443">Pass pointers in C++</a></h2>
+<div class="outline-text-2" id="text-org3c7c441">
+</div>
+<div id="outline-container-orgba39ba1" class="outline-3">
+<h3 id="orgba39ba1">Raw pointer or reference</h3>
+<div class="outline-text-3" id="text-orgba39ba1">
+<ul class="org-ul">
+<li>it is considered as borrow</li>
+<li>lifetime needs to be guaranteed. (unlike Rust, C++ compiler does not guarantee this for you.)</li>
+<li>raw pointer can be nullptr while reference cannot.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org49cacc1" class="outline-3">
+<h3 id="org49cacc1">unique<sub>ptr</sub></h3>
+<div class="outline-text-3" id="text-org49cacc1">
+<ul class="org-ul">
+<li>transfer ownership (move)</li>
+<li>This is the default in Rust.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org92153c3" class="outline-3">
+<h3 id="org92153c3">shared<sub>ptr</sub></h3>
+<div class="outline-text-3" id="text-org92153c3">
+<ul class="org-ul">
+<li>Shared ownership.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf771b08" class="outline-3">
+<h3 id="orgf771b08">unique<sub>ptr</sub>&amp; or shared<sub>ptr</sub>&amp;</h3>
+<div class="outline-text-3" id="text-orgf771b08">
+<ul class="org-ul">
+<li>Consider using raw pointer, since the idea is the same.</li>
+<li>Unless you want to do something to the unique<sub>ptr</sub> itself.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb8ecc7d" class="outline-3">
+<h3 id="orgb8ecc7d">const unique<sub>ptr</sub> or const shared<sub>ptr</sub></h3>
+<div class="outline-text-3" id="text-orgb8ecc7d">
+<ul class="org-ul">
+<li>This means the smart<sub>ptr</sub> object is const, can you cannot modify (e.g. reset) the smart<sub>ptr</sub>. This is not the smart version of const Raw*.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3f5b07d" class="outline-3">
+<h3 id="org3f5b07d">const unique<sub>ptr</sub>&amp; or const shared<sub>ptr</sub>&amp;</h3>
+<div class="outline-text-3" id="text-org3f5b07d">
+<ul class="org-ul">
+<li>You should use raw pointer. In this case, you cannot even modify the smart<sub>ptr</sub></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org69f7236" class="outline-2">
+<h2 id="org69f7236"><a href="https://www.youtube.com/watch?v=7Qgd9B1KuMQ">RAII: Resource Acquisition is Initialization: it means to cleanup in the destructor.</a></h2>
+<div class="outline-text-2" id="text-org69f7236">
+</div>
+<div id="outline-container-org4d51d31" class="outline-3">
+<h3 id="org4d51d31">This applies to raw heap pointers, file handles, mutex, etc.</h3>
+</div>
+<div id="outline-container-org73855f0" class="outline-3">
+<h3 id="org73855f0">The Rule of Three: all three need to be user defined if RAII.</h3>
+<div class="outline-text-3" id="text-org73855f0">
+</div>
+<div id="outline-container-org9107d01" class="outline-4">
+<h4 id="org9107d01">destructor</h4>
+</div>
+<div id="outline-container-org851630a" class="outline-4">
+<h4 id="org851630a">copy ctor</h4>
+<div class="outline-text-4" id="text-org851630a">
+<p>
+The default will lead to double deletion
+</p>
+</div>
+</div>
+<div id="outline-container-orga544494" class="outline-4">
+<h4 id="orga544494">copy assignment: use copy-and-swap to implement it.</h4>
+<div class="outline-text-4" id="text-orga544494">
+<ul class="org-ul">
+<li>copy: call copy ctor and generate a new object</li>
+<li>swap: swap LHS and the new object and use the new objects' destructor to free the LHS.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org952fa55" class="outline-3">
+<h3 id="org952fa55">Destroctor is called even after throw</h3>
+</div>
+<div id="outline-container-org50a8dc8" class="outline-3">
+<h3 id="org50a8dc8">The Rule of Three: if not RAII (don't store data or contains only well written Rule of Three classes)</h3>
+<div class="outline-text-3" id="text-org50a8dc8">
+<p>
+Let compiler generate them.
+</p>
+</div>
+</div>
+<div id="outline-container-orgdccbb51" class="outline-3">
+<h3 id="orgdccbb51">The Rule of Five:</h3>
+<div class="outline-text-3" id="text-orgdccbb51">
+</div>
+<div id="outline-container-org39cb0e4" class="outline-4">
+<h4 id="org39cb0e4">all three rules plus</h4>
+</div>
+<div id="outline-container-org24a2713" class="outline-4">
+<h4 id="org24a2713">move ctor</h4>
+<div class="outline-text-4" id="text-org24a2713">
+<p>
+Destroy RHS
+</p>
+</div>
+</div>
+<div id="outline-container-org9bbce2e" class="outline-4">
+<h4 id="org9bbce2e">move assignment</h4>
+<div class="outline-text-4" id="text-org9bbce2e">
+<ul class="org-ul">
+<li>move: call move ctor: RHS is destroyed.</li>
+<li>swap: same as before, use the destructor of the new object to free LHS.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org065ae13" class="outline-3">
+<h3 id="org065ae13">The Rule of Four and a half:</h3>
+<div class="outline-text-3" id="text-org065ae13">
+</div>
+<div id="outline-container-orge74f88b" class="outline-4">
+<h4 id="orge74f88b">All three ctors</h4>
+</div>
+<div id="outline-container-org841ee4a" class="outline-4">
+<h4 id="org841ee4a">merge copy and move assignment into a value assignment</h4>
+<div class="outline-text-4" id="text-org841ee4a">
+<p>
+since the first thing of these two are creating a copy (through copy or move ctor) anyway
+</p>
+</div>
+</div>
+<div id="outline-container-org1974d48" class="outline-4">
+<h4 id="org1974d48">The half is the swap function.</h4>
+<div class="outline-text-4" id="text-org1974d48">
+<p>
+Otherwise, the default swap will call move and copy.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org324db26" class="outline-3">
+<h3 id="org324db26">Good examples</h3>
+<div class="outline-text-3" id="text-org324db26">
+</div>
+<div id="outline-container-org854c93c" class="outline-4">
+<h4 id="org854c93c"><code>unique_ptr</code>: ctor, move ctor and move assignment</h4>
+</div>
+<div id="outline-container-org017d288" class="outline-4">
+<h4 id="org017d288"><code>shared_ptr</code>: all five</h4>
+</div>
+<div id="outline-container-org917eff9" class="outline-4">
+<h4 id="org917eff9"><code>unique_lock</code></h4>
+</div>
+<div id="outline-container-orgea597d6" class="outline-4">
+<h4 id="orgea597d6"><code>ifstream</code></h4>
+</div>
+<div id="outline-container-org11b8ce5" class="outline-4">
+<h4 id="org11b8ce5"><code>lock_guard</code>: just ctor and destructor</h4>
+<div class="outline-text-4" id="text-org11b8ce5">
+<script src="https://utteranc.es/client.js"
+        repo="sychen52/sychen52.github.io"
+        issue-term="pathname"
+        theme="github"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="validation"></p>
+</div>
+</body>
+</html>
