@@ -1,0 +1,15 @@
+* Trajectory = Episode = Rollout
+a sequence of state and action
+\tau ~ \pi means \tau is a random trajectory sampled based on policy \pi. Two things can be random here: state transition, action taken based on a policy.
+
+* Value Functions
+Four different types of value function, if you combine the following two.
+** On-Policy vs. Optimal
+A specific policy \pi vs. the optimal policy *
+** Value Function vs. Action-Value Function
+*** If On-Policy
+Expectation over all possible actions from the policy vs. given a specific action a (the action may not from the polity).
+*** IF Optimal
+Max over ...
+
+Since it is the optimal policy, all possible actions only contain the best/max-return action.
