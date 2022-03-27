@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf64f521">Trajectory = Episode = Rollout</a></li>
+<li><a href="#org76dde3a">Value Functions</a>
+<ul>
+<li><a href="#org77b2cd6">On-Policy vs. Optimal</a></li>
+<li><a href="#orga81bf8e">Value Function vs. Action-Value Function</a>
+<ul>
+<li><a href="#org022e361">If On-Policy</a></li>
+<li><a href="#org0185c68">IF Optimal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf64f521" class="outline-2">
+<h2 id="orgf64f521">Trajectory = Episode = Rollout</h2>
+<div class="outline-text-2" id="text-orgf64f521">
+<p>
+a sequence of state and action
+&tau; ~ &pi; means &tau; is a random trajectory sampled based on policy &pi;. Two things can be random here: state transition, action taken based on a policy.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org76dde3a" class="outline-2">
+<h2 id="org76dde3a">Value Functions</h2>
+<div class="outline-text-2" id="text-org76dde3a">
+<p>
+Four different types of value function, if you combine the following two.
+</p>
+</div>
+<div id="outline-container-org77b2cd6" class="outline-3">
+<h3 id="org77b2cd6">On-Policy vs. Optimal</h3>
+<div class="outline-text-3" id="text-org77b2cd6">
+<p>
+A specific policy &pi; vs. the optimal policy *
+</p>
+</div>
+</div>
+<div id="outline-container-orga81bf8e" class="outline-3">
+<h3 id="orga81bf8e">Value Function vs. Action-Value Function</h3>
+<div class="outline-text-3" id="text-orga81bf8e">
+</div>
+<div id="outline-container-org022e361" class="outline-4">
+<h4 id="org022e361">If On-Policy</h4>
+<div class="outline-text-4" id="text-org022e361">
+<p>
+Expectation over all possible actions from the policy vs. given a specific action a (the action may not from the polity).
+</p>
+</div>
+</div>
+<div id="outline-container-org0185c68" class="outline-4">
+<h4 id="org0185c68">IF Optimal</h4>
+<div class="outline-text-4" id="text-org0185c68">
+<p>
+Max over &#x2026;
+</p>
+
+<p>
+Since it is the optimal policy, all possible actions only contain the best/max-return action.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="validation"></p>
+</div>
+</body>
+</html>
