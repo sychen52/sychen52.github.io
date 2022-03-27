@@ -1,7 +1,8 @@
-#+TITLE:  Code as data in LISP
+#+TITLE:  Code as data in LISP and Curse of LISP
 #+DATE:   <2021-11-07>
 #+KEYWORDS: "code as data", "LISP", "Julia", "Python"
 
+* Code as data
 I heard about this "code as data" in LISP is so cool recently, and I was wondering how come I never realize it when I learned it, so I want back and took the [[https://www.coursera.org/learn/programming-languages-part-b][Programming Languages B]] course again. It is taught in Racket (a dialect of LISP). And Dan only briefly mentioned this "code as data" idea in an optional lecture.
 
 The idea is that LISP can take a program at runtime, modify it, (and then evaluate/run it). Actually, this is not something unique to LISP. A lot of "LISP inspired languages", such as Python, can take a string at runtime, modify the string, and then evaluate it. (Python also have ast.parse to parse the string into AST to make it easier to modify.) The reason it is especially cool in LISP is that: Data is represented as a list, and a program is also represented as a list (you need a quote if you really want to interpret it as data before evaluation).
@@ -11,5 +12,10 @@ The idea is that LISP can take a program at runtime, modify it, (and then evalua
 I found [[https://www.youtube.com/watch?v=CVKIpfDqs3I&t=622s][this video]] showcasing this feature in Python, Scheme, and Julia.
 
 I feel this idea sounds very attractive to maybe people how study mathematics or other hard core science, because it has some physiological beauty. To me, maybe some other software engineers as well, it is only something sounds beautiful, but not really usefuly in most cases. As Dan mention, often times when people think they need it, there is actually better way to do it instead of doing eval.
+
+* Curse of LISP
+Different people may have different understandings of this. My understanding is more like a "Curse of Macro", so it applies to other languages that has similar macro as LISP, such as Julia. When you compose, all you need to care about is the input and output of the functions. Inside each function, it can go as complicated as it wants, while from the outside, you, as a composer, don't need to peak into the mess inside the function. If you work with a strongly typed language, the language even gives you the input and output type of a function. It is like a quick start manual, which gives you a jump start at composing.
+
+On the other hand, if you want to compose macros, you mostly want to peak into the function/code. Otherwise, why not just do function composition. In this case, since it is a direct peak into the mess, and there is not quick start manual for you, it makes compose macros hard. In the end, each package/module just build their only macros which do not work well with others. The difficulty of compose is what I think is the curse of LISP.
 
 #+INCLUDE: ../utterance.org
