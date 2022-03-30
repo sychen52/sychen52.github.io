@@ -13,3 +13,31 @@ Expectation over all possible actions from the policy vs. given a specific actio
 Max over ...
 
 Since it is the optimal policy, all possible actions only contain the best/max-return action.
+*** Q-Function is Action-Value Function
+
+* Optimal action is the argmax_a Optimal Q-Function
+since it is optimal
+
+* Bellman Equation
+Expand any of the 4 value functions one step and make it recursive.
+
+If it is optimal value function or Q-function, the expansion will have a max_{a} instead of E_{a~\pi}.
+
+* Advantage Functions
+Q(s,a)-V(s)
+
+* Policy Optimization vs. Q-Learning
+- both are for Model Free RL
+- Policy Optimization estimates a [surrogate] value function
+- Q-Learning estimates Q-function based on Bellman equation
+- more vs. less stable: based Satisfy Bellman equation does not mean it is Q-function (necessary but not sufficient).
+- less vs. more data effective. (on vs. off policy). Policy Optimization has to be on the latest policy
+
+* Policy Optimization and Policy Gradient
+Instead of using a NN to estimate "expected total reward of a policy" (J = E[R(\tau)]), and then take a gradient of that and do gradient ascent, we derive the equation of the gradient of J, then ignore all the terms that has 0-grad. This new equation is called grad-log-prob.
+
+Now the NN takes an observation and predicts the logits of \pi(a|s). This is the parameters of the action distribution in current state. Then you sample this distribution to get an action. The so-called loss is the grad-log-prob term before taking the gradient.
+
+You can think of this "grad-log-prob term before taking the gradient" as an approximation of J, because they have the same gradient.
+
+In summary, NN predicts the action distribution. The loss was designed such as its gradient is the same as dJ/d\theta.
