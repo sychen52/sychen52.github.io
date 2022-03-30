@@ -15,24 +15,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf64f521">Trajectory = Episode = Rollout</a></li>
-<li><a href="#org76dde3a">Value Functions</a>
+<li><a href="#orgd651c1f">Trajectory = Episode = Rollout</a></li>
+<li><a href="#org38a1fc3">Value Functions</a>
 <ul>
-<li><a href="#org77b2cd6">On-Policy vs. Optimal</a></li>
-<li><a href="#orga81bf8e">Value Function vs. Action-Value Function</a>
+<li><a href="#orge423268">On-Policy vs. Optimal</a></li>
+<li><a href="#org586f0c6">Value Function vs. Action-Value Function</a>
 <ul>
-<li><a href="#org022e361">If On-Policy</a></li>
-<li><a href="#org0185c68">IF Optimal</a></li>
+<li><a href="#orga22818c">If On-Policy</a></li>
+<li><a href="#orgb7f6576">IF Optimal</a></li>
+<li><a href="#org9a5b4c4">Q-Function is Action-Value Function</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a href="#orgcf879a0">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</a></li>
+<li><a href="#org853dd73">Bellman Equation</a></li>
+<li><a href="#orgf426f7e">Advantage Functions</a></li>
+<li><a href="#org5d3145e">Policy Optimization vs. Q-Learning</a></li>
+<li><a href="#org0d621d9">Policy Optimization and Policy Gradient</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf64f521" class="outline-2">
-<h2 id="orgf64f521">Trajectory = Episode = Rollout</h2>
-<div class="outline-text-2" id="text-orgf64f521">
+<div id="outline-container-orgd651c1f" class="outline-2">
+<h2 id="orgd651c1f">Trajectory = Episode = Rollout</h2>
+<div class="outline-text-2" id="text-orgd651c1f">
 <p>
 a sequence of state and action
 &tau; ~ &pi; means &tau; is a random trajectory sampled based on policy &pi;. Two things can be random here: state transition, action taken based on a policy.
@@ -40,36 +46,36 @@ a sequence of state and action
 </div>
 </div>
 
-<div id="outline-container-org76dde3a" class="outline-2">
-<h2 id="org76dde3a">Value Functions</h2>
-<div class="outline-text-2" id="text-org76dde3a">
+<div id="outline-container-org38a1fc3" class="outline-2">
+<h2 id="org38a1fc3">Value Functions</h2>
+<div class="outline-text-2" id="text-org38a1fc3">
 <p>
 Four different types of value function, if you combine the following two.
 </p>
 </div>
-<div id="outline-container-org77b2cd6" class="outline-3">
-<h3 id="org77b2cd6">On-Policy vs. Optimal</h3>
-<div class="outline-text-3" id="text-org77b2cd6">
+<div id="outline-container-orge423268" class="outline-3">
+<h3 id="orge423268">On-Policy vs. Optimal</h3>
+<div class="outline-text-3" id="text-orge423268">
 <p>
 A specific policy &pi; vs. the optimal policy *
 </p>
 </div>
 </div>
-<div id="outline-container-orga81bf8e" class="outline-3">
-<h3 id="orga81bf8e">Value Function vs. Action-Value Function</h3>
-<div class="outline-text-3" id="text-orga81bf8e">
+<div id="outline-container-org586f0c6" class="outline-3">
+<h3 id="org586f0c6">Value Function vs. Action-Value Function</h3>
+<div class="outline-text-3" id="text-org586f0c6">
 </div>
-<div id="outline-container-org022e361" class="outline-4">
-<h4 id="org022e361">If On-Policy</h4>
-<div class="outline-text-4" id="text-org022e361">
+<div id="outline-container-orga22818c" class="outline-4">
+<h4 id="orga22818c">If On-Policy</h4>
+<div class="outline-text-4" id="text-orga22818c">
 <p>
 Expectation over all possible actions from the policy vs. given a specific action a (the action may not from the polity).
 </p>
 </div>
 </div>
-<div id="outline-container-org0185c68" class="outline-4">
-<h4 id="org0185c68">IF Optimal</h4>
-<div class="outline-text-4" id="text-org0185c68">
+<div id="outline-container-orgb7f6576" class="outline-4">
+<h4 id="orgb7f6576">IF Optimal</h4>
+<div class="outline-text-4" id="text-orgb7f6576">
 <p>
 Max over &#x2026;
 </p>
@@ -79,6 +85,74 @@ Since it is the optimal policy, all possible actions only contain the best/max-r
 </p>
 </div>
 </div>
+<div id="outline-container-org9a5b4c4" class="outline-4">
+<h4 id="org9a5b4c4">Q-Function is Action-Value Function</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcf879a0" class="outline-2">
+<h2 id="orgcf879a0">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</h2>
+<div class="outline-text-2" id="text-orgcf879a0">
+<p>
+since it is optimal
+</p>
+</div>
+</div>
+
+<div id="outline-container-org853dd73" class="outline-2">
+<h2 id="org853dd73">Bellman Equation</h2>
+<div class="outline-text-2" id="text-org853dd73">
+<p>
+Expand any of the 4 value functions one step and make it recursive.
+</p>
+
+<p>
+If it is optimal value function or Q-function, the expansion will have a max<sub>a</sub> instead of E<sub>a~&pi;</sub>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf426f7e" class="outline-2">
+<h2 id="orgf426f7e">Advantage Functions</h2>
+<div class="outline-text-2" id="text-orgf426f7e">
+<p>
+Q(s,a)-V(s)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5d3145e" class="outline-2">
+<h2 id="org5d3145e">Policy Optimization vs. Q-Learning</h2>
+<div class="outline-text-2" id="text-org5d3145e">
+<ul class="org-ul">
+<li>both are for Model Free RL</li>
+<li>Policy Optimization estimates a [surrogate] value function</li>
+<li>Q-Learning estimates Q-function based on Bellman equation</li>
+<li>more vs. less stable: based Satisfy Bellman equation does not mean it is Q-function (necessary but not sufficient).</li>
+<li>less vs. more data effective. (on vs. off policy). Policy Optimization has to be on the latest policy</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0d621d9" class="outline-2">
+<h2 id="org0d621d9">Policy Optimization and Policy Gradient</h2>
+<div class="outline-text-2" id="text-org0d621d9">
+<p>
+Instead of using a NN to estimate "expected total reward of a policy" (J = E[R(&tau;)]), and then take a gradient of that and do gradient ascent, we derive the equation of the gradient of J, then ignore all the terms that has 0-grad. This new equation is called grad-log-prob.
+</p>
+
+<p>
+Now the NN takes an observation and predicts the logits of &pi;(a|s). This is the parameters of the action distribution in current state. Then you sample this distribution to get an action. The so-called loss is the grad-log-prob term before taking the gradient.
+</p>
+
+<p>
+You can think of this "grad-log-prob term before taking the gradient" as an approximation of J, because they have the same gradient.
+</p>
+
+<p>
+In summary, NN predicts the action distribution. The loss was designed such as its gradient is the same as dJ/d&theta;.
+</p>
 </div>
 </div>
 </div>
