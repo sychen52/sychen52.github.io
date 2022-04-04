@@ -39,3 +39,5 @@
 [[./python.org][Python]]
 
 [[./RL.org][Reinforcement Learning]]
+
+[[./CV_DL.org][Deep Learning for Computer Vision]]

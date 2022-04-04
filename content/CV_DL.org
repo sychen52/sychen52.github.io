@@ -1,0 +1,57 @@
+* 3d representation
+- depth map
+- voxel grid
+- point cloud
+- mesh
+- implicit function
+
+* From 2d image to depth map:
+unet2d
+* From 2d image to 3d voxel grid:
+- Fully connected
+- Transformer
+- voxel tube (channel dimension as the z-axis of the camera)
+
+* From 2d image to point cloud
+- FC
+- Transformer
+  
+* From 2d image to mesh
+2d image -> 3d mask on a grid -> mesh -> deformed mesh
+
+* Model on 3d:
+- voxel grid: conv3d
+- point cloud: point-wise MLP (conv1d with kernel size 1)
+- mesh: graph convolution
+
+* Mean Average Precision (mAP) in Object detection
+https://youtu.be/TB-fdISzpHQ?t=2230
+** AP = area under Precision vs. Recall Curve
+- Pick a class (e.g. dog), and a threshold for IoU (e.g. 0.5, IoU > 0.5 means detected)
+- Sort all the predicted boxes by the probability of dog class.
+- Iterator all these boxes from high probability to low
+  - Compute the Precision and Recall as if you set the threshold of probability to be the current value.
+  - IoU > 0.5 means detected, otherwise not
+- plot this Precision and Recall curve and compute
+
+To get AP=1, hit all GT boxes with IoU > 0.5 and have no FP detections ranked abover any TP
+** mAP
+repeat AP for all classes, some different IoU thresholds.
+
+* R-CNN
+non-DL region proposal; Resample the image in each region; CNN on each region; a class and bounding box per region;
+
+* Fast R-CNN
+CNN on the entire image; non-DL region proposal; Resample the CNN feature in each region (e.g. into 7x7); small CNN on each region; a class and bounding box per region;
+
+* Faster R-CNN
+same as Fast R-CNN, expect DL region proposal:
+On the CNN output feature map, add another CNN. every position on its output is a (K) anchor box(es): (a probability of being a region, the bbox).
+
+* Single Stage Object Detection (SSD)
+All R-CNNs have two stages: region proposal + final bbox.
+SSD only has the first stage of Faster R-CNN.
+CNN on the entire image. Instead of a DL based region proposal, SSD outputs the class and the bbox at these anchor box directly.
+SSD is 10x faster than Faster R-CNN but not as accurate.
+
+  

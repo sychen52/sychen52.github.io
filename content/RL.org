@@ -28,7 +28,9 @@ Q(s,a)-V(s)
 
 * Policy Optimization vs. Q-Learning
 - both are for Model Free RL
-- Policy Optimization estimates a [surrogate] value function
+- Policy optimization predicts the distribution of the action given the observation.
+- Policy Optimization's objective/loss function estimates a [surrogate] value function
+  surrogate means the gradient is the same/similar, but the objective function is not just value function.
 - Q-Learning estimates Q-function based on Bellman equation
 - more vs. less stable: based Satisfy Bellman equation does not mean it is Q-function (necessary but not sufficient).
 - less vs. more data effective. (on vs. off policy). Policy Optimization has to be on the latest policy
