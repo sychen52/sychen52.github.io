@@ -19,24 +19,24 @@
 <ul>
 <li><a href="#memory-management">Memory Management</a>
 <ul>
-<li><a href="#org0419270">Garbage Collector</a></li>
-<li><a href="#orge9a7c34">Heap or Stack</a></li>
+<li><a href="#orgcd8c719">Garbage Collector</a></li>
+<li><a href="#orga4c5aee">Heap or Stack</a></li>
 </ul>
 </li>
 <li><a href="#speed">Speed</a>
 <ul>
-<li><a href="#orgbf328d9">Avoid allocation</a></li>
-<li><a href="#org4153b05">Type Stable</a>
+<li><a href="#orgbc8987f">Avoid allocation</a></li>
+<li><a href="#org42a7a0c">Type Stable</a>
 <ul>
-<li><a href="#org31e1e8a">Type Annotation</a></li>
+<li><a href="#org96f2d2f">Type Annotation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org59652a2">Multiple Dispatch</a>
+<li><a href="#orgf19f0bd">Multiple Dispatch</a>
 <ul>
-<li><a href="#org5b2bf3f">Compile-time dispatch</a></li>
-<li><a href="#org3a85a8b">Runtime dispatch</a></li>
+<li><a href="#orgd2f041f">Compile-time dispatch</a></li>
+<li><a href="#org3182f2f">Runtime dispatch</a></li>
 </ul>
 </li>
 <li><a href="#ahead-of-time-aot-compilation-vs.-just-in-time-jit-compilation-vs.-interpreter">Ahead of Time (AOT) Compilation vs. Just In Time (JIT) Compilation vs. Interpreter</a></li>
@@ -58,22 +58,22 @@ is Julia AFAIK. The Question is whether Julia is ready for deep
 learning.
 </p>
 
-<div id="outline-container-org0257edb" class="outline-2">
-<h2 id="memory-management"><a id="org0257edb"></a>Memory Management</h2>
+<div id="outline-container-org03ed01c" class="outline-2">
+<h2 id="memory-management"><a id="org03ed01c"></a>Memory Management</h2>
 <div class="outline-text-2" id="text-memory-management">
 </div>
-<div id="outline-container-org0419270" class="outline-3">
-<h3 id="org0419270">Garbage Collector</h3>
-<div class="outline-text-3" id="text-org0419270">
+<div id="outline-container-orgcd8c719" class="outline-3">
+<h3 id="orgcd8c719">Garbage Collector</h3>
+<div class="outline-text-3" id="text-orgcd8c719">
 <p>
 I noticed this issue when Chris Lattner pointed during a <a href="https://twimlai.com/the-great-ml-language-un-debate/">debate</a>. In short, Julia uses the generational mark-and-sweep Garbage Collector. It may cause memory not being released in time. This is especially problematic for GPU since its memory is much smaller than CPU memory. The good news is there is some <a href="https://juliagpu.gitlab.io/CUDA.jl/usage/memory/">workaround</a>, but it would be better if Julia has some deterministic memory management. There is an <a href="https://discourse.julialang.org/t/proposal-for-deterministic-memory-management/39305">ongoing discussion about this</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge9a7c34" class="outline-3">
-<h3 id="orge9a7c34">Heap or Stack</h3>
-<div class="outline-text-3" id="text-orge9a7c34">
+<div id="outline-container-orga4c5aee" class="outline-3">
+<h3 id="orga4c5aee">Heap or Stack</h3>
+<div class="outline-text-3" id="text-orga4c5aee">
 <p>
 As a high level language, Julia also does not allow the programmer to explicitly control whether the memory should be allocated on stack or heap. Instead, it is up to the complier to optimize for you.
 </p>
@@ -81,34 +81,34 @@ As a high level language, Julia also does not allow the programmer to explicitly
 </div>
 </div>
 
-<div id="outline-container-org7b17a5e" class="outline-2">
-<h2 id="speed"><a id="org7b17a5e"></a>Speed</h2>
+<div id="outline-container-org6b630a0" class="outline-2">
+<h2 id="speed"><a id="org6b630a0"></a>Speed</h2>
 <div class="outline-text-2" id="text-speed">
 <p>
 I guess most people come to Julia for speed. However, when optimizing your code for speed, it is not that straightforward.
 </p>
 </div>
-<div id="outline-container-orgbf328d9" class="outline-3">
-<h3 id="orgbf328d9">Avoid allocation</h3>
-<div class="outline-text-3" id="text-orgbf328d9">
+<div id="outline-container-orgbc8987f" class="outline-3">
+<h3 id="orgbc8987f">Avoid allocation</h3>
+<div class="outline-text-3" id="text-orgbc8987f">
 <p>
 One problem is to <a href="https://www.youtube.com/watch?v=o8qTJGcPWkE">avoid heap allocation</a>. As I mentioned in the previous section. Heap or stack allocation cannot be controlled explicitly. Then it is kind like play a guessing game with the compiler to avoid allocation. The good news is, there are some <a href="https://docs.julialang.org/en/v1/manual/performance-tips/">performance tips</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org4153b05" class="outline-3">
-<h3 id="org4153b05">Type Stable</h3>
-<div class="outline-text-3" id="text-org4153b05">
+<div id="outline-container-org42a7a0c" class="outline-3">
+<h3 id="org42a7a0c">Type Stable</h3>
+<div class="outline-text-3" id="text-org42a7a0c">
 <p>
 Another problem is type inference. Julia is a dynamic typing language; however, to get the best speed, you are encouraged to have type stability.
 My understanding of this is as following:
 You can you Julia just a dynamic type language (such as Python), and have all the easy-of-mind and fast-prototyping. However, when you need it to be as fast as possible, you can use Julia as if it is a static type language, take care of the type stability (kind of like the generic type in a static type language like C++). However, the only con I see is that unlike a static type language that does type check at compile time and yell at you when it fails at type check. You need to call a few macros yourself to check whether it is type stable.
 </p>
 </div>
-<div id="outline-container-org31e1e8a" class="outline-4">
-<h4 id="org31e1e8a">Type Annotation</h4>
-<div class="outline-text-4" id="text-org31e1e8a">
+<div id="outline-container-org96f2d2f" class="outline-4">
+<h4 id="org96f2d2f">Type Annotation</h4>
+<div class="outline-text-4" id="text-org96f2d2f">
 <p>
 Note that type annotation does not help if the compiler can figure out a stable type. In that case, annotating it to a narrower type only makes your function less reusable.
 </p>
@@ -117,24 +117,24 @@ Note that type annotation does not help if the compiler can figure out a stable 
 </div>
 </div>
 
-<div id="outline-container-org59652a2" class="outline-2">
-<h2 id="org59652a2">Multiple Dispatch</h2>
-<div class="outline-text-2" id="text-org59652a2">
+<div id="outline-container-orgf19f0bd" class="outline-2">
+<h2 id="orgf19f0bd">Multiple Dispatch</h2>
+<div class="outline-text-2" id="text-orgf19f0bd">
 <p>
 As a rule of thumb, compile time multiple dispatch is as fast as C/C++, Julia can do all the optimizations like inlining. However, runtime multiple dispatch needs to do a lookup and it is slow. but runtime-multiple dispatch is much more powerful than the single/double dispatch in C++/Python.
 </p>
 </div>
-<div id="outline-container-org5b2bf3f" class="outline-3">
-<h3 id="org5b2bf3f">Compile-time dispatch</h3>
-<div class="outline-text-3" id="text-org5b2bf3f">
+<div id="outline-container-orgd2f041f" class="outline-3">
+<h3 id="orgd2f041f">Compile-time dispatch</h3>
+<div class="outline-text-3" id="text-orgd2f041f">
 <p>
 when the type is known at compile time, this feature is typical in a static type language (C++ for example), it is called function overloading. Julia and C++ can both do heavy optimization.
 </p>
 </div>
 </div>
-<div id="outline-container-org3a85a8b" class="outline-3">
-<h3 id="org3a85a8b">Runtime dispatch</h3>
-<div class="outline-text-3" id="text-org3a85a8b">
+<div id="outline-container-org3182f2f" class="outline-3">
+<h3 id="org3182f2f">Runtime dispatch</h3>
+<div class="outline-text-3" id="text-org3182f2f">
 <p>
 When it is not known at compile time. C++ can do dynamic single dispatch with virtual table. C++ can also do runtime double dispatch with a design pattern. And I don't hear people mention runtime mutiple (&gt;2) dispatch in C++, but I think it is possible by implementing some kind of virtual table yourself. For this runtime/dynamic multiple dispatch case, I think Julia does a lookup at runtimes. So it is kind of similar to the vtable idea, but the implementation of the lookup is different.
 </p>
@@ -143,8 +143,8 @@ When it is not known at compile time. C++ can do dynamic single dispatch with vi
 </div>
 
 
-<div id="outline-container-org66faf56" class="outline-2">
-<h2 id="ahead-of-time-aot-compilation-vs.-just-in-time-jit-compilation-vs.-interpreter"><a id="org66faf56"></a>Ahead of Time (AOT) Compilation vs. Just In Time (JIT) Compilation vs. Interpreter</h2>
+<div id="outline-container-org6aab09e" class="outline-2">
+<h2 id="ahead-of-time-aot-compilation-vs.-just-in-time-jit-compilation-vs.-interpreter"><a id="org6aab09e"></a>Ahead of Time (AOT) Compilation vs. Just In Time (JIT) Compilation vs. Interpreter</h2>
 <div class="outline-text-2" id="text-ahead-of-time-aot-compilation-vs.-just-in-time-jit-compilation-vs.-interpreter">
 <p>
 Usually, static type languages are AOT compiled while
@@ -167,8 +167,8 @@ these two are being actively worked on (<a href="https://github.com/JuliaLang/Pa
 </div>
 </div>
 
-<div id="outline-container-orgb80f651" class="outline-2">
-<h2 id="community"><a id="orgb80f651"></a>Community</h2>
+<div id="outline-container-org062b152" class="outline-2">
+<h2 id="community"><a id="org062b152"></a>Community</h2>
 <div class="outline-text-2" id="text-community">
 <p>
 Julia has a large scientific computing community. For deep learning,
@@ -179,8 +179,8 @@ ecosystem</a>.
 </div>
 </div>
 
-<div id="outline-container-org0ef18c8" class="outline-2">
-<h2 id="solve-two-language-problem"><a id="org0ef18c8"></a>Solve Two Language Problem</h2>
+<div id="outline-container-orgd791594" class="outline-2">
+<h2 id="solve-two-language-problem"><a id="orgd791594"></a>Solve Two Language Problem</h2>
 <div class="outline-text-2" id="text-solve-two-language-problem">
 <p>
 I think this is a pretty unique point about Julia. People are proud of
@@ -194,8 +194,8 @@ of Julia you normally use but it is technically still Julia language.
 </div>
 </div>
 
-<div id="outline-container-org6e8e314" class="outline-2">
-<h2 id="deep-learning-library-and-auto-differentiation-ad"><a id="org6e8e314"></a>Deep Learning Library and Auto Differentiation (AD)</h2>
+<div id="outline-container-org90d33e2" class="outline-2">
+<h2 id="deep-learning-library-and-auto-differentiation-ad"><a id="org90d33e2"></a>Deep Learning Library and Auto Differentiation (AD)</h2>
 <div class="outline-text-2" id="text-deep-learning-library-and-auto-differentiation-ad">
 <p>
 I guess a lot of people care about this the most. The reason I put it at
