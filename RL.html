@@ -15,30 +15,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4b4be66">Trajectory = Episode = Rollout</a></li>
-<li><a href="#org3cb7511">Value Functions</a>
+<li><a href="#org9259ba3">Trajectory = Episode = Rollout</a></li>
+<li><a href="#org1b0ca91">Value Functions</a>
 <ul>
-<li><a href="#org0b16175">On-Policy vs. Optimal</a></li>
-<li><a href="#org2135310">Value Function vs. Action-Value Function</a>
+<li><a href="#orgdd524b6">On-Policy vs. Optimal</a></li>
+<li><a href="#orgfff663e">Value Function vs. Action-Value Function</a>
 <ul>
-<li><a href="#org12b3574">If On-Policy</a></li>
-<li><a href="#org04ac3e5">IF Optimal</a></li>
-<li><a href="#org75d6927">Q-Function is Action-Value Function</a></li>
+<li><a href="#org85adf3c">If On-Policy</a></li>
+<li><a href="#org88a1404">IF Optimal</a></li>
+<li><a href="#org6fd9d30">Q-Function is Action-Value Function</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgafa1ade">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</a></li>
-<li><a href="#orgf355c4c">Bellman Equation</a></li>
-<li><a href="#org065f389">Advantage Functions</a></li>
-<li><a href="#orgd913ef7">Policy Optimization vs. Q-Learning</a></li>
-<li><a href="#org7fabc3e">Policy Optimization and Policy Gradient</a></li>
+<li><a href="#org4aac7cd">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</a></li>
+<li><a href="#org06fc421">Bellman Equation</a></li>
+<li><a href="#orge10cc9d">Advantage Functions</a></li>
+<li><a href="#orgb207b85">Policy Optimization vs. Q-Learning</a></li>
+<li><a href="#org058a110">Policy Optimization and Policy Gradient</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4b4be66" class="outline-2">
-<h2 id="org4b4be66">Trajectory = Episode = Rollout</h2>
-<div class="outline-text-2" id="text-org4b4be66">
+<div id="outline-container-org9259ba3" class="outline-2">
+<h2 id="org9259ba3">Trajectory = Episode = Rollout</h2>
+<div class="outline-text-2" id="text-org9259ba3">
 <p>
 a sequence of state and action
 &tau; ~ &pi; means &tau; is a random trajectory sampled based on policy &pi;. Two things can be random here: state transition, action taken based on a policy.
@@ -46,36 +46,36 @@ a sequence of state and action
 </div>
 </div>
 
-<div id="outline-container-org3cb7511" class="outline-2">
-<h2 id="org3cb7511">Value Functions</h2>
-<div class="outline-text-2" id="text-org3cb7511">
+<div id="outline-container-org1b0ca91" class="outline-2">
+<h2 id="org1b0ca91">Value Functions</h2>
+<div class="outline-text-2" id="text-org1b0ca91">
 <p>
 Four different types of value function, if you combine the following two.
 </p>
 </div>
-<div id="outline-container-org0b16175" class="outline-3">
-<h3 id="org0b16175">On-Policy vs. Optimal</h3>
-<div class="outline-text-3" id="text-org0b16175">
+<div id="outline-container-orgdd524b6" class="outline-3">
+<h3 id="orgdd524b6">On-Policy vs. Optimal</h3>
+<div class="outline-text-3" id="text-orgdd524b6">
 <p>
 A specific policy &pi; vs. the optimal policy *
 </p>
 </div>
 </div>
-<div id="outline-container-org2135310" class="outline-3">
-<h3 id="org2135310">Value Function vs. Action-Value Function</h3>
-<div class="outline-text-3" id="text-org2135310">
+<div id="outline-container-orgfff663e" class="outline-3">
+<h3 id="orgfff663e">Value Function vs. Action-Value Function</h3>
+<div class="outline-text-3" id="text-orgfff663e">
 </div>
-<div id="outline-container-org12b3574" class="outline-4">
-<h4 id="org12b3574">If On-Policy</h4>
-<div class="outline-text-4" id="text-org12b3574">
+<div id="outline-container-org85adf3c" class="outline-4">
+<h4 id="org85adf3c">If On-Policy</h4>
+<div class="outline-text-4" id="text-org85adf3c">
 <p>
 Expectation over all possible actions from the policy vs. given a specific action a (the action may not from the polity).
 </p>
 </div>
 </div>
-<div id="outline-container-org04ac3e5" class="outline-4">
-<h4 id="org04ac3e5">IF Optimal</h4>
-<div class="outline-text-4" id="text-org04ac3e5">
+<div id="outline-container-org88a1404" class="outline-4">
+<h4 id="org88a1404">IF Optimal</h4>
+<div class="outline-text-4" id="text-org88a1404">
 <p>
 Max over &#x2026;
 </p>
@@ -85,24 +85,24 @@ Since it is the optimal policy, all possible actions only contain the best/max-r
 </p>
 </div>
 </div>
-<div id="outline-container-org75d6927" class="outline-4">
-<h4 id="org75d6927">Q-Function is Action-Value Function</h4>
+<div id="outline-container-org6fd9d30" class="outline-4">
+<h4 id="org6fd9d30">Q-Function is Action-Value Function</h4>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgafa1ade" class="outline-2">
-<h2 id="orgafa1ade">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</h2>
-<div class="outline-text-2" id="text-orgafa1ade">
+<div id="outline-container-org4aac7cd" class="outline-2">
+<h2 id="org4aac7cd">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</h2>
+<div class="outline-text-2" id="text-org4aac7cd">
 <p>
 since it is optimal
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf355c4c" class="outline-2">
-<h2 id="orgf355c4c">Bellman Equation</h2>
-<div class="outline-text-2" id="text-orgf355c4c">
+<div id="outline-container-org06fc421" class="outline-2">
+<h2 id="org06fc421">Bellman Equation</h2>
+<div class="outline-text-2" id="text-org06fc421">
 <p>
 Expand any of the 4 value functions one step and make it recursive.
 </p>
@@ -113,18 +113,18 @@ If it is optimal value function or Q-function, the expansion will have a max<sub
 </div>
 </div>
 
-<div id="outline-container-org065f389" class="outline-2">
-<h2 id="org065f389">Advantage Functions</h2>
-<div class="outline-text-2" id="text-org065f389">
+<div id="outline-container-orge10cc9d" class="outline-2">
+<h2 id="orge10cc9d">Advantage Functions</h2>
+<div class="outline-text-2" id="text-orge10cc9d">
 <p>
 Q(s,a)-V(s)
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd913ef7" class="outline-2">
-<h2 id="orgd913ef7">Policy Optimization vs. Q-Learning</h2>
-<div class="outline-text-2" id="text-orgd913ef7">
+<div id="outline-container-orgb207b85" class="outline-2">
+<h2 id="orgb207b85">Policy Optimization vs. Q-Learning</h2>
+<div class="outline-text-2" id="text-orgb207b85">
 <ul class="org-ul">
 <li>both are for Model Free RL</li>
 <li>Policy optimization predicts the distribution of the action given the observation.</li>
@@ -137,9 +137,9 @@ surrogate means the gradient is the same/similar, but the objective function is 
 </div>
 </div>
 
-<div id="outline-container-org7fabc3e" class="outline-2">
-<h2 id="org7fabc3e">Policy Optimization and Policy Gradient</h2>
-<div class="outline-text-2" id="text-org7fabc3e">
+<div id="outline-container-org058a110" class="outline-2">
+<h2 id="org058a110">Policy Optimization and Policy Gradient</h2>
+<div class="outline-text-2" id="text-org058a110">
 <p>
 This time, the NN directly learn the policy itself (given state/observation as input, what should be the action (or probability of take that action)).
 </p>
