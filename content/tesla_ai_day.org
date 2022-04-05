@@ -1,0 +1,35 @@
+https://www.youtube.com/watch?v=j0z4FweCy4M
+
+* Cache feature maps on disk
+- shared back-bone + multiple heads;
+- back-bone output feature maps are cached on disk;
+- fine-tune heads based on cached features.
+
+* Late fusion -> early fusion
+- vector space: 3d space, 2d birds-eye view
+  From the later slides (Multi-Cam Features HxWxCxT 20x80x256x60), this vector space seems to be an ego-centric 2d birds-eye view
+- Late fusion
+  Detection on 2d images and then back-project to 3d
+- early fusion: not so early
+  back-bone on each 2d image; fuse to vector space; heads on vector space
+
+* Transformer for fuse / back-project 
+- each image provides keys and values
+- positional encoded 3d grid / 2d birds-eye view grid are the queries
+- Transformer is doing the data-dependent back-project part
+
+* Camera rectify
+- It sounds like correct the camera orientation error during installation by software composition.
+- This is before everything. It is like pre-processing.
+
+* Video Queue
+- Queue is going into an RNN.
+- Features: Kinematics(velocity and acceleration) + vector space features + positional encodings
+- time queue: push stuff in every certain time
+- spatial queue: push stuff in when the car travels a certain distance.
+- This can be thought as fusing time and space. And it is a late fusion again. The future direction is to do early fusion using optical flow / cost volume??
+
+* Spatial RNN
+- This sounds like a larger/global 2d birds-eye view which is not ego-centric.
+- And you only update the area that the car can "see" in its ego-centric vector space.
+- However, how large is this non-ego-centric birds-eye view is unknown. And how this large tensor can be stored in memory is unknown.
