@@ -3,7 +3,7 @@ These are notes of watching [[https://www.youtube.com/playlist?list=PLai5B987bZ9
 * Defaults
 - immutable;
 - move
-  - when the resource is on heap, implicit unique_ptr. (think in a C++ way)
+  - when the resource is on heap, implicit =unique_ptr=. (think in a C++ way)
   - when it is on stack, see [[Move and Copy]].
 
 * Borrow (Reference)
@@ -13,7 +13,7 @@ These are notes of watching [[https://www.youtube.com/playlist?list=PLai5B987bZ9
 - no need to wait for the ref to go out of {}, as long as it is no longer used, its lifetime ends.
 
 * Ownership
-rust's ownership mode is just like c++ RAII (or unique_ptr if on heap). That is also why it is moved by default.
+rust's ownership mode is just like c++ RAII (or =unique_ptr= if on heap). That is also why it is moved by default.
 - one and only one owner
 - when the owner goes out of scope, the resource is deallocated.
 
