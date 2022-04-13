@@ -1,0 +1,14 @@
+#+title Julia Performance Tips
+
+This is a note for  https://github.com/AdvancedScientificComputingInJuliaWashU/Performance.jl
+
+
+* Global variable
+- Avoid if possible
+- If not, use a const Ref to get the type fixed
+
+* Any, Union, T
+- A single concrete type is the best
+- If not possible, a union of all possible types is still [[https://julialang.org/blog/2018/08/union-splitting/][way better than Any]].
+
+#+INCLUDE: ../utterance.org

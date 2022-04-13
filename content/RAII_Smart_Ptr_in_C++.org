@@ -1,3 +1,5 @@
+#+TITLE: RAII and Smart Pointer in C++
+
 * [[https://levelup.gitconnected.com/passing-smart-pointers-in-c-479775632443][Pass pointers in C++]]
 ** Raw pointer or reference
 - it is considered as borrow

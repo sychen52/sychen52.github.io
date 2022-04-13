@@ -43,3 +43,5 @@
 [[./CV_DL.org][Deep Learning for Computer Vision]]
 
 [[./tesla_ai_day.org][Tesla AI Day]]
+
+[[./julia_performance_tips.org][Julia Performance Tips]]

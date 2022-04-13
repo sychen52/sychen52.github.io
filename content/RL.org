@@ -1,3 +1,5 @@
+#+title Reinforcement Learning
+
 * Trajectory = Episode = Rollout
 a sequence of state and action
 \tau ~ \pi means \tau is a random trajectory sampled based on policy \pi. Two things can be random here: state transition, action taken based on a policy.
@@ -45,3 +47,5 @@ Now the NN takes an observation and predicts the logits of \pi(a|s). This is the
 You can think of this "grad-log-prob term before taking the gradient" as an approximation of J, because they have the same gradient.
 
 In summary, NN predicts the action distribution. The loss was designed such as its gradient is the same as dJ/d\theta.
+
+#+INCLUDE: ../utterance.org

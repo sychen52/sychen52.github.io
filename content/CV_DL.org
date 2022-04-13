@@ -1,3 +1,4 @@
+#+title Deep Learning for Computer Vision
 * 3d representation
 - depth map
 - voxel grid
@@ -54,4 +55,5 @@ SSD only has the first stage of Faster R-CNN.
 CNN on the entire image. Instead of a DL based region proposal, SSD outputs the class and the bbox at these anchor box directly.
 SSD is 10x faster than Faster R-CNN but not as accurate.
 
+#+INCLUDE: ../utterance.org
   
