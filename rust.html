@@ -5,24 +5,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Rust</title>
 <meta name="generator" content="Org mode" />
 <link rel="stylesheet" type="text/css" href="https://orgmode.org/worg/style/worg.css"/>
 </head>
 <body>
 <div id="content">
+<h1 class="title">Rust</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2204c57">Defaults</a></li>
-<li><a href="#org7b5ea44">Borrow (Reference)</a></li>
-<li><a href="#org044dcd4">Ownership</a></li>
-<li><a href="#org5adabb5">Move and Copy</a></li>
-<li><a href="#org926d27b">lifetime</a>
+<li><a href="#orgecb6348">Defaults</a></li>
+<li><a href="#org3fced9c">Borrow (Reference)</a></li>
+<li><a href="#org322b971">Ownership</a></li>
+<li><a href="#org0a97f44">Move and Copy</a></li>
+<li><a href="#org797359c">lifetime</a>
 <ul>
-<li><a href="#org288bec3">The compiler determines the lifetime of the returned reference based on these rules.</a></li>
-<li><a href="#orgf1ebaa8">If the compiler cannot determine the output lifetime parameters, you need to annotate it for the compiler.</a></li>
+<li><a href="#org1061f93">The compiler determines the lifetime of the returned reference based on these rules.</a></li>
+<li><a href="#org5dde02e">If the compiler cannot determine the output lifetime parameters, you need to annotate it for the compiler.</a></li>
 </ul>
 </li>
 </ul>
@@ -32,23 +33,23 @@
 These are notes of watching <a href="https://www.youtube.com/playlist?list=PLai5B987bZ9CoVR-QEIN9foz4QCJ0H2Y8">this playlist</a>.
 </p>
 
-<div id="outline-container-org2204c57" class="outline-2">
-<h2 id="org2204c57">Defaults</h2>
-<div class="outline-text-2" id="text-org2204c57">
+<div id="outline-container-orgecb6348" class="outline-2">
+<h2 id="orgecb6348">Defaults</h2>
+<div class="outline-text-2" id="text-orgecb6348">
 <ul class="org-ul">
 <li>immutable;</li>
 <li>move
 <ul class="org-ul">
 <li>when the resource is on heap, implicit <code>unique_ptr</code>. (think in a C++ way)</li>
-<li>when it is on stack, see <a href="#org5adabb5">Move and Copy</a>.</li>
+<li>when it is on stack, see <a href="#org0a97f44">Move and Copy</a>.</li>
 </ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7b5ea44" class="outline-2">
-<h2 id="org7b5ea44">Borrow (Reference)</h2>
-<div class="outline-text-2" id="text-org7b5ea44">
+<div id="outline-container-org3fced9c" class="outline-2">
+<h2 id="org3fced9c">Borrow (Reference)</h2>
+<div class="outline-text-2" id="text-org3fced9c">
 <ul class="org-ul">
 <li>One mutable ref, or any number of immutable ref.</li>
 <li>Compiler checks whether a ref is still valid (the original copy does not go out of scope).</li>
@@ -58,9 +59,9 @@ These are notes of watching <a href="https://www.youtube.com/playlist?list=PLai5
 </div>
 </div>
 
-<div id="outline-container-org044dcd4" class="outline-2">
-<h2 id="org044dcd4">Ownership</h2>
-<div class="outline-text-2" id="text-org044dcd4">
+<div id="outline-container-org322b971" class="outline-2">
+<h2 id="org322b971">Ownership</h2>
+<div class="outline-text-2" id="text-org322b971">
 <p>
 rust's ownership mode is just like c++ RAII (or <code>unique_ptr</code> if on heap). That is also why it is moved by default.
 </p>
@@ -71,9 +72,9 @@ rust's ownership mode is just like c++ RAII (or <code>unique_ptr</code> if on he
 </div>
 </div>
 
-<div id="outline-container-org5adabb5" class="outline-2">
-<h2 id="org5adabb5">Move and Copy</h2>
-<div class="outline-text-2" id="text-org5adabb5">
+<div id="outline-container-org0a97f44" class="outline-2">
+<h2 id="org0a97f44">Move and Copy</h2>
+<div class="outline-text-2" id="text-org0a97f44">
 <div class="org-src-container">
 <pre class="src src-rust">let b = a;
 func(a);
@@ -88,16 +89,16 @@ func(a);
 </div>
 </div>
 
-<div id="outline-container-org926d27b" class="outline-2">
-<h2 id="org926d27b">lifetime</h2>
-<div class="outline-text-2" id="text-org926d27b">
+<div id="outline-container-org797359c" class="outline-2">
+<h2 id="org797359c">lifetime</h2>
+<div class="outline-text-2" id="text-org797359c">
 <p>
 A function/method may return a reference.
 </p>
 </div>
-<div id="outline-container-org288bec3" class="outline-3">
-<h3 id="org288bec3">The compiler determines the lifetime of the returned reference based on these rules.</h3>
-<div class="outline-text-3" id="text-org288bec3">
+<div id="outline-container-org1061f93" class="outline-3">
+<h3 id="org1061f93">The compiler determines the lifetime of the returned reference based on these rules.</h3>
+<div class="outline-text-3" id="text-org1061f93">
 <ul class="org-ul">
 <li>Each parameter that is a ref gets its own lifetime parameter</li>
 <li>If there is exactly one input lifetime parameter, that is assigned to all output lifetime parameters</li>
@@ -105,9 +106,9 @@ A function/method may return a reference.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf1ebaa8" class="outline-3">
-<h3 id="orgf1ebaa8">If the compiler cannot determine the output lifetime parameters, you need to annotate it for the compiler.</h3>
-<div class="outline-text-3" id="text-orgf1ebaa8">
+<div id="outline-container-org5dde02e" class="outline-3">
+<h3 id="org5dde02e">If the compiler cannot determine the output lifetime parameters, you need to annotate it for the compiler.</h3>
+<div class="outline-text-3" id="text-org5dde02e">
 <script src="https://utteranc.es/client.js"
         repo="sychen52/sychen52.github.io"
         issue-term="pathname"
