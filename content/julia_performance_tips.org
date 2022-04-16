@@ -7,8 +7,22 @@ This is a note for  https://github.com/AdvancedScientificComputingInJuliaWashU/P
 - Avoid if possible
 - If not, use a const Ref to get the type fixed
 
-* Any, Union, T
+* Type: T <: Union{T, ...} <: Any
 - A single concrete type is the best
 - If not possible, a union of all possible types is still [[https://julialang.org/blog/2018/08/union-splitting/][way better than Any]].
+
+* Type of the variables (in a struct)
+- Type annotation in a struct is like variable declaration in C++.
+- If you do not specify a type, it is type Any
+- If you specify a variable as an abstract type, the functions applies on it will likely return type: Any (Because anyone can subtype this abstract type and define a method for the function to return whatever type). functions includes getindex. This meaning array[i] can return type Any, even if array::AbstractVector{Int64}. *Although in the runtime, you can see the type being correct. However, @code_warntype or @inferred cannot infer the type while compiling.*
+- Using parameterized type (like C++ template), you can give it a concrete type without specify it out while writing the struct. *Note: ::AbstractVector{Int64} is still an abstract type, use ::A to represent a concrete type.*
+
+* Multiple Dispatch
+- As a rule of thumb, compile time multiple dispatch is as fast as C/C++, Julia can do all the optimizations like inlining. However, runtime multiple dispatch needs to do a lookup and it is slow (can be slower than runtime if-else check)
+[[https://github.com/AdvancedScientificComputingInJuliaWashU/Performance.jl/blob/main/test/type_abuse.jl]["When types can't be predicted in advance, you're better off doing more at runtime and less via the type system.]]
+
+* Dict vs. Array
+- Hash table lookup can be a order of magnitude slower than Array lookup (even with some condiction check)
+- If you are working with char, using Array as a dictionary.
 
 #+INCLUDE: ../utterance.org
