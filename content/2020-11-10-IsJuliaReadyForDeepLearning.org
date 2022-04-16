@@ -38,7 +38,7 @@ You can you Julia just a dynamic type language (such as Python), and have all th
 Note that type annotation does not help if the compiler can figure out a stable type. In that case, annotating it to a narrower type only makes your function less reusable.
 
 * Multiple Dispatch
-As a rule of thumb, compile time multiple dispatch is as fast as C/C++, Julia can do all the optimizations like inlining. However, runtime multiple dispatch needs to do a lookup and it is slow. but runtime-multiple dispatch is much more powerful than the single/double dispatch in C++/Python.
+As a rule of thumb, compile time multiple dispatch is as fast as C/C++, Julia can do all the optimizations like inlining. However, runtime multiple dispatch needs to do a lookup and it is slow (can be slower than runtime if-else check). but runtime-multiple dispatch is much more powerful than the single/double dispatch in C++/Python.
 ** Compile-time dispatch
 when the type is known at compile time, this feature is typical in a static type language (C++ for example), it is called function overloading. Julia and C++ can both do heavy optimization.
 ** Runtime dispatch
