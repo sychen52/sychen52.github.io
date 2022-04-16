@@ -15,11 +15,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org446500f">Global variable</a></li>
-<li><a href="#org7110ad4">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</a></li>
-<li><a href="#org8896009">Type of the variables (in a struct)</a></li>
-<li><a href="#org553fce8">Multiple Dispatch</a></li>
-<li><a href="#org4398595">Dict vs. Array</a></li>
+<li><a href="#orgf6660ea">Global variable</a></li>
+<li><a href="#org3b38b85">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</a></li>
+<li><a href="#org79fd11f">Type declaration with abstract type</a>
+<ul>
+<li><a href="#orgf722907">It is good for function arguments: reusable for multiple types.</a></li>
+<li><a href="#org473f705">It is bad for fields in a struct</a></li>
+</ul>
+</li>
+<li><a href="#org3fa29e1">Multiple Dispatch</a></li>
+<li><a href="#orgb2d2260">Dict vs. Array</a></li>
 </ul>
 </div>
 </div>
@@ -32,9 +37,9 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </p>
 
 
-<div id="outline-container-org446500f" class="outline-2">
-<h2 id="org446500f">Global variable</h2>
-<div class="outline-text-2" id="text-org446500f">
+<div id="outline-container-orgf6660ea" class="outline-2">
+<h2 id="orgf6660ea">Global variable</h2>
+<div class="outline-text-2" id="text-orgf6660ea">
 <ul class="org-ul">
 <li>Avoid if possible</li>
 <li>If not, use a const Ref to get the type fixed</li>
@@ -42,31 +47,64 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </div>
 </div>
 
-<div id="outline-container-org7110ad4" class="outline-2">
-<h2 id="org7110ad4">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</h2>
-<div class="outline-text-2" id="text-org7110ad4">
+<div id="outline-container-org3b38b85" class="outline-2">
+<h2 id="org3b38b85">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</h2>
+<div class="outline-text-2" id="text-org3b38b85">
 <ul class="org-ul">
+<li>If you do not specify a type, it is type Any</li>
 <li>A single concrete type is the best</li>
 <li>If not possible, a union of all possible types is still <a href="https://julialang.org/blog/2018/08/union-splitting/">way better than Any</a>.</li>
+<li>This is especially true if it is in a container such as Array.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8896009" class="outline-2">
-<h2 id="org8896009">Type of the variables (in a struct)</h2>
-<div class="outline-text-2" id="text-org8896009">
+<div id="outline-container-org79fd11f" class="outline-2">
+<h2 id="org79fd11f">Type declaration with abstract type</h2>
+<div class="outline-text-2" id="text-org79fd11f">
+</div>
+<div id="outline-container-orgf722907" class="outline-3">
+<h3 id="orgf722907">It is good for function arguments: reusable for multiple types.</h3>
+<div class="outline-text-3" id="text-orgf722907">
 <ul class="org-ul">
-<li>Type annotation in a struct is like variable declaration in C++.</li>
-<li>If you do not specify a type, it is type Any</li>
-<li>If you specify a variable as an abstract type, the functions applies on it will likely return type: Any (Because anyone can subtype this abstract type and define a method for the function to return whatever type). functions includes getindex. This meaning array[i] can return type Any, even if array::AbstractVector{Int64}. <b>Although in the runtime, you can see the type being correct. However, @code<sub>warntype</sub> or @inferred cannot infer the type while compiling.</b></li>
-<li>Using parameterized type (like C++ template), you can give it a concrete type without specify it out while writing the struct. <b>Note: ::AbstractVector{Int64} is still an abstract type, use ::A to represent a concrete type.</b></li>
+<li>For example, <code>function f(a:Real)</code> means when you call it with <code>f(1)</code>, a <code>f(a::Int64)</code> will be generated and compiled.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org553fce8" class="outline-2">
-<h2 id="org553fce8">Multiple Dispatch</h2>
-<div class="outline-text-2" id="text-org553fce8">
+
+<div id="outline-container-org473f705" class="outline-3">
+<h3 id="org473f705"><a href="https://docs.julialang.org/en/v1/manual/performance-tips/#Avoid-fields-with-abstract-type">It is bad for fields in a struct</a></h3>
+<div class="outline-text-3" id="text-org473f705">
+<ul class="org-ul">
+<li><a href="https://docs.julialang.org/en/v1/manual/performance-tips/#Avoid-fields-with-abstract-type">The compiler uses the types of objects, not their values, to determine how to build code.</a></li>
+<li><p>
+For the following example, in <code>S{Int64}</code>, and <code>s.a</code> could be <code>Vector{Int64}</code> or <code>SparseVector{Int64}</code>. If it is a mutible struct, you can even change <code>s.a</code>'s type at runtime after creation. Therefore, the compiler has no way to optimize it.
+</p>
+<div class="org-src-container">
+<pre class="src src-julia">struct S{T}
+    a::AbstractVector{T}
+end
+</pre>
+</div></li>
+<li><p>
+The good version is as follows. In a <code>S{Vector{Int}}</code>, <code>s.a</code> must be <code>Vector{Int}</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-julia">struct S{T&lt;:AbstractVector}
+    a::T
+end
+</pre>
+</div></li>
+<li>If you specify a field as an abstract type, the functions applies on it will likely return type: Any (Because anyone can subtype this abstract type and define a method for the function to return whatever type). functions includes getindex. This meaning array[i] can return type Any, even if array::AbstractVector{Int64}. <b>Although in the runtime, you can see the type being correct. However, @code<sub>warntype</sub> or @inferred cannot infer the type while compiling.</b></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3fa29e1" class="outline-2">
+<h2 id="org3fa29e1">Multiple Dispatch</h2>
+<div class="outline-text-2" id="text-org3fa29e1">
 <ul class="org-ul">
 <li>As a rule of thumb, compile time multiple dispatch is as fast as C/C++, Julia can do all the optimizations like inlining. However, runtime multiple dispatch needs to do a lookup and it is slow (can be slower than runtime if-else check)</li>
 </ul>
@@ -76,9 +114,9 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </div>
 </div>
 
-<div id="outline-container-org4398595" class="outline-2">
-<h2 id="org4398595">Dict vs. Array</h2>
-<div class="outline-text-2" id="text-org4398595">
+<div id="outline-container-orgb2d2260" class="outline-2">
+<h2 id="orgb2d2260">Dict vs. Array</h2>
+<div class="outline-text-2" id="text-orgb2d2260">
 <ul class="org-ul">
 <li>Hash table lookup can be a order of magnitude slower than Array lookup (even with some condiction check)</li>
 <li>If you are working with char, using Array as a dictionary.</li>
