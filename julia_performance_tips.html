@@ -15,16 +15,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf6660ea">Global variable</a></li>
-<li><a href="#org3b38b85">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</a></li>
-<li><a href="#org79fd11f">Type declaration with abstract type</a>
+<li><a href="#orgb4fe884">Global variable</a></li>
+<li><a href="#org2cc9b70">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</a></li>
+<li><a href="#org5768424">Type declaration with abstract type</a>
 <ul>
-<li><a href="#orgf722907">It is good for function arguments: reusable for multiple types.</a></li>
-<li><a href="#org473f705">It is bad for fields in a struct</a></li>
+<li><a href="#org5890372">It is good for function arguments: reusable for multiple types.</a></li>
+<li><a href="#org2e1e8e0">It is bad for fields in a struct</a></li>
 </ul>
 </li>
-<li><a href="#org3fa29e1">Multiple Dispatch</a></li>
-<li><a href="#orgb2d2260">Dict vs. Array</a></li>
+<li><a href="#org89fa372">Multiple Dispatch</a></li>
+<li><a href="#org8cbd641">Dict vs. Array</a></li>
+<li><a href="#org3efd181">where</a></li>
 </ul>
 </div>
 </div>
@@ -37,9 +38,9 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </p>
 
 
-<div id="outline-container-orgf6660ea" class="outline-2">
-<h2 id="orgf6660ea">Global variable</h2>
-<div class="outline-text-2" id="text-orgf6660ea">
+<div id="outline-container-orgb4fe884" class="outline-2">
+<h2 id="orgb4fe884">Global variable</h2>
+<div class="outline-text-2" id="text-orgb4fe884">
 <ul class="org-ul">
 <li>Avoid if possible</li>
 <li>If not, use a const Ref to get the type fixed</li>
@@ -47,9 +48,9 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </div>
 </div>
 
-<div id="outline-container-org3b38b85" class="outline-2">
-<h2 id="org3b38b85">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</h2>
-<div class="outline-text-2" id="text-org3b38b85">
+<div id="outline-container-org2cc9b70" class="outline-2">
+<h2 id="org2cc9b70">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</h2>
+<div class="outline-text-2" id="text-org2cc9b70">
 <ul class="org-ul">
 <li>If you do not specify a type, it is type Any</li>
 <li>A single concrete type is the best</li>
@@ -59,13 +60,13 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </div>
 </div>
 
-<div id="outline-container-org79fd11f" class="outline-2">
-<h2 id="org79fd11f">Type declaration with abstract type</h2>
-<div class="outline-text-2" id="text-org79fd11f">
+<div id="outline-container-org5768424" class="outline-2">
+<h2 id="org5768424">Type declaration with abstract type</h2>
+<div class="outline-text-2" id="text-org5768424">
 </div>
-<div id="outline-container-orgf722907" class="outline-3">
-<h3 id="orgf722907">It is good for function arguments: reusable for multiple types.</h3>
-<div class="outline-text-3" id="text-orgf722907">
+<div id="outline-container-org5890372" class="outline-3">
+<h3 id="org5890372">It is good for function arguments: reusable for multiple types.</h3>
+<div class="outline-text-3" id="text-org5890372">
 <ul class="org-ul">
 <li>For example, <code>function f(a:Real)</code> means when you call it with <code>f(1)</code>, a <code>f(a::Int64)</code> will be generated and compiled.</li>
 </ul>
@@ -73,9 +74,9 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </div>
 
 
-<div id="outline-container-org473f705" class="outline-3">
-<h3 id="org473f705"><a href="https://docs.julialang.org/en/v1/manual/performance-tips/#Avoid-fields-with-abstract-type">It is bad for fields in a struct</a></h3>
-<div class="outline-text-3" id="text-org473f705">
+<div id="outline-container-org2e1e8e0" class="outline-3">
+<h3 id="org2e1e8e0"><a href="https://docs.julialang.org/en/v1/manual/performance-tips/#Avoid-fields-with-abstract-type">It is bad for fields in a struct</a></h3>
+<div class="outline-text-3" id="text-org2e1e8e0">
 <ul class="org-ul">
 <li><a href="https://docs.julialang.org/en/v1/manual/performance-tips/#Avoid-fields-with-abstract-type">The compiler uses the types of objects, not their values, to determine how to build code.</a></li>
 <li><p>
@@ -102,9 +103,9 @@ end
 </div>
 </div>
 
-<div id="outline-container-org3fa29e1" class="outline-2">
-<h2 id="org3fa29e1">Multiple Dispatch</h2>
-<div class="outline-text-2" id="text-org3fa29e1">
+<div id="outline-container-org89fa372" class="outline-2">
+<h2 id="org89fa372">Multiple Dispatch</h2>
+<div class="outline-text-2" id="text-org89fa372">
 <ul class="org-ul">
 <li>As a rule of thumb, compile time multiple dispatch is as fast as C/C++, Julia can do all the optimizations like inlining. However, runtime multiple dispatch needs to do a lookup and it is slow (can be slower than runtime if-else check)</li>
 </ul>
@@ -114,9 +115,9 @@ end
 </div>
 </div>
 
-<div id="outline-container-orgb2d2260" class="outline-2">
-<h2 id="orgb2d2260">Dict vs. Array</h2>
-<div class="outline-text-2" id="text-orgb2d2260">
+<div id="outline-container-org8cbd641" class="outline-2">
+<h2 id="org8cbd641">Dict vs. Array</h2>
+<div class="outline-text-2" id="text-org8cbd641">
 <ul class="org-ul">
 <li>Hash table lookup can be a order of magnitude slower than Array lookup (even with some condiction check)</li>
 <li>If you are working with char, using Array as a dictionary.</li>
@@ -129,6 +130,18 @@ end
         crossorigin="anonymous"
         async>
 </script>
+</div>
+</div>
+
+<div id="outline-container-org3efd181" class="outline-2">
+<h2 id="org3efd181">where</h2>
+<div class="outline-text-2" id="text-org3efd181">
+<ul class="org-ul">
+<li><code>Vector{T} where T &lt;: Real</code> means Union{Vector{T} for all T belong to Real}.</li>
+<li>Unionall: <code>Vector</code> means <code>Vector{T} where T &lt;: Any</code></li>
+<li>In function signature, <code>function f(x::T) where {T}</code> just tells the parser, T is template/parametric. <code>function f(x::T) where {T&lt;:Real}</code> can be used to put some constraint on the type.</li>
+<li>On the other hand, there is no where for struct to put constraint. You directly put constraint in the <code>{}</code>. For example, <code>struct S{T&lt;:Real}</code></li>
+</ul>
 </div>
 </div>
 </div>
