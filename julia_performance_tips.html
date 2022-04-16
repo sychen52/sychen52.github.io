@@ -15,8 +15,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga7d4ea2">Global variable</a></li>
-<li><a href="#orgeee5b5d">Any, Union, T</a></li>
+<li><a href="#org446500f">Global variable</a></li>
+<li><a href="#org7110ad4">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</a></li>
+<li><a href="#org8896009">Type of the variables (in a struct)</a></li>
+<li><a href="#org553fce8">Multiple Dispatch</a></li>
+<li><a href="#org4398595">Dict vs. Array</a></li>
 </ul>
 </div>
 </div>
@@ -29,9 +32,9 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </p>
 
 
-<div id="outline-container-orga7d4ea2" class="outline-2">
-<h2 id="orga7d4ea2">Global variable</h2>
-<div class="outline-text-2" id="text-orga7d4ea2">
+<div id="outline-container-org446500f" class="outline-2">
+<h2 id="org446500f">Global variable</h2>
+<div class="outline-text-2" id="text-org446500f">
 <ul class="org-ul">
 <li>Avoid if possible</li>
 <li>If not, use a const Ref to get the type fixed</li>
@@ -39,12 +42,46 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </div>
 </div>
 
-<div id="outline-container-orgeee5b5d" class="outline-2">
-<h2 id="orgeee5b5d">Any, Union, T</h2>
-<div class="outline-text-2" id="text-orgeee5b5d">
+<div id="outline-container-org7110ad4" class="outline-2">
+<h2 id="org7110ad4">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</h2>
+<div class="outline-text-2" id="text-org7110ad4">
 <ul class="org-ul">
 <li>A single concrete type is the best</li>
 <li>If not possible, a union of all possible types is still <a href="https://julialang.org/blog/2018/08/union-splitting/">way better than Any</a>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8896009" class="outline-2">
+<h2 id="org8896009">Type of the variables (in a struct)</h2>
+<div class="outline-text-2" id="text-org8896009">
+<ul class="org-ul">
+<li>Type annotation in a struct is like variable declaration in C++.</li>
+<li>If you do not specify a type, it is type Any</li>
+<li>If you specify a variable as an abstract type, the functions applies on it will likely return type: Any (Because anyone can subtype this abstract type and define a method for the function to return whatever type). functions includes getindex. This meaning array[i] can return type Any, even if array::AbstractVector{Int64}. <b>Although in the runtime, you can see the type being correct. However, @code<sub>warntype</sub> or @inferred cannot infer the type while compiling.</b></li>
+<li>Using parameterized type (like C++ template), you can give it a concrete type without specify it out while writing the struct. <b>Note: ::AbstractVector{Int64} is still an abstract type, use ::A to represent a concrete type.</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org553fce8" class="outline-2">
+<h2 id="org553fce8">Multiple Dispatch</h2>
+<div class="outline-text-2" id="text-org553fce8">
+<ul class="org-ul">
+<li>As a rule of thumb, compile time multiple dispatch is as fast as C/C++, Julia can do all the optimizations like inlining. However, runtime multiple dispatch needs to do a lookup and it is slow (can be slower than runtime if-else check)</li>
+</ul>
+<p>
+<a href="https://github.com/AdvancedScientificComputingInJuliaWashU/Performance.jl/blob/main/test/type_abuse.jl">"When types can't be predicted in advance, you're better off doing more at runtime and less via the type system.</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4398595" class="outline-2">
+<h2 id="org4398595">Dict vs. Array</h2>
+<div class="outline-text-2" id="text-org4398595">
+<ul class="org-ul">
+<li>Hash table lookup can be a order of magnitude slower than Array lookup (even with some condiction check)</li>
+<li>If you are working with char, using Array as a dictionary.</li>
 </ul>
 
 <script src="https://utteranc.es/client.js"
