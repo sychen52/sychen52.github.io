@@ -45,7 +45,10 @@ This is a note for  https://github.com/AdvancedScientificComputingInJuliaWashU/P
 #+INCLUDE: ../utterance.org
 
 * where
-- =Vector{T} where T <: Real= means Union{Vector{T} for all T belong to Real}.
+** parametric type:
+- =Vector{<:Real}= or =Vector{T} where T <: Real= means Union{Vector{T} for all T belong to Real}.
 - Unionall: =Vector= means =Vector{T} where T <: Any=
-- In function signature, =function f(x::T) where {T}= just tells the parser, T is template/parametric. =function f(x::T) where {T<:Real}= can be used to put some constraint on the type.
-- On the other hand, there is no where for struct to put constraint. You directly put constraint in the ={}=. For example, =struct S{T<:Real}=
+** method
+- =function f(x::T) where {T}= just tells the parser, T is template/parametric. =function f(x::T) where {T<:Real}= or =function f(x::T where T<:Real)= can be used to put some constraint on the type.
+** struct
+- On the other hand, there is no =where= for struct to put constraints. You directly put constraints in the ={}=. For example, =struct S{T<:Real}=.
