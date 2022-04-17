@@ -1,4 +1,4 @@
-#+title Reinforcement Learning
+#+title: Reinforcement Learning
 
 * Trajectory = Episode = Rollout
 a sequence of state and action

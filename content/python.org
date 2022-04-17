@@ -1,4 +1,4 @@
-#+title Python
+#+title: Python
 
 * =__str__()= vs =__repr__()=:
 - =__str__()=: for human to read

@@ -1,4 +1,4 @@
-#+title Julia Performance Tips
+#+title: Julia Performance Tips
 
 This is a note for  https://github.com/AdvancedScientificComputingInJuliaWashU/Performance.jl
 

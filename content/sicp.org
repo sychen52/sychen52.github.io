@@ -1,4 +1,4 @@
-#+title Structure and Interpretation of Computer Programs
+#+title: Structure and Interpretation of Computer Programs
 
 * Primitives, means of combination, means of abstraction
 Three things to look for in a language

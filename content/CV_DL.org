@@ -1,4 +1,4 @@
-#+title Deep Learning for Computer Vision
+#+title: Deep Learning for Computer Vision
 * 3d representation
 - depth map
 - voxel grid
