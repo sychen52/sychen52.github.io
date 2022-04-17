@@ -20,7 +20,8 @@ This is a note for  https://github.com/AdvancedScientificComputingInJuliaWashU/P
 
 ** [[https://docs.julialang.org/en/v1/manual/performance-tips/#Avoid-fields-with-abstract-type][It is bad for fields in a struct]]
 - [[https://docs.julialang.org/en/v1/manual/performance-tips/#Avoid-fields-with-abstract-type][The compiler uses the types of objects, not their values, to determine how to build code.]]
-- For the following example, in =S{Int64}=, and =s.a= could be =Vector{Int64}= or =SparseVector{Int64}=. If it is a mutible struct, you can even change =s.a='s type at runtime after creation. Therefore, the compiler has no way to optimize it.
+- For the following example, in =S{Int64}=, and =s.a= could be =Vector{Int64}= or =SparseVector{Int64}=. As a result, =S{Int64}= is like an abstract type itself. Imagine if you put it into a Vector, =Vector{S{Int64}}= is like =Vector{AbstractVector{Int64}}=. The memory layout of each =AbstractVector{Int64}= can be very different (for example, some are all on stack, some are all on heap.). Therefore, it is hard to optimize.
+  - If it is a mutable struct, you can even change =s.a='s type at runtime after creation. Therefore, the compiler has no way to optimize it.
   #+begin_src julia
     struct S{T}
         a::AbstractVector{T}
@@ -32,7 +33,9 @@ This is a note for  https://github.com/AdvancedScientificComputingInJuliaWashU/P
         a::T
     end
   #+end_src
-- If you specify a field as an abstract type, the functions applies on it will likely return type: Any (Because anyone can subtype this abstract type and define a method for the function to return whatever type). functions includes getindex. This meaning array[i] can return type Any, even if array::AbstractVector{Int64}. *Although in the runtime, you can see the type being correct. However, @code_warntype or @inferred cannot infer the type while compiling.*
+
+- *The key is, make sure once the type of S is specified as concrete, all its fields are concrete as well.*
+- If you specify a field as an abstract type, the functions applies on it will likely return type: Any (Because anyone can subtype this abstract type and define a method for the function to return whatever type). Functions includes getindex. This meaning array[i] can return type Any, even if array::AbstractVector{Int64}. *Although in the runtime, you can see the type being correct. However, @code_warntype or @inferred cannot infer the type while compiling.*
 
 * Multiple Dispatch
 - As a rule of thumb, compile time multiple dispatch is as fast as C/C++, Julia can do all the optimizations like inlining. However, runtime multiple dispatch needs to do a lookup and it is slow (can be slower than runtime if-else check)
