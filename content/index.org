@@ -45,3 +45,5 @@
 [[./tesla_ai_day.org][Tesla AI Day]]
 
 [[./julia_performance_tips.org][Julia Performance Tips]]
+
+[[./data_structure.org][Data Structure in Python and C++]]
