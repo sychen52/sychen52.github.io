@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Data Structure in Python and C++</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" type="text/css" href="https://orgmode.org/worg/style/worg.css"/>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Data Structure in Python and C++</h1>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Python</th>
+<th scope="col" class="org-left">C++</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Size</td>
+<td class="org-left">len(x)</td>
+<td class="org-left">x.empty()</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">x.size</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Stack</td>
+<td class="org-left">s = list()</td>
+<td class="org-left">std::stack&lt;int&gt; s;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">s.append(xxx)</td>
+<td class="org-left">s.push(xxx);</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">yyy = s.pop()</td>
+<td class="org-left">s.pop();</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">s[-1]</td>
+<td class="org-left">s.top();</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Queue</td>
+<td class="org-left">q = collections.deque()</td>
+<td class="org-left">std::queue&lt;int&gt; q;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">q.append()</td>
+<td class="org-left">q.push(xxx);</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">yyy = q.popleft()</td>
+<td class="org-left">q.pop();</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">q[0]</td>
+<td class="org-left">q.front();</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Queue (thread safe)</td>
+<td class="org-left">q = Queue.Queue()</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">q.put(xxx)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">yyy = q.get()</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">q.queue[0]</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Priority queue</td>
+<td class="org-left">q = list() # smallest on top</td>
+<td class="org-left">std::priority<sub>queue</sub>&lt;T&gt; q; // largest on top</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">heapq.heappush(q, xxx)</td>
+<td class="org-left">q.push(xxx);</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">yyy = heapq.heappop(q)</td>
+<td class="org-left">q.pop();</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">q[0]</td>
+<td class="org-left">q.top();</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Priority queue (thread safe)</td>
+<td class="org-left">q = Queue.PriorityQueue()</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">q.put( xxx)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">yyy = q.get()</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">q.queue[0]</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Hash map</td>
+<td class="org-left">d=dict()</td>
+<td class="org-left">std::unordered<sub>map</sub>&lt;k<sub>type,v</sub><sub>type</sub>&gt; d;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">key in d</td>
+<td class="org-left">d.find(key) != d.end()</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">d[key]</td>
+<td class="org-left">d[key];</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">d[key] = value # change or insert</td>
+<td class="org-left">d[key] = value; // change or insert</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">for k, v in d.items():</td>
+<td class="org-left">for (auto iter:d) {iter-&gt;first; iter-&gt;second;}</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">for key in d:</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">del d[key]; # or d.pop(key)</td>
+<td class="org-left">d.erase(key); d.erase(iter);</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Hash set</td>
+<td class="org-left">s=set()</td>
+<td class="org-left">std::unordered<sub>set</sub>&lt;int&gt; s;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">item in s</td>
+<td class="org-left">s.find(item) != d.end()</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">s.add(item)</td>
+<td class="org-left">s.insert(xxx)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">s.remove(item) # item has to be in</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">s.discard(item) # item can be not in</td>
+<td class="org-left">s.erase(xxx) // item can be not in s</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">for x in set</td>
+<td class="org-left">for (auto&amp; x:s) {x;}</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">s1.union(s2); s1 &vert; s2</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">s1.intersection(s2); s1 &amp; s2</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">s1.difference(s2); s1 - s2</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<script src="https://utteranc.es/client.js"
+        repo="sychen52/sychen52.github.io"
+        issue-term="pathname"
+        theme="github"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+<div id="postamble" class="status">
+<p class="validation"></p>
+</div>
+</body>
+</html>
