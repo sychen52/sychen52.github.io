@@ -1,7 +1,7 @@
 #+title: Data Structure in Python and C++
 |                                | Python                               | C++                                              |
 |--------------------------------+--------------------------------------+--------------------------------------------------|
-| *Size*                         | len(x)                               | x.empty()                                        |
+| *Size *                        | len(x)                               | x.empty()                                        |
 |                                |                                      | x.size                                           |
 |--------------------------------+--------------------------------------+--------------------------------------------------|
 | *Stack*                        | s = list()                           | std::stack<int> s;                               |
@@ -19,7 +19,7 @@
 |                                | yyy = q.get()                        |                                                  |
 |                                | q.queue[0]                           |                                                  |
 |--------------------------------+--------------------------------------+--------------------------------------------------|
-| *Priority queue*               | q = list() # smallest on top         | std::priority\underqueue<T> q; // largest on top |
+| *Priority queue*               | q = list() # smallest on top         | =std::priority_queue<T> q; // largest on top= |
 |                                | heapq.heappush(q, xxx)               | q.push(xxx);                                     |
 |                                | yyy = heapq.heappop(q)               | q.pop();                                         |
 |                                | q[0]                                 | q.top();                                         |
@@ -29,7 +29,7 @@
 |                                | yyy = q.get()                        |                                                  |
 |                                | q.queue[0]                           |                                                  |
 |--------------------------------+--------------------------------------+--------------------------------------------------|
-| *Hash map*                     | d=dict()                             | std::unordered_map<k_type,v_type> d;             |
+| *Hash map*                     | d=dict()                             | =std::unordered_map<k_type,v_type> d=;           |
 |                                | key in d                             | d.find(key) != d.end()                           |
 |                                | d[key]                               | d[key];                                          |
 |                                | d[key] = value # change or insert    | d[key] = value; // change or insert              |
@@ -37,7 +37,7 @@
 |                                | for key in d:                        |                                                  |
 |                                | del d[key]; # or d.pop(key)          | d.erase(key); d.erase(iter);                     |
 |--------------------------------+--------------------------------------+--------------------------------------------------|
-| *Hash set*                     | s=set()                              | std::unordered_set<int> s;                       |
+| *Hash set*                     | s=set()                              | =std::unordered_set<int> s;=                     |
 |                                | item in s                            | s.find(item) != d.end()                          |
 |                                | s.add(item)                          | s.insert(xxx)                                    |
 |                                | s.remove(item) # item has to be in   |                                                  |
