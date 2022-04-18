@@ -8,6 +8,28 @@
 <title>Data Structure in Python and C++</title>
 <meta name="generator" content="Org mode" />
 <link rel="stylesheet" type="text/css" href="https://orgmode.org/worg/style/worg.css"/>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -31,7 +53,7 @@
 </thead>
 <tbody>
 <tr>
-<td class="org-left">Size</td>
+<td class="org-left"><b>Size</b></td>
 <td class="org-left">len(x)</td>
 <td class="org-left">x.empty()</td>
 </tr>
@@ -44,7 +66,7 @@
 </tbody>
 <tbody>
 <tr>
-<td class="org-left">Stack</td>
+<td class="org-left"><b>Stack</b></td>
 <td class="org-left">s = list()</td>
 <td class="org-left">std::stack&lt;int&gt; s;</td>
 </tr>
@@ -69,7 +91,7 @@
 </tbody>
 <tbody>
 <tr>
-<td class="org-left">Queue</td>
+<td class="org-left"><b>Queue</b></td>
 <td class="org-left">q = collections.deque()</td>
 <td class="org-left">std::queue&lt;int&gt; q;</td>
 </tr>
@@ -94,7 +116,7 @@
 </tbody>
 <tbody>
 <tr>
-<td class="org-left">Queue (thread safe)</td>
+<td class="org-left"><b>Queue (thread safe)</b></td>
 <td class="org-left">q = Queue.Queue()</td>
 <td class="org-left">&#xa0;</td>
 </tr>
@@ -119,9 +141,9 @@
 </tbody>
 <tbody>
 <tr>
-<td class="org-left">Priority queue</td>
+<td class="org-left"><b>Priority queue</b></td>
 <td class="org-left">q = list() # smallest on top</td>
-<td class="org-left">std::priority<sub>queue</sub>&lt;T&gt; q; // largest on top</td>
+<td class="org-left">std::priority\underqueue&lt;T&gt; q; // largest on top</td>
 </tr>
 
 <tr>
@@ -144,7 +166,7 @@
 </tbody>
 <tbody>
 <tr>
-<td class="org-left">Priority queue (thread safe)</td>
+<td class="org-left"><b>Priority queue (thread safe)</b></td>
 <td class="org-left">q = Queue.PriorityQueue()</td>
 <td class="org-left">&#xa0;</td>
 </tr>
@@ -169,7 +191,7 @@
 </tbody>
 <tbody>
 <tr>
-<td class="org-left">Hash map</td>
+<td class="org-left"><b>Hash map</b></td>
 <td class="org-left">d=dict()</td>
 <td class="org-left">std::unordered<sub>map</sub>&lt;k<sub>type,v</sub><sub>type</sub>&gt; d;</td>
 </tr>
@@ -212,7 +234,7 @@
 </tbody>
 <tbody>
 <tr>
-<td class="org-left">Hash set</td>
+<td class="org-left"><b>Hash set</b></td>
 <td class="org-left">s=set()</td>
 <td class="org-left">std::unordered<sub>set</sub>&lt;int&gt; s;</td>
 </tr>
