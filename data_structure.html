@@ -32,236 +32,343 @@
 <tbody>
 <tr>
 <td class="org-left">*Size *</td>
-<td class="org-left">len(x)</td>
-<td class="org-left">x.empty()</td>
+<td class="org-left"><code>len(x)</code></td>
+<td class="org-left"><code>x.empty()</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">x.size</td>
+<td class="org-left"><code>x.size()</code></td>
 </tr>
 </tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Python</th>
+<th scope="col" class="org-left">C++</th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td class="org-left"><b>Stack</b></td>
-<td class="org-left">s = list()</td>
-<td class="org-left">std::stack&lt;int&gt; s;</td>
+<td class="org-left"><code>s = list()</code></td>
+<td class="org-left"><code>std::stack&lt;int&gt; s;</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">s.append(xxx)</td>
-<td class="org-left">s.push(xxx);</td>
+<td class="org-left"><code>s.append(x)</code></td>
+<td class="org-left"><code>s.push(x);</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">yyy = s.pop()</td>
-<td class="org-left">s.pop();</td>
+<td class="org-left"><code>yyy = s.pop()</code></td>
+<td class="org-left"><code>s.pop();</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">s[-1]</td>
-<td class="org-left">s.top();</td>
+<td class="org-left"><code>s[-1]</code></td>
+<td class="org-left"><code>s.top();</code></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Python</th>
+<th scope="col" class="org-left">C++</th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td class="org-left"><b>Queue</b></td>
-<td class="org-left">q = collections.deque()</td>
-<td class="org-left">std::queue&lt;int&gt; q;</td>
+<td class="org-left"><code>q = collections.deque()</code></td>
+<td class="org-left"><code>std::queue&lt;int&gt; q;</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">q.append()</td>
-<td class="org-left">q.push(xxx);</td>
+<td class="org-left"><code>q.append()</code></td>
+<td class="org-left"><code>q.push(xxx);</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">yyy = q.popleft()</td>
-<td class="org-left">q.pop();</td>
+<td class="org-left"><code>x = q.popleft()</code></td>
+<td class="org-left"><code>q.pop();</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">q[0]</td>
-<td class="org-left">q.front();</td>
+<td class="org-left"><code>q[0]</code></td>
+<td class="org-left"><code>q.front();</code></td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left"><b>Queue (thread safe)</b></td>
-<td class="org-left">q = Queue.Queue()</td>
+<td class="org-left"><code>q = Queue.Queue()</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">q.put(xxx)</td>
+<td class="org-left"><code>q.put(xxx)</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">yyy = q.get()</td>
+<td class="org-left"><code>yyy = q.get()</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">q.queue[0]</td>
+<td class="org-left"><code>q.queue[0]</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Python</th>
+<th scope="col" class="org-left">C++</th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td class="org-left"><b>Priority queue</b></td>
-<td class="org-left">q = list() # smallest on top</td>
+<td class="org-left"><code>q = list() # smallest on top</code></td>
 <td class="org-left"><code>std::priority_queue&lt;T&gt; q; // largest on top</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">heapq.heappush(q, xxx)</td>
-<td class="org-left">q.push(xxx);</td>
+<td class="org-left"><code>heapq.heappush(q, x)</code></td>
+<td class="org-left"><code>q.push(x);</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">yyy = heapq.heappop(q)</td>
-<td class="org-left">q.pop();</td>
+<td class="org-left"><code>y = heapq.heappop(q)</code></td>
+<td class="org-left"><code>q.pop();</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">q[0]</td>
-<td class="org-left">q.top();</td>
+<td class="org-left"><code>q[0]</code></td>
+<td class="org-left"><code>q.top();</code></td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left"><b>Priority queue (thread safe)</b></td>
-<td class="org-left">q = Queue.PriorityQueue()</td>
+<td class="org-left"><code>q = Queue.PriorityQueue()</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">q.put( xxx)</td>
+<td class="org-left"><code>q.put(x)</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">yyy = q.get()</td>
+<td class="org-left"><code>yyy = q.get()</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">q.queue[0]</td>
+<td class="org-left"><code>q.queue[0]</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Python</th>
+<th scope="col" class="org-left">C++</th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td class="org-left"><b>Hash map</b></td>
-<td class="org-left">d=dict()</td>
-<td class="org-left"><code>std::unordered_map&lt;k_type,v_type&gt; d</code>;</td>
+<td class="org-left"><code>d=dict()</code></td>
+<td class="org-left"><code>std::unordered_map&lt;k_type,v_type&gt; d;</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">key in d</td>
-<td class="org-left">d.find(key) != d.end()</td>
+<td class="org-left"><code>key in d</code></td>
+<td class="org-left"><code>d.find(key) ! = d.end();</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">d[key]</td>
-<td class="org-left">d[key];</td>
+<td class="org-left"><code>d[key]</code></td>
+<td class="org-left"><code>d[key];</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">d[key] = value # change or insert</td>
-<td class="org-left">d[key] = value; // change or insert</td>
+<td class="org-left"><code>d[key] = value # change or insert</code></td>
+<td class="org-left"><code>d[key] = value; // change or insert</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">for k, v in d.items():</td>
-<td class="org-left">for (auto iter:d) {iter-&gt;first; iter-&gt;second;}</td>
+<td class="org-left"><code>for k, v in d.items():</code></td>
+<td class="org-left"><code>for (auto iter:d) {iter-&gt;first; iter-&gt;second;}</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">for key in d:</td>
+<td class="org-left"><code>for key in d:</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">del d[key]; # or d.pop(key)</td>
-<td class="org-left">d.erase(key); d.erase(iter);</td>
+<td class="org-left"><code>del d[key]; # or d.pop(key)</code></td>
+<td class="org-left"><code>d.erase(key); d.erase(iter);</code></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Python</th>
+<th scope="col" class="org-left">C++</th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td class="org-left"><b>Hash set</b></td>
-<td class="org-left">s=set()</td>
+<td class="org-left"><code>s=set()</code></td>
 <td class="org-left"><code>std::unordered_set&lt;int&gt; s;</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">item in s</td>
-<td class="org-left">s.find(item) != d.end()</td>
+<td class="org-left"><code>item in s</code></td>
+<td class="org-left"><code>s.find(item) ! = d.end();</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">s.add(item)</td>
-<td class="org-left">s.insert(xxx)</td>
+<td class="org-left"><code>s.add(item)</code></td>
+<td class="org-left"><code>s.insert(item)</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">s.remove(item) # item has to be in</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">s.discard(item) # item can be not in</td>
-<td class="org-left">s.erase(xxx) // item can be not in s</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">for x in set</td>
-<td class="org-left">for (auto&amp; x:s) {x;}</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">s1.union(s2); s1 &vert; s2</td>
+<td class="org-left"><code>s.remove(item) # item has to be in</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">s1.intersection(s2); s1 &amp; s2</td>
+<td class="org-left"><code>s.discard(item) # item can be not in</code></td>
+<td class="org-left"><code>s.erase(item) // item can be not in s</code></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>for x in set</code></td>
+<td class="org-left"><code>for (auto&amp; x:s) {x;}</code></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>s1.union(s2); s1 \vert s2</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">s1.difference(s2); s1 - s2</td>
+<td class="org-left"><code>s1.intersection(s2); s1 &amp; s2</code></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>s1.difference(s2); s1 - s2</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
