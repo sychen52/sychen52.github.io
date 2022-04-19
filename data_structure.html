@@ -12,6 +12,23 @@
 <body>
 <div id="content">
 <h1 class="title">Data Structure in Python and C++</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgab6f8b6">Size</a></li>
+<li><a href="#orgca314c2">Stack</a></li>
+<li><a href="#org81170fb">Queue</a></li>
+<li><a href="#orgd41c825">Priority Queue</a></li>
+<li><a href="#org7c74e9c">Hash Map</a></li>
+<li><a href="#org3870152">Hash Set</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgab6f8b6" class="outline-2">
+<h2 id="orgab6f8b6">Size</h2>
+<div class="outline-text-2" id="text-orgab6f8b6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -19,31 +36,32 @@
 <col  class="org-left" />
 
 <col  class="org-left" />
-
-<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">&#xa0;</th>
 <th scope="col" class="org-left">Python</th>
 <th scope="col" class="org-left">C++</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left">*Size *</td>
 <td class="org-left"><code>len(x)</code></td>
 <td class="org-left"><code>x.empty()</code></td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>x.size()</code></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
 
+
+<div id="outline-container-orgca314c2" class="outline-2">
+<h2 id="orgca314c2">Stack</h2>
+<div class="outline-text-2" id="text-orgca314c2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -51,37 +69,30 @@
 <col  class="org-left" />
 
 <col  class="org-left" />
-
-<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">&#xa0;</th>
 <th scope="col" class="org-left">Python</th>
 <th scope="col" class="org-left">C++</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><b>Stack</b></td>
 <td class="org-left"><code>s = list()</code></td>
 <td class="org-left"><code>std::stack&lt;int&gt; s;</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>s.append(x)</code></td>
 <td class="org-left"><code>s.push(x);</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>yyy = s.pop()</code></td>
 <td class="org-left"><code>s.pop();</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>s[-1]</code></td>
 <td class="org-left"><code>s.top();</code></td>
 </tr>
@@ -89,11 +100,16 @@
 <tr>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
 
+
+<div id="outline-container-org81170fb" class="outline-2">
+<h2 id="org81170fb">Queue</h2>
+<div class="outline-text-2" id="text-org81170fb">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -162,7 +178,13 @@
 </tr>
 </tbody>
 </table>
+</div>
+</div>
 
+
+<div id="outline-container-orgd41c825" class="outline-2">
+<h2 id="orgd41c825">Priority Queue</h2>
+<div class="outline-text-2" id="text-orgd41c825">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -231,7 +253,12 @@
 </tr>
 </tbody>
 </table>
+</div>
+</div>
 
+<div id="outline-container-org7c74e9c" class="outline-2">
+<h2 id="org7c74e9c">Hash Map</h2>
+<div class="outline-text-2" id="text-org7c74e9c">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -239,55 +266,45 @@
 <col  class="org-left" />
 
 <col  class="org-left" />
-
-<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">&#xa0;</th>
 <th scope="col" class="org-left">Python</th>
 <th scope="col" class="org-left">C++</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><b>Hash map</b></td>
 <td class="org-left"><code>d=dict()</code></td>
 <td class="org-left"><code>std::unordered_map&lt;k_type,v_type&gt; d;</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>key in d</code></td>
 <td class="org-left"><code>d.find(key) ! = d.end();</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>d[key]</code></td>
 <td class="org-left"><code>d[key];</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>d[key] = value # change or insert</code></td>
 <td class="org-left"><code>d[key] = value; // change or insert</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>for k, v in d.items():</code></td>
 <td class="org-left"><code>for (auto iter:d) {iter-&gt;first; iter-&gt;second;}</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>for key in d:</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>del d[key]; # or d.pop(key)</code></td>
 <td class="org-left"><code>d.erase(key); d.erase(iter);</code></td>
 </tr>
@@ -295,11 +312,15 @@
 <tr>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
 
+<div id="outline-container-org3870152" class="outline-2">
+<h2 id="org3870152">Hash Set</h2>
+<div class="outline-text-2" id="text-org3870152">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -307,67 +328,55 @@
 <col  class="org-left" />
 
 <col  class="org-left" />
-
-<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">&#xa0;</th>
 <th scope="col" class="org-left">Python</th>
 <th scope="col" class="org-left">C++</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><b>Hash set</b></td>
 <td class="org-left"><code>s=set()</code></td>
 <td class="org-left"><code>std::unordered_set&lt;int&gt; s;</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>item in s</code></td>
 <td class="org-left"><code>s.find(item) ! = d.end();</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>s.add(item)</code></td>
 <td class="org-left"><code>s.insert(item)</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>s.remove(item) # item has to be in</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>s.discard(item) # item can be not in</code></td>
 <td class="org-left"><code>s.erase(item) // item can be not in s</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>for x in set</code></td>
 <td class="org-left"><code>for (auto&amp; x:s) {x;}</code></td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left"><code>s1.union(s2); s1 \vert s2</code></td>
+<td class="org-left"><code>s1.union(s2); s1</code> &vert; <code>s2</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>s1.intersection(s2); s1 &amp; s2</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
 <td class="org-left"><code>s1.difference(s2); s1 - s2</code></td>
 <td class="org-left">&#xa0;</td>
 </tr>
@@ -381,6 +390,8 @@
         crossorigin="anonymous"
         async>
 </script>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="validation"></p>
