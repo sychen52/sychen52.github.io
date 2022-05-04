@@ -16,12 +16,12 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga866efe">Cache feature maps on disk</a></li>
-<li><a href="#orgd3db664">Late fusion -&gt; early fusion</a></li>
-<li><a href="#orgeeb13d1">Transformer for fuse / back-project</a></li>
-<li><a href="#org31527d8">Camera rectify</a></li>
-<li><a href="#org7d40421">Video Queue</a></li>
-<li><a href="#org41e6f5f">Spatial RNN</a></li>
+<li><a href="#org8a67366">Cache feature maps on disk</a></li>
+<li><a href="#org48e7c4c">Late fusion -&gt; early fusion</a></li>
+<li><a href="#org4358efd">Transformer for fuse / back-project</a></li>
+<li><a href="#orga0cb222">Camera rectify</a></li>
+<li><a href="#org6673157">Video Queue</a></li>
+<li><a href="#orgd4d3c0f">Spatial RNN</a></li>
 </ul>
 </div>
 </div>
@@ -29,9 +29,9 @@
 <a href="https://www.youtube.com/watch?v=j0z4FweCy4M">https://www.youtube.com/watch?v=j0z4FweCy4M</a>
 </p>
 
-<div id="outline-container-orga866efe" class="outline-2">
-<h2 id="orga866efe">Cache feature maps on disk</h2>
-<div class="outline-text-2" id="text-orga866efe">
+<div id="outline-container-org8a67366" class="outline-2">
+<h2 id="org8a67366">Cache feature maps on disk</h2>
+<div class="outline-text-2" id="text-org8a67366">
 <ul class="org-ul">
 <li>shared back-bone + multiple heads;</li>
 <li>back-bone output feature maps are cached on disk;</li>
@@ -40,9 +40,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgd3db664" class="outline-2">
-<h2 id="orgd3db664">Late fusion -&gt; early fusion</h2>
-<div class="outline-text-2" id="text-orgd3db664">
+<div id="outline-container-org48e7c4c" class="outline-2">
+<h2 id="org48e7c4c">Late fusion -&gt; early fusion</h2>
+<div class="outline-text-2" id="text-org48e7c4c">
 <ul class="org-ul">
 <li>vector space: 3d space, 2d birds-eye view
 From the later slides (Multi-Cam Features HxWxCxT 20x80x256x60), this vector space seems to be an ego-centric 2d birds-eye view</li>
@@ -54,9 +54,9 @@ back-bone on each 2d image; fuse to vector space; heads on vector space</li>
 </div>
 </div>
 
-<div id="outline-container-orgeeb13d1" class="outline-2">
-<h2 id="orgeeb13d1">Transformer for fuse / back-project</h2>
-<div class="outline-text-2" id="text-orgeeb13d1">
+<div id="outline-container-org4358efd" class="outline-2">
+<h2 id="org4358efd">Transformer for fuse / back-project</h2>
+<div class="outline-text-2" id="text-org4358efd">
 <ul class="org-ul">
 <li>each image provides keys and values</li>
 <li>positional encoded 3d grid / 2d birds-eye view grid are the queries</li>
@@ -65,9 +65,9 @@ back-bone on each 2d image; fuse to vector space; heads on vector space</li>
 </div>
 </div>
 
-<div id="outline-container-org31527d8" class="outline-2">
-<h2 id="org31527d8">Camera rectify</h2>
-<div class="outline-text-2" id="text-org31527d8">
+<div id="outline-container-orga0cb222" class="outline-2">
+<h2 id="orga0cb222">Camera rectify</h2>
+<div class="outline-text-2" id="text-orga0cb222">
 <ul class="org-ul">
 <li>It sounds like correct the camera orientation error during installation by software composition.</li>
 <li>This is before everything. It is like pre-processing.</li>
@@ -75,9 +75,9 @@ back-bone on each 2d image; fuse to vector space; heads on vector space</li>
 </div>
 </div>
 
-<div id="outline-container-org7d40421" class="outline-2">
-<h2 id="org7d40421">Video Queue</h2>
-<div class="outline-text-2" id="text-org7d40421">
+<div id="outline-container-org6673157" class="outline-2">
+<h2 id="org6673157">Video Queue</h2>
+<div class="outline-text-2" id="text-org6673157">
 <ul class="org-ul">
 <li>Queue is going into an RNN.</li>
 <li>Features: Kinematics(velocity and acceleration) + vector space features + positional encodings</li>
@@ -88,9 +88,9 @@ back-bone on each 2d image; fuse to vector space; heads on vector space</li>
 </div>
 </div>
 
-<div id="outline-container-org41e6f5f" class="outline-2">
-<h2 id="org41e6f5f">Spatial RNN</h2>
-<div class="outline-text-2" id="text-org41e6f5f">
+<div id="outline-container-orgd4d3c0f" class="outline-2">
+<h2 id="orgd4d3c0f">Spatial RNN</h2>
+<div class="outline-text-2" id="text-orgd4d3c0f">
 <ul class="org-ul">
 <li>This sounds like a larger/global 2d birds-eye view which is not ego-centric.</li>
 <li>And you only update the area that the car can "see" in its ego-centric vector space.</li>
