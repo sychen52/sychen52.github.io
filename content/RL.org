@@ -11,7 +11,7 @@ A specific policy \pi vs. the optimal policy *
 ** Value Function vs. Action-Value Function
 *** If On-Policy
 Expectation over all possible actions from the policy vs. given a specific action a (the action may not from the polity).
-*** IF Optimal
+*** If Optimal
 Max over ...
 
 Since it is the optimal policy, all possible actions only contain the best/max-return action.
@@ -47,5 +47,39 @@ Now the NN takes an observation and predicts the logits of \pi(a|s). This is the
 You can think of this "grad-log-prob term before taking the gradient" as an approximation of J, because they have the same gradient.
 
 In summary, NN predicts the action distribution. The loss was designed such as its gradient is the same as dJ/d\theta.
+
+* [[https://spinningup.openai.com/en/latest/algorithms/vpg.html][Vinilla Policy Gradient (VPG)]]
+- use NN to estimate policy and value function
+- update the policy NN with the gradient mentioned above
+- value function NN is updated by a loss function = L2 of between predict and the real reward.
+
+* [[https://spinningup.openai.com/en/latest/algorithms/trpo.html][Trust Region Policy Optimization (TRPO)]]
+- A small grad update of policy NN does NOT necessarily mean the resulting difference in policy is small. This means a bad step in policy gradient can collapse the policy
+- Maximum a new surrogate advantage, with a constraint that KL divergence of the policy before and after update is less than a threshold.
+  - the new surrogate advantage has the same gradient as the one in VPG.
+- Solve the Lagrangian duality.
+- The gradient update will involve the Hessian of KL.
+
+* [[https://spinningup.openai.com/en/latest/algorithms/ppo.html#id3][Proximal Policy Optimization (PPO)]]
+** PPO-Penalty: Similar to TRPO but the KL is in the loss function itself rather than a constraint
+** PPO-Clip
+- same surrogate advantage function as TRPO, which contain a ratio between new and old policy.
+- add an extra term in loss to clip the ratio so that it does not change much.
+- The question I have: they did not compute the gradient of the loss here. Maybe they use autograd here?
+
+[[https://spinningup.openai.com/en/latest/algorithms/ddpg.html][Deep Deterministic Policy Gradient (DDPG)]]
+- DDPG is an offline algorithm that learns the optimal policy and the Q*.
+  - VPG, TRPO, and PPO are all online algorithms that learn a policy and the value function for that policy
+- DDPG is the Q-learning for continuous space.
+  - Getting the optimal policy from Q* is trivial for finite discretized action space (Thus, Q-learning is enough.). However, for continuous action space, it is not easy. This is why DDPG learns the optimal policy instead of computing it based on Q*.
+** Tricks:
+*** Experience replay
+- For previous on-policy algorithms, such as VPG, TRPO, and PPO. The loss function and the gradient term has a expection term sample over current policy. This makes the old experience unusable.
+- For Q-learning algorithm, the loss function is mean-squared Bellman error (MSBE), and this equation should be satisfied with any action you sampled.
+  
+
+  
+
+
 
 #+INCLUDE: ../utterance.org
