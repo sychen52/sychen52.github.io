@@ -68,14 +68,25 @@ In summary, NN predicts the action distribution. The loss was designed such as i
 - The question I have: they did not compute the gradient of the loss here. Maybe they use autograd here?
 
 [[https://spinningup.openai.com/en/latest/algorithms/ddpg.html][Deep Deterministic Policy Gradient (DDPG)]]
-- DDPG is an offline algorithm that learns the optimal policy and the Q*.
+- DDPG is an offline algorithm that learns the optimal deterministic policy and the Q*.
   - VPG, TRPO, and PPO are all online algorithms that learn a policy and the value function for that policy
 - DDPG is the Q-learning for continuous space.
   - Getting the optimal policy from Q* is trivial for finite discretized action space (Thus, Q-learning is enough.). However, for continuous action space, it is not easy. This is why DDPG learns the optimal policy instead of computing it based on Q*.
+  - To learn this optimal policy, to loss function is just to max Q* (while the parameters in the Q* NN being fixed.).
 ** Tricks:
-*** Experience replay
+*** Experience Replay
 - For previous on-policy algorithms, such as VPG, TRPO, and PPO. The loss function and the gradient term has a expection term sample over current policy. This makes the old experience unusable.
 - For Q-learning algorithm, the loss function is mean-squared Bellman error (MSBE), and this equation should be satisfied with any action you sampled.
+*** Target Networks
+- There is a "max Q*" term inside Bellman equation.
+  - As mentioned about, to estimate the max part in a continuous action space, you need to use the estimated optimal policy.
+  - if both Q* in the Bellman equation are the same Q* estimated by NN, it will be unstable. Therefore, they use a target network for Q* and a target network for optimal policy. These two are used for estimating "max Q*". The target networks is just a running average of the normal NN.
+
+* [[https://spinningup.openai.com/en/latest/algorithms/td3.html][Twin Delayed DDPG]]
+** Three tricks
+- learn 2 Q-function and use the smaller of the two Q-value
+- update policy less frequently than Q-function
+- add noise to target action to smooth the policy
   
 
   
