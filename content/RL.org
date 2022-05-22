@@ -2,7 +2,7 @@
 
 * Trajectory = Episode = Rollout
 a sequence of state and action
-\tau ~ \pi means \tau is a random trajectory sampled based on policy \pi. Two things can be random here: state transition, action taken based on a policy.
+\tau ~ \pi means \tau is a random trajectory (s1, a1, s2, a2, ...) sampled based on policy \pi. Two things can be random here: state transition, the action taken based on a policy.
 
 * Value Functions
 Four different types of value function, if you combine the following two.
@@ -40,9 +40,9 @@ Q(s,a)-V(s)
 * Policy Optimization and Policy Gradient
 This time, the NN directly learn the policy itself (given state/observation as input, what should be the action (or probability of take that action)).
 
-Instead of computing a loss as "expected total reward of a policy" (J = E[R(\tau)]), and then take a gradient of that and do gradient ascent (This is impossible when we cannot take derivative of the environment), we derive the equation of the gradient of J, then ignore all the terms that has 0-grad. This new equation is called grad-log-prob.
+Instead of computing a loss as the "expected total reward of a policy" (J = E[R(\tau)]), then taking a gradient of that and do gradient ascent (This is impossible when we cannot take the derivative of the environment (p(s1), p(s2|s1, a1), ...)), we derive the equation of the gradient of J, then ignore all the terms that have 0-grad. This new equation is called grad-log-prob.
 
-Now the NN takes an observation and predicts the logits of \pi(a|s). This is the parameters of the action distribution in current state. Then you sample this distribution to get an action. The so-called loss is the grad-log-prob term before taking the gradient.
+Now the NN takes an observation and predicts the logits of \pi(a|s). These are the parameters of the action distribution in the current state. Then you sample this distribution to get an action. The so-called loss is the grad-log-prob term before taking the gradient.
 
 You can think of this "grad-log-prob term before taking the gradient" as an approximation of J, because they have the same gradient.
 
@@ -88,9 +88,4 @@ In summary, NN predicts the action distribution. The loss was designed such as i
 - update policy less frequently than Q-function
 - add noise to target action to smooth the policy
   
-
-  
-
-
-
 #+INCLUDE: ../utterance.org
