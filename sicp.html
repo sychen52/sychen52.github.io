@@ -16,62 +16,62 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org947d825">Primitives, means of combination, means of abstraction</a></li>
-<li><a href="#org74dc119">Closure</a></li>
-<li><a href="#org7b337b8">Data and procedure</a></li>
-<li><a href="#org9946ac0">Pattern matching (match pat data dict)</a></li>
-<li><a href="#orgf3a0865">Assignment, state, and side effects</a>
+<li><a href="#orgcf3f464">Primitives, means of combination, means of abstraction</a></li>
+<li><a href="#org568dfd4">Closure</a></li>
+<li><a href="#orgd1aaca0">Data and procedure</a></li>
+<li><a href="#org53c9353">Pattern matching (match pat data dict)</a></li>
+<li><a href="#org72eea40">Assignment, state, and side effects</a>
 <ul>
-<li><a href="#org9498251">Bound variables (in current scope)</a></li>
-<li><a href="#org354ec1f">Free variables (from the outside of current scope)</a></li>
-<li><a href="#orgdecf710">Compound Procedure</a></li>
-<li><a href="#org518915f">Function</a></li>
-<li><a href="#org6b87b87">Side effects</a></li>
-<li><a href="#org819e37d">Object</a></li>
-<li><a href="#org9bcaa78">Assignment / Mutation</a></li>
+<li><a href="#orgc4f6d0f">Bound variables (in current scope)</a></li>
+<li><a href="#org1bec894">Free variables (from the outside of current scope)</a></li>
+<li><a href="#orga3a3fb3">Compound Procedure</a></li>
+<li><a href="#orga73e1ea">Function</a></li>
+<li><a href="#org0fbd777">Side effects</a></li>
+<li><a href="#org1c5d1f0">Object</a></li>
+<li><a href="#orgb547f4f">Assignment / Mutation</a></li>
 </ul>
 </li>
-<li><a href="#org93a01f3">Stream</a>
+<li><a href="#orgcb19a97">Stream</a>
 <ul>
-<li><a href="#org8af53c5">similar to list</a></li>
-<li><a href="#org73affe8">Diff with list</a></li>
+<li><a href="#org265a5af">similar to list</a></li>
+<li><a href="#org2c0ec01">Diff with list</a></li>
 </ul>
 </li>
-<li><a href="#org80801df">Meta-circular Evaluator</a></li>
-<li><a href="#org45208c7">Logic programming</a></li>
-<li><a href="#org11a2d69">Register Machines</a></li>
-<li><a href="#orgc149ac1">Compile vs Interpret</a></li>
-<li><a href="#org30d3492">Garbage collection</a>
+<li><a href="#org92d85aa">Meta-circular Evaluator</a></li>
+<li><a href="#orgeda67ad">Logic programming</a></li>
+<li><a href="#org0f6368d">Register Machines</a></li>
+<li><a href="#org24b7d93">Compile vs Interpret</a></li>
+<li><a href="#orgcb7c6c9">Garbage collection</a>
 <ul>
-<li><a href="#org4a908cd">mark and sweep</a></li>
-<li><a href="#org31c20b3">move</a></li>
+<li><a href="#org3cb3df8">mark and sweep</a></li>
+<li><a href="#orga508746">move</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org947d825" class="outline-2">
-<h2 id="org947d825">Primitives, means of combination, means of abstraction</h2>
-<div class="outline-text-2" id="text-org947d825">
+<div id="outline-container-orgcf3f464" class="outline-2">
+<h2 id="orgcf3f464">Primitives, means of combination, means of abstraction</h2>
+<div class="outline-text-2" id="text-orgcf3f464">
 <p>
 Three things to look for in a language
 </p>
 </div>
 </div>
 
-<div id="outline-container-org74dc119" class="outline-2">
-<h2 id="org74dc119">Closure</h2>
-<div class="outline-text-2" id="text-org74dc119">
+<div id="outline-container-org568dfd4" class="outline-2">
+<h2 id="org568dfd4">Closure</h2>
+<div class="outline-text-2" id="text-org568dfd4">
 <p>
 After combination and abstraction of small pieces, the new thing API looks the same as the small pieces.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7b337b8" class="outline-2">
-<h2 id="org7b337b8">Data and procedure</h2>
-<div class="outline-text-2" id="text-org7b337b8">
+<div id="outline-container-orgd1aaca0" class="outline-2">
+<h2 id="orgd1aaca0">Data and procedure</h2>
+<div class="outline-text-2" id="text-orgd1aaca0">
 <ul class="org-ul">
 <li>You can never directly access a piece of data. There must be some way/function/procedure to interact the data.</li>
 <li>However, if also you use are procedures to "interact with data", how do you know in what form the data exist/is saved. In the lecture, they show a way to implement pair without an explicit data part (all inside the procedure).</li>
@@ -79,9 +79,9 @@ After combination and abstraction of small pieces, the new thing API looks the s
 </div>
 </div>
 
-<div id="outline-container-org9946ac0" class="outline-2">
-<h2 id="org9946ac0">Pattern matching (match pat data dict)</h2>
-<div class="outline-text-2" id="text-org9946ac0">
+<div id="outline-container-org53c9353" class="outline-2">
+<h2 id="org53c9353">Pattern matching (match pat data dict)</h2>
+<div class="outline-text-2" id="text-org53c9353">
 <ul class="org-ul">
 <li>dict is initialized to be empty</li>
 <li>if data and pat can match with the existing dictionary, return the final extended dictionary</li>
@@ -90,30 +90,30 @@ After combination and abstraction of small pieces, the new thing API looks the s
 </div>
 </div>
 
-<div id="outline-container-orgf3a0865" class="outline-2">
-<h2 id="orgf3a0865">Assignment, state, and side effects</h2>
-<div class="outline-text-2" id="text-orgf3a0865">
+<div id="outline-container-org72eea40" class="outline-2">
+<h2 id="org72eea40">Assignment, state, and side effects</h2>
+<div class="outline-text-2" id="text-org72eea40">
 </div>
-<div id="outline-container-org9498251" class="outline-3">
-<h3 id="org9498251">Bound variables (in current scope)</h3>
-<div class="outline-text-3" id="text-org9498251">
+<div id="outline-container-orgc4f6d0f" class="outline-3">
+<h3 id="orgc4f6d0f">Bound variables (in current scope)</h3>
+<div class="outline-text-3" id="text-orgc4f6d0f">
 <p>
 The ones in formal parameter list (passed in as arguments).
 </p>
 </div>
 </div>
-<div id="outline-container-org354ec1f" class="outline-3">
-<h3 id="org354ec1f">Free variables (from the outside of current scope)</h3>
-<div class="outline-text-3" id="text-org354ec1f">
+<div id="outline-container-org1bec894" class="outline-3">
+<h3 id="org1bec894">Free variables (from the outside of current scope)</h3>
+<div class="outline-text-3" id="text-org1bec894">
 <p>
 Captured from outside.
 Even other functions you call inside a function are free variables.
 </p>
 </div>
 </div>
-<div id="outline-container-orgdecf710" class="outline-3">
-<h3 id="orgdecf710">Compound Procedure</h3>
-<div class="outline-text-3" id="text-orgdecf710">
+<div id="outline-container-orga3a3fb3" class="outline-3">
+<h3 id="orga3a3fb3">Compound Procedure</h3>
+<div class="outline-text-3" id="text-orga3a3fb3">
 <ul class="org-ul">
 <li>I have an implementation in <a href="https://github.com/sychen52/mal/tree/master/impls/c++">mal</a>.</li>
 <li>Environment is a pointer to a chain of frames.</li>
@@ -122,26 +122,26 @@ Even other functions you call inside a function are free variables.
 </ul>
 </div>
 </div>
-<div id="outline-container-org518915f" class="outline-3">
-<h3 id="org518915f">Function</h3>
-<div class="outline-text-3" id="text-org518915f">
+<div id="outline-container-orga73e1ea" class="outline-3">
+<h3 id="orga73e1ea">Function</h3>
+<div class="outline-text-3" id="text-orga73e1ea">
 <ul class="org-ul">
 <li>A procedure is a function, if same input, same output, no internal state change.</li>
 <li>The built-in ones are also called primitive procedures.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6b87b87" class="outline-3">
-<h3 id="org6b87b87">Side effects</h3>
-<div class="outline-text-3" id="text-org6b87b87">
+<div id="outline-container-org0fbd777" class="outline-3">
+<h3 id="org0fbd777">Side effects</h3>
+<div class="outline-text-3" id="text-org0fbd777">
 <p>
 A procedure gives different output even when same input is given, because its internal state changes.
 </p>
 </div>
 </div>
-<div id="outline-container-org819e37d" class="outline-3">
-<h3 id="org819e37d">Object</h3>
-<div class="outline-text-3" id="text-org819e37d">
+<div id="outline-container-org1c5d1f0" class="outline-3">
+<h3 id="org1c5d1f0">Object</h3>
+<div class="outline-text-3" id="text-org1c5d1f0">
 <ul class="org-ul">
 <li>From my OOP perspective, an object is like an instance of a class.</li>
 <li>In dynamic language, an object is much more flexible, because you can monkey patch it to add new method or variable to it.</li>
@@ -151,9 +151,9 @@ A procedure gives different output even when same input is given, because its in
 </ul>
 </div>
 </div>
-<div id="outline-container-org9bcaa78" class="outline-3">
-<h3 id="org9bcaa78">Assignment / Mutation</h3>
-<div class="outline-text-3" id="text-org9bcaa78">
+<div id="outline-container-orgb547f4f" class="outline-3">
+<h3 id="orgb547f4f">Assignment / Mutation</h3>
+<div class="outline-text-3" id="text-orgb547f4f">
 <ul class="org-ul">
 <li>Because of it, we need to have environment (frames) that holds the values, so that you know where to look up and change. Otherwise, we can just use the substitution model. (The substitution model is like the way I implement built-in function in mal, because they don't have a state. While the way I implement fn* (lambda) is the same as this environment frames)</li>
 <li>Because of it, we now have identity (of an object) and sharing.</li>
@@ -162,22 +162,22 @@ A procedure gives different output even when same input is given, because its in
 </div>
 </div>
 
-<div id="outline-container-org93a01f3" class="outline-2">
-<h2 id="org93a01f3">Stream</h2>
-<div class="outline-text-2" id="text-org93a01f3">
+<div id="outline-container-orgcb19a97" class="outline-2">
+<h2 id="orgcb19a97">Stream</h2>
+<div class="outline-text-2" id="text-orgcb19a97">
 </div>
-<div id="outline-container-org8af53c5" class="outline-3">
-<h3 id="org8af53c5">similar to list</h3>
-<div class="outline-text-3" id="text-org8af53c5">
+<div id="outline-container-org265a5af" class="outline-3">
+<h3 id="org265a5af">similar to list</h3>
+<div class="outline-text-3" id="text-org265a5af">
 <ul class="org-ul">
 <li>Stream has cons-stream, head, and tail. The tail returns another stream.</li>
 <li>Filter, map, reduce can be built with these three functions.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org73affe8" class="outline-3">
-<h3 id="org73affe8">Diff with list</h3>
-<div class="outline-text-3" id="text-org73affe8">
+<div id="outline-container-org2c0ec01" class="outline-3">
+<h3 id="org2c0ec01">Diff with list</h3>
+<div class="outline-text-3" id="text-org2c0ec01">
 <ul class="org-ul">
 <li>The computation of each item in-stream is lazy. e.g. yield in python.</li>
 <li>A stream is a pair, with the head being the current value and the tail being a promise to compute the next value.</li>
@@ -191,9 +191,9 @@ A procedure gives different output even when same input is given, because its in
 </div>
 </div>
 
-<div id="outline-container-org80801df" class="outline-2">
-<h2 id="org80801df">Meta-circular Evaluator</h2>
-<div class="outline-text-2" id="text-org80801df">
+<div id="outline-container-org92d85aa" class="outline-2">
+<h2 id="org92d85aa">Meta-circular Evaluator</h2>
+<div class="outline-text-2" id="text-org92d85aa">
 <ul class="org-ul">
 <li>(delay f) is: wrap the function f into a lambda function to not evaluate it.</li>
 <li>(force delayedF) is: call the wrapped function by delay</li>
@@ -208,9 +208,9 @@ A procedure gives different output even when same input is given, because its in
 </div>
 </div>
 
-<div id="outline-container-org45208c7" class="outline-2">
-<h2 id="org45208c7">Logic programming</h2>
-<div class="outline-text-2" id="text-org45208c7">
+<div id="outline-container-orgeda67ad" class="outline-2">
+<h2 id="orgeda67ad">Logic programming</h2>
+<div class="outline-text-2" id="text-orgeda67ad">
 <ul class="org-ul">
 <li>It mostly works as a pattern matcher</li>
 <li>It is still an open research topic to make it similar to human logic. For example, the NOT in logic programming assumes close world, i.e. cannot deduce in the database means false. Sometimes this is not what human intended to do. (what I don't know could still be true.)</li>
@@ -218,9 +218,9 @@ A procedure gives different output even when same input is given, because its in
 </div>
 </div>
 
-<div id="outline-container-org11a2d69" class="outline-2">
-<h2 id="org11a2d69">Register Machines</h2>
-<div class="outline-text-2" id="text-org11a2d69">
+<div id="outline-container-org0f6368d" class="outline-2">
+<h2 id="org0f6368d">Register Machines</h2>
+<div class="outline-text-2" id="text-org0f6368d">
 <ul class="org-ul">
 <li>This feels like translating Lisp into Assembly, without advanced language features like function, recursion, etc. It only has basic instructions like goto, assign, save to stack, restore from stack, etc.</li>
 <li>This is not really compile lisp into Assembly, because it does not handle stuff like types&#x2026;</li>
@@ -228,9 +228,9 @@ A procedure gives different output even when same input is given, because its in
 </div>
 </div>
 
-<div id="outline-container-orgc149ac1" class="outline-2">
-<h2 id="orgc149ac1">Compile vs Interpret</h2>
-<div class="outline-text-2" id="text-orgc149ac1">
+<div id="outline-container-org24b7d93" class="outline-2">
+<h2 id="org24b7d93">Compile vs Interpret</h2>
+<div class="outline-text-2" id="text-org24b7d93">
 <ul class="org-ul">
 <li>Interpreter needs to prepare for the worst possible case.</li>
 <li>Compiler knows what is coming and can optimize stuff away.
@@ -242,16 +242,16 @@ A procedure gives different output even when same input is given, because its in
 </div>
 </div>
 
-<div id="outline-container-org30d3492" class="outline-2">
-<h2 id="org30d3492">Garbage collection</h2>
-<div class="outline-text-2" id="text-org30d3492">
+<div id="outline-container-orgcb7c6c9" class="outline-2">
+<h2 id="orgcb7c6c9">Garbage collection</h2>
+<div class="outline-text-2" id="text-orgcb7c6c9">
 </div>
-<div id="outline-container-org4a908cd" class="outline-3">
-<h3 id="org4a908cd">mark and sweep</h3>
+<div id="outline-container-org3cb3df8" class="outline-3">
+<h3 id="org3cb3df8">mark and sweep</h3>
 </div>
-<div id="outline-container-org31c20b3" class="outline-3">
-<h3 id="org31c20b3">move</h3>
-<div class="outline-text-3" id="text-org31c20b3">
+<div id="outline-container-orga508746" class="outline-3">
+<h3 id="orga508746">move</h3>
+<div class="outline-text-3" id="text-orga508746">
 <script src="https://utteranc.es/client.js"
         repo="sychen52/sychen52.github.io"
         issue-term="pathname"
