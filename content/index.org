@@ -40,6 +40,8 @@
 
 [[./RL.org][Reinforcement Learning]]
 
+[[./cs285.org][Notes of CS285: Deep Reinforcement Learning]]
+
 [[./CV_DL.org][Deep Learning for Computer Vision]]
 
 [[./tesla_ai_day.org][Tesla AI Day]]

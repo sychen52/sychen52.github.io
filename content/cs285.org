@@ -1,0 +1,59 @@
+#+title: Notes of CS285: Deep Reinforcement Learning
+
+* The loss function for imitation learning (behavior clone and Dagger)
+** =MSELoss()(dist.rsample(), expert_action)=
+I so this solution [[https://github.com/berkeleydeeprlcourse/homework_fall2021/compare/main...ChoiJangho:main][here]]. I feel this might be the intended solution because in the provided code, there is already a self.loss=MSELoss()
+** =-dist.log_prob().sum(-1).mean()=
+- However, I think this is a better loss because it does not need the exact unnecessary randomness in =dist.rsample()=. As a piece of evidence, I notice this loss will yield a better Eval_AverageReturn with shorter training steps and a smaller training batch size.
+- sum(-1) is to multiply 8 independent gaussian to make a joint Gaussian distribution; mean() instead of sum() so that the gradient contribution of each batch is the same no matter what is the batch_size. sum() will make each sample's contribution the same, so a larger batch_size will have a greater contribution.
+
+
+* Distribution
+** Discrete
+prob: [0, 1]
+log_prob: [-inf, 0]
+** Continuous
+prob==likelihood: [0, +inf]
+log_prob: [-inf, +inf]
+** Normal as indenpendent Gaussian
+- multiply all the prob or sum all the log_prob
+
+
+* Behaviour Clone (BC) vs. Dagger
+** control total training steps and the model the same
+- For easy experiments like Ant, Dagger is just slightly better than BC (I keep the total training steps the same for BC and Dagger).
+- For hard experiments like Humanoid, Dagger is just 2x better than BC (I keep the total training steps the same for BC and Dagger). I increased the training iteration another 5x (also the amount of data labeled by expert 5x), Dagger is more than 10x better than BC.
+- I think this is partly because Dagger sees much more various data than BC
+** also control the total amount of data the same
+- For easy experiments like Ant, Dagger is just slightly better than BC (I keep the total training steps the same for BC and Dagger).
+- For hard experiments like Humanoid, it is too hard to train a good model with just 2000 data samples (The amount of expert data I have for BC).
+
+* Discount factor \gamma
+The effect is that it modifies the MDP by adding a death state. And 1 - \gamma is the probability of transiting into the death state.
+
+* Causality: policy cannot affect the previous reward
+The reason we can remove sum_0^{t-1} is that its expectation is 0. In the lecture, he mentioned the proof is somewhat involved. However, I think there must be some additional requirements for the reward, e.g. centered.
+
+* Baselines in advantage
+To take of b, b must have nothing to do with actions.
+b can be a constant or a function of states.
+The proof of b=const case is simple; however, in lecture 6, he mentioned it can also be proved if b=f(s).
+
+* Multithread and Multiprocess
+hw2 bonus question is to make sample_trajectories multithread. However, after multi-threading, it is much slower (the more threads, the slower). I guess, 1) something under the hood does not release GIL, for example, gym? 2) it is already fast on my machine < 1ms, so the overhead of thread is more significant.
+Multiprocess does not work because it uses fork, and CUDA does not work on fork.
+P.S. batch_size = 50k
+
+* Fitted Q/value-iteration and Actor-Critic do not guarantee to converge.
+- Q/value-iteration (Bellman equation part) converges
+- Deep learning fits the Q/value function part also converges
+- However, the combination of these two no longer guarantees to converge.
+- For the same reason, the critic part in AC does not guarantee to converge either.
+
+* Make sample_trajactory multithread / multiprocess
+- before multithread / multiprocess, only one CPU is used at 100%. Even without setting the OPENBLAS_NUM_THREADS=1.
+- multithread works; however, all CPUs work at ~10%, and the total time is 3x longer than single thread.
+- multiprocess crashes (because of the way torch uses CUDA. Some extra work is needed to get this work.); however, all CPUs go to 100% before crash.
+- I think something (env or torch) does not release GIL.
+
+#+INCLUDE: ../utterance.org

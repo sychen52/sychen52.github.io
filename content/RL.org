@@ -54,6 +54,7 @@ In summary, NN predicts the action distribution. The loss was designed such as i
 - value function NN is updated by a loss function = L2 of between predict and the real reward.
 
 * [[https://spinningup.openai.com/en/latest/algorithms/trpo.html][Trust Region Policy Optimization (TRPO)]]
+- cs285 lecture 9 explains why we want the policy before and after update to be close.
 - A small grad update of policy NN does NOT necessarily mean the resulting difference in policy is small. This means a bad step in policy gradient can collapse the policy
 - Maximum a new surrogate advantage, with a constraint that KL divergence of the policy before and after update is less than a threshold.
   - the new surrogate advantage has the same gradient as the one in VPG.
@@ -63,9 +64,10 @@ In summary, NN predicts the action distribution. The loss was designed such as i
 * [[https://spinningup.openai.com/en/latest/algorithms/ppo.html#id3][Proximal Policy Optimization (PPO)]]
 ** PPO-Penalty: Similar to TRPO but the KL is in the loss function itself rather than a constraint
 ** PPO-Clip
-- same surrogate advantage function as TRPO, which contain a ratio between new and old policy.
+- same surrogate advantage function as TRPO, which contains a ratio between new and old policy.
 - add an extra term in loss to clip the ratio so that it does not change much.
 - The question I have: they did not compute the gradient of the loss here. Maybe they use autograd here?
+  - Answer: I think so, you need a proxy loss to have the same gradient. This way you can use Pytorch's autograd.
 
 [[https://spinningup.openai.com/en/latest/algorithms/ddpg.html][Deep Deterministic Policy Gradient (DDPG)]]
 - DDPG is an offline algorithm that learns the optimal deterministic policy and the Q*.
@@ -75,17 +77,17 @@ In summary, NN predicts the action distribution. The loss was designed such as i
   - To learn this optimal policy, to loss function is just to max Q* (while the parameters in the Q* NN being fixed.).
 ** Tricks:
 *** Experience Replay
-- For previous on-policy algorithms, such as VPG, TRPO, and PPO. The loss function and the gradient term has a expection term sample over current policy. This makes the old experience unusable.
+- For previous on-policy algorithms, such as VPG, TRPO, and PPO. The loss function and the gradient term has an expectation term sample over the current policy. This makes the old experience unusable.
 - For Q-learning algorithm, the loss function is mean-squared Bellman error (MSBE), and this equation should be satisfied with any action you sampled.
 *** Target Networks
 - There is a "max Q*" term inside Bellman equation.
-  - As mentioned about, to estimate the max part in a continuous action space, you need to use the estimated optimal policy.
-  - if both Q* in the Bellman equation are the same Q* estimated by NN, it will be unstable. Therefore, they use a target network for Q* and a target network for optimal policy. These two are used for estimating "max Q*". The target networks is just a running average of the normal NN.
+  - As mentioned above, to estimate the max part in a continuous action space, you need to use the estimated optimal policy.
+  - if both Q* in the Bellman equation are the same Q* estimated by NN, it will be unstable. Therefore, they use a target network for Q* and a target network for optimal policy. These two are used for estimating "max Q*". The target network is just a running average of the normal NN.
 
 * [[https://spinningup.openai.com/en/latest/algorithms/td3.html][Twin Delayed DDPG]]
 ** Three tricks
-- learn 2 Q-function and use the smaller of the two Q-value
+- learn 2 Q-function and use the smaller of the two Q-value (because Q-value tend to over-estimate [cs285 lecture 8])
 - update policy less frequently than Q-function
-- add noise to target action to smooth the policy
+- add noise to target action to smooth the policy (Q over-estimate)
   
 #+INCLUDE: ../utterance.org
