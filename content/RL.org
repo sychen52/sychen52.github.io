@@ -5,12 +5,12 @@ a sequence of state and action
 \tau ~ \pi means \tau is a random trajectory (s1, a1, s2, a2, ...) sampled based on policy \pi. Two things can be random here: state transition, the action taken based on a policy.
 
 * Value Functions
-Four different types of value function, if you combine the following two.
+Four different types of value functions, if you combine the following two.
 ** On-Policy vs. Optimal
 A specific policy \pi vs. the optimal policy *
 ** Value Function vs. Action-Value Function
 *** If On-Policy
-Expectation over all possible actions from the policy vs. given a specific action a (the action may not from the polity).
+Expectation over all possible actions from the policy vs. given a specific action =a= (the action may not be from the polity).
 *** If Optimal
 Max over ...
 
@@ -23,7 +23,7 @@ since it is optimal
 * Bellman Equation
 Expand any of the 4 value functions one step and make it recursive.
 
-If it is optimal value function or Q-function, the expansion will have a max_{a} instead of E_{a~\pi}.
+If it is an optimal value function or Q-function, the expansion will have a max_{a} instead of E_{a~\pi}.
 
 * Advantage Functions
 Q(s,a)-V(s)
@@ -32,13 +32,13 @@ Q(s,a)-V(s)
 - both are for Model Free RL
 - Policy optimization predicts the distribution of the action given the observation.
 - Policy Optimization's objective/loss function estimates a [surrogate] value function
-  surrogate means the gradient is the same/similar, but the objective function is not just value function.
-- Q-Learning estimates Q-function based on Bellman equation
-- more vs. less stable: Satisfying Bellman equation is an indirect meassure of maximizing reward. And it has failure mode.
+  surrogate means the gradient is the same/similar, but the objective function is not just the value function.
+- Q-Learning estimates Q-function based on the Bellman equation
+- more vs. less stable: Satisfying the Bellman equation is an indirect measure of maximizing reward. And it has failure mode.
 - less vs. more data effective. (on vs. off policy). Policy Optimization has to be on the latest policy
 
 * Policy Optimization and Policy Gradient
-This time, the NN directly learn the policy itself (given state/observation as input, what should be the action (or probability of take that action)).
+This time, the NN directly learns the policy itself (given state/observation as input, what should be the action (or probability of taking that action)).
 
 Instead of computing a loss as the "expected total reward of a policy" (J = E[R(\tau)]), then taking a gradient of that and do gradient ascent (This is impossible when we cannot take the derivative of the environment (p(s1), p(s2|s1, a1), ...)), we derive the equation of the gradient of J, then ignore all the terms that have 0-grad. This new equation is called grad-log-prob.
 
@@ -54,9 +54,9 @@ In summary, NN predicts the action distribution. The loss was designed such as i
 - value function NN is updated by a loss function = L2 of between predict and the real reward.
 
 * [[https://spinningup.openai.com/en/latest/algorithms/trpo.html][Trust Region Policy Optimization (TRPO)]]
-- cs285 lecture 9 explains why we want the policy before and after update to be close.
-- A small grad update of policy NN does NOT necessarily mean the resulting difference in policy is small. This means a bad step in policy gradient can collapse the policy
-- Maximum a new surrogate advantage, with a constraint that KL divergence of the policy before and after update is less than a threshold.
+- cs285 lecture 9 explains why we want the policy before and after updating to be close.
+- A small grad update of policy NN does NOT necessarily mean the resulting difference in policy is small. This means a bad step in the policy gradient can collapse the policy
+- Maximum a new surrogate advantage, with a constraint that KL divergence of the policy before and after updating is less than a threshold.
   - the new surrogate advantage has the same gradient as the one in VPG.
 - Solve the Lagrangian duality.
 - The gradient update will involve the Hessian of KL.
@@ -74,13 +74,13 @@ In summary, NN predicts the action distribution. The loss was designed such as i
   - VPG, TRPO, and PPO are all online algorithms that learn a policy and the value function for that policy
 - DDPG is the Q-learning for continuous space.
   - Getting the optimal policy from Q* is trivial for finite discretized action space (Thus, Q-learning is enough.). However, for continuous action space, it is not easy. This is why DDPG learns the optimal policy instead of computing it based on Q*.
-  - To learn this optimal policy, to loss function is just to max Q* (while the parameters in the Q* NN being fixed.).
+  - To learn this optimal policy, to loss function is just to max Q* (while the parameters in the Q* NN are fixed.).
 ** Tricks:
 *** Experience Replay
-- For previous on-policy algorithms, such as VPG, TRPO, and PPO. The loss function and the gradient term has an expectation term sample over the current policy. This makes the old experience unusable.
-- For Q-learning algorithm, the loss function is mean-squared Bellman error (MSBE), and this equation should be satisfied with any action you sampled.
+- For previous on-policy algorithms, such as VPG, TRPO, and PPO. The loss function and the gradient term have an expectation term sample over the current policy. This makes the old experience unusable.
+- For the Q-learning algorithm, the loss function is mean-squared Bellman error (MSBE), and this equation should be satisfied with any action you sampled.
 *** Target Networks
-- There is a "max Q*" term inside Bellman equation.
+- There is a "max Q*" term inside the Bellman equation.
   - As mentioned above, to estimate the max part in a continuous action space, you need to use the estimated optimal policy.
   - if both Q* in the Bellman equation are the same Q* estimated by NN, it will be unstable. Therefore, they use a target network for Q* and a target network for optimal policy. These two are used for estimating "max Q*". The target network is just a running average of the normal NN.
 
