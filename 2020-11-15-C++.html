@@ -32,25 +32,25 @@
 <li><a href="#dont-return-an-rvalue-ref-just-return-a-value">Don't return an rvalue ref, just return a value</a></li>
 <li><a href="#stdforward">std::forward</a></li>
 <li><a href="#stdunique_ptr-stdshared_ptr-and-stdweak_ptr"><code>std::unique_ptr</code>, <code>std::shared_ptr</code>, and <code>std::weak_ptr</code></a></li>
-<li><a href="#org66ba0d7">Ownership: pointer, reference, smart pointers</a></li>
+<li><a href="#orgf64caf6">Ownership: pointer, reference, smart pointers</a></li>
 <li><a href="#function-pointer">Function pointer</a></li>
 <li><a href="#union-and-type-punning">Union and type punning</a></li>
 <li><a href="#stdvariant">std::variant</a></li>
 <li><a href="#singleton">Singleton</a></li>
-<li><a href="#org90fb7d3">C++14 feels like a patch for C++11</a></li>
-<li><a href="#org1eb8941">C++17</a></li>
-<li><a href="#orgba91262">C++20</a>
+<li><a href="#org1ea6d87">C++14 feels like a patch for C++11</a></li>
+<li><a href="#org19a97b9">C++17</a></li>
+<li><a href="#orgc7ae065">C++20</a>
 <ul>
-<li><a href="#org4e1347d">Coroutine</a></li>
-<li><a href="#org973aada">Concept</a></li>
-<li><a href="#orga85a27d">Range</a></li>
-<li><a href="#org2e76584">Module</a></li>
+<li><a href="#org4dc752b">Coroutine</a></li>
+<li><a href="#org37b3237">Concept</a></li>
+<li><a href="#org8926980">Range</a></li>
+<li><a href="#org5ba6cb8">Module</a></li>
 </ul>
 </li>
-<li><a href="#org34792a3">Design Class</a>
+<li><a href="#orgcbec2ac">Design Class</a>
 <ul>
-<li><a href="#org5ad22e7">Don't make data member const or references</a></li>
-<li><a href="#orgef78875">Value initializer</a></li>
+<li><a href="#org717fe3b">Don't make data member const or references</a></li>
+<li><a href="#org409d960">Value initializer</a></li>
 </ul>
 </li>
 </ul>
@@ -61,8 +61,8 @@ These are some notes I wrote as I watched
 <a href="https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb">Cherno's C++ playlist</a> and some other videos and resources.
 </p>
 
-<div id="outline-container-org4c2b77c" class="outline-2">
-<h2 id="compile-and-link"><a id="org4c2b77c"></a>Compile and link</h2>
+<div id="outline-container-org1702ce5" class="outline-2">
+<h2 id="compile-and-link"><a id="org1702ce5"></a>Compile and link</h2>
 <div class="outline-text-2" id="text-compile-and-link">
 <ul class="org-ul">
 <li>When compile a cpp file, all it cares is how the stuff
@@ -76,8 +76,8 @@ error.</li>
 </div>
 </div>
 
-<div id="outline-container-orgc49cf16" class="outline-2">
-<h2 id="header-and-include"><a id="orgc49cf16"></a>Header and include</h2>
+<div id="outline-container-org76f7962" class="outline-2">
+<h2 id="header-and-include"><a id="org76f7962"></a>Header and include</h2>
 <div class="outline-text-2" id="text-header-and-include">
 <ul class="org-ul">
 <li><code>#include</code> is just copying all the stuff in the header to the current
@@ -92,8 +92,8 @@ file. This also explains why you can do forward declaration.</li>
 </div>
 </div>
 
-<div id="outline-container-org5734042" class="outline-2">
-<h2 id="default-stuff-in-a-class"><a id="org5734042"></a>Default stuff in a class</h2>
+<div id="outline-container-orgb18d5d0" class="outline-2">
+<h2 id="default-stuff-in-a-class"><a id="orgb18d5d0"></a>Default stuff in a class</h2>
 <div class="outline-text-2" id="text-default-stuff-in-a-class">
 <ul class="org-ul">
 <li>There are a default constructor, default destructor, default copy
@@ -109,8 +109,8 @@ default copy constructor will be a shallow copy.</li>
 </div>
 </div>
 
-<div id="outline-container-orge4480ea" class="outline-2">
-<h2 id="when-is-operator-and-when-is-it-ctor."><a id="orge4480ea"></a>When is = operator=, and when is it ctor.</h2>
+<div id="outline-container-orgf43b9b4" class="outline-2">
+<h2 id="when-is-operator-and-when-is-it-ctor."><a id="orgf43b9b4"></a>When is = operator=, and when is it ctor.</h2>
 <div class="outline-text-2" id="text-when-is-operator-and-when-is-it-ctor.">
 <div class="org-src-container">
 <pre class="src src-c++"><span style="font-weight: bold; text-decoration: underline;">A</span> <span style="font-weight: bold; font-style: italic;">a</span>;
@@ -135,8 +135,8 @@ constructor.
 </div>
 </div>
 
-<div id="outline-container-orgf6e1d27" class="outline-2">
-<h2 id="static-lifetime-and-access"><a id="orgf6e1d27"></a>Static: lifetime and access</h2>
+<div id="outline-container-org230e8c9" class="outline-2">
+<h2 id="static-lifetime-and-access"><a id="org230e8c9"></a>Static: lifetime and access</h2>
 <div class="outline-text-2" id="text-static-lifetime-and-access">
 <ul class="org-ul">
 <li>The static keyword inside a local scope, e.g. in a class, function
@@ -164,8 +164,8 @@ linked within this file/translation unit.</li>
 </div>
 </div>
 
-<div id="outline-container-org8d893f4" class="outline-2">
-<h2 id="virtual-function-and-pure-virtual-function-interface"><a id="org8d893f4"></a>Virtual function and pure virtual function (interface)</h2>
+<div id="outline-container-org2f9fd75" class="outline-2">
+<h2 id="virtual-function-and-pure-virtual-function-interface"><a id="org2f9fd75"></a>Virtual function and pure virtual function (interface)</h2>
 <div class="outline-text-2" id="text-virtual-function-and-pure-virtual-function-interface">
 <ul class="org-ul">
 <li>All method functions can be overwritten in the derived class. However,
@@ -179,8 +179,8 @@ derived class to define it.</li>
 </div>
 </div>
 
-<div id="outline-container-org489e68d" class="outline-2">
-<h2 id="mutable"><a id="org489e68d"></a>Mutable</h2>
+<div id="outline-container-org50fa6a2" class="outline-2">
+<h2 id="mutable"><a id="org50fa6a2"></a>Mutable</h2>
 <div class="outline-text-2" id="text-mutable">
 <p>
 Mark a class variable mutable will allow const methods to change it.
@@ -188,8 +188,8 @@ Mark a class variable mutable will allow const methods to change it.
 </div>
 </div>
 
-<div id="outline-container-orgc40dc8a" class="outline-2">
-<h2 id="string-literal"><a id="orgc40dc8a"></a>String literal</h2>
+<div id="outline-container-orgd51d9bc" class="outline-2">
+<h2 id="string-literal"><a id="orgd51d9bc"></a>String literal</h2>
 <div class="outline-text-2" id="text-string-literal">
 <ul class="org-ul">
 <li>They are on a read-only memory, so you cannot modify it.</li>
@@ -207,8 +207,8 @@ b[2] = <span style="font-style: italic;">'c'</span>; <span style="font-weight: b
 </div>
 </div>
 
-<div id="outline-container-org0b225c1" class="outline-2">
-<h2 id="const"><a id="org0b225c1"></a>Const</h2>
+<div id="outline-container-org499d6d0" class="outline-2">
+<h2 id="const"><a id="org499d6d0"></a>Const</h2>
 <div class="outline-text-2" id="text-const">
 <div class="org-src-container">
 <pre class="src src-c++"><span style="font-weight: bold;">const</span> <span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">a</span>; <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">the integer cannot be modified.</span>
@@ -219,8 +219,8 @@ b[2] = <span style="font-style: italic;">'c'</span>; <span style="font-weight: b
 </div>
 </div>
 
-<div id="outline-container-org28f2370" class="outline-2">
-<h2 id="stack-vs.-heap-instantiation"><a id="org28f2370"></a>Stack vs. heap instantiation</h2>
+<div id="outline-container-org007cbf6" class="outline-2">
+<h2 id="stack-vs.-heap-instantiation"><a id="org007cbf6"></a>Stack vs. heap instantiation</h2>
 <div class="outline-text-2" id="text-stack-vs.-heap-instantiation">
 <ul class="org-ul">
 <li>Stack is about 2Mb</li>
@@ -250,8 +250,8 @@ heap data structure.</li>
 </div>
 </div>
 
-<div id="outline-container-orgc4f7403" class="outline-2">
-<h2 id="implicit-conversion"><a id="orgc4f7403"></a>Implicit conversion</h2>
+<div id="outline-container-org557b3f9" class="outline-2">
+<h2 id="implicit-conversion"><a id="org557b3f9"></a>Implicit conversion</h2>
 <div class="outline-text-2" id="text-implicit-conversion">
 <p>
 It only does it once. For example,
@@ -272,8 +272,8 @@ print(<span style="font-weight: bold; text-decoration: underline;">std</span>::s
 </div>
 </div>
 
-<div id="outline-container-org18d5b7b" class="outline-2">
-<h2 id="stdmove"><a id="org18d5b7b"></a>std::move</h2>
+<div id="outline-container-orgee88de8" class="outline-2">
+<h2 id="stdmove"><a id="orgee88de8"></a>std::move</h2>
 <div class="outline-text-2" id="text-stdmove">
 <ul class="org-ul">
 <li>It is as simple as converting lvalue to rvalue. The real move (include
@@ -286,8 +286,8 @@ from). The move ctor or assignment actually steals it.</li>
 </div>
 </div>
 
-<div id="outline-container-orgf6e4b90" class="outline-2">
-<h2 id="dont-return-an-rvalue-ref-just-return-a-value"><a id="orgf6e4b90"></a>Don't return an rvalue ref, just return a value</h2>
+<div id="outline-container-orgaa60e6c" class="outline-2">
+<h2 id="dont-return-an-rvalue-ref-just-return-a-value"><a id="orgaa60e6c"></a>Don't return an rvalue ref, just return a value</h2>
 <div class="outline-text-2" id="text-dont-return-an-rvalue-ref-just-return-a-value">
 <div class="org-src-container">
 <pre class="src src-c++"><span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">B</span>
@@ -336,8 +336,8 @@ then the receiver end has a dangling pointer.
 </div>
 </div>
 
-<div id="outline-container-org688e564" class="outline-2">
-<h2 id="stdforward"><a id="org688e564"></a>std::forward</h2>
+<div id="outline-container-org7705537" class="outline-2">
+<h2 id="stdforward"><a id="org7705537"></a>std::forward</h2>
 <div class="outline-text-2" id="text-stdforward">
 <p>
 It is converting something to T&amp;&amp;. This is only used in a template
@@ -346,8 +346,8 @@ function used for relay purposes.
 </div>
 </div>
 
-<div id="outline-container-orgd3b91f8" class="outline-2">
-<h2 id="stdunique_ptr-stdshared_ptr-and-stdweak_ptr"><a id="orgd3b91f8"></a><code>std::unique_ptr</code>, <code>std::shared_ptr</code>, and <code>std::weak_ptr</code></h2>
+<div id="outline-container-org27f2945" class="outline-2">
+<h2 id="stdunique_ptr-stdshared_ptr-and-stdweak_ptr"><a id="org27f2945"></a><code>std::unique_ptr</code>, <code>std::shared_ptr</code>, and <code>std::weak_ptr</code></h2>
 <div class="outline-text-2" id="text-stdunique_ptr-stdshared_ptr-and-stdweak_ptr">
 <ul class="org-ul">
 <li><code>std::unique_ptr</code> has almost no overhead.</li>
@@ -359,9 +359,9 @@ and the object together.</li>
 </div>
 </div>
 
-<div id="outline-container-org66ba0d7" class="outline-2">
-<h2 id="org66ba0d7">Ownership: pointer, reference, smart pointers</h2>
-<div class="outline-text-2" id="text-org66ba0d7">
+<div id="outline-container-orgf64caf6" class="outline-2">
+<h2 id="orgf64caf6">Ownership: pointer, reference, smart pointers</h2>
+<div class="outline-text-2" id="text-orgf64caf6">
 <p>
 What does it mean when passing pointer, reference, smart pointers to a function (ctor).
 </p>
@@ -376,8 +376,8 @@ What does it mean when passing pointer, reference, smart pointers to a function 
 </div>
 </div>
 
-<div id="outline-container-orgdf04fd3" class="outline-2">
-<h2 id="function-pointer"><a id="orgdf04fd3"></a>Function pointer</h2>
+<div id="outline-container-org84ea600" class="outline-2">
+<h2 id="function-pointer"><a id="org84ea600"></a>Function pointer</h2>
 <div class="outline-text-2" id="text-function-pointer">
 <ul class="org-ul">
 <li>C style function pointer
@@ -399,8 +399,8 @@ convert it to <code>std::function</code>.</li>
 </div>
 </div>
 
-<div id="outline-container-orgfaf07da" class="outline-2">
-<h2 id="union-and-type-punning"><a id="orgfaf07da"></a>Union and type punning</h2>
+<div id="outline-container-org17bcf32" class="outline-2">
+<h2 id="union-and-type-punning"><a id="org17bcf32"></a>Union and type punning</h2>
 <div class="outline-text-2" id="text-union-and-type-punning">
 <ul class="org-ul">
 <li>type punning is to interpret a piece of memory as a different type.
@@ -425,8 +425,8 @@ b[1]; <span style="font-weight: bold; font-style: italic;">// </span><span style
 </div>
 </div>
 
-<div id="outline-container-org1582060" class="outline-2">
-<h2 id="stdvariant"><a id="org1582060"></a>std::variant</h2>
+<div id="outline-container-org79fa123" class="outline-2">
+<h2 id="stdvariant"><a id="org79fa123"></a>std::variant</h2>
 <div class="outline-text-2" id="text-stdvariant">
 <ul class="org-ul">
 <li>a safer way to do Union</li>
@@ -436,8 +436,8 @@ like union, it occupies memory that is the sum of all its variants.</li>
 </div>
 </div>
 
-<div id="outline-container-org368cdbc" class="outline-2">
-<h2 id="singleton"><a id="org368cdbc"></a>Singleton</h2>
+<div id="outline-container-org5c08748" class="outline-2">
+<h2 id="singleton"><a id="org5c08748"></a>Singleton</h2>
 <div class="outline-text-2" id="text-singleton">
 <ul class="org-ul">
 <li>a static member function defines and then returns a static variable
@@ -447,9 +447,9 @@ variable.</li>
 </div>
 </div>
 
-<div id="outline-container-org90fb7d3" class="outline-2">
-<h2 id="org90fb7d3"><a href="https://www.youtube.com/watch?v=mXxNvaEdNHI">C++14</a> feels like a patch for C++11</h2>
-<div class="outline-text-2" id="text-org90fb7d3">
+<div id="outline-container-org1ea6d87" class="outline-2">
+<h2 id="org1ea6d87"><a href="https://www.youtube.com/watch?v=mXxNvaEdNHI">C++14</a> feels like a patch for C++11</h2>
+<div class="outline-text-2" id="text-org1ea6d87">
 <ul class="org-ul">
 <li><code>auto</code> as a function return type;</li>
 <li>Template lambda function using auto keyword</li>
@@ -467,9 +467,9 @@ Now, technically, you no longer to use explicit <code>new</code> and <code>delet
 </div>
 </div>
 
-<div id="outline-container-org1eb8941" class="outline-2">
-<h2 id="org1eb8941"><a href="https://www.youtube.com/watch?v=QpFjOlzg1r4">C++17</a></h2>
-<div class="outline-text-2" id="text-org1eb8941">
+<div id="outline-container-org19a97b9" class="outline-2">
+<h2 id="org19a97b9"><a href="https://www.youtube.com/watch?v=QpFjOlzg1r4">C++17</a></h2>
+<div class="outline-text-2" id="text-org19a97b9">
 <ul class="org-ul">
 <li><p>
 Guaranteed Copy/ Move Elision
@@ -515,13 +515,13 @@ if-init
 </div>
 </div>
 
-<div id="outline-container-orgba91262" class="outline-2">
-<h2 id="orgba91262"><a href="https://www.youtube.com/watch?v=D81yl6_kHEM">C++20</a></h2>
-<div class="outline-text-2" id="text-orgba91262">
+<div id="outline-container-orgc7ae065" class="outline-2">
+<h2 id="orgc7ae065"><a href="https://www.youtube.com/watch?v=D81yl6_kHEM">C++20</a></h2>
+<div class="outline-text-2" id="text-orgc7ae065">
 </div>
-<div id="outline-container-org4e1347d" class="outline-3">
-<h3 id="org4e1347d">Coroutine</h3>
-<div class="outline-text-3" id="text-org4e1347d">
+<div id="outline-container-org4dc752b" class="outline-3">
+<h3 id="org4dc752b">Coroutine</h3>
+<div class="outline-text-3" id="text-org4dc752b">
 <ul class="org-ul">
 <li><code>co_yield</code> similar to python's <code>yield</code>
 <b>It will be more complete in c++23. Don't do it yourself, use a library for now</b>.
@@ -543,9 +543,9 @@ Before <code>co_wait</code>, you can do it through callback:
 </div>
 </div>
 
-<div id="outline-container-org973aada" class="outline-3">
-<h3 id="org973aada">Concept</h3>
-<div class="outline-text-3" id="text-org973aada">
+<div id="outline-container-org37b3237" class="outline-3">
+<h3 id="org37b3237">Concept</h3>
+<div class="outline-text-3" id="text-org37b3237">
 <ul class="org-ul">
 <li><p>
 For template, explicitly write out the constraint of the template type.
@@ -562,9 +562,9 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-orga85a27d" class="outline-3">
-<h3 id="orga85a27d">Range</h3>
-<div class="outline-text-3" id="text-orga85a27d">
+<div id="outline-container-org8926980" class="outline-3">
+<h3 id="org8926980">Range</h3>
+<div class="outline-text-3" id="text-org8926980">
 <ul class="org-ul">
 <li>Build on top of concept</li>
 <li>Lazy evaluation</li>
@@ -572,9 +572,9 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-org2e76584" class="outline-3">
-<h3 id="org2e76584">Module</h3>
-<div class="outline-text-3" id="text-org2e76584">
+<div id="outline-container-org5ba6cb8" class="outline-3">
+<h3 id="org5ba6cb8">Module</h3>
+<div class="outline-text-3" id="text-org5ba6cb8">
 <ul class="org-ul">
 <li>*.cppm</li>
 <li>export</li>
@@ -584,13 +584,13 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-org34792a3" class="outline-2">
-<h2 id="org34792a3"><a href="https://www.youtube.com/watch?v=O65lEiYkkbc">Design Class</a></h2>
-<div class="outline-text-2" id="text-org34792a3">
+<div id="outline-container-orgcbec2ac" class="outline-2">
+<h2 id="orgcbec2ac"><a href="https://www.youtube.com/watch?v=O65lEiYkkbc">Design Class</a></h2>
+<div class="outline-text-2" id="text-orgcbec2ac">
 </div>
-<div id="outline-container-org5ad22e7" class="outline-3">
-<h3 id="org5ad22e7">Don't make data member const or references</h3>
-<div class="outline-text-3" id="text-org5ad22e7">
+<div id="outline-container-org717fe3b" class="outline-3">
+<h3 id="org717fe3b">Don't make data member const or references</h3>
+<div class="outline-text-3" id="text-org717fe3b">
 <ul class="org-ul">
 <li>Otherwise, the copy assignment and move ctor/assignment will be gone. but copy ctor is okay.</li>
 <li>use a raw pointer instead of a reference. Function interface can still be a reference. It is just stored as a pointer.</li>
@@ -598,9 +598,9 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-orgef78875" class="outline-3">
-<h3 id="orgef78875">Value initializer</h3>
-<div class="outline-text-3" id="text-orgef78875">
+<div id="outline-container-org409d960" class="outline-3">
+<h3 id="org409d960">Value initializer</h3>
+<div class="outline-text-3" id="text-org409d960">
 <ul class="org-ul">
 <li><code>Widget w{};</code> will also initialize <code>int</code> or <code>int*</code>.</li>
 <li>best practice is to put the initial value in the class when you declare the variable. The reason to not put in ctor, is to reduce duplication if you have two ctors that both need to initialize.</li>

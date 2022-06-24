@@ -16,50 +16,50 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9465339">Trajectory = Episode = Rollout</a></li>
-<li><a href="#org92966ba">Value Functions</a>
+<li><a href="#orgb2e0131">Trajectory = Episode = Rollout</a></li>
+<li><a href="#org7949b54">Value Functions</a>
 <ul>
-<li><a href="#orgae9ff56">On-Policy vs. Optimal</a></li>
-<li><a href="#org47b5e76">Value Function vs. Action-Value Function</a>
+<li><a href="#org84da498">On-Policy vs. Optimal</a></li>
+<li><a href="#orgdc696f3">Value Function vs. Action-Value Function</a>
 <ul>
-<li><a href="#orgee3a9ad">If On-Policy</a></li>
-<li><a href="#orgea10d4b">If Optimal</a></li>
-<li><a href="#orgacfbeb0">Q-Function is Action-Value Function</a></li>
+<li><a href="#org2f29ac3">If On-Policy</a></li>
+<li><a href="#org7501a03">If Optimal</a></li>
+<li><a href="#org6db76de">Q-Function is Action-Value Function</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org7ab4b0e">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</a></li>
-<li><a href="#orge73fc27">Bellman Equation</a></li>
-<li><a href="#orgb48a42a">Advantage Functions</a></li>
-<li><a href="#orgaca69a4">Policy Optimization vs. Q-Learning</a></li>
-<li><a href="#org075fb79">Policy Optimization and Policy Gradient</a></li>
-<li><a href="#org2828948">Vinilla Policy Gradient (VPG)</a></li>
-<li><a href="#org7889488">Trust Region Policy Optimization (TRPO)</a></li>
-<li><a href="#orgf145e9b">Proximal Policy Optimization (PPO)</a>
+<li><a href="#org5eca91c">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</a></li>
+<li><a href="#org78d57da">Bellman Equation</a></li>
+<li><a href="#orge6a852e">Advantage Functions</a></li>
+<li><a href="#org4465219">Policy Optimization vs. Q-Learning</a></li>
+<li><a href="#org1eac9a8">Policy Optimization and Policy Gradient</a></li>
+<li><a href="#orgabb4811">Vinilla Policy Gradient (VPG)</a></li>
+<li><a href="#org409b944">Trust Region Policy Optimization (TRPO)</a></li>
+<li><a href="#orgbd7e88a">Proximal Policy Optimization (PPO)</a>
 <ul>
-<li><a href="#org62a59f5">PPO-Penalty: Similar to TRPO but the KL is in the loss function itself rather than a constraint</a></li>
-<li><a href="#org2d06967">PPO-Clip</a></li>
-<li><a href="#orgda411ae">Tricks:</a>
+<li><a href="#orgcd7af10">PPO-Penalty: Similar to TRPO but the KL is in the loss function itself rather than a constraint</a></li>
+<li><a href="#orgbe860be">PPO-Clip</a></li>
+<li><a href="#org5769d57">Tricks:</a>
 <ul>
-<li><a href="#org85363b5">Experience Replay</a></li>
-<li><a href="#orgcf182e3">Target Networks</a></li>
+<li><a href="#orgaa94fd6">Experience Replay</a></li>
+<li><a href="#org1c1965c">Target Networks</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgb6dccb2">Twin Delayed DDPG</a>
+<li><a href="#org3d5ffe3">Twin Delayed DDPG</a>
 <ul>
-<li><a href="#org033d69b">Three tricks</a></li>
+<li><a href="#org0e5c621">Three tricks</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9465339" class="outline-2">
-<h2 id="org9465339">Trajectory = Episode = Rollout</h2>
-<div class="outline-text-2" id="text-org9465339">
+<div id="outline-container-orgb2e0131" class="outline-2">
+<h2 id="orgb2e0131">Trajectory = Episode = Rollout</h2>
+<div class="outline-text-2" id="text-orgb2e0131">
 <p>
 a sequence of state and action
 &tau; ~ &pi; means &tau; is a random trajectory (s1, a1, s2, a2, &#x2026;) sampled based on policy &pi;. Two things can be random here: state transition, the action taken based on a policy.
@@ -67,36 +67,36 @@ a sequence of state and action
 </div>
 </div>
 
-<div id="outline-container-org92966ba" class="outline-2">
-<h2 id="org92966ba">Value Functions</h2>
-<div class="outline-text-2" id="text-org92966ba">
+<div id="outline-container-org7949b54" class="outline-2">
+<h2 id="org7949b54">Value Functions</h2>
+<div class="outline-text-2" id="text-org7949b54">
 <p>
-Four different types of value function, if you combine the following two.
+Four different types of value functions, if you combine the following two.
 </p>
 </div>
-<div id="outline-container-orgae9ff56" class="outline-3">
-<h3 id="orgae9ff56">On-Policy vs. Optimal</h3>
-<div class="outline-text-3" id="text-orgae9ff56">
+<div id="outline-container-org84da498" class="outline-3">
+<h3 id="org84da498">On-Policy vs. Optimal</h3>
+<div class="outline-text-3" id="text-org84da498">
 <p>
 A specific policy &pi; vs. the optimal policy *
 </p>
 </div>
 </div>
-<div id="outline-container-org47b5e76" class="outline-3">
-<h3 id="org47b5e76">Value Function vs. Action-Value Function</h3>
-<div class="outline-text-3" id="text-org47b5e76">
+<div id="outline-container-orgdc696f3" class="outline-3">
+<h3 id="orgdc696f3">Value Function vs. Action-Value Function</h3>
+<div class="outline-text-3" id="text-orgdc696f3">
 </div>
-<div id="outline-container-orgee3a9ad" class="outline-4">
-<h4 id="orgee3a9ad">If On-Policy</h4>
-<div class="outline-text-4" id="text-orgee3a9ad">
+<div id="outline-container-org2f29ac3" class="outline-4">
+<h4 id="org2f29ac3">If On-Policy</h4>
+<div class="outline-text-4" id="text-org2f29ac3">
 <p>
-Expectation over all possible actions from the policy vs. given a specific action a (the action may not from the polity).
+Expectation over all possible actions from the policy vs. given a specific action <code>a</code> (the action may not be from the polity).
 </p>
 </div>
 </div>
-<div id="outline-container-orgea10d4b" class="outline-4">
-<h4 id="orgea10d4b">If Optimal</h4>
-<div class="outline-text-4" id="text-orgea10d4b">
+<div id="outline-container-org7501a03" class="outline-4">
+<h4 id="org7501a03">If Optimal</h4>
+<div class="outline-text-4" id="text-org7501a03">
 <p>
 Max over &#x2026;
 </p>
@@ -106,63 +106,63 @@ Since it is the optimal policy, all possible actions only contain the best/max-r
 </p>
 </div>
 </div>
-<div id="outline-container-orgacfbeb0" class="outline-4">
-<h4 id="orgacfbeb0">Q-Function is Action-Value Function</h4>
+<div id="outline-container-org6db76de" class="outline-4">
+<h4 id="org6db76de">Q-Function is Action-Value Function</h4>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7ab4b0e" class="outline-2">
-<h2 id="org7ab4b0e">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</h2>
-<div class="outline-text-2" id="text-org7ab4b0e">
+<div id="outline-container-org5eca91c" class="outline-2">
+<h2 id="org5eca91c">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</h2>
+<div class="outline-text-2" id="text-org5eca91c">
 <p>
 since it is optimal
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge73fc27" class="outline-2">
-<h2 id="orge73fc27">Bellman Equation</h2>
-<div class="outline-text-2" id="text-orge73fc27">
+<div id="outline-container-org78d57da" class="outline-2">
+<h2 id="org78d57da">Bellman Equation</h2>
+<div class="outline-text-2" id="text-org78d57da">
 <p>
 Expand any of the 4 value functions one step and make it recursive.
 </p>
 
 <p>
-If it is optimal value function or Q-function, the expansion will have a max<sub>a</sub> instead of E<sub>a~&pi;</sub>.
+If it is an optimal value function or Q-function, the expansion will have a max<sub>a</sub> instead of E<sub>a~&pi;</sub>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb48a42a" class="outline-2">
-<h2 id="orgb48a42a">Advantage Functions</h2>
-<div class="outline-text-2" id="text-orgb48a42a">
+<div id="outline-container-orge6a852e" class="outline-2">
+<h2 id="orge6a852e">Advantage Functions</h2>
+<div class="outline-text-2" id="text-orge6a852e">
 <p>
 Q(s,a)-V(s)
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgaca69a4" class="outline-2">
-<h2 id="orgaca69a4">Policy Optimization vs. Q-Learning</h2>
-<div class="outline-text-2" id="text-orgaca69a4">
+<div id="outline-container-org4465219" class="outline-2">
+<h2 id="org4465219">Policy Optimization vs. Q-Learning</h2>
+<div class="outline-text-2" id="text-org4465219">
 <ul class="org-ul">
 <li>both are for Model Free RL</li>
 <li>Policy optimization predicts the distribution of the action given the observation.</li>
 <li>Policy Optimization's objective/loss function estimates a [surrogate] value function
-surrogate means the gradient is the same/similar, but the objective function is not just value function.</li>
-<li>Q-Learning estimates Q-function based on Bellman equation</li>
-<li>more vs. less stable: Satisfying Bellman equation is an indirect meassure of maximizing reward. And it has failure mode.</li>
+surrogate means the gradient is the same/similar, but the objective function is not just the value function.</li>
+<li>Q-Learning estimates Q-function based on the Bellman equation</li>
+<li>more vs. less stable: Satisfying the Bellman equation is an indirect measure of maximizing reward. And it has failure mode.</li>
 <li>less vs. more data effective. (on vs. off policy). Policy Optimization has to be on the latest policy</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org075fb79" class="outline-2">
-<h2 id="org075fb79">Policy Optimization and Policy Gradient</h2>
-<div class="outline-text-2" id="text-org075fb79">
+<div id="outline-container-org1eac9a8" class="outline-2">
+<h2 id="org1eac9a8">Policy Optimization and Policy Gradient</h2>
+<div class="outline-text-2" id="text-org1eac9a8">
 <p>
-This time, the NN directly learn the policy itself (given state/observation as input, what should be the action (or probability of take that action)).
+This time, the NN directly learns the policy itself (given state/observation as input, what should be the action (or probability of taking that action)).
 </p>
 
 <p>
@@ -183,9 +183,9 @@ In summary, NN predicts the action distribution. The loss was designed such as i
 </div>
 </div>
 
-<div id="outline-container-org2828948" class="outline-2">
-<h2 id="org2828948"><a href="https://spinningup.openai.com/en/latest/algorithms/vpg.html">Vinilla Policy Gradient (VPG)</a></h2>
-<div class="outline-text-2" id="text-org2828948">
+<div id="outline-container-orgabb4811" class="outline-2">
+<h2 id="orgabb4811"><a href="https://spinningup.openai.com/en/latest/algorithms/vpg.html">Vinilla Policy Gradient (VPG)</a></h2>
+<div class="outline-text-2" id="text-orgabb4811">
 <ul class="org-ul">
 <li>use NN to estimate policy and value function</li>
 <li>update the policy NN with the gradient mentioned above</li>
@@ -194,13 +194,13 @@ In summary, NN predicts the action distribution. The loss was designed such as i
 </div>
 </div>
 
-<div id="outline-container-org7889488" class="outline-2">
-<h2 id="org7889488"><a href="https://spinningup.openai.com/en/latest/algorithms/trpo.html">Trust Region Policy Optimization (TRPO)</a></h2>
-<div class="outline-text-2" id="text-org7889488">
+<div id="outline-container-org409b944" class="outline-2">
+<h2 id="org409b944"><a href="https://spinningup.openai.com/en/latest/algorithms/trpo.html">Trust Region Policy Optimization (TRPO)</a></h2>
+<div class="outline-text-2" id="text-org409b944">
 <ul class="org-ul">
-<li>cs285 lecture 9 explains why we want the policy before and after update to be close.</li>
-<li>A small grad update of policy NN does NOT necessarily mean the resulting difference in policy is small. This means a bad step in policy gradient can collapse the policy</li>
-<li>Maximum a new surrogate advantage, with a constraint that KL divergence of the policy before and after update is less than a threshold.
+<li>cs285 lecture 9 explains why we want the policy before and after updating to be close.</li>
+<li>A small grad update of policy NN does NOT necessarily mean the resulting difference in policy is small. This means a bad step in the policy gradient can collapse the policy</li>
+<li>Maximum a new surrogate advantage, with a constraint that KL divergence of the policy before and after updating is less than a threshold.
 <ul class="org-ul">
 <li>the new surrogate advantage has the same gradient as the one in VPG.</li>
 </ul></li>
@@ -210,16 +210,16 @@ In summary, NN predicts the action distribution. The loss was designed such as i
 </div>
 </div>
 
-<div id="outline-container-orgf145e9b" class="outline-2">
-<h2 id="orgf145e9b"><a href="https://spinningup.openai.com/en/latest/algorithms/ppo.html#id3">Proximal Policy Optimization (PPO)</a></h2>
-<div class="outline-text-2" id="text-orgf145e9b">
+<div id="outline-container-orgbd7e88a" class="outline-2">
+<h2 id="orgbd7e88a"><a href="https://spinningup.openai.com/en/latest/algorithms/ppo.html#id3">Proximal Policy Optimization (PPO)</a></h2>
+<div class="outline-text-2" id="text-orgbd7e88a">
 </div>
-<div id="outline-container-org62a59f5" class="outline-3">
-<h3 id="org62a59f5">PPO-Penalty: Similar to TRPO but the KL is in the loss function itself rather than a constraint</h3>
+<div id="outline-container-orgcd7af10" class="outline-3">
+<h3 id="orgcd7af10">PPO-Penalty: Similar to TRPO but the KL is in the loss function itself rather than a constraint</h3>
 </div>
-<div id="outline-container-org2d06967" class="outline-3">
-<h3 id="org2d06967">PPO-Clip</h3>
-<div class="outline-text-3" id="text-org2d06967">
+<div id="outline-container-orgbe860be" class="outline-3">
+<h3 id="orgbe860be">PPO-Clip</h3>
+<div class="outline-text-3" id="text-orgbe860be">
 <ul class="org-ul">
 <li>same surrogate advantage function as TRPO, which contains a ratio between new and old policy.</li>
 <li>add an extra term in loss to clip the ratio so that it does not change much.</li>
@@ -240,29 +240,29 @@ In summary, NN predicts the action distribution. The loss was designed such as i
 <li>DDPG is the Q-learning for continuous space.
 <ul class="org-ul">
 <li>Getting the optimal policy from Q* is trivial for finite discretized action space (Thus, Q-learning is enough.). However, for continuous action space, it is not easy. This is why DDPG learns the optimal policy instead of computing it based on Q*.</li>
-<li>To learn this optimal policy, to loss function is just to max Q* (while the parameters in the Q* NN being fixed.).</li>
+<li>To learn this optimal policy, to loss function is just to max Q* (while the parameters in the Q* NN are fixed.).</li>
 </ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgda411ae" class="outline-3">
-<h3 id="orgda411ae">Tricks:</h3>
-<div class="outline-text-3" id="text-orgda411ae">
+<div id="outline-container-org5769d57" class="outline-3">
+<h3 id="org5769d57">Tricks:</h3>
+<div class="outline-text-3" id="text-org5769d57">
 </div>
-<div id="outline-container-org85363b5" class="outline-4">
-<h4 id="org85363b5">Experience Replay</h4>
-<div class="outline-text-4" id="text-org85363b5">
+<div id="outline-container-orgaa94fd6" class="outline-4">
+<h4 id="orgaa94fd6">Experience Replay</h4>
+<div class="outline-text-4" id="text-orgaa94fd6">
 <ul class="org-ul">
-<li>For previous on-policy algorithms, such as VPG, TRPO, and PPO. The loss function and the gradient term has an expectation term sample over the current policy. This makes the old experience unusable.</li>
-<li>For Q-learning algorithm, the loss function is mean-squared Bellman error (MSBE), and this equation should be satisfied with any action you sampled.</li>
+<li>For previous on-policy algorithms, such as VPG, TRPO, and PPO. The loss function and the gradient term have an expectation term sample over the current policy. This makes the old experience unusable.</li>
+<li>For the Q-learning algorithm, the loss function is mean-squared Bellman error (MSBE), and this equation should be satisfied with any action you sampled.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcf182e3" class="outline-4">
-<h4 id="orgcf182e3">Target Networks</h4>
-<div class="outline-text-4" id="text-orgcf182e3">
+<div id="outline-container-org1c1965c" class="outline-4">
+<h4 id="org1c1965c">Target Networks</h4>
+<div class="outline-text-4" id="text-org1c1965c">
 <ul class="org-ul">
-<li>There is a "max Q*" term inside Bellman equation.
+<li>There is a "max Q*" term inside the Bellman equation.
 <ul class="org-ul">
 <li>As mentioned above, to estimate the max part in a continuous action space, you need to use the estimated optimal policy.</li>
 <li>if both Q* in the Bellman equation are the same Q* estimated by NN, it will be unstable. Therefore, they use a target network for Q* and a target network for optimal policy. These two are used for estimating "max Q*". The target network is just a running average of the normal NN.</li>
@@ -273,13 +273,13 @@ In summary, NN predicts the action distribution. The loss was designed such as i
 </div>
 </div>
 
-<div id="outline-container-orgb6dccb2" class="outline-2">
-<h2 id="orgb6dccb2"><a href="https://spinningup.openai.com/en/latest/algorithms/td3.html">Twin Delayed DDPG</a></h2>
-<div class="outline-text-2" id="text-orgb6dccb2">
+<div id="outline-container-org3d5ffe3" class="outline-2">
+<h2 id="org3d5ffe3"><a href="https://spinningup.openai.com/en/latest/algorithms/td3.html">Twin Delayed DDPG</a></h2>
+<div class="outline-text-2" id="text-org3d5ffe3">
 </div>
-<div id="outline-container-org033d69b" class="outline-3">
-<h3 id="org033d69b">Three tricks</h3>
-<div class="outline-text-3" id="text-org033d69b">
+<div id="outline-container-org0e5c621" class="outline-3">
+<h3 id="org0e5c621">Three tricks</h3>
+<div class="outline-text-3" id="text-org0e5c621">
 <ul class="org-ul">
 <li>learn 2 Q-function and use the smaller of the two Q-value (because Q-value tend to over-estimate [cs285 lecture 8])</li>
 <li>update policy less frequently than Q-function</li>
