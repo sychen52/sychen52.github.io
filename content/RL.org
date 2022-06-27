@@ -33,19 +33,30 @@ Q(s,a)-V(s)
 - less vs. more data effective. (on vs. off policy). Policy Optimization has to be on the latest policy
 
 * Policy Optimization and Policy Gradient
-This time, the NN directly learns the policy itself (given state/observation as input, what should be the action (or probability of taking that action)).
+The NN directly learns the policy itself (given state/observation as input, what should be the action (or probability of taking that action)).
 
-Instead of computing a loss as the "expected total reward of a policy" (J = E[R(τ)]), then taking a gradient of that and do gradient ascent (This is impossible when we cannot take the derivative of the environment (p(s1), p(s2|s1, a1), ...)), we derive the equation of the gradient of J, then ignore all the terms that have 0-grad. This new equation is called grad-log-prob.
+Instead of computing a loss as the "expected total reward of a policy" (J = E[R(τ)]), then taking a gradient of that and do gradient ascent (This is impossible when we cannot take the derivative of the environment (p(s1), p(s2|s1, a1), ...). In model-based RL, this will be learned.), we derive the equation of the gradient of J, then ignore all the terms that have 0-grad. This new equation is called grad-log-prob.
 
-Now the NN takes an observation and predicts the logits of π(a|s). These are the parameters of the action distribution in the current state. Then you sample this distribution to get an action. The so-called loss is the grad-log-prob term before taking the gradient.
+You can think of this "grad-log-prob term before taking the gradient", namingly log-prob*reward, as an approximation of J, because they have the same gradient.
 
-You can think of this "grad-log-prob term before taking the gradient" as an approximation of J, because they have the same gradient.
+Now the NN takes an observation and predicts the logits of π(a|s). These are the parameters of the action distribution in the current state. Then you sample this distribution to get an action. The so-called loss is the log-prob*reward.
+
+However, this log-prob*reward is not a loss function. Its value goes down or up does not mean the policy is good. The only useful thing about this log-prob*reward is its gradient at the current step. 
 
 In summary, NN predicts the action distribution. The loss was designed such as its gradient is the same as dJ/dθ.
 
+* Reduce sample variance
+** Reward-to-go:
+- Causality: policy cannot affect the previous reward
+- The reason we can remove sum_0^{t-1} is that its expectation is 0. In the cs285 lecture, he mentioned the proof is somewhat involved. The proof depends on EGLP lemma. 
+** Baselines
+To subtract a baseline, b must have nothing to do with actions.
+b can be a constant or a function of states.
+The proof of b=const case is simple; however, in lecture 6, he mentioned it can also be proved if b=f(s).
+
 * [[https://spinningup.openai.com/en/latest/algorithms/vpg.html][Vinilla Policy Gradient (VPG)]]
 - use NN to estimate policy and value function
-- update the policy NN with the gradient mentioned above
+- update the policy NN with the gradient mentioned above (reward-to-go and value functin as baseline)
 - value function NN is updated by a loss function = L2 of between predict and the real reward.
 
 * [[https://spinningup.openai.com/en/latest/algorithms/trpo.html][Trust Region Policy Optimization (TRPO)]]
@@ -79,10 +90,17 @@ In summary, NN predicts the action distribution. The loss was designed such as i
   - As mentioned above, to estimate the max part in a continuous action space, you need to use the estimated optimal policy.
   - if both Q* in the Bellman equation are the same Q* estimated by NN, it will be unstable. Therefore, they use a target network for Q* and a target network for optimal policy. These two are used for estimating "max Q*". The target network is just a running average of the normal NN.
 
-* [[https://spinningup.openai.com/en/latest/algorithms/td3.html][Twin Delayed DDPG]]
+* [[https://spinningup.openai.com/en/latest/algorithms/td3.html][Twin Delayed DDPG (TD3)]]
 ** Three tricks
 - learn 2 Q-function and use the smaller of the two Q-value (because Q-value tend to over-estimate [cs285 lecture 8])
 - update policy less frequently than Q-function
 - add noise to target action to smooth the policy (Q over-estimate)
   
+* Soft Actor Critic (SAC)
+- similar to TD3
+  - learn a policy and two Q-functions.
+  - add an entropy regularization of policy into Q function estimation. Basically, encourage more random policy.
+    
+
 #+INCLUDE: ../utterance.org
+
