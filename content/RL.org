@@ -62,7 +62,7 @@ The proof of b=const case is simple; however, in lecture 6, he mentioned it can 
 * [[https://spinningup.openai.com/en/latest/algorithms/trpo.html][Trust Region Policy Optimization (TRPO)]]
 - why do we want the policy before and after updating to be close.
   - A small grad update of policy NN does NOT necessarily mean the resulting difference in policy is small. This means a bad step in the policy gradient can collapse the policy
-  - cs285 lecture: TRPO and PPO have a new "loss function". For this loss function to be the same as the one used mentioned before. There is one constraint: π_θ' is close to π_θ => p_θ'(sₜ) is close to p_θ(sₜ)
+  - cs285 lecture: TRPO and PPO derive a new "loss function". For this loss function to be the same as the one used mentioned before. There is one constraint: π_θ' is close to π_θ => p_θ'(sₜ) is close to p_θ(sₜ)
 - Maximum a new surrogate advantage, with a constraint that KL divergence of the policy before and after updating is less than a threshold.
   - the new surrogate advantage has the same gradient as the one in VPG.
 - Solve the Lagrangian duality.
