@@ -16,50 +16,50 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5765011">The loss function for imitation learning (behavior clone and Dagger)</a>
+<li><a href="#org88243eb">The loss function for imitation learning (behavior clone and Dagger)</a>
 <ul>
-<li><a href="#orgc8b1ce5"><code>MSELoss()(dist.rsample(), expert_action)</code></a></li>
-<li><a href="#org24ba8c0"><code>-dist.log_prob().sum(-1).mean()</code></a></li>
+<li><a href="#org40f9577"><code>MSELoss()(dist.rsample(), expert_action)</code></a></li>
+<li><a href="#org2239bb2"><code>-dist.log_prob().sum(-1).mean()</code></a></li>
 </ul>
 </li>
-<li><a href="#orgc73516d">Distribution</a>
+<li><a href="#org23d75aa">Distribution</a>
 <ul>
-<li><a href="#orge3abe60">Discrete</a></li>
-<li><a href="#orge3b8261">Continuous</a></li>
-<li><a href="#org13752eb">Normal as indenpendent Gaussian</a></li>
+<li><a href="#org1082315">Discrete</a></li>
+<li><a href="#org9511f22">Continuous</a></li>
+<li><a href="#orgec04848">Normal as indenpendent Gaussian</a></li>
 </ul>
 </li>
-<li><a href="#org2e934c3">Behaviour Clone (BC) vs. Dagger</a>
+<li><a href="#orgd6b3b08">Behaviour Clone (BC) vs. Dagger</a>
 <ul>
-<li><a href="#org665b75b">control total training steps and the model the same</a></li>
-<li><a href="#orga9c71f2">also control the total amount of data the same</a></li>
+<li><a href="#org58a03cf">control total training steps and the model the same</a></li>
+<li><a href="#org53504e5">also control the total amount of data the same</a></li>
 </ul>
 </li>
-<li><a href="#org911152f">Discount factor &gamma;</a></li>
-<li><a href="#orge5419b5">Causality: policy cannot affect the previous reward</a></li>
-<li><a href="#org4a854c8">Baselines in advantage</a></li>
-<li><a href="#org4a0e0ef">Multithread and Multiprocess</a></li>
-<li><a href="#org77df1e0">Fitted Q/value-iteration and Actor-Critic do not guarantee to converge.</a></li>
-<li><a href="#orgb8b95d9">Make sample<sub>trajactory</sub> multithread / multiprocess</a></li>
+<li><a href="#org79fe0e4">Discount factor &gamma;</a></li>
+<li><a href="#orgb39f0ea">Causality: policy cannot affect the previous reward</a></li>
+<li><a href="#orgbb5914b">Baselines in advantage</a></li>
+<li><a href="#org992e2e3">Multithread and Multiprocess</a></li>
+<li><a href="#org0a9cc52">Fitted Q/value-iteration and Actor-Critic do not guarantee to converge.</a></li>
+<li><a href="#org65535b5">Make sample<sub>trajactory</sub> multithread / multiprocess</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5765011" class="outline-2">
-<h2 id="org5765011">The loss function for imitation learning (behavior clone and Dagger)</h2>
-<div class="outline-text-2" id="text-org5765011">
+<div id="outline-container-org88243eb" class="outline-2">
+<h2 id="org88243eb">The loss function for imitation learning (behavior clone and Dagger)</h2>
+<div class="outline-text-2" id="text-org88243eb">
 </div>
-<div id="outline-container-orgc8b1ce5" class="outline-3">
-<h3 id="orgc8b1ce5"><code>MSELoss()(dist.rsample(), expert_action)</code></h3>
-<div class="outline-text-3" id="text-orgc8b1ce5">
+<div id="outline-container-org40f9577" class="outline-3">
+<h3 id="org40f9577"><code>MSELoss()(dist.rsample(), expert_action)</code></h3>
+<div class="outline-text-3" id="text-org40f9577">
 <p>
 I so this solution <a href="https://github.com/berkeleydeeprlcourse/homework_fall2021/compare/main...ChoiJangho:main">here</a>. I feel this might be the intended solution because in the provided code, there is already a self.loss=MSELoss()
 </p>
 </div>
 </div>
-<div id="outline-container-org24ba8c0" class="outline-3">
-<h3 id="org24ba8c0"><code>-dist.log_prob().sum(-1).mean()</code></h3>
-<div class="outline-text-3" id="text-org24ba8c0">
+<div id="outline-container-org2239bb2" class="outline-3">
+<h3 id="org2239bb2"><code>-dist.log_prob().sum(-1).mean()</code></h3>
+<div class="outline-text-3" id="text-org2239bb2">
 <ul class="org-ul">
 <li>However, I think this is a better loss because it does not need the exact unnecessary randomness in <code>dist.rsample()</code>. As a piece of evidence, I notice this loss will yield a better Eval<sub>AverageReturn</sub> with shorter training steps and a smaller training batch size.</li>
 <li>sum(-1) is to multiply 8 independent gaussian to make a joint Gaussian distribution; mean() instead of sum() so that the gradient contribution of each batch is the same no matter what is the batch<sub>size</sub>. sum() will make each sample's contribution the same, so a larger batch<sub>size</sub> will have a greater contribution.</li>
@@ -69,31 +69,31 @@ I so this solution <a href="https://github.com/berkeleydeeprlcourse/homework_fal
 </div>
 
 
-<div id="outline-container-orgc73516d" class="outline-2">
-<h2 id="orgc73516d">Distribution</h2>
-<div class="outline-text-2" id="text-orgc73516d">
+<div id="outline-container-org23d75aa" class="outline-2">
+<h2 id="org23d75aa">Distribution</h2>
+<div class="outline-text-2" id="text-org23d75aa">
 </div>
-<div id="outline-container-orge3abe60" class="outline-3">
-<h3 id="orge3abe60">Discrete</h3>
-<div class="outline-text-3" id="text-orge3abe60">
+<div id="outline-container-org1082315" class="outline-3">
+<h3 id="org1082315">Discrete</h3>
+<div class="outline-text-3" id="text-org1082315">
 <p>
 prob: [0, 1]
 log<sub>prob</sub>: [-inf, 0]
 </p>
 </div>
 </div>
-<div id="outline-container-orge3b8261" class="outline-3">
-<h3 id="orge3b8261">Continuous</h3>
-<div class="outline-text-3" id="text-orge3b8261">
+<div id="outline-container-org9511f22" class="outline-3">
+<h3 id="org9511f22">Continuous</h3>
+<div class="outline-text-3" id="text-org9511f22">
 <p>
 prob==likelihood: [0, +inf]
 log<sub>prob</sub>: [-inf, +inf]
 </p>
 </div>
 </div>
-<div id="outline-container-org13752eb" class="outline-3">
-<h3 id="org13752eb">Normal as indenpendent Gaussian</h3>
-<div class="outline-text-3" id="text-org13752eb">
+<div id="outline-container-orgec04848" class="outline-3">
+<h3 id="orgec04848">Normal as indenpendent Gaussian</h3>
+<div class="outline-text-3" id="text-orgec04848">
 <ul class="org-ul">
 <li>multiply all the prob or sum all the log<sub>prob</sub></li>
 </ul>
@@ -102,13 +102,13 @@ log<sub>prob</sub>: [-inf, +inf]
 </div>
 
 
-<div id="outline-container-org2e934c3" class="outline-2">
-<h2 id="org2e934c3">Behaviour Clone (BC) vs. Dagger</h2>
-<div class="outline-text-2" id="text-org2e934c3">
+<div id="outline-container-orgd6b3b08" class="outline-2">
+<h2 id="orgd6b3b08">Behaviour Clone (BC) vs. Dagger</h2>
+<div class="outline-text-2" id="text-orgd6b3b08">
 </div>
-<div id="outline-container-org665b75b" class="outline-3">
-<h3 id="org665b75b">control total training steps and the model the same</h3>
-<div class="outline-text-3" id="text-org665b75b">
+<div id="outline-container-org58a03cf" class="outline-3">
+<h3 id="org58a03cf">control total training steps and the model the same</h3>
+<div class="outline-text-3" id="text-org58a03cf">
 <ul class="org-ul">
 <li>For easy experiments like Ant, Dagger is just slightly better than BC (I keep the total training steps the same for BC and Dagger).</li>
 <li>For hard experiments like Humanoid, Dagger is just 2x better than BC (I keep the total training steps the same for BC and Dagger). I increased the training iteration another 5x (also the amount of data labeled by expert 5x), Dagger is more than 10x better than BC.</li>
@@ -116,9 +116,9 @@ log<sub>prob</sub>: [-inf, +inf]
 </ul>
 </div>
 </div>
-<div id="outline-container-orga9c71f2" class="outline-3">
-<h3 id="orga9c71f2">also control the total amount of data the same</h3>
-<div class="outline-text-3" id="text-orga9c71f2">
+<div id="outline-container-org53504e5" class="outline-3">
+<h3 id="org53504e5">also control the total amount of data the same</h3>
+<div class="outline-text-3" id="text-org53504e5">
 <ul class="org-ul">
 <li>For easy experiments like Ant, Dagger is just slightly better than BC (I keep the total training steps the same for BC and Dagger).</li>
 <li>For hard experiments like Humanoid, it is too hard to train a good model with just 2000 data samples (The amount of expert data I have for BC).</li>
@@ -127,27 +127,27 @@ log<sub>prob</sub>: [-inf, +inf]
 </div>
 </div>
 
-<div id="outline-container-org911152f" class="outline-2">
-<h2 id="org911152f">Discount factor &gamma;</h2>
-<div class="outline-text-2" id="text-org911152f">
+<div id="outline-container-org79fe0e4" class="outline-2">
+<h2 id="org79fe0e4">Discount factor &gamma;</h2>
+<div class="outline-text-2" id="text-org79fe0e4">
 <p>
 The effect is that it modifies the MDP by adding a death state. And 1 - &gamma; is the probability of transiting into the death state.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge5419b5" class="outline-2">
-<h2 id="orge5419b5">Causality: policy cannot affect the previous reward</h2>
-<div class="outline-text-2" id="text-orge5419b5">
+<div id="outline-container-orgb39f0ea" class="outline-2">
+<h2 id="orgb39f0ea">Causality: policy cannot affect the previous reward</h2>
+<div class="outline-text-2" id="text-orgb39f0ea">
 <p>
 The reason we can remove sum<sub>0</sub><sup>t-1</sup> is that its expectation is 0. In the lecture, he mentioned the proof is somewhat involved. However, I think there must be some additional requirements for the reward, e.g. centered.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org4a854c8" class="outline-2">
-<h2 id="org4a854c8">Baselines in advantage</h2>
-<div class="outline-text-2" id="text-org4a854c8">
+<div id="outline-container-orgbb5914b" class="outline-2">
+<h2 id="orgbb5914b">Baselines in advantage</h2>
+<div class="outline-text-2" id="text-orgbb5914b">
 <p>
 To subtract a baseline, b must have nothing to do with actions.
 b can be a constant or a function of states.
@@ -156,9 +156,9 @@ The proof of b=const case is simple; however, in lecture 6, he mentioned it can 
 </div>
 </div>
 
-<div id="outline-container-org4a0e0ef" class="outline-2">
-<h2 id="org4a0e0ef">Multithread and Multiprocess</h2>
-<div class="outline-text-2" id="text-org4a0e0ef">
+<div id="outline-container-org992e2e3" class="outline-2">
+<h2 id="org992e2e3">Multithread and Multiprocess</h2>
+<div class="outline-text-2" id="text-org992e2e3">
 <p>
 hw2 bonus question is to make sample<sub>trajectories</sub> multithread. However, after multi-threading, it is much slower (the more threads, the slower). I guess, 1) something under the hood does not release GIL, for example, gym? 2) it is already fast on my machine &lt; 1ms, so the overhead of thread is more significant.
 Multiprocess does not work because it uses fork, and CUDA does not work on fork.
@@ -167,9 +167,9 @@ P.S. batch<sub>size</sub> = 50k
 </div>
 </div>
 
-<div id="outline-container-org77df1e0" class="outline-2">
-<h2 id="org77df1e0">Fitted Q/value-iteration and Actor-Critic do not guarantee to converge.</h2>
-<div class="outline-text-2" id="text-org77df1e0">
+<div id="outline-container-org0a9cc52" class="outline-2">
+<h2 id="org0a9cc52">Fitted Q/value-iteration and Actor-Critic do not guarantee to converge.</h2>
+<div class="outline-text-2" id="text-org0a9cc52">
 <ul class="org-ul">
 <li>Q/value-iteration (Bellman equation part) converges</li>
 <li>Deep learning fits the Q/value function part also converges</li>
@@ -179,9 +179,9 @@ P.S. batch<sub>size</sub> = 50k
 </div>
 </div>
 
-<div id="outline-container-orgb8b95d9" class="outline-2">
-<h2 id="orgb8b95d9">Make sample<sub>trajactory</sub> multithread / multiprocess</h2>
-<div class="outline-text-2" id="text-orgb8b95d9">
+<div id="outline-container-org65535b5" class="outline-2">
+<h2 id="org65535b5">Make sample<sub>trajactory</sub> multithread / multiprocess</h2>
+<div class="outline-text-2" id="text-org65535b5">
 <ul class="org-ul">
 <li>before multithread / multiprocess, only one CPU is used at 100%. Even without setting the OPENBLAS<sub>NUM</sub><sub>THREADS</sub>=1.</li>
 <li>multithread works; however, all CPUs work at ~10%, and the total time is 3x longer than single thread.</li>
