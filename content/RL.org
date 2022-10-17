@@ -37,7 +37,7 @@ The NN directly learns the policy itself (given state/observation as input, what
 
 Instead of computing a loss as the "expected total reward of a policy" (J = E[R(τ)]), then taking a gradient of that and do gradient ascent (This is impossible when we cannot take the derivative of the environment (p(s1), p(s2|s1, a1), ...). In model-based RL, this will be learned.), we derive the equation of the gradient of J, then ignore all the terms that have 0-grad. This new equation is called grad-log-prob.
 
-You can think of this "grad-log-prob term before taking the gradient", namingly log-prob*reward, as an approximation of J, because they have the same gradient.
+You can think of this "grad-log-prob term before taking the gradient", namely log-prob*reward, as an approximation of J, because they have the same gradient.
 
 Now the NN takes an observation and predicts the logits of π(a|s). These are the parameters of the action distribution in the current state. Then you sample this distribution to get an action. The so-called loss is the log-prob*reward.
 
@@ -56,7 +56,7 @@ The proof of b=const case is simple; however, in lecture 6, he mentioned it can 
 
 * [[https://spinningup.openai.com/en/latest/algorithms/vpg.html][Vinilla Policy Gradient (VPG)]]
 - use NN to estimate policy and value function
-- update the policy NN with the gradient mentioned above (reward-to-go and value functin as baseline)
+- update the policy NN with the gradient mentioned above (reward-to-go and value function as baseline)
 - value function NN is updated by a loss function = L2 of between predict and the real reward.
 
 * [[https://spinningup.openai.com/en/latest/algorithms/trpo.html][Trust Region Policy Optimization (TRPO)]]
@@ -73,10 +73,9 @@ The proof of b=const case is simple; however, in lecture 6, he mentioned it can 
 ** PPO-Clip
 - same surrogate advantage function as TRPO, which contains a ratio between new and old policy.
 - add an extra term in loss to clip the ratio so that it does not change much.
-- The question I have: they did not compute the gradient of the loss here. Maybe they use autograd here?
-  - Answer: I think so, you need a proxy loss to have the same gradient. This way you can use Pytorch's autograd.
+- They use a proxy loss to have the same gradient. This way you can use Pytorch's autograd.
 
-[[https://spinningup.openai.com/en/latest/algorithms/ddpg.html][Deep Deterministic Policy Gradient (DDPG)]]
+* [[https://spinningup.openai.com/en/latest/algorithms/ddpg.html][Deep Deterministic Policy Gradient (DDPG)]]
 - DDPG is an offline algorithm that learns the optimal deterministic policy and the Q*.
   - VPG, TRPO, and PPO are all online algorithms that learn a policy and the value function for that policy
 - DDPG is the Q-learning for continuous space.
@@ -104,4 +103,3 @@ The proof of b=const case is simple; however, in lecture 6, he mentioned it can 
     
 
 #+INCLUDE: ../utterance.org
-
