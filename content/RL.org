@@ -54,7 +54,7 @@ To subtract a baseline, b must have nothing to do with actions.
 b can be a constant or a function of states.
 The proof of b=const case is simple; however, in lecture 6, he mentioned it can also be proved if b=f(s).
 
-* [[https://spinningup.openai.com/en/latest/algorithms/vpg.html][Vinilla Policy Gradient (VPG)]]
+* [[https://spinningup.openai.com/en/latest/algorithms/vpg.html][Vanilla Policy Gradient (VPG)]]
 - use NN to estimate policy and value function
 - update the policy NN with the gradient mentioned above (reward-to-go and value function as baseline)
 - value function NN is updated by a loss function = L2 of between predict and the real reward.
