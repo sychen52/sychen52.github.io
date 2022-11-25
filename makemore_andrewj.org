@@ -1,0 +1,14 @@
+* kaiming_init is no long that important
+(sqrt(1/fan_in) is good enough, the gain is not that important.
+This is because the bn, skip connection...
+
+* How to choose learning rate
+1. pick a lr that is too smaller. (by using it to train for a few thousand steps: not converge fast enough)
+2. pick a lr that is too large. (by using it to train for a few thousand steps: not converge at all)
+3. train a few thousand steps with lr increased gradually from the too small one to the too large one *in log scale*.
+4. plot loss vs lr curve and pick a lr in the bottom (log log scale to see better)
+
+
+* How to choose learning rate (Approach 2)
+1. compute the stat of abs(lr*grad)/abs(parameter) for all the layers.
+2. The value should be around 1e-3 (1e-2 to 1e-4).
