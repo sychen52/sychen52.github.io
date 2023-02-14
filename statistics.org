@@ -1,0 +1,25 @@
+#+title: Reinforcement Learning
+
+* Bernoulli -- B(1, p)
+- 丢一个正面朝上概率为p的硬币，结果是0还是1.
+  
+
+* Binomial -- B(n, p)
+丢n个正面朝上概率为p的硬币，结果有几个正面朝上
+
+* Multinomial -- M(n, p1, p2, …, pk)
+丢n个k面的骰子（每个面的分布是p1, …, pk），结果有x1个1st面， x2个2nd面，。。。，xk个kth面的概率。
+
+
+* What is t-test and f-test
+在H0 hypothesis下，如果能推导出某个统计量服从T(df1)的分布，那么你可以知道这个T分布的形状，并且通过查表，可以算出你对这个统计量的这次测量（一个样本）在这个T分布的什么位置，以及比你这个测量值更极端的情况的总体概率（单边或双边面积），这个面积叫做p-value。如果你的这个测量值查表对应的p-value小于你预先设置的alpha，那么你可以拒绝原假设H0。整个过程叫做t-test（拒绝是我们希望看到的，因为这次测量不能拒绝并不代表原假设就成立，而一次测量的反例作用就可以说明原假设不成立。）
+
+f-test于上面的几乎一样，只不过F(df1, df2)分布有两个参数。
+
+那么，就有很多情况下，别人已经推导出某个统计量服从T/F分布了，比如：
+1.  一个whole population的mean=他的一个subset/sample的平均值 => sample的均值和whole poulation的mean的差成T分布
+2. 两个whole population的mean相等，当已知他们各自的一个subset/sample的平均值时 => 两个sample均值的差成T分布
+3. GLM中(y=beta0+beta1*x1+beta2*x2+...+betak*xk+epsilon)，多加一项因素xi的作用是否可以忽略不计，即betai=0。这个案例可以用来算tfMRI activation map（因素xi就是那个task的pattern）。=> T-test
+4. GLM中，多个（大于1）个因素的影响是否可以忽略，即betai=betaj=...=0. => F-test
+
+#+INCLUDE: ../utterance.org

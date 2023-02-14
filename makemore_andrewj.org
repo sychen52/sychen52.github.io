@@ -9,6 +9,15 @@ This is because the bn, skip connection...
 4. plot loss vs lr curve and pick a lr in the bottom (log log scale to see better)
 
 
-* How to choose learning rate (Approach 2)
-1. compute the stat of abs(lr*grad)/abs(parameter) for all the layers.
+* How to choose learning rate (Approach 2): [[https://www.youtube.com/watch?v=P6sfmUTpUmc&t=3615s][video]]
+1. compute the stat, update ratio,: abs(lr*grad)/abs(parameter) for all the layers.
 2. The value should be around 1e-3 (1e-2 to 1e-4).
+
+* What does bn help?
+- forward input stat are normalized
+- backward grad stat are normalized
+- less sensitive to gain (during initialization).
+- you still need to tune lr to scale to update ratio properly
+
+* torch.clip will make grad outside the range to be 0.
+- which mean you cannot move it back when the value is outside, even when grad is pointing inward.
