@@ -16,59 +16,59 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org19a8010">Trajectory = Episode = Rollout</a></li>
-<li><a href="#orgbc4da56">Value Functions</a>
+<li><a href="#orga1f8c58">Trajectory = Episode = Rollout</a></li>
+<li><a href="#orgf5971ed">Value Functions</a>
 <ul>
-<li><a href="#org33b330e">On-Policy vs. Optimal</a></li>
-<li><a href="#org4b353e1">Value Function vs. Action-Value Function</a>
+<li><a href="#orgec76376">On-Policy vs. Optimal</a></li>
+<li><a href="#org008431e">Value Function vs. Action-Value Function</a>
 <ul>
-<li><a href="#org6aad246">Q-Function is Action-Value Function</a></li>
+<li><a href="#org98083c4">Q-Function is Action-Value Function</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgd5a90b2">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</a></li>
-<li><a href="#org8ddccfb">Bellman Equation</a></li>
-<li><a href="#orge737d12">Advantage Functions</a></li>
-<li><a href="#orgd4c7b29">Policy Optimization vs. Q-Learning</a></li>
-<li><a href="#orgea9ffc8">Policy Optimization and Policy Gradient</a></li>
-<li><a href="#org4fb8187">Reduce sample variance</a>
+<li><a href="#org7985346">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</a></li>
+<li><a href="#org573404b">Bellman Equation</a></li>
+<li><a href="#org55b823e">Advantage Functions</a></li>
+<li><a href="#orgfe0972a">Policy Optimization vs. Q-Learning</a></li>
+<li><a href="#org5fa11f0">Policy Optimization and Policy Gradient</a></li>
+<li><a href="#org6927782">Reduce sample variance</a>
 <ul>
-<li><a href="#orge332a35">Reward-to-go:</a></li>
-<li><a href="#org6497ba4">Baselines</a></li>
+<li><a href="#orgc85bba4">Reward-to-go:</a></li>
+<li><a href="#org8646fff">Baselines</a></li>
 </ul>
 </li>
-<li><a href="#orgc962ca5">Vanilla Policy Gradient (VPG)</a></li>
-<li><a href="#org60a66bd">Trust Region Policy Optimization (TRPO)</a></li>
-<li><a href="#orgba2d556">Proximal Policy Optimization (PPO)</a>
+<li><a href="#orgaeabc50">Vanilla Policy Gradient (VPG)</a></li>
+<li><a href="#orge9a7a2e">Trust Region Policy Optimization (TRPO)</a></li>
+<li><a href="#org4dffec8">Proximal Policy Optimization (PPO)</a>
 <ul>
-<li><a href="#orgdb9588b">PPO-Penalty: Similar to TRPO but the KL is in the loss function itself rather than a constraint</a></li>
-<li><a href="#orgc65a257">PPO-Clip</a></li>
+<li><a href="#org6f9605c">PPO-Penalty: Similar to TRPO but the KL is in the loss function itself rather than a constraint</a></li>
+<li><a href="#org72309fd">PPO-Clip</a></li>
 </ul>
 </li>
-<li><a href="#org65b901b">Deep Deterministic Policy Gradient (DDPG)</a>
+<li><a href="#org1633b5a">Deep Deterministic Policy Gradient (DDPG)</a>
 <ul>
-<li><a href="#org8c6707d">Tricks:</a>
+<li><a href="#orga720ec5">Tricks:</a>
 <ul>
-<li><a href="#org5687483">Experience Replay</a></li>
-<li><a href="#org83c53a5">Target Networks</a></li>
+<li><a href="#org2b6ff63">Experience Replay</a></li>
+<li><a href="#orgc85a004">Target Networks</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgb65816f">Twin Delayed DDPG (TD3)</a>
+<li><a href="#org94b8f1f">Twin Delayed DDPG (TD3)</a>
 <ul>
-<li><a href="#org10b0958">Three tricks</a></li>
+<li><a href="#org549274f">Three tricks</a></li>
 </ul>
 </li>
-<li><a href="#org32c8e07">Soft Actor Critic (SAC)</a></li>
+<li><a href="#org12c113c">Soft Actor Critic (SAC)</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org19a8010" class="outline-2">
-<h2 id="org19a8010">Trajectory = Episode = Rollout</h2>
-<div class="outline-text-2" id="text-org19a8010">
+<div id="outline-container-orga1f8c58" class="outline-2">
+<h2 id="orga1f8c58">Trajectory = Episode = Rollout</h2>
+<div class="outline-text-2" id="text-orga1f8c58">
 <p>
 a sequence of state and action
 τ ~ π means τ is a random trajectory (s1, a1, s2, a2, &#x2026;) sampled based on policy π. Two things can be random here: state transition and the action that is taken based on a policy.
@@ -76,46 +76,46 @@ a sequence of state and action
 </div>
 </div>
 
-<div id="outline-container-orgbc4da56" class="outline-2">
-<h2 id="orgbc4da56">Value Functions</h2>
-<div class="outline-text-2" id="text-orgbc4da56">
+<div id="outline-container-orgf5971ed" class="outline-2">
+<h2 id="orgf5971ed">Value Functions</h2>
+<div class="outline-text-2" id="text-orgf5971ed">
 <p>
 Four different types of value functions, if you combine the following two.
 </p>
 </div>
-<div id="outline-container-org33b330e" class="outline-3">
-<h3 id="org33b330e">On-Policy vs. Optimal</h3>
-<div class="outline-text-3" id="text-org33b330e">
+<div id="outline-container-orgec76376" class="outline-3">
+<h3 id="orgec76376">On-Policy vs. Optimal</h3>
+<div class="outline-text-3" id="text-orgec76376">
 <p>
 A specific policy π vs. the optimal policy * (Max over all policies)
 </p>
 </div>
 </div>
-<div id="outline-container-org4b353e1" class="outline-3">
-<h3 id="org4b353e1">Value Function vs. Action-Value Function</h3>
-<div class="outline-text-3" id="text-org4b353e1">
+<div id="outline-container-org008431e" class="outline-3">
+<h3 id="org008431e">Value Function vs. Action-Value Function</h3>
+<div class="outline-text-3" id="text-org008431e">
 <p>
 Expectation over all possible actions from the policy vs. given a specific action <code>a</code> (the action may not be from the policy).
 </p>
 </div>
-<div id="outline-container-org6aad246" class="outline-4">
-<h4 id="org6aad246">Q-Function is Action-Value Function</h4>
+<div id="outline-container-org98083c4" class="outline-4">
+<h4 id="org98083c4">Q-Function is Action-Value Function</h4>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd5a90b2" class="outline-2">
-<h2 id="orgd5a90b2">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</h2>
-<div class="outline-text-2" id="text-orgd5a90b2">
+<div id="outline-container-org7985346" class="outline-2">
+<h2 id="org7985346">Optimal action is the argmax<sub>a</sub> Optimal Q-Function</h2>
+<div class="outline-text-2" id="text-org7985346">
 <p>
 since it is optimal
 </p>
 </div>
 </div>
 
-<div id="outline-container-org8ddccfb" class="outline-2">
-<h2 id="org8ddccfb">Bellman Equation</h2>
-<div class="outline-text-2" id="text-org8ddccfb">
+<div id="outline-container-org573404b" class="outline-2">
+<h2 id="org573404b">Bellman Equation</h2>
+<div class="outline-text-2" id="text-org573404b">
 <p>
 Expand any of the 4 value functions one step and make it recursive.
 </p>
@@ -126,18 +126,18 @@ optimal value vs. on-policy: max<sub>a</sub> vs. E<sub>a~π</sub>.
 </div>
 </div>
 
-<div id="outline-container-orge737d12" class="outline-2">
-<h2 id="orge737d12">Advantage Functions</h2>
-<div class="outline-text-2" id="text-orge737d12">
+<div id="outline-container-org55b823e" class="outline-2">
+<h2 id="org55b823e">Advantage Functions</h2>
+<div class="outline-text-2" id="text-org55b823e">
 <p>
 Q(s,a)-V(s)
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd4c7b29" class="outline-2">
-<h2 id="orgd4c7b29">Policy Optimization vs. Q-Learning</h2>
-<div class="outline-text-2" id="text-orgd4c7b29">
+<div id="outline-container-orgfe0972a" class="outline-2">
+<h2 id="orgfe0972a">Policy Optimization vs. Q-Learning</h2>
+<div class="outline-text-2" id="text-orgfe0972a">
 <ul class="org-ul">
 <li>both are for Model Free RL</li>
 <li>Policy optimization predicts the distribution of the action given the observation.</li>
@@ -150,9 +150,9 @@ surrogate means the gradient is the same/similar, but the objective function is 
 </div>
 </div>
 
-<div id="outline-container-orgea9ffc8" class="outline-2">
-<h2 id="orgea9ffc8">Policy Optimization and Policy Gradient</h2>
-<div class="outline-text-2" id="text-orgea9ffc8">
+<div id="outline-container-org5fa11f0" class="outline-2">
+<h2 id="org5fa11f0">Policy Optimization and Policy Gradient</h2>
+<div class="outline-text-2" id="text-org5fa11f0">
 <p>
 The NN directly learns the policy itself (given state/observation as input, what should be the action (or probability of taking that action)).
 </p>
@@ -179,22 +179,22 @@ In summary, NN predicts the action distribution. The loss was designed such as i
 </div>
 </div>
 
-<div id="outline-container-org4fb8187" class="outline-2">
-<h2 id="org4fb8187">Reduce sample variance</h2>
-<div class="outline-text-2" id="text-org4fb8187">
+<div id="outline-container-org6927782" class="outline-2">
+<h2 id="org6927782">Reduce sample variance</h2>
+<div class="outline-text-2" id="text-org6927782">
 </div>
-<div id="outline-container-orge332a35" class="outline-3">
-<h3 id="orge332a35">Reward-to-go:</h3>
-<div class="outline-text-3" id="text-orge332a35">
+<div id="outline-container-orgc85bba4" class="outline-3">
+<h3 id="orgc85bba4">Reward-to-go:</h3>
+<div class="outline-text-3" id="text-orgc85bba4">
 <ul class="org-ul">
 <li>Causality: policy cannot affect the previous reward</li>
 <li>The reason we can remove sum<sub>0</sub><sup>t-1</sup> is that its expectation is 0. In the cs285 lecture, he mentioned the proof is somewhat involved. The proof depends on EGLP lemma.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6497ba4" class="outline-3">
-<h3 id="org6497ba4">Baselines</h3>
-<div class="outline-text-3" id="text-org6497ba4">
+<div id="outline-container-org8646fff" class="outline-3">
+<h3 id="org8646fff">Baselines</h3>
+<div class="outline-text-3" id="text-org8646fff">
 <p>
 To subtract a baseline, b must have nothing to do with actions.
 b can be a constant or a function of states.
@@ -204,9 +204,9 @@ The proof of b=const case is simple; however, in lecture 6, he mentioned it can 
 </div>
 </div>
 
-<div id="outline-container-orgc962ca5" class="outline-2">
-<h2 id="orgc962ca5"><a href="https://spinningup.openai.com/en/latest/algorithms/vpg.html">Vanilla Policy Gradient (VPG)</a></h2>
-<div class="outline-text-2" id="text-orgc962ca5">
+<div id="outline-container-orgaeabc50" class="outline-2">
+<h2 id="orgaeabc50"><a href="https://spinningup.openai.com/en/latest/algorithms/vpg.html">Vanilla Policy Gradient (VPG)</a></h2>
+<div class="outline-text-2" id="text-orgaeabc50">
 <ul class="org-ul">
 <li>use NN to estimate policy and value function</li>
 <li>update the policy NN with the gradient mentioned above (reward-to-go and value function as baseline)</li>
@@ -215,9 +215,9 @@ The proof of b=const case is simple; however, in lecture 6, he mentioned it can 
 </div>
 </div>
 
-<div id="outline-container-org60a66bd" class="outline-2">
-<h2 id="org60a66bd"><a href="https://spinningup.openai.com/en/latest/algorithms/trpo.html">Trust Region Policy Optimization (TRPO)</a></h2>
-<div class="outline-text-2" id="text-org60a66bd">
+<div id="outline-container-orge9a7a2e" class="outline-2">
+<h2 id="orge9a7a2e"><a href="https://spinningup.openai.com/en/latest/algorithms/trpo.html">Trust Region Policy Optimization (TRPO)</a></h2>
+<div class="outline-text-2" id="text-orge9a7a2e">
 <ul class="org-ul">
 <li>why do we want the policy before and after updating to be close.
 <ul class="org-ul">
@@ -234,16 +234,16 @@ The proof of b=const case is simple; however, in lecture 6, he mentioned it can 
 </div>
 </div>
 
-<div id="outline-container-orgba2d556" class="outline-2">
-<h2 id="orgba2d556"><a href="https://spinningup.openai.com/en/latest/algorithms/ppo.html#id3">Proximal Policy Optimization (PPO)</a></h2>
-<div class="outline-text-2" id="text-orgba2d556">
+<div id="outline-container-org4dffec8" class="outline-2">
+<h2 id="org4dffec8"><a href="https://spinningup.openai.com/en/latest/algorithms/ppo.html#id3">Proximal Policy Optimization (PPO)</a></h2>
+<div class="outline-text-2" id="text-org4dffec8">
 </div>
-<div id="outline-container-orgdb9588b" class="outline-3">
-<h3 id="orgdb9588b">PPO-Penalty: Similar to TRPO but the KL is in the loss function itself rather than a constraint</h3>
+<div id="outline-container-org6f9605c" class="outline-3">
+<h3 id="org6f9605c">PPO-Penalty: Similar to TRPO but the KL is in the loss function itself rather than a constraint</h3>
 </div>
-<div id="outline-container-orgc65a257" class="outline-3">
-<h3 id="orgc65a257">PPO-Clip</h3>
-<div class="outline-text-3" id="text-orgc65a257">
+<div id="outline-container-org72309fd" class="outline-3">
+<h3 id="org72309fd">PPO-Clip</h3>
+<div class="outline-text-3" id="text-org72309fd">
 <ul class="org-ul">
 <li>same surrogate advantage function as TRPO, which contains a ratio between new and old policy.</li>
 <li>add an extra term in loss to clip the ratio so that it does not change much.</li>
@@ -253,9 +253,9 @@ The proof of b=const case is simple; however, in lecture 6, he mentioned it can 
 </div>
 </div>
 
-<div id="outline-container-org65b901b" class="outline-2">
-<h2 id="org65b901b"><a href="https://spinningup.openai.com/en/latest/algorithms/ddpg.html">Deep Deterministic Policy Gradient (DDPG)</a></h2>
-<div class="outline-text-2" id="text-org65b901b">
+<div id="outline-container-org1633b5a" class="outline-2">
+<h2 id="org1633b5a"><a href="https://spinningup.openai.com/en/latest/algorithms/ddpg.html">Deep Deterministic Policy Gradient (DDPG)</a></h2>
+<div class="outline-text-2" id="text-org1633b5a">
 <ul class="org-ul">
 <li>DDPG is an offline algorithm that learns the optimal deterministic policy and the Q*.
 <ul class="org-ul">
@@ -268,22 +268,22 @@ The proof of b=const case is simple; however, in lecture 6, he mentioned it can 
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org8c6707d" class="outline-3">
-<h3 id="org8c6707d">Tricks:</h3>
-<div class="outline-text-3" id="text-org8c6707d">
+<div id="outline-container-orga720ec5" class="outline-3">
+<h3 id="orga720ec5">Tricks:</h3>
+<div class="outline-text-3" id="text-orga720ec5">
 </div>
-<div id="outline-container-org5687483" class="outline-4">
-<h4 id="org5687483">Experience Replay</h4>
-<div class="outline-text-4" id="text-org5687483">
+<div id="outline-container-org2b6ff63" class="outline-4">
+<h4 id="org2b6ff63">Experience Replay</h4>
+<div class="outline-text-4" id="text-org2b6ff63">
 <ul class="org-ul">
 <li>For previous on-policy algorithms, such as VPG, TRPO, and PPO. The loss function and the gradient term have an expectation term sample over the current policy. This makes the old experience unusable.</li>
 <li>For the Q-learning algorithm, the loss function is mean-squared Bellman error (MSBE), and this equation should be satisfied with any action you sampled.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org83c53a5" class="outline-4">
-<h4 id="org83c53a5">Target Networks</h4>
-<div class="outline-text-4" id="text-org83c53a5">
+<div id="outline-container-orgc85a004" class="outline-4">
+<h4 id="orgc85a004">Target Networks</h4>
+<div class="outline-text-4" id="text-orgc85a004">
 <ul class="org-ul">
 <li>There is a "max Q*" term inside the Bellman equation.
 <ul class="org-ul">
@@ -296,13 +296,13 @@ The proof of b=const case is simple; however, in lecture 6, he mentioned it can 
 </div>
 </div>
 
-<div id="outline-container-orgb65816f" class="outline-2">
-<h2 id="orgb65816f"><a href="https://spinningup.openai.com/en/latest/algorithms/td3.html">Twin Delayed DDPG (TD3)</a></h2>
-<div class="outline-text-2" id="text-orgb65816f">
+<div id="outline-container-org94b8f1f" class="outline-2">
+<h2 id="org94b8f1f"><a href="https://spinningup.openai.com/en/latest/algorithms/td3.html">Twin Delayed DDPG (TD3)</a></h2>
+<div class="outline-text-2" id="text-org94b8f1f">
 </div>
-<div id="outline-container-org10b0958" class="outline-3">
-<h3 id="org10b0958">Three tricks</h3>
-<div class="outline-text-3" id="text-org10b0958">
+<div id="outline-container-org549274f" class="outline-3">
+<h3 id="org549274f">Three tricks</h3>
+<div class="outline-text-3" id="text-org549274f">
 <ul class="org-ul">
 <li>learn 2 Q-function and use the smaller of the two Q-value (because Q-value tend to over-estimate [cs285 lecture 8])</li>
 <li>update policy less frequently than Q-function</li>
@@ -312,9 +312,9 @@ The proof of b=const case is simple; however, in lecture 6, he mentioned it can 
 </div>
 </div>
 
-<div id="outline-container-org32c8e07" class="outline-2">
-<h2 id="org32c8e07">Soft Actor Critic (SAC)</h2>
-<div class="outline-text-2" id="text-org32c8e07">
+<div id="outline-container-org12c113c" class="outline-2">
+<h2 id="org12c113c">Soft Actor Critic (SAC)</h2>
+<div class="outline-text-2" id="text-org12c113c">
 <ul class="org-ul">
 <li>similar to TD3
 <ul class="org-ul">
