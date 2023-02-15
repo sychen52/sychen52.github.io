@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Probability and Statistics</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" type="text/css" href="https://orgmode.org/worg/style/worg.css"/>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Probability and Statistics</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3e6335d">Bernoulli: X ~ B(1, p)</a></li>
+<li><a href="#org9cdeadd">Binomial: X ~ B(n, p)</a></li>
+<li><a href="#org52a9725">Multinomial: X ~ M(n, p1, p2, …, pk)</a></li>
+<li><a href="#orgf003646">Geometric: X ~ Geo(p)</a></li>
+<li><a href="#orgb786a45">What is t-test and f-test</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3e6335d" class="outline-2">
+<h2 id="org3e6335d">Bernoulli: X ~ B(1, p)</h2>
+<div class="outline-text-2" id="text-org3e6335d">
+<ul class="org-ul">
+<li>P(X=1): 丢一个正面朝上概率为p的硬币，结果有1个正面朝上的概率是多少。</li>
+<li>P(X=0): 丢一个正面朝上概率为p的硬币，结果有0个正面朝上的概率是多少。</li>
+<li>sample output: 0 or 1</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9cdeadd" class="outline-2">
+<h2 id="org9cdeadd">Binomial: X ~ B(n, p)</h2>
+<div class="outline-text-2" id="text-org9cdeadd">
+<ul class="org-ul">
+<li>P(X=k): 丢n个正面朝上概率为p的硬币，结果有k个正面朝上的概率是多少。</li>
+<li>sample output: N</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org52a9725" class="outline-2">
+<h2 id="org52a9725">Multinomial: X ~ M(n, p1, p2, …, pk)</h2>
+<div class="outline-text-2" id="text-org52a9725">
+<ul class="org-ul">
+<li>P(X=(x1, x2, x3, &#x2026;)): 丢n个k面的骰子（每个面的分布是p1, …, pk），结果有x1个1st面， x2个2nd面，。。。，xk个kth面的概率。</li>
+<li>output: (x1, x2, &#x2026;, xk), xi is N</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf003646" class="outline-2">
+<h2 id="orgf003646">Geometric: X ~ Geo(p)</h2>
+<div class="outline-text-2" id="text-orgf003646">
+<ul class="org-ul">
+<li>P(X=k): 一直丢一个硬币，第一次出现1是第k次的概率。</li>
+<li>sample output: N</li>
+</ul>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgb786a45" class="outline-2">
+<h2 id="orgb786a45">What is t-test and f-test</h2>
+<div class="outline-text-2" id="text-orgb786a45">
+<p>
+在H0 hypothesis下，如果能推导出某个统计量服从T(df1)的分布，那么你可以知道这个T分布的形状，并且通过查表，可以算出你对这个统计量的这次测量（一个样本）在这个T分布的什么位置，以及比你这个测量值更极端的情况的总体概率（单边或双边面积），这个面积叫做p-value。如果你的这个测量值查表对应的p-value小于你预先设置的alpha，那么你可以拒绝原假设H0。整个过程叫做t-test（拒绝是我们希望看到的，因为这次测量不能拒绝并不代表原假设就成立，而一次测量的反例作用就可以说明原假设不成立。）
+</p>
+
+<p>
+f-test于上面的几乎一样，只不过F(df1, df2)分布有两个参数。
+</p>
+
+<p>
+那么，就有很多情况下，别人已经推导出某个统计量服从T/F分布了，比如：
+</p>
+<ol class="org-ol">
+<li>一个whole population的mean=他的一个subset/sample的平均值 =&gt; sample的均值和whole poulation的mean的差成T分布</li>
+<li>两个whole population的mean相等，当已知他们各自的一个subset/sample的平均值时 =&gt; 两个sample均值的差成T分布</li>
+<li>GLM中(y=beta0+beta1*x1+beta2*x2+&#x2026;+betak*xk+epsilon)，多加一项因素xi的作用是否可以忽略不计，即betai=0。这个案例可以用来算tfMRI activation map（因素xi就是那个task的pattern）。=&gt; T-test</li>
+<li>GLM中，多个（大于1）个因素的影响是否可以忽略，即betai=betaj=&#x2026;=0. =&gt; F-test</li>
+</ol>
+
+<script src="https://utteranc.es/client.js"
+        repo="sychen52/sychen52.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+</div>
+</div>
+</body>
+</html>

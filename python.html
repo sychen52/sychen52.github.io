@@ -16,37 +16,37 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9ee0e2f"><code>__str__()</code> vs <code>__repr__()</code>:</a></li>
-<li><a href="#org525c1bb">Assignment is special</a>
+<li><a href="#orge97f726"><code>__str__()</code> vs <code>__repr__()</code>:</a></li>
+<li><a href="#org3721a16">Assignment is special</a>
 <ul>
-<li><a href="#orge73170b">Assignment is pointing the name to a new object</a></li>
-<li><a href="#org4dd4448"><code>=</code> does not always mean assignment.</a>
+<li><a href="#org4ad58ab">Assignment is pointing the name to a new object</a></li>
+<li><a href="#org915c093"><code>=</code> does not always mean assignment.</a>
 <ul>
-<li><a href="#orgb40e035"><code>+=</code></a></li>
-<li><a href="#org5c675b9"><code>a[:3] = 2</code></a></li>
+<li><a href="#org3367c9e"><code>+=</code></a></li>
+<li><a href="#org8548482"><code>a[:3] = 2</code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org053d658">Python function always does passing by reference</a>
+<li><a href="#org6cf6577">Python function always does passing by reference</a>
 <ul>
-<li><a href="#org92ffa32">Assignment is pointing the name to a new object</a></li>
-<li><a href="#org49f7470"><code>=</code> does not always mean assignment</a></li>
+<li><a href="#orga7e5537">Assignment is pointing the name to a new object</a></li>
+<li><a href="#orge4d1ab5"><code>=</code> does not always mean assignment</a></li>
 </ul>
 </li>
-<li><a href="#org6374249"><code>b=a[1:3]</code></a>
+<li><a href="#org0668879"><code>b=a[1:3]</code></a>
 <ul>
-<li><a href="#orgfbdf159">If a is np.ndarray or pd.DataFrame, b is a view.</a></li>
-<li><a href="#org4ce1bbc">If a is a list, b is (1 level) shallow copy.</a></li>
+<li><a href="#orgbe57c24">If a is np.ndarray or pd.DataFrame, b is a view.</a></li>
+<li><a href="#org4135e31">If a is a list, b is (1 level) shallow copy.</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9ee0e2f" class="outline-2">
-<h2 id="org9ee0e2f"><code>__str__()</code> vs <code>__repr__()</code>:</h2>
-<div class="outline-text-2" id="text-org9ee0e2f">
+<div id="outline-container-orge97f726" class="outline-2">
+<h2 id="orge97f726"><code>__str__()</code> vs <code>__repr__()</code>:</h2>
+<div class="outline-text-2" id="text-orge97f726">
 <ul class="org-ul">
 <li><code>__str__()</code>: for human to read</li>
 <li><code>__repr__()</code>: for developer to recreate the object</li>
@@ -54,33 +54,33 @@
 </div>
 </div>
 
-<div id="outline-container-org525c1bb" class="outline-2">
-<h2 id="org525c1bb">Assignment is special</h2>
-<div class="outline-text-2" id="text-org525c1bb">
+<div id="outline-container-org3721a16" class="outline-2">
+<h2 id="org3721a16">Assignment is special</h2>
+<div class="outline-text-2" id="text-org3721a16">
 </div>
-<div id="outline-container-orge73170b" class="outline-3">
-<h3 id="orge73170b">Assignment is pointing the name to a new object</h3>
-<div class="outline-text-3" id="text-orge73170b">
+<div id="outline-container-org4ad58ab" class="outline-3">
+<h3 id="org4ad58ab">Assignment is pointing the name to a new object</h3>
+<div class="outline-text-3" id="text-org4ad58ab">
 <p>
 While most of the operators in python are just syntactic sugar for member function calls, such as <code>+, -, []</code>, etc.
 </p>
 </div>
 </div>
-<div id="outline-container-org4dd4448" class="outline-3">
-<h3 id="org4dd4448"><code>=</code> does not always mean assignment.</h3>
-<div class="outline-text-3" id="text-org4dd4448">
+<div id="outline-container-org915c093" class="outline-3">
+<h3 id="org915c093"><code>=</code> does not always mean assignment.</h3>
+<div class="outline-text-3" id="text-org915c093">
 </div>
-<div id="outline-container-orgb40e035" class="outline-4">
-<h4 id="orgb40e035"><code>+=</code></h4>
-<div class="outline-text-4" id="text-orgb40e035">
+<div id="outline-container-org3367c9e" class="outline-4">
+<h4 id="org3367c9e"><code>+=</code></h4>
+<div class="outline-text-4" id="text-org3367c9e">
 <p>
 In fact, <code>n+=1</code> will always prefer calling <code>n.__iadd__(1)</code>. If it is not defined, then it will call <code>n=n.__add__(1)</code>, which will trigger an assingment.
 </p>
 </div>
 </div>
-<div id="outline-container-org5c675b9" class="outline-4">
-<h4 id="org5c675b9"><code>a[:3] = 2</code></h4>
-<div class="outline-text-4" id="text-org5c675b9">
+<div id="outline-container-org8548482" class="outline-4">
+<h4 id="org8548482"><code>a[:3] = 2</code></h4>
+<div class="outline-text-4" id="text-org8548482">
 <p>
 this is syntactic sugar for <code>a.__setitem__(slice(None, 3, None), 2)</code>.
 </p>
@@ -89,16 +89,16 @@ this is syntactic sugar for <code>a.__setitem__(slice(None, 3, None), 2)</code>.
 </div>
 </div>
 
-<div id="outline-container-org053d658" class="outline-2">
-<h2 id="org053d658">Python function always does passing by reference</h2>
-<div class="outline-text-2" id="text-org053d658">
+<div id="outline-container-org6cf6577" class="outline-2">
+<h2 id="org6cf6577">Python function always does passing by reference</h2>
+<div class="outline-text-2" id="text-org6cf6577">
 <p>
 However, sometimes it feels like passing by value. This illution is caused by something else. For example,
 </p>
 </div>
-<div id="outline-container-org92ffa32" class="outline-3">
-<h3 id="org92ffa32">Assignment is pointing the name to a new object</h3>
-<div class="outline-text-3" id="text-org92ffa32">
+<div id="outline-container-orga7e5537" class="outline-3">
+<h3 id="orga7e5537">Assignment is pointing the name to a new object</h3>
+<div class="outline-text-3" id="text-orga7e5537">
 <div class="org-src-container">
 <pre class="src src-python"><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">add_one</span>(n):
     <span style="font-weight: bold; font-style: italic;">n</span> += 1
@@ -113,9 +113,9 @@ In this case, <code>a</code> is passed into <code>add_one</code> by ref, however
 </p>
 </div>
 </div>
-<div id="outline-container-org49f7470" class="outline-3">
-<h3 id="org49f7470"><code>=</code> does not always mean assignment</h3>
-<div class="outline-text-3" id="text-org49f7470">
+<div id="outline-container-orge4d1ab5" class="outline-3">
+<h3 id="orge4d1ab5"><code>=</code> does not always mean assignment</h3>
+<div class="outline-text-3" id="text-orge4d1ab5">
 <div class="org-src-container">
 <pre class="src src-python"><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">add_one</span>(n):
     <span style="font-weight: bold; font-style: italic;">n</span> += 1
@@ -131,16 +131,16 @@ In this case, <code>n+=1</code> is calling <code>n.__iadd__(1)</code>, and an in
 </div>
 </div>
 
-<div id="outline-container-org6374249" class="outline-2">
-<h2 id="org6374249"><code>b=a[1:3]</code></h2>
-<div class="outline-text-2" id="text-org6374249">
+<div id="outline-container-org0668879" class="outline-2">
+<h2 id="org0668879"><code>b=a[1:3]</code></h2>
+<div class="outline-text-2" id="text-org0668879">
 </div>
-<div id="outline-container-orgfbdf159" class="outline-3">
-<h3 id="orgfbdf159">If a is np.ndarray or pd.DataFrame, b is a view.</h3>
+<div id="outline-container-orgbe57c24" class="outline-3">
+<h3 id="orgbe57c24">If a is np.ndarray or pd.DataFrame, b is a view.</h3>
 </div>
-<div id="outline-container-org4ce1bbc" class="outline-3">
-<h3 id="org4ce1bbc">If a is a list, b is (1 level) shallow copy.</h3>
-<div class="outline-text-3" id="text-org4ce1bbc">
+<div id="outline-container-org4135e31" class="outline-3">
+<h3 id="org4135e31">If a is a list, b is (1 level) shallow copy.</h3>
+<div class="outline-text-3" id="text-org4135e31">
 <p>
 It feels like sometimes assignment gives you a reference. Sometimes it gives you a copy. In fact, the trick is done in <code>[1:3]</code>, namely slicing.
 For a <code>np.ndarray</code> and <code>pd.DataFrame</code>, slicing returns a view (like a reference), while for a list, slicing returns a shallow copy.

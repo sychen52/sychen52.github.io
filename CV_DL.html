@@ -16,28 +16,28 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb7ad74a">3d representation</a></li>
-<li><a href="#org1101077">From 2d image to depth map:</a></li>
-<li><a href="#org43207f0">From 2d image to 3d voxel grid:</a></li>
-<li><a href="#org09b2b77">From 2d image to point cloud</a></li>
-<li><a href="#orgac36e3e">From 2d image to mesh</a></li>
-<li><a href="#orgc9e76cc">Model on 3d:</a></li>
-<li><a href="#org3fe76b5">Mean Average Precision (mAP) in Object detection</a>
+<li><a href="#org3af4b1e">3d representation</a></li>
+<li><a href="#orgf880b75">From 2d image to depth map:</a></li>
+<li><a href="#org83bdeb2">From 2d image to 3d voxel grid:</a></li>
+<li><a href="#org472b577">From 2d image to point cloud</a></li>
+<li><a href="#orgbc03842">From 2d image to mesh</a></li>
+<li><a href="#org4cff7f6">Model on 3d:</a></li>
+<li><a href="#org54d7679">Mean Average Precision (mAP) in Object detection</a>
 <ul>
-<li><a href="#org9cc6971">AP = area under Precision vs. Recall Curve</a></li>
-<li><a href="#orgab10d50">mAP</a></li>
+<li><a href="#org15a1234">AP = area under Precision vs. Recall Curve</a></li>
+<li><a href="#org3c201c0">mAP</a></li>
 </ul>
 </li>
-<li><a href="#orgd99dc28">R-CNN</a></li>
-<li><a href="#org4596e3b">Fast R-CNN</a></li>
-<li><a href="#orgf7e0449">Faster R-CNN</a></li>
-<li><a href="#org70a7824">Single Stage Object Detection (SSD)</a></li>
+<li><a href="#orgddca364">R-CNN</a></li>
+<li><a href="#org6c20d5b">Fast R-CNN</a></li>
+<li><a href="#orga5adce4">Faster R-CNN</a></li>
+<li><a href="#orgbc6c016">Single Stage Object Detection (SSD)</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb7ad74a" class="outline-2">
-<h2 id="orgb7ad74a">3d representation</h2>
-<div class="outline-text-2" id="text-orgb7ad74a">
+<div id="outline-container-org3af4b1e" class="outline-2">
+<h2 id="org3af4b1e">3d representation</h2>
+<div class="outline-text-2" id="text-org3af4b1e">
 <ul class="org-ul">
 <li>depth map</li>
 <li>voxel grid</li>
@@ -48,17 +48,17 @@
 </div>
 </div>
 
-<div id="outline-container-org1101077" class="outline-2">
-<h2 id="org1101077">From 2d image to depth map:</h2>
-<div class="outline-text-2" id="text-org1101077">
+<div id="outline-container-orgf880b75" class="outline-2">
+<h2 id="orgf880b75">From 2d image to depth map:</h2>
+<div class="outline-text-2" id="text-orgf880b75">
 <p>
 unet2d
 </p>
 </div>
 </div>
-<div id="outline-container-org43207f0" class="outline-2">
-<h2 id="org43207f0">From 2d image to 3d voxel grid:</h2>
-<div class="outline-text-2" id="text-org43207f0">
+<div id="outline-container-org83bdeb2" class="outline-2">
+<h2 id="org83bdeb2">From 2d image to 3d voxel grid:</h2>
+<div class="outline-text-2" id="text-org83bdeb2">
 <ul class="org-ul">
 <li>Fully connected</li>
 <li>Transformer</li>
@@ -67,9 +67,9 @@ unet2d
 </div>
 </div>
 
-<div id="outline-container-org09b2b77" class="outline-2">
-<h2 id="org09b2b77">From 2d image to point cloud</h2>
-<div class="outline-text-2" id="text-org09b2b77">
+<div id="outline-container-org472b577" class="outline-2">
+<h2 id="org472b577">From 2d image to point cloud</h2>
+<div class="outline-text-2" id="text-org472b577">
 <ul class="org-ul">
 <li>FC</li>
 <li>Transformer</li>
@@ -77,18 +77,18 @@ unet2d
 </div>
 </div>
 
-<div id="outline-container-orgac36e3e" class="outline-2">
-<h2 id="orgac36e3e">From 2d image to mesh</h2>
-<div class="outline-text-2" id="text-orgac36e3e">
+<div id="outline-container-orgbc03842" class="outline-2">
+<h2 id="orgbc03842">From 2d image to mesh</h2>
+<div class="outline-text-2" id="text-orgbc03842">
 <p>
 2d image -&gt; 3d mask on a grid -&gt; mesh -&gt; deformed mesh
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc9e76cc" class="outline-2">
-<h2 id="orgc9e76cc">Model on 3d:</h2>
-<div class="outline-text-2" id="text-orgc9e76cc">
+<div id="outline-container-org4cff7f6" class="outline-2">
+<h2 id="org4cff7f6">Model on 3d:</h2>
+<div class="outline-text-2" id="text-org4cff7f6">
 <ul class="org-ul">
 <li>voxel grid: conv3d</li>
 <li>point cloud: point-wise MLP (conv1d with kernel size 1)</li>
@@ -97,16 +97,16 @@ unet2d
 </div>
 </div>
 
-<div id="outline-container-org3fe76b5" class="outline-2">
-<h2 id="org3fe76b5">Mean Average Precision (mAP) in Object detection</h2>
-<div class="outline-text-2" id="text-org3fe76b5">
+<div id="outline-container-org54d7679" class="outline-2">
+<h2 id="org54d7679">Mean Average Precision (mAP) in Object detection</h2>
+<div class="outline-text-2" id="text-org54d7679">
 <p>
 <a href="https://youtu.be/TB-fdISzpHQ?t=2230">https://youtu.be/TB-fdISzpHQ?t=2230</a>
 </p>
 </div>
-<div id="outline-container-org9cc6971" class="outline-3">
-<h3 id="org9cc6971">AP = area under Precision vs. Recall Curve</h3>
-<div class="outline-text-3" id="text-org9cc6971">
+<div id="outline-container-org15a1234" class="outline-3">
+<h3 id="org15a1234">AP = area under Precision vs. Recall Curve</h3>
+<div class="outline-text-3" id="text-org15a1234">
 <ul class="org-ul">
 <li>Pick a class (e.g. dog), and a threshold for IoU (e.g. 0.5, IoU &gt; 0.5 means detected)</li>
 <li>Sort all the predicted boxes by the probability of dog class.</li>
@@ -123,9 +123,9 @@ To get AP=1, hit all GT boxes with IoU &gt; 0.5 and have no FP detections ranked
 </p>
 </div>
 </div>
-<div id="outline-container-orgab10d50" class="outline-3">
-<h3 id="orgab10d50">mAP</h3>
-<div class="outline-text-3" id="text-orgab10d50">
+<div id="outline-container-org3c201c0" class="outline-3">
+<h3 id="org3c201c0">mAP</h3>
+<div class="outline-text-3" id="text-org3c201c0">
 <p>
 repeat AP for all classes, some different IoU thresholds.
 </p>
@@ -133,27 +133,27 @@ repeat AP for all classes, some different IoU thresholds.
 </div>
 </div>
 
-<div id="outline-container-orgd99dc28" class="outline-2">
-<h2 id="orgd99dc28">R-CNN</h2>
-<div class="outline-text-2" id="text-orgd99dc28">
+<div id="outline-container-orgddca364" class="outline-2">
+<h2 id="orgddca364">R-CNN</h2>
+<div class="outline-text-2" id="text-orgddca364">
 <p>
 non-DL region proposal; Resample the image in each region; CNN on each region; a class and bounding box per region;
 </p>
 </div>
 </div>
 
-<div id="outline-container-org4596e3b" class="outline-2">
-<h2 id="org4596e3b">Fast R-CNN</h2>
-<div class="outline-text-2" id="text-org4596e3b">
+<div id="outline-container-org6c20d5b" class="outline-2">
+<h2 id="org6c20d5b">Fast R-CNN</h2>
+<div class="outline-text-2" id="text-org6c20d5b">
 <p>
 CNN on the entire image; non-DL region proposal; Resample the CNN feature in each region (e.g. into 7x7); small CNN on each region; a class and bounding box per region;
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf7e0449" class="outline-2">
-<h2 id="orgf7e0449">Faster R-CNN</h2>
-<div class="outline-text-2" id="text-orgf7e0449">
+<div id="outline-container-orga5adce4" class="outline-2">
+<h2 id="orga5adce4">Faster R-CNN</h2>
+<div class="outline-text-2" id="text-orga5adce4">
 <p>
 same as Fast R-CNN, expect DL region proposal:
 On the CNN output feature map, add another CNN. every position on its output is a (K) anchor box(es): (a probability of being a region, the bbox).
@@ -161,9 +161,9 @@ On the CNN output feature map, add another CNN. every position on its output is 
 </div>
 </div>
 
-<div id="outline-container-org70a7824" class="outline-2">
-<h2 id="org70a7824">Single Stage Object Detection (SSD)</h2>
-<div class="outline-text-2" id="text-org70a7824">
+<div id="outline-container-orgbc6c016" class="outline-2">
+<h2 id="orgbc6c016">Single Stage Object Detection (SSD)</h2>
+<div class="outline-text-2" id="text-orgbc6c016">
 <p>
 All R-CNNs have two stages: region proposal + final bbox.
 SSD only has the first stage of Faster R-CNN.
