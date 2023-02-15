@@ -51,3 +51,5 @@
 [[./data_structure.org][Data Structure in Python and C++]]
 
 [[./asyncio.org][asyncio in Python]]
+
+[[./statistics.org][Probability and Statistics]]
