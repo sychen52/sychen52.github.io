@@ -1,8 +1,8 @@
 #+title: Probability and Statistics
 
 * Bernoulli: X ~ B(1, p): discrete
-- P(X=1): 丢一个正面朝上概率为p的硬币，结果有1个正面朝上的概率是多少。
-- P(X=0): 丢一个正面朝上概率为p的硬币，结果有0个正面朝上的概率是多少。
+- P(X=1): 丢一个正面朝上概率为p的硬币，结果head的概率是多少。
+- P(X=0): 丢一个正面朝上概率为p的硬币，结果tail的概率是多少。
 - sample output: 0 or 1
   
 * Binomial: X ~ B(n, p): discrete
@@ -19,8 +19,14 @@
 
 * Poisson: X ~ Pois(λ): discrete
 - P(X=k): λ=rt, 在时间t内，事件发生有且仅有k次的概率，r是事件发生平均速率
-- Pois(λ) = lim_{n->inf}Binomial(n, p), where p*n = λ
-- Sample output: 0, 1, 2, 3
+- Pois(λ) = lim_{n->inf}Binomial(n, p), where p*n = λ. n > 100, np < 10.
+  - *think of it at toss a coin per 1 second. The event is the head of the coin. p is r; n is t.*
+-  Sample output: 0, 1, 2, 3
+
+* Exponential: X ~ Exp(λ): Continuous
+- f(X=x): pdf of poisson process event interval is x.
+- Sample output: [0, inf)
+
 
 * What is t-test and f-test
 在H0 hypothesis下，如果能推导出某个统计量服从T(df1)的分布，那么你可以知道这个T分布的形状，并且通过查表，可以算出你对这个统计量的这次测量（一个样本）在这个T分布的什么位置，以及比你这个测量值更极端的情况的总体概率（单边或双边面积），这个面积叫做p-value。如果你的这个测量值查表对应的p-value小于你预先设置的alpha，那么你可以拒绝原假设H0。整个过程叫做t-test（拒绝是我们希望看到的，因为这次测量不能拒绝并不代表原假设就成立，而一次测量的反例作用就可以说明原假设不成立。）
