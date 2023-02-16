@@ -16,38 +16,38 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6561e7f">Pass pointers in C++</a>
+<li><a href="#org4af37aa">Pass pointers in C++</a>
 <ul>
-<li><a href="#org82df1dd">Raw pointer or reference</a></li>
-<li><a href="#orga9d7395"><code>unique_ptr</code></a></li>
-<li><a href="#orgc57e001"><code>shared_ptr</code></a></li>
-<li><a href="#orgdbf386a"><code>unique_ptr&amp;</code> or <code>shared_ptr&amp;</code></a></li>
-<li><a href="#org56e5b0d"><code>const unique_ptr</code> or <code>const shared_ptr</code></a></li>
-<li><a href="#orge6bf33e"><code>const unique_ptr&amp;</code> or <code>const shared_ptr&amp;</code></a></li>
+<li><a href="#org28a463b">Raw pointer or reference</a></li>
+<li><a href="#org91c01a3"><code>unique_ptr</code></a></li>
+<li><a href="#orge9ee404"><code>shared_ptr</code></a></li>
+<li><a href="#org083d30b"><code>unique_ptr&amp;</code> or <code>shared_ptr&amp;</code></a></li>
+<li><a href="#org8f4f695"><code>const unique_ptr</code> or <code>const shared_ptr</code></a></li>
+<li><a href="#orgf1c3dd1"><code>const unique_ptr&amp;</code> or <code>const shared_ptr&amp;</code></a></li>
 </ul>
 </li>
-<li><a href="#org2609839">RAII: Resource Acquisition is Initialization: it means to cleanup in the destructor.</a>
+<li><a href="#orga371f47">RAII: Resource Acquisition is Initialization: it means to cleanup in the destructor.</a>
 <ul>
-<li><a href="#org02915a4">This applies to raw heap pointers, file handles, mutex, etc.</a></li>
-<li><a href="#orga24c599">The Rule of Three: all three need to be user defined if RAII.</a></li>
-<li><a href="#orgd0ee887">Destroctor is called even after throw</a></li>
-<li><a href="#orgf72612b">The Rule of Three: if not RAII (don't store data or contains only well written Rule of Three classes)</a></li>
-<li><a href="#orgaed653e">The Rule of Five:</a></li>
-<li><a href="#org5fe856c">The Rule of Four and a half:</a></li>
-<li><a href="#orgff7c3b5">Good examples</a></li>
+<li><a href="#org354dd61">This applies to raw heap pointers, file handles, mutex, etc.</a></li>
+<li><a href="#org1ab7025">The Rule of Three: all three need to be user defined if RAII.</a></li>
+<li><a href="#org28b8d36">Destroctor is called even after throw</a></li>
+<li><a href="#org71305b2">The Rule of Three: if not RAII (don't store data or contains only well written Rule of Three classes)</a></li>
+<li><a href="#org3c6a269">The Rule of Five:</a></li>
+<li><a href="#orga10ac91">The Rule of Four and a half:</a></li>
+<li><a href="#orgda6d9a6">Good examples</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6561e7f" class="outline-2">
-<h2 id="org6561e7f"><a href="https://levelup.gitconnected.com/passing-smart-pointers-in-c-479775632443">Pass pointers in C++</a></h2>
-<div class="outline-text-2" id="text-org6561e7f">
+<div id="outline-container-org4af37aa" class="outline-2">
+<h2 id="org4af37aa"><a href="https://levelup.gitconnected.com/passing-smart-pointers-in-c-479775632443">Pass pointers in C++</a></h2>
+<div class="outline-text-2" id="text-org4af37aa">
 </div>
-<div id="outline-container-org82df1dd" class="outline-3">
-<h3 id="org82df1dd">Raw pointer or reference</h3>
-<div class="outline-text-3" id="text-org82df1dd">
+<div id="outline-container-org28a463b" class="outline-3">
+<h3 id="org28a463b">Raw pointer or reference</h3>
+<div class="outline-text-3" id="text-org28a463b">
 <ul class="org-ul">
 <li>it is considered as borrow</li>
 <li>lifetime needs to be guaranteed. (unlike Rust, C++ compiler does not guarantee this for you.)</li>
@@ -55,43 +55,43 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orga9d7395" class="outline-3">
-<h3 id="orga9d7395"><code>unique_ptr</code></h3>
-<div class="outline-text-3" id="text-orga9d7395">
+<div id="outline-container-org91c01a3" class="outline-3">
+<h3 id="org91c01a3"><code>unique_ptr</code></h3>
+<div class="outline-text-3" id="text-org91c01a3">
 <ul class="org-ul">
 <li>transfer ownership (move)</li>
 <li>This is the default in Rust.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc57e001" class="outline-3">
-<h3 id="orgc57e001"><code>shared_ptr</code></h3>
-<div class="outline-text-3" id="text-orgc57e001">
+<div id="outline-container-orge9ee404" class="outline-3">
+<h3 id="orge9ee404"><code>shared_ptr</code></h3>
+<div class="outline-text-3" id="text-orge9ee404">
 <ul class="org-ul">
 <li>Shared ownership.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdbf386a" class="outline-3">
-<h3 id="orgdbf386a"><code>unique_ptr&amp;</code> or <code>shared_ptr&amp;</code></h3>
-<div class="outline-text-3" id="text-orgdbf386a">
+<div id="outline-container-org083d30b" class="outline-3">
+<h3 id="org083d30b"><code>unique_ptr&amp;</code> or <code>shared_ptr&amp;</code></h3>
+<div class="outline-text-3" id="text-org083d30b">
 <ul class="org-ul">
 <li>Consider using raw pointer, since the idea is the same.</li>
 <li>Unless you want to do something to the smart ptr itself.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org56e5b0d" class="outline-3">
-<h3 id="org56e5b0d"><code>const unique_ptr</code> or <code>const shared_ptr</code></h3>
-<div class="outline-text-3" id="text-org56e5b0d">
+<div id="outline-container-org8f4f695" class="outline-3">
+<h3 id="org8f4f695"><code>const unique_ptr</code> or <code>const shared_ptr</code></h3>
+<div class="outline-text-3" id="text-org8f4f695">
 <ul class="org-ul">
 <li>This means the smart ptr object is const, can you cannot modify (e.g. reset) the smart ptr. This is not the smart version of const Raw*.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge6bf33e" class="outline-3">
-<h3 id="orge6bf33e"><code>const unique_ptr&amp;</code> or <code>const shared_ptr&amp;</code></h3>
-<div class="outline-text-3" id="text-orge6bf33e">
+<div id="outline-container-orgf1c3dd1" class="outline-3">
+<h3 id="orgf1c3dd1"><code>const unique_ptr&amp;</code> or <code>const shared_ptr&amp;</code></h3>
+<div class="outline-text-3" id="text-orgf1c3dd1">
 <ul class="org-ul">
 <li>You should use raw pointer. In this case, you cannot even modify the smart<sub>ptr</sub></li>
 </ul>
@@ -100,16 +100,16 @@
 </div>
 
 
-<div id="outline-container-org2609839" class="outline-2">
-<h2 id="org2609839"><a href="https://www.youtube.com/watch?v=7Qgd9B1KuMQ">RAII: Resource Acquisition is Initialization: it means to cleanup in the destructor.</a></h2>
-<div class="outline-text-2" id="text-org2609839">
+<div id="outline-container-orga371f47" class="outline-2">
+<h2 id="orga371f47"><a href="https://www.youtube.com/watch?v=7Qgd9B1KuMQ">RAII: Resource Acquisition is Initialization: it means to cleanup in the destructor.</a></h2>
+<div class="outline-text-2" id="text-orga371f47">
 </div>
-<div id="outline-container-org02915a4" class="outline-3">
-<h3 id="org02915a4">This applies to raw heap pointers, file handles, mutex, etc.</h3>
+<div id="outline-container-org354dd61" class="outline-3">
+<h3 id="org354dd61">This applies to raw heap pointers, file handles, mutex, etc.</h3>
 </div>
-<div id="outline-container-orga24c599" class="outline-3">
-<h3 id="orga24c599">The Rule of Three: all three need to be user defined if RAII.</h3>
-<div class="outline-text-3" id="text-orga24c599">
+<div id="outline-container-org1ab7025" class="outline-3">
+<h3 id="org1ab7025">The Rule of Three: all three need to be user defined if RAII.</h3>
+<div class="outline-text-3" id="text-org1ab7025">
 <ul class="org-ul">
 <li>destructor</li>
 <li>copy ctor
@@ -124,20 +124,20 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd0ee887" class="outline-3">
-<h3 id="orgd0ee887">Destroctor is called even after throw</h3>
+<div id="outline-container-org28b8d36" class="outline-3">
+<h3 id="org28b8d36">Destroctor is called even after throw</h3>
 </div>
-<div id="outline-container-orgf72612b" class="outline-3">
-<h3 id="orgf72612b">The Rule of Three: if not RAII (don't store data or contains only well written Rule of Three classes)</h3>
-<div class="outline-text-3" id="text-orgf72612b">
+<div id="outline-container-org71305b2" class="outline-3">
+<h3 id="org71305b2">The Rule of Three: if not RAII (don't store data or contains only well written Rule of Three classes)</h3>
+<div class="outline-text-3" id="text-org71305b2">
 <p>
 Let compiler generate them.
 </p>
 </div>
 </div>
-<div id="outline-container-orgaed653e" class="outline-3">
-<h3 id="orgaed653e">The Rule of Five:</h3>
-<div class="outline-text-3" id="text-orgaed653e">
+<div id="outline-container-org3c6a269" class="outline-3">
+<h3 id="org3c6a269">The Rule of Five:</h3>
+<div class="outline-text-3" id="text-org3c6a269">
 <ul class="org-ul">
 <li>all three rules plus</li>
 <li>move ctor
@@ -152,9 +152,9 @@ Let compiler generate them.
 </ul>
 </div>
 </div>
-<div id="outline-container-org5fe856c" class="outline-3">
-<h3 id="org5fe856c">The Rule of Four and a half:</h3>
-<div class="outline-text-3" id="text-org5fe856c">
+<div id="outline-container-orga10ac91" class="outline-3">
+<h3 id="orga10ac91">The Rule of Four and a half:</h3>
+<div class="outline-text-3" id="text-orga10ac91">
 <ul class="org-ul">
 <li>All three ctors</li>
 <li>merge copy and move assignment into a value assignment
@@ -168,9 +168,9 @@ Let compiler generate them.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgff7c3b5" class="outline-3">
-<h3 id="orgff7c3b5">Good examples</h3>
-<div class="outline-text-3" id="text-orgff7c3b5">
+<div id="outline-container-orgda6d9a6" class="outline-3">
+<h3 id="orgda6d9a6">Good examples</h3>
+<div class="outline-text-3" id="text-orgda6d9a6">
 <ul class="org-ul">
 <li><code>unique_ptr</code>: ctor, move ctor and move assignment</li>
 <li><code>shared_ptr</code>: all five</li>
