@@ -16,19 +16,20 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdeb1cc8">Bernoulli: X ~ B(1, p): discrete</a></li>
-<li><a href="#org1d47152">Binomial: X ~ B(n, p): discrete</a></li>
-<li><a href="#org3ae70b0">Multinomial: X ~ M(n, p1, p2, …, pk)</a></li>
-<li><a href="#org7514f3b">Geometric: X ~ Geo(p): discrete</a></li>
-<li><a href="#org9782fff">Poisson: X ~ Pois(λ): discrete</a></li>
-<li><a href="#org5b41b0f">What is t-test and f-test</a></li>
+<li><a href="#org1b6b54e">Bernoulli: X ~ B(1, p): discrete</a></li>
+<li><a href="#orga5431ab">Binomial: X ~ B(n, p): discrete</a></li>
+<li><a href="#orgce25127">Multinomial: X ~ M(n, p1, p2, …, pk)</a></li>
+<li><a href="#org8c7b512">Geometric: X ~ Geo(p): discrete</a></li>
+<li><a href="#orgb586e01">Poisson: X ~ Pois(λ): discrete</a></li>
+<li><a href="#org976dbe2">Exponential: X ~ Exp(λ): Continuous</a></li>
+<li><a href="#org55b6098">What is t-test and f-test</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgdeb1cc8" class="outline-2">
-<h2 id="orgdeb1cc8">Bernoulli: X ~ B(1, p): discrete</h2>
-<div class="outline-text-2" id="text-orgdeb1cc8">
+<div id="outline-container-org1b6b54e" class="outline-2">
+<h2 id="org1b6b54e">Bernoulli: X ~ B(1, p): discrete</h2>
+<div class="outline-text-2" id="text-org1b6b54e">
 <ul class="org-ul">
 <li>P(X=1): 丢一个正面朝上概率为p的硬币，结果有1个正面朝上的概率是多少。</li>
 <li>P(X=0): 丢一个正面朝上概率为p的硬币，结果有0个正面朝上的概率是多少。</li>
@@ -37,9 +38,9 @@
 </div>
 </div>
 
-<div id="outline-container-org1d47152" class="outline-2">
-<h2 id="org1d47152">Binomial: X ~ B(n, p): discrete</h2>
-<div class="outline-text-2" id="text-org1d47152">
+<div id="outline-container-orga5431ab" class="outline-2">
+<h2 id="orga5431ab">Binomial: X ~ B(n, p): discrete</h2>
+<div class="outline-text-2" id="text-orga5431ab">
 <ul class="org-ul">
 <li>P(X=k): 丢n个正面朝上概率为p的硬币，结果有k个正面朝上的概率是多少。</li>
 <li>sample output: N</li>
@@ -47,9 +48,9 @@
 </div>
 </div>
 
-<div id="outline-container-org3ae70b0" class="outline-2">
-<h2 id="org3ae70b0">Multinomial: X ~ M(n, p1, p2, …, pk)</h2>
-<div class="outline-text-2" id="text-org3ae70b0">
+<div id="outline-container-orgce25127" class="outline-2">
+<h2 id="orgce25127">Multinomial: X ~ M(n, p1, p2, …, pk)</h2>
+<div class="outline-text-2" id="text-orgce25127">
 <ul class="org-ul">
 <li>P(X=(x1, x2, x3, &#x2026;)): 丢n个k面的骰子（每个面的分布是p1, …, pk），结果有x1个1st面， x2个2nd面，。。。，xk个kth面的概率。</li>
 <li>output: (x1, x2, &#x2026;, xk), xi is N</li>
@@ -57,9 +58,9 @@
 </div>
 </div>
 
-<div id="outline-container-org7514f3b" class="outline-2">
-<h2 id="org7514f3b">Geometric: X ~ Geo(p): discrete</h2>
-<div class="outline-text-2" id="text-org7514f3b">
+<div id="outline-container-org8c7b512" class="outline-2">
+<h2 id="org8c7b512">Geometric: X ~ Geo(p): discrete</h2>
+<div class="outline-text-2" id="text-org8c7b512">
 <ul class="org-ul">
 <li>P(X=k): 一直丢一个硬币，第一次出现1是第k次的概率。</li>
 <li>sample output: N</li>
@@ -67,20 +68,34 @@
 </div>
 </div>
 
-<div id="outline-container-org9782fff" class="outline-2">
-<h2 id="org9782fff">Poisson: X ~ Pois(λ): discrete</h2>
-<div class="outline-text-2" id="text-org9782fff">
+<div id="outline-container-orgb586e01" class="outline-2">
+<h2 id="orgb586e01">Poisson: X ~ Pois(λ): discrete</h2>
+<div class="outline-text-2" id="text-orgb586e01">
 <ul class="org-ul">
 <li>P(X=k): λ=rt, 在时间t内，事件发生有且仅有k次的概率，r是事件发生平均速率</li>
-<li>Pois(λ) = lim<sub>n-&gt;inf</sub>Binomial(n, p), where p*n = λ</li>
+<li>Pois(λ) = lim<sub>n-&gt;inf</sub>Binomial(n, p), where p*n = λ. n &gt; 100, np &lt; 10.
+<ul class="org-ul">
+<li><b>think of it at toss a coin per 1 second. The event is the head of the coin. p is r; n is t.</b></li>
+</ul></li>
 <li>Sample output: 0, 1, 2, 3</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5b41b0f" class="outline-2">
-<h2 id="org5b41b0f">What is t-test and f-test</h2>
-<div class="outline-text-2" id="text-org5b41b0f">
+<div id="outline-container-org976dbe2" class="outline-2">
+<h2 id="org976dbe2">Exponential: X ~ Exp(λ): Continuous</h2>
+<div class="outline-text-2" id="text-org976dbe2">
+<ul class="org-ul">
+<li>f(X=x): pdf of poisson process event interval is x.</li>
+<li>Sample output: [0, inf)</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org55b6098" class="outline-2">
+<h2 id="org55b6098">What is t-test and f-test</h2>
+<div class="outline-text-2" id="text-org55b6098">
 <p>
 在H0 hypothesis下，如果能推导出某个统计量服从T(df1)的分布，那么你可以知道这个T分布的形状，并且通过查表，可以算出你对这个统计量的这次测量（一个样本）在这个T分布的什么位置，以及比你这个测量值更极端的情况的总体概率（单边或双边面积），这个面积叫做p-value。如果你的这个测量值查表对应的p-value小于你预先设置的alpha，那么你可以拒绝原假设H0。整个过程叫做t-test（拒绝是我们希望看到的，因为这次测量不能拒绝并不代表原假设就成立，而一次测量的反例作用就可以说明原假设不成立。）
 </p>

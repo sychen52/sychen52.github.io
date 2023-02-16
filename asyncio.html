@@ -16,10 +16,10 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2c0fd55">thread vs asyncio</a></li>
-<li><a href="#org094e9b9">async def f</a></li>
-<li><a href="#orgcb4f443">asyncio.create<sub>task</sub>(coroutine)</a></li>
-<li><a href="#orgd92e736">await</a></li>
+<li><a href="#org763955c">thread vs asyncio</a></li>
+<li><a href="#orgab43a09">async def f</a></li>
+<li><a href="#orgb74c296">asyncio.create<sub>task</sub>(coroutine)</a></li>
+<li><a href="#org47c832f">await</a></li>
 </ul>
 </div>
 </div>
@@ -31,9 +31,9 @@ It is an event loop with callback functions in it.
 An event loop is single-threaded. Therefore, stuff that goes inside the event loop should not be CPU heavy (Usually IO or HTTP request). If you have a CPU-heavy task. You can have an executor that runs this task in a separate thread/process and wait for the result in the event loop.
 </p>
 
-<div id="outline-container-org2c0fd55" class="outline-2">
-<h2 id="org2c0fd55">thread vs asyncio</h2>
-<div class="outline-text-2" id="text-org2c0fd55">
+<div id="outline-container-org763955c" class="outline-2">
+<h2 id="org763955c">thread vs asyncio</h2>
+<div class="outline-text-2" id="text-org763955c">
 <ul class="org-ul">
 <li>thread use lock to tell where it is <b>impossible</b> to go to another task.</li>
 <li>asyncio use await to tell where is ti <b>possible</b> to go to another task.</li>
@@ -41,18 +41,18 @@ An event loop is single-threaded. Therefore, stuff that goes inside the event lo
 </div>
 </div>
 
-<div id="outline-container-org094e9b9" class="outline-2">
-<h2 id="org094e9b9">async def f</h2>
-<div class="outline-text-2" id="text-org094e9b9">
+<div id="outline-container-orgab43a09" class="outline-2">
+<h2 id="orgab43a09">async def f</h2>
+<div class="outline-text-2" id="text-orgab43a09">
 <p>
 it defines a coroutine. If you call <code>f()</code> directly, the return is a coroutine object.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgcb4f443" class="outline-2">
-<h2 id="orgcb4f443">asyncio.create<sub>task</sub>(coroutine)</h2>
-<div class="outline-text-2" id="text-orgcb4f443">
+<div id="outline-container-orgb74c296" class="outline-2">
+<h2 id="orgb74c296">asyncio.create<sub>task</sub>(coroutine)</h2>
+<div class="outline-text-2" id="text-orgb74c296">
 <ul class="org-ul">
 <li>Wrap a coroutine into a task.</li>
 <li>It creates a copy of the context for later execution.</li>
@@ -61,9 +61,9 @@ it defines a coroutine. If you call <code>f()</code> directly, the return is a c
 </div>
 </div>
 
-<div id="outline-container-orgd92e736" class="outline-2">
-<h2 id="orgd92e736">await</h2>
-<div class="outline-text-2" id="text-orgd92e736">
+<div id="outline-container-org47c832f" class="outline-2">
+<h2 id="org47c832f">await</h2>
+<div class="outline-text-2" id="text-org47c832f">
 <ol class="org-ol">
 <li>Block: register the stuff afterward as a callback in the event loop. It will be executed after await's result/timer comes back.</li>
 <li>waiting part:
