@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://orgmode.org/worg/style/worg.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org453d843">kaiming<sub>init</sub> is no long that important</a></li>
+<li><a href="#orgb6603ec">How to choose learning rate</a></li>
+<li><a href="#org540b370">How to choose learning rate (Approach 2): video</a></li>
+<li><a href="#org57c0033">What does bn help?</a></li>
+<li><a href="#org975aaf3">torch.clip will make grad outside the range to be 0.</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org453d843" class="outline-2">
+<h2 id="org453d843">kaiming<sub>init</sub> is no long that important</h2>
+<div class="outline-text-2" id="text-org453d843">
+<p>
+(sqrt(1/fan<sub>in</sub>) is good enough, the gain is not that important.
+This is because the bn, skip connection&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb6603ec" class="outline-2">
+<h2 id="orgb6603ec">How to choose learning rate</h2>
+<div class="outline-text-2" id="text-orgb6603ec">
+<ol class="org-ol">
+<li>pick a lr that is too smaller. (by using it to train for a few thousand steps: not converge fast enough)</li>
+<li>pick a lr that is too large. (by using it to train for a few thousand steps: not converge at all)</li>
+<li>train a few thousand steps with lr increased gradually from the too small one to the too large one <b>in log scale</b>.</li>
+<li>plot loss vs lr curve and pick a lr in the bottom (log log scale to see better)</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org540b370" class="outline-2">
+<h2 id="org540b370">How to choose learning rate (Approach 2): <a href="https://www.youtube.com/watch?v=P6sfmUTpUmc&amp;t=3615s">video</a></h2>
+<div class="outline-text-2" id="text-org540b370">
+<ol class="org-ol">
+<li>compute the stat, update ratio,: abs(lr*grad)/abs(parameter) for all the layers.</li>
+<li>The value should be around 1e-3 (1e-2 to 1e-4).</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org57c0033" class="outline-2">
+<h2 id="org57c0033">What does bn help?</h2>
+<div class="outline-text-2" id="text-org57c0033">
+<ul class="org-ul">
+<li>forward input stat are normalized</li>
+<li>backward grad stat are normalized</li>
+<li>less sensitive to gain (during initialization).</li>
+<li>you still need to tune lr to scale to update ratio properly</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org975aaf3" class="outline-2">
+<h2 id="org975aaf3">torch.clip will make grad outside the range to be 0.</h2>
+<div class="outline-text-2" id="text-org975aaf3">
+<ul class="org-ul">
+<li>which mean you cannot move it back when the value is outside, even when grad is pointing inward.</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -6,67 +6,77 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Minimize \( \|Ax\| s.t. \|x\| = 1 \)</title>
-<meta name="generator" content="Org mode" />
 <meta name="keywords" content="optimization" />
+<meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://orgmode.org/worg/style/worg.css"/>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Minimize \( \|Ax\| s.t. \|x\| = 1 \)</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4b53313">Solution</a>
+<li><a href="#orge9b3c83">Solution</a>
 <ul>
-<li><a href="#orgcd12615">SVD</a></li>
+<li><a href="#orge5326ab">SVD</a></li>
 </ul>
 </li>
-<li><a href="#orga487f9e">Proof</a></li>
+<li><a href="#orgfa1cc23">Proof</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4b53313" class="outline-2">
-<h2 id="org4b53313">Solution</h2>
-<div class="outline-text-2" id="text-org4b53313">
+<div id="outline-container-orge9b3c83" class="outline-2">
+<h2 id="orge9b3c83">Solution</h2>
+<div class="outline-text-2" id="text-orge9b3c83">
 <ul class="org-ul">
 <li>Do a svd on A</li>
 <li>x = the v vector corresponding to the smallest singular value.</li>
 </ul>
 </div>
 
-<div id="outline-container-orgcd12615" class="outline-3">
-<h3 id="orgcd12615">SVD</h3>
-<div class="outline-text-3" id="text-orgcd12615">
+<div id="outline-container-orge5326ab" class="outline-3">
+<h3 id="orge5326ab">SVD</h3>
+<div class="outline-text-3" id="text-orge5326ab">
 <p>
 One way to understand SVD is as follows:
 </p>
 
 
-<div class="figure">
+<div id="org5956a57" class="figure">
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Singular_value_decomposition_visualisation.svg/800px-Singular_value_decomposition_visualisation.svg.png" alt="800px-Singular_value_decomposition_visualisation.svg.png" />
 </p>
 </div>
@@ -86,9 +96,9 @@ For real matrix, all singular values are non-negative.
 </div>
 </div>
 
-<div id="outline-container-orga487f9e" class="outline-2">
-<h2 id="orga487f9e">Proof</h2>
-<div class="outline-text-2" id="text-orga487f9e">
+<div id="outline-container-orgfa1cc23" class="outline-2">
+<h2 id="orgfa1cc23">Proof</h2>
+<div class="outline-text-2" id="text-orgfa1cc23">
 <ul class="org-ul">
 <li>First, we assume m &gt; n and n = r, otherwise, the result would be 0.</li>
 <li>Decompose x into v-space, \( x=\sum_{i=1}^n x=x_iv_i \).</li>
