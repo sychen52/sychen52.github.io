@@ -1,17 +1,5 @@
 #+TITLE: Yangzai's Blog
 
-#+BEGIN_COMMENT
-[[./2019-12-22-BringingUpBebe.org][Bringing Up Bebe]]
-
-[[./2019-12-22-InfluenceThePsychologyOfPersuasion1.org][Influence The Psychology Of Persuasion1]]
-
-[[./2021-10-02-WhyWeSleep.org][Why We Sleep]]
-
-[[./headspace.org][Headspace]]
-
-[[./ft_to_dft_for_mri.jpg][Fourier Transform and Discrete Fourier Transform for MRI]]
-#+END_COMMENT
-
 [[./2019-12-24-DirectLinearTransform.org][Direct Linear Transform]]
 
 [[./2019-12-24-ZhangsMethod.org][Zhang's Method]]
@@ -53,3 +41,5 @@
 [[./asyncio.org][asyncio in Python]]
 
 [[./statistics.org][Probability and Statistics]]
+
+[[./ft_to_dft_for_mri.jpg][Fourier Transform and Discrete Fourier Transform for MRI]]
