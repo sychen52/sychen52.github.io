@@ -10,6 +10,9 @@
 [[./headspace.org][Headspace]]
 
 [[./ft_to_dft_for_mri.jpg][Fourier Transform and Discrete Fourier Transform for MRI]]
+
+[[./ma_memoirs.org][Memoris written by Mom]]
+
 #+END_COMMENT
 
 [[./2019-12-24-DirectLinearTransform.org][Direct Linear Transform]]
