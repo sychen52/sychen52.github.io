@@ -15,17 +15,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org453d843">kaiming<sub>init</sub> is no long that important</a></li>
-<li><a href="#orgb6603ec">How to choose learning rate</a></li>
-<li><a href="#org540b370">How to choose learning rate (Approach 2): video</a></li>
-<li><a href="#org57c0033">What does bn help?</a></li>
-<li><a href="#org975aaf3">torch.clip will make grad outside the range to be 0.</a></li>
+<li><a href="#org411bfd8">kaiming<sub>init</sub> is no long that important</a></li>
+<li><a href="#orgfff4f5c">How to choose learning rate</a></li>
+<li><a href="#orga4a8e3b">How to choose learning rate (Approach 2): video</a></li>
+<li><a href="#org9f1a10e">What does bn help?</a></li>
+<li><a href="#orgc0f2e6d">torch.clip will make grad outside the range to be 0.</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org453d843" class="outline-2">
-<h2 id="org453d843">kaiming<sub>init</sub> is no long that important</h2>
-<div class="outline-text-2" id="text-org453d843">
+<div id="outline-container-org411bfd8" class="outline-2">
+<h2 id="org411bfd8">kaiming<sub>init</sub> is no long that important</h2>
+<div class="outline-text-2" id="text-org411bfd8">
 <p>
 (sqrt(1/fan<sub>in</sub>) is good enough, the gain is not that important.
 This is because the bn, skip connection&#x2026;
@@ -33,9 +33,9 @@ This is because the bn, skip connection&#x2026;
 </div>
 </div>
 
-<div id="outline-container-orgb6603ec" class="outline-2">
-<h2 id="orgb6603ec">How to choose learning rate</h2>
-<div class="outline-text-2" id="text-orgb6603ec">
+<div id="outline-container-orgfff4f5c" class="outline-2">
+<h2 id="orgfff4f5c">How to choose learning rate</h2>
+<div class="outline-text-2" id="text-orgfff4f5c">
 <ol class="org-ol">
 <li>pick a lr that is too smaller. (by using it to train for a few thousand steps: not converge fast enough)</li>
 <li>pick a lr that is too large. (by using it to train for a few thousand steps: not converge at all)</li>
@@ -46,9 +46,9 @@ This is because the bn, skip connection&#x2026;
 </div>
 
 
-<div id="outline-container-org540b370" class="outline-2">
-<h2 id="org540b370">How to choose learning rate (Approach 2): <a href="https://www.youtube.com/watch?v=P6sfmUTpUmc&amp;t=3615s">video</a></h2>
-<div class="outline-text-2" id="text-org540b370">
+<div id="outline-container-orga4a8e3b" class="outline-2">
+<h2 id="orga4a8e3b">How to choose learning rate (Approach 2): <a href="https://www.youtube.com/watch?v=P6sfmUTpUmc&amp;t=3615s">video</a></h2>
+<div class="outline-text-2" id="text-orga4a8e3b">
 <ol class="org-ol">
 <li>compute the stat, update ratio,: abs(lr*grad)/abs(parameter) for all the layers.</li>
 <li>The value should be around 1e-3 (1e-2 to 1e-4).</li>
@@ -56,9 +56,9 @@ This is because the bn, skip connection&#x2026;
 </div>
 </div>
 
-<div id="outline-container-org57c0033" class="outline-2">
-<h2 id="org57c0033">What does bn help?</h2>
-<div class="outline-text-2" id="text-org57c0033">
+<div id="outline-container-org9f1a10e" class="outline-2">
+<h2 id="org9f1a10e">What does bn help?</h2>
+<div class="outline-text-2" id="text-org9f1a10e">
 <ul class="org-ul">
 <li>forward input stat are normalized</li>
 <li>backward grad stat are normalized</li>
@@ -68,9 +68,9 @@ This is because the bn, skip connection&#x2026;
 </div>
 </div>
 
-<div id="outline-container-org975aaf3" class="outline-2">
-<h2 id="org975aaf3">torch.clip will make grad outside the range to be 0.</h2>
-<div class="outline-text-2" id="text-org975aaf3">
+<div id="outline-container-orgc0f2e6d" class="outline-2">
+<h2 id="orgc0f2e6d">torch.clip will make grad outside the range to be 0.</h2>
+<div class="outline-text-2" id="text-orgc0f2e6d">
 <ul class="org-ul">
 <li>which mean you cannot move it back when the value is outside, even when grad is pointing inward.</li>
 </ul>
