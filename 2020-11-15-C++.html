@@ -32,25 +32,25 @@
 <li><a href="#dont-return-an-rvalue-ref-just-return-a-value">Don't return an rvalue ref, just return a value</a></li>
 <li><a href="#stdforward">std::forward</a></li>
 <li><a href="#stdunique_ptr-stdshared_ptr-and-stdweak_ptr"><code>std::unique_ptr</code>, <code>std::shared_ptr</code>, and <code>std::weak_ptr</code></a></li>
-<li><a href="#org0f0f249">Ownership: pointer, reference, smart pointers</a></li>
+<li><a href="#org8c5a230">Ownership: pointer, reference, smart pointers</a></li>
 <li><a href="#function-pointer">Function pointer</a></li>
 <li><a href="#union-and-type-punning">Union and type punning</a></li>
 <li><a href="#stdvariant">std::variant</a></li>
 <li><a href="#singleton">Singleton</a></li>
-<li><a href="#orgd931023">C++14 feels like a patch for C++11</a></li>
-<li><a href="#org5c356bb">C++17</a></li>
-<li><a href="#orgbe8181f">C++20</a>
+<li><a href="#org9c52e73">C++14 feels like a patch for C++11</a></li>
+<li><a href="#org59b2b09">C++17</a></li>
+<li><a href="#org497c981">C++20</a>
 <ul>
-<li><a href="#org5dd112b">Coroutine</a></li>
-<li><a href="#org415bf49">Concept</a></li>
-<li><a href="#orgfdeb4c7">Range</a></li>
-<li><a href="#orgd74c0e2">Module</a></li>
+<li><a href="#org85a006c">Coroutine</a></li>
+<li><a href="#org6adbd0f">Concept</a></li>
+<li><a href="#org57dc17e">Range</a></li>
+<li><a href="#orgb7e1a47">Module</a></li>
 </ul>
 </li>
-<li><a href="#org3f5c6be">Design Class</a>
+<li><a href="#org959d995">Design Class</a>
 <ul>
-<li><a href="#orgc71b4f1">Don't make data member const or references</a></li>
-<li><a href="#org3e7a310">Value initializer</a></li>
+<li><a href="#org72b0841">Don't make data member const or references</a></li>
+<li><a href="#org22343eb">Value initializer</a></li>
 </ul>
 </li>
 </ul>
@@ -359,9 +359,9 @@ and the object together.</li>
 </div>
 </div>
 
-<div id="outline-container-org0f0f249" class="outline-2">
-<h2 id="org0f0f249">Ownership: pointer, reference, smart pointers</h2>
-<div class="outline-text-2" id="text-org0f0f249">
+<div id="outline-container-org8c5a230" class="outline-2">
+<h2 id="org8c5a230">Ownership: pointer, reference, smart pointers</h2>
+<div class="outline-text-2" id="text-org8c5a230">
 <p>
 What does it mean when passing pointer, reference, smart pointers to a function (ctor).
 </p>
@@ -447,9 +447,9 @@ variable.</li>
 </div>
 </div>
 
-<div id="outline-container-orgd931023" class="outline-2">
-<h2 id="orgd931023"><a href="https://www.youtube.com/watch?v=mXxNvaEdNHI">C++14</a> feels like a patch for C++11</h2>
-<div class="outline-text-2" id="text-orgd931023">
+<div id="outline-container-org9c52e73" class="outline-2">
+<h2 id="org9c52e73"><a href="https://www.youtube.com/watch?v=mXxNvaEdNHI">C++14</a> feels like a patch for C++11</h2>
+<div class="outline-text-2" id="text-org9c52e73">
 <ul class="org-ul">
 <li><code>auto</code> as a function return type;</li>
 <li>Template lambda function using auto keyword</li>
@@ -467,9 +467,9 @@ Now, technically, you no longer to use explicit <code>new</code> and <code>delet
 </div>
 </div>
 
-<div id="outline-container-org5c356bb" class="outline-2">
-<h2 id="org5c356bb"><a href="https://www.youtube.com/watch?v=QpFjOlzg1r4">C++17</a></h2>
-<div class="outline-text-2" id="text-org5c356bb">
+<div id="outline-container-org59b2b09" class="outline-2">
+<h2 id="org59b2b09"><a href="https://www.youtube.com/watch?v=QpFjOlzg1r4">C++17</a></h2>
+<div class="outline-text-2" id="text-org59b2b09">
 <ul class="org-ul">
 <li><p>
 Guaranteed Copy/ Move Elision
@@ -515,13 +515,13 @@ if-init
 </div>
 </div>
 
-<div id="outline-container-orgbe8181f" class="outline-2">
-<h2 id="orgbe8181f"><a href="https://www.youtube.com/watch?v=D81yl6_kHEM">C++20</a></h2>
-<div class="outline-text-2" id="text-orgbe8181f">
+<div id="outline-container-org497c981" class="outline-2">
+<h2 id="org497c981"><a href="https://www.youtube.com/watch?v=D81yl6_kHEM">C++20</a></h2>
+<div class="outline-text-2" id="text-org497c981">
 </div>
-<div id="outline-container-org5dd112b" class="outline-3">
-<h3 id="org5dd112b">Coroutine</h3>
-<div class="outline-text-3" id="text-org5dd112b">
+<div id="outline-container-org85a006c" class="outline-3">
+<h3 id="org85a006c">Coroutine</h3>
+<div class="outline-text-3" id="text-org85a006c">
 <ul class="org-ul">
 <li><code>co_yield</code> similar to python's <code>yield</code>
 <b>It will be more complete in c++23. Don't do it yourself, use a library for now</b>.
@@ -543,9 +543,9 @@ Before <code>co_wait</code>, you can do it through callback:
 </div>
 </div>
 
-<div id="outline-container-org415bf49" class="outline-3">
-<h3 id="org415bf49">Concept</h3>
-<div class="outline-text-3" id="text-org415bf49">
+<div id="outline-container-org6adbd0f" class="outline-3">
+<h3 id="org6adbd0f">Concept</h3>
+<div class="outline-text-3" id="text-org6adbd0f">
 <ul class="org-ul">
 <li><p>
 For template, explicitly write out the constraint of the template type.
@@ -562,9 +562,9 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-orgfdeb4c7" class="outline-3">
-<h3 id="orgfdeb4c7">Range</h3>
-<div class="outline-text-3" id="text-orgfdeb4c7">
+<div id="outline-container-org57dc17e" class="outline-3">
+<h3 id="org57dc17e">Range</h3>
+<div class="outline-text-3" id="text-org57dc17e">
 <ul class="org-ul">
 <li>Build on top of concept</li>
 <li>Lazy evaluation</li>
@@ -572,9 +572,9 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-orgd74c0e2" class="outline-3">
-<h3 id="orgd74c0e2">Module</h3>
-<div class="outline-text-3" id="text-orgd74c0e2">
+<div id="outline-container-orgb7e1a47" class="outline-3">
+<h3 id="orgb7e1a47">Module</h3>
+<div class="outline-text-3" id="text-orgb7e1a47">
 <ul class="org-ul">
 <li>*.cppm</li>
 <li>export</li>
@@ -584,13 +584,13 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-org3f5c6be" class="outline-2">
-<h2 id="org3f5c6be"><a href="https://www.youtube.com/watch?v=O65lEiYkkbc">Design Class</a></h2>
-<div class="outline-text-2" id="text-org3f5c6be">
+<div id="outline-container-org959d995" class="outline-2">
+<h2 id="org959d995"><a href="https://www.youtube.com/watch?v=O65lEiYkkbc">Design Class</a></h2>
+<div class="outline-text-2" id="text-org959d995">
 </div>
-<div id="outline-container-orgc71b4f1" class="outline-3">
-<h3 id="orgc71b4f1">Don't make data member const or references</h3>
-<div class="outline-text-3" id="text-orgc71b4f1">
+<div id="outline-container-org72b0841" class="outline-3">
+<h3 id="org72b0841">Don't make data member const or references</h3>
+<div class="outline-text-3" id="text-org72b0841">
 <ul class="org-ul">
 <li>Otherwise, the copy assignment and move ctor/assignment will be gone. but copy ctor is okay.</li>
 <li>use a raw pointer instead of a reference. Function interface can still be a reference. It is just stored as a pointer.</li>
@@ -598,9 +598,9 @@ It is over kill and has extra price to pay if your type is known at compile-time
 </div>
 </div>
 
-<div id="outline-container-org3e7a310" class="outline-3">
-<h3 id="org3e7a310">Value initializer</h3>
-<div class="outline-text-3" id="text-org3e7a310">
+<div id="outline-container-org22343eb" class="outline-3">
+<h3 id="org22343eb">Value initializer</h3>
+<div class="outline-text-3" id="text-org22343eb">
 <ul class="org-ul">
 <li><code>Widget w{};</code> will also initialize <code>int</code> or <code>int*</code>.</li>
 <li>best practice is to put the initial value in the class when you declare the variable. The reason to not put in ctor, is to reduce duplication if you have two ctors that both need to initialize.</li>

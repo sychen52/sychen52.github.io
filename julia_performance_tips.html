@@ -16,21 +16,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org893425d">Global variable</a></li>
-<li><a href="#orgbe9a736">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</a></li>
-<li><a href="#orga38b592">Type declaration with abstract type</a>
+<li><a href="#orgfff5c76">Global variable</a></li>
+<li><a href="#org7760ae8">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</a></li>
+<li><a href="#org199b9b5">Type declaration with abstract type</a>
 <ul>
-<li><a href="#orgdee4e90">It is good for function arguments: reusable for multiple types.</a></li>
-<li><a href="#org6273213">It is bad for fields in a struct</a></li>
+<li><a href="#org0e9a858">It is good for function arguments: reusable for multiple types.</a></li>
+<li><a href="#orgee66e92">It is bad for fields in a struct</a></li>
 </ul>
 </li>
-<li><a href="#org4e11f0f">Multiple Dispatch</a></li>
-<li><a href="#org60c0c4f">Dict vs. Array</a></li>
-<li><a href="#orgf6501e1">where</a>
+<li><a href="#orgeda31d1">Multiple Dispatch</a></li>
+<li><a href="#org390984c">Dict vs. Array</a></li>
+<li><a href="#org87e2b19">where</a>
 <ul>
-<li><a href="#orgd5bcb74">parametric type:</a></li>
-<li><a href="#org7267930">method</a></li>
-<li><a href="#org831c3c1">struct</a></li>
+<li><a href="#orgb3d9d26">parametric type:</a></li>
+<li><a href="#orgef0a2d9">method</a></li>
+<li><a href="#org15cef86">struct</a></li>
 </ul>
 </li>
 </ul>
@@ -41,9 +41,9 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </p>
 
 
-<div id="outline-container-org893425d" class="outline-2">
-<h2 id="org893425d">Global variable</h2>
-<div class="outline-text-2" id="text-org893425d">
+<div id="outline-container-orgfff5c76" class="outline-2">
+<h2 id="orgfff5c76">Global variable</h2>
+<div class="outline-text-2" id="text-orgfff5c76">
 <ul class="org-ul">
 <li>Avoid if possible</li>
 <li>If not, use a const Ref to get the type fixed</li>
@@ -51,9 +51,9 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </div>
 </div>
 
-<div id="outline-container-orgbe9a736" class="outline-2">
-<h2 id="orgbe9a736">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</h2>
-<div class="outline-text-2" id="text-orgbe9a736">
+<div id="outline-container-org7760ae8" class="outline-2">
+<h2 id="org7760ae8">Type: T &lt;: Union{T, &#x2026;} &lt;: Any</h2>
+<div class="outline-text-2" id="text-org7760ae8">
 <ul class="org-ul">
 <li>If you do not specify a type, it is type Any</li>
 <li>A single concrete type is the best</li>
@@ -63,13 +63,13 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </div>
 </div>
 
-<div id="outline-container-orga38b592" class="outline-2">
-<h2 id="orga38b592">Type declaration with abstract type</h2>
-<div class="outline-text-2" id="text-orga38b592">
+<div id="outline-container-org199b9b5" class="outline-2">
+<h2 id="org199b9b5">Type declaration with abstract type</h2>
+<div class="outline-text-2" id="text-org199b9b5">
 </div>
-<div id="outline-container-orgdee4e90" class="outline-3">
-<h3 id="orgdee4e90">It is good for function arguments: reusable for multiple types.</h3>
-<div class="outline-text-3" id="text-orgdee4e90">
+<div id="outline-container-org0e9a858" class="outline-3">
+<h3 id="org0e9a858">It is good for function arguments: reusable for multiple types.</h3>
+<div class="outline-text-3" id="text-org0e9a858">
 <ul class="org-ul">
 <li>For example, <code>function f(a:Real)</code> means when you call it with <code>f(1)</code>, a <code>f(a::Int64)</code> will be generated and compiled.</li>
 </ul>
@@ -77,9 +77,9 @@ This is a note for  <a href="https://github.com/AdvancedScientificComputingInJul
 </div>
 
 
-<div id="outline-container-org6273213" class="outline-3">
-<h3 id="org6273213"><a href="https://docs.julialang.org/en/v1/manual/performance-tips/#Avoid-fields-with-abstract-type">It is bad for fields in a struct</a></h3>
-<div class="outline-text-3" id="text-org6273213">
+<div id="outline-container-orgee66e92" class="outline-3">
+<h3 id="orgee66e92"><a href="https://docs.julialang.org/en/v1/manual/performance-tips/#Avoid-fields-with-abstract-type">It is bad for fields in a struct</a></h3>
+<div class="outline-text-3" id="text-orgee66e92">
 <ul class="org-ul">
 <li><a href="https://docs.julialang.org/en/v1/manual/performance-tips/#Avoid-fields-with-abstract-type">The compiler uses the types of objects, not their values, to determine how to build code.</a></li>
 <li><p>
@@ -111,9 +111,9 @@ end
 </div>
 </div>
 
-<div id="outline-container-org4e11f0f" class="outline-2">
-<h2 id="org4e11f0f">Multiple Dispatch</h2>
-<div class="outline-text-2" id="text-org4e11f0f">
+<div id="outline-container-orgeda31d1" class="outline-2">
+<h2 id="orgeda31d1">Multiple Dispatch</h2>
+<div class="outline-text-2" id="text-orgeda31d1">
 <ul class="org-ul">
 <li>As a rule of thumb, compile time multiple dispatch is as fast as C/C++, Julia can do all the optimizations like inlining. However, runtime multiple dispatch needs to do a lookup and it is slow (can be slower than runtime if-else check)</li>
 <li><a href="https://github.com/AdvancedScientificComputingInJuliaWashU/Performance.jl/blob/main/test/type_abuse.jl">"When types can't be predicted in advance, you're better off doing more at runtime and less via the type system.</a></li>
@@ -121,9 +121,9 @@ end
 </div>
 </div>
 
-<div id="outline-container-org60c0c4f" class="outline-2">
-<h2 id="org60c0c4f">Dict vs. Array</h2>
-<div class="outline-text-2" id="text-org60c0c4f">
+<div id="outline-container-org390984c" class="outline-2">
+<h2 id="org390984c">Dict vs. Array</h2>
+<div class="outline-text-2" id="text-org390984c">
 <ul class="org-ul">
 <li>Hash table lookup can be a order of magnitude slower than Array lookup (even with some condiction check)</li>
 <li>If you are working with char, using Array as a dictionary.</li>
@@ -131,30 +131,30 @@ end
 </div>
 </div>
 
-<div id="outline-container-orgf6501e1" class="outline-2">
-<h2 id="orgf6501e1">where</h2>
-<div class="outline-text-2" id="text-orgf6501e1">
+<div id="outline-container-org87e2b19" class="outline-2">
+<h2 id="org87e2b19">where</h2>
+<div class="outline-text-2" id="text-org87e2b19">
 </div>
-<div id="outline-container-orgd5bcb74" class="outline-3">
-<h3 id="orgd5bcb74">parametric type:</h3>
-<div class="outline-text-3" id="text-orgd5bcb74">
+<div id="outline-container-orgb3d9d26" class="outline-3">
+<h3 id="orgb3d9d26">parametric type:</h3>
+<div class="outline-text-3" id="text-orgb3d9d26">
 <ul class="org-ul">
 <li><code>Vector{&lt;:Real}</code> or <code>Vector{T} where T &lt;: Real</code> means Union{Vector{T} for all T belong to Real}.</li>
 <li>Unionall: <code>Vector</code> means <code>Vector{T} where T &lt;: Any</code></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7267930" class="outline-3">
-<h3 id="org7267930">method</h3>
-<div class="outline-text-3" id="text-org7267930">
+<div id="outline-container-orgef0a2d9" class="outline-3">
+<h3 id="orgef0a2d9">method</h3>
+<div class="outline-text-3" id="text-orgef0a2d9">
 <ul class="org-ul">
 <li><code>function f(x::T) where {T}</code> just tells the parser, T is template/parametric. <code>function f(x::T) where {T&lt;:Real}</code> or <code>function f(x::T where T&lt;:Real)</code> can be used to put some constraint on the type.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org831c3c1" class="outline-3">
-<h3 id="org831c3c1">struct</h3>
-<div class="outline-text-3" id="text-org831c3c1">
+<div id="outline-container-org15cef86" class="outline-3">
+<h3 id="org15cef86">struct</h3>
+<div class="outline-text-3" id="text-org15cef86">
 <ul class="org-ul">
 <li>On the other hand, there is no <code>where</code> for struct to put constraints. You directly put constraints in the <code>{}</code>. For example, <code>struct S{T&lt;:Real}</code>.</li>
 </ul>
